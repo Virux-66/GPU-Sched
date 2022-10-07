@@ -1,0 +1,1504 @@
+Parsing args
+Starting driver
+  workload_file: /home/ubuntu/GPU-Sched/src/runtime/driver/workloads/ppopp21-volta/p100_16_16jobs_1.wl
+  sched_alg: mgb_basic
+  num_processes: 16
+Worker 0: Starting
+Worker 0: 0 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 1: Starting
+Worker 1: 1 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+Worker 2: Starting
+Worker 0: just launched pid 46372
+Worker 2: 2 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 3: Starting
+Worker 1: just launched pid 46375
+Worker 3: 3 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+Worker 4: Starting
+Worker 2: just launched pid 46376
+Worker 4: 4 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+Worker 5: Starting
+Worker 3: just launched pid 46378
+Worker 5: 5 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+Worker 6: Starting
+Worker 4: just launched pid 46380
+Worker 6: 6 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+Worker 5: just launched pid 46382
+Worker 7: Starting
+Worker 7: 7 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+Worker 6: just launched pid 46384
+Worker 8: Starting
+Worker 8: 8 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 7: just launched pid 46386
+Worker 9: Starting
+Worker 9: 9 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+Worker 10: Starting
+Worker 8: just launched pid 46388
+Worker 10: 10 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+Worker 9: just launched pid 46390
+Worker 11: Starting
+Worker 11: 11 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+Worker 12: Starting
+Worker 10: just launched pid 46393
+Worker 12: 12 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+Worker 13: Starting
+Main process: Waiting for workers...
+Worker 14: Starting
+Worker 11: just launched pid 46395
+Worker 13: 13 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+Worker 14: 14 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+Worker 12: just launched pid 46397
+Worker 15: Starting
+Worker 15: 15 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+Worker 14: just launched pid 46398
+Worker 13: just launched pid 46399
+Worker 15: just launched pid 46401
+suc
+WG size of kernel = 16 X 16
+4841200416837 bemps_begin: pid 46451 , num_blocks 262144 , threads_per_block 256
+4841200453602 bemps_beacon: pid 46451 , bemps_tid 0 , mem_B 1610612736 , warps 2097152 , thread_blocks 262144
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+4846242483490 _bemps_dump_stats: Dumping bemps stats
+4846242502615 _bemps_dump_stats: count of beacon times: 1
+4846242514126 _bemps_dump_stats: min beacon time (ns): 766817677
+4846242516860 _bemps_dump_stats: max beacon time (ns): 766817677
+4846242519492 _bemps_dump_stats: avg beacon time (ns): 7.66818e+08
+4846242557249 _bemps_dump_stats: count of free times: 1
+4846242560380 _bemps_dump_stats: min free time (ns): 29124
+4846242563149 _bemps_dump_stats: max free time (ns): 29124
+4846242566128 _bemps_dump_stats: avg free time (ns): 29124
+
+==46451== NVPROF is profiling process 46451, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+==46451== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+==46451== Warning: 5 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46451== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   63.93%  103.43ms         2  51.714ms  47.863ms  55.565ms  [CUDA memcpy HtoD]
+                   29.59%  47.876ms         2  23.938ms  22.889ms  24.987ms  [CUDA memcpy DtoH]
+                    3.50%  5.6699ms         2  2.8349ms  2.8309ms  2.8390ms  srad_cuda_2(float*, float*, float*, float*, float*, float*, int, int, float, float)
+                    2.98%  4.8202ms         2  2.4101ms  2.4084ms  2.4118ms  srad_cuda_1(float*, float*, float*, float*, float*, float*, int, int, float)
+      API calls:   86.09%  2.00824s         6  334.71ms  2.7753ms  1.98765s  cudaMalloc
+                    6.96%  162.31ms         4  40.578ms  28.317ms  55.655ms  cudaMemcpy
+                    5.80%  135.34ms       384  352.45us       0ns  109.01ms  cuDeviceGetAttribute
+                    0.52%  12.198ms         6  2.0330ms  696.08us  8.3436ms  cudaFree
+                    0.51%  12.002ms         4  3.0006ms  2.7427ms  3.4997ms  cuDeviceTotalMem
+                    0.11%  2.4712ms         4  617.80us  390.89us  1.0155ms  cuDeviceGetName
+                    0.01%  119.65us         4  29.913us  11.275us  54.244us  cudaLaunchKernel
+                    0.00%  19.704us         4  4.9260us  3.5300us  6.1980us  cuDeviceGetPCIBusId
+                    0.00%  16.192us         1  16.192us  16.192us  16.192us  cudaSetDevice
+                    0.00%  11.418us         8  1.4270us     845ns  2.1130us  cuDeviceGet
+                    0.00%  11.258us         1  11.258us  11.258us  11.258us  cudaThreadSynchronize
+                    0.00%  5.0910us         3  1.6970us  1.1060us  2.0910us  cuDeviceGetCount
+                    0.00%  4.1590us         4  1.0390us     928ns  1.1990us  cuDeviceGetUuid
+
+Worker 10: TOTAL_BENCHMARK_TIME 10 5.654603719711304
+Worker 10: TIME_SINCE_START     10 5.665573835372925
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 1
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+4844167936029 bemps_begin: pid 46428 , num_blocks 262144 , threads_per_block 256
+4844167994298 bemps_beacon: pid 46428 , bemps_tid 0 , mem_B 2080374784 , warps 2097152 , thread_blocks 262144
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+4847576581036 _bemps_dump_stats: Dumping bemps stats
+4847576613442 _bemps_dump_stats: count of beacon times: 1
+4847576621241 _bemps_dump_stats: min beacon time (ns): 43950640
+4847576623440 _bemps_dump_stats: max beacon time (ns): 43950640
+4847576625522 _bemps_dump_stats: avg beacon time (ns): 4.39506e+07
+4847576651335 _bemps_dump_stats: count of free times: 1
+4847576653456 _bemps_dump_stats: min free time (ns): 28296
+4847576655468 _bemps_dump_stats: max free time (ns): 28296
+4847576657544 _bemps_dump_stats: avg free time (ns): 28296
+
+==46428== NVPROF is profiling process 46428, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==46428== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==46428== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   60.25%  64.245ms         3  21.415ms  21.403ms  21.425ms  [CUDA memcpy DtoH]
+                   32.60%  34.766ms         1  34.766ms  34.766ms  34.766ms  [CUDA memcpy HtoD]
+                    3.15%  3.3564ms         9  372.93us  54.080us  856.61us  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    2.73%  2.9112ms         9  323.46us  44.864us  742.94us  [CUDA memcpy DtoD]
+                    1.26%  1.3390ms         1  1.3390ms  1.3390ms  1.3390ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.01%  12.192us         8  1.5240us  1.3760us  1.7920us  [CUDA memset]
+      API calls:   59.46%  2.68827s         4  672.07ms  139.94ms  2.03952s  cudaMallocHost
+                   29.56%  1.33628s         8  167.03ms  2.3946ms  1.31224s  cudaMalloc
+                    5.13%  231.89ms         4  57.972ms  35.145ms  98.559ms  cudaFreeHost
+                    3.04%  137.33ms       384  357.63us     723ns  108.89ms  cuDeviceGetAttribute
+                    2.25%  101.81ms        13  7.8312ms  20.040us  37.101ms  cudaMemcpy
+                    0.21%  9.4234ms         4  2.3558ms  1.9235ms  2.7833ms  cuDeviceTotalMem
+                    0.14%  6.1206ms         1  6.1206ms  6.1206ms  6.1206ms  cudaGetDeviceProperties
+                    0.11%  5.0113ms         8  626.41us  513.07us  1.2290ms  cudaFree
+                    0.06%  2.9063ms         4  726.59us  401.47us  1.3371ms  cuDeviceGetName
+                    0.03%  1.3760ms         3  458.67us  14.614us  1.3410ms  cudaThreadSynchronize
+                    0.01%  290.03us        10  29.003us  15.469us  128.16us  cudaLaunchKernel
+                    0.00%  209.93us         8  26.241us  16.707us  80.526us  cudaMemset
+                    0.00%  63.726us        42  1.5170us     784ns  10.465us  cudaGetLastError
+                    0.00%  21.149us         4  5.2870us  3.5610us  8.1750us  cuDeviceGetPCIBusId
+                    0.00%  13.519us         2  6.7590us  3.9710us  9.5480us  cudaSetDevice
+                    0.00%  8.2310us         8  1.0280us     822ns  1.2750us  cuDeviceGet
+                    0.00%  4.8450us         4  1.2110us  1.0640us  1.3240us  cuDeviceGetUuid
+                    0.00%  4.1110us         3  1.3700us     818ns  2.2590us  cuDeviceGetCount
+                    0.00%  2.2630us         1  2.2630us  2.2630us  2.2630us  cudaGetDeviceCount
+
+Worker 4: TOTAL_BENCHMARK_TIME 4 7.2133424282073975
+Worker 4: TIME_SINCE_START     4 7.2183568477630615
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 2
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 2
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 2
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 2
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 2
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 2
+suc
+suc
+WG size of kernel = 16 X 16
+4841186380397 bemps_begin: pid 46438 , num_blocks 1048576 , threads_per_block 256
+4841186419838 bemps_beacon: pid 46438 , bemps_tid 0 , mem_B 6442450944 , warps 8388608 , thread_blocks 1048576
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+4853289185061 _bemps_dump_stats: Dumping bemps stats
+4853289200685 _bemps_dump_stats: count of beacon times: 1
+4853289209904 _bemps_dump_stats: min beacon time (ns): 625364615
+4853289212008 _bemps_dump_stats: max beacon time (ns): 625364615
+4853289214108 _bemps_dump_stats: avg beacon time (ns): 6.25365e+08
+4853289244634 _bemps_dump_stats: count of free times: 1
+4853289247910 _bemps_dump_stats: min free time (ns): 30185
+4853289248903 _bemps_dump_stats: max free time (ns): 30185
+4853289251085 _bemps_dump_stats: avg free time (ns): 30185
+
+==46438== NVPROF is profiling process 46438, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==46438== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==46438== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   57.79%  428.94ms         2  214.47ms  207.95ms  220.99ms  [CUDA memcpy HtoD]
+                   36.99%  274.56ms         2  137.28ms  136.28ms  138.29ms  [CUDA memcpy DtoH]
+                    2.67%  19.794ms         2  9.8972ms  9.8848ms  9.9096ms  srad_cuda_2(float*, float*, float*, float*, float*, float*, int, int, float, float)
+                    2.55%  18.898ms         2  9.4489ms  9.4033ms  9.4946ms  srad_cuda_1(float*, float*, float*, float*, float*, float*, int, int, float)
+      API calls:   69.88%  2.16321s         6  360.53ms  4.2970ms  2.10155s  cudaMalloc
+                   23.99%  742.83ms         4  185.71ms  155.80ms  221.13ms  cudaMemcpy
+                    5.31%  164.45ms         6  27.408ms  4.4303ms  66.865ms  cudaFree
+                    0.53%  16.421ms       384  42.763us     386ns  2.4162ms  cuDeviceGetAttribute
+                    0.22%  6.7816ms         4  1.6954ms  1.1845ms  1.9380ms  cuDeviceTotalMem
+                    0.06%  1.8749ms         4  468.73us  153.58us  805.61us  cuDeviceGetName
+                    0.00%  151.10us         4  37.774us  11.967us  71.904us  cudaLaunchKernel
+                    0.00%  22.760us         1  22.760us  22.760us  22.760us  cudaSetDevice
+                    0.00%  20.100us         4  5.0250us  4.0080us  5.5260us  cuDeviceGetPCIBusId
+                    0.00%  15.210us         1  15.210us  15.210us  15.210us  cudaThreadSynchronize
+                    0.00%  11.072us         8  1.3840us     995ns  2.0870us  cuDeviceGet
+                    0.00%  4.6580us         3  1.5520us     887ns  1.8960us  cuDeviceGetCount
+                    0.00%  4.4340us         4  1.1080us     901ns  1.3100us  cuDeviceGetUuid
+
+WG size of kernel = 16 X 16
+4841138804844 bemps_begin: pid 46425 , num_blocks 1048576 , threads_per_block 256
+4841138841209 bemps_beacon: pid 46425 , bemps_tid 0 , mem_B 6442450944 , warps 8388608 , thread_blocks 1048576
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+4853290771780 _bemps_dump_stats: Dumping bemps stats
+4853290790749 _bemps_dump_stats: count of beacon times: 1
+4853290801798 _bemps_dump_stats: min beacon time (ns): 829378885
+4853290804700 _bemps_dump_stats: max beacon time (ns): 829378885
+4853290807327 _bemps_dump_stats: avg beacon time (ns): 8.29379e+08
+4853290839023 _bemps_dump_stats: count of free times: 1
+4853290842143 _bemps_dump_stats: min free time (ns): 29985
+4853290844889 _bemps_dump_stats: max free time (ns): 29985
+4853290847761 _bemps_dump_stats: avg free time (ns): 29985
+
+==46425== NVPROF is profiling process 46425, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==46425== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==46425== Warning: 2 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46425== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   58.09%  425.79ms         2  212.90ms  189.93ms  235.87ms  [CUDA memcpy HtoD]
+                   36.59%  268.17ms         2  134.09ms  133.82ms  134.36ms  [CUDA memcpy DtoH]
+                    2.69%  19.751ms         2  9.8755ms  9.8650ms  9.8860ms  srad_cuda_2(float*, float*, float*, float*, float*, float*, int, int, float, float)
+                    2.62%  19.221ms         2  9.6106ms  9.5243ms  9.6968ms  srad_cuda_1(float*, float*, float*, float*, float*, float*, int, int, float)
+      API calls:   66.50%  2.00723s         6  334.54ms  2.8014ms  1.98665s  cudaMalloc
+                   24.31%  733.58ms         4  183.39ms  153.52ms  236.11ms  cudaMemcpy
+                    4.39%  132.64ms       384  345.43us       0ns  109.60ms  cuDeviceGetAttribute
+                    4.21%  127.14ms         6  21.190ms  4.3879ms  63.721ms  cudaFree
+                    0.45%  13.568ms         4  3.3920ms  3.0008ms  3.9358ms  cuDeviceTotalMem
+                    0.13%  3.8342ms         4  958.55us  362.97us  1.3309ms  cuDeviceGetName
+                    0.01%  150.95us         4  37.736us  10.881us  75.446us  cudaLaunchKernel
+                    0.00%  18.796us         4  4.6990us  3.3100us  6.3570us  cuDeviceGetPCIBusId
+                    0.00%  12.698us         1  12.698us  12.698us  12.698us  cudaThreadSynchronize
+                    0.00%  11.406us         1  11.406us  11.406us  11.406us  cudaSetDevice
+                    0.00%  8.5350us         8  1.0660us     845ns  1.4890us  cuDeviceGet
+                    0.00%  4.8830us         3  1.6270us     910ns  2.8740us  cuDeviceGetCount
+                    0.00%  4.4530us         4  1.1130us  1.0370us  1.2860us  cuDeviceGetUuid
+
+Worker 9: TOTAL_BENCHMARK_TIME 9 12.881923913955688
+Worker 9: TIME_SINCE_START     9 12.891445636749268
+Worker 6: TOTAL_BENCHMARK_TIME 6 12.884811401367188
+Worker 6: TIME_SINCE_START     6 12.891533851623535
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		16384x16384
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 805306368
+4844976849184 bemps_begin: pid 46480 , num_blocks 1048576 , threads_per_block 256
+4844976903468 bemps_beacon: pid 46480 , bemps_tid 0 , mem_B 8321499136 , warps 8388608 , thread_blocks 1048576
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (16384 x 16384)
+4853191347506 _bemps_dump_stats: Dumping bemps stats
+4853191383406 _bemps_dump_stats: count of beacon times: 1
+4853191392870 _bemps_dump_stats: min beacon time (ns): 35942598
+4853191395049 _bemps_dump_stats: max beacon time (ns): 35942598
+4853191397257 _bemps_dump_stats: avg beacon time (ns): 3.59426e+07
+4853191426710 _bemps_dump_stats: count of free times: 1
+4853191428854 _bemps_dump_stats: min free time (ns): 28874
+4853191430899 _bemps_dump_stats: max free time (ns): 28874
+4853191433076 _bemps_dump_stats: avg free time (ns): 28874
+
+==46480== NVPROF is profiling process 46480, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+==46480== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+==46480== Warning: 7 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46480== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   67.98%  353.17ms         3  117.72ms  102.23ms  146.50ms  [CUDA memcpy DtoH]
+                   26.20%  136.14ms         1  136.14ms  136.14ms  136.14ms  [CUDA memcpy HtoD]
+                    2.56%  13.287ms         9  1.4764ms  201.73us  3.5017ms  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    2.25%  11.702ms         9  1.3003ms  172.00us  2.9974ms  [CUDA memcpy DtoD]
+                    1.01%  5.2229ms         1  5.2229ms  5.2229ms  5.2229ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.00%  14.176us         8  1.7720us  1.4080us  2.4320us  [CUDA memset]
+      API calls:   57.88%  3.67964s         4  919.91ms  540.82ms  2.03417s  cudaMallocHost
+                   15.23%  968.02ms         8  121.00ms  1.6442ms  954.17ms  cudaMalloc
+                   12.70%  807.41ms         4  201.85ms  188.22ms  214.42ms  cudaFreeHost
+                    7.85%  498.89ms        13  38.376ms  11.121us  146.58ms  cudaMemcpy
+                    5.05%  321.38ms       384  836.93us       0ns  197.53ms  cuDeviceGetAttribute
+                    0.90%  57.102ms         8  7.1377ms  1.5084ms  44.221ms  cudaFree
+                    0.15%  9.8400ms         4  2.4600ms  2.1813ms  3.0038ms  cuDeviceTotalMem
+                    0.10%  6.5337ms         1  6.5337ms  6.5337ms  6.5337ms  cudaGetDeviceProperties
+                    0.08%  5.2624ms         3  1.7541ms  18.290us  5.2252ms  cudaThreadSynchronize
+                    0.05%  3.2063ms         4  801.58us  554.02us  1.0784ms  cuDeviceGetName
+                    0.00%  193.71us         8  24.213us  14.561us  72.872us  cudaMemset
+                    0.00%  169.60us        10  16.959us  8.3650us  77.589us  cudaLaunchKernel
+                    0.00%  60.311us        42  1.4350us     702ns  12.633us  cudaGetLastError
+                    0.00%  21.509us         4  5.3770us  4.3720us  5.9330us  cuDeviceGetPCIBusId
+                    0.00%  12.911us         2  6.4550us  4.4920us  8.4190us  cudaSetDevice
+                    0.00%  12.620us         8  1.5770us     815ns  3.8640us  cuDeviceGet
+                    0.00%  6.2540us         3  2.0840us  1.4330us  2.9500us  cuDeviceGetCount
+                    0.00%  4.3210us         4  1.0800us     997ns  1.1960us  cuDeviceGetUuid
+                    0.00%  1.5280us         1  1.5280us  1.5280us  1.5280us  cudaGetDeviceCount
+
+Worker 13: TOTAL_BENCHMARK_TIME 13 12.933786869049072
+Worker 13: TIME_SINCE_START     13 12.948121547698975
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		16384x16384
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 805306368
+4844704011861 bemps_begin: pid 46422 , num_blocks 1048576 , threads_per_block 256
+4844704082834 bemps_beacon: pid 46422 , bemps_tid 0 , mem_B 8321499136 , warps 8388608 , thread_blocks 1048576
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (16384 x 16384)
+4853136457039 _bemps_dump_stats: Dumping bemps stats
+4853136490245 _bemps_dump_stats: count of beacon times: 1
+4853136499147 _bemps_dump_stats: min beacon time (ns): 8490901
+4853136501267 _bemps_dump_stats: max beacon time (ns): 8490901
+4853136503299 _bemps_dump_stats: avg beacon time (ns): 8.4909e+06
+4853136529585 _bemps_dump_stats: count of free times: 1
+4853136531785 _bemps_dump_stats: min free time (ns): 30242
+4853136533762 _bemps_dump_stats: max free time (ns): 30242
+4853136535914 _bemps_dump_stats: avg free time (ns): 30242
+
+==46422== NVPROF is profiling process 46422, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+==46422== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+==46422== Warning: 1 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46422== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.24%  353.11ms         3  117.70ms  102.20ms  146.46ms  [CUDA memcpy DtoH]
+                   23.73%  119.28ms         1  119.28ms  119.28ms  119.28ms  [CUDA memcpy HtoD]
+                    2.66%  13.356ms         9  1.4840ms  199.65us  3.4135ms  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    2.32%  11.658ms         9  1.2954ms  185.06us  2.9708ms  [CUDA memcpy DtoD]
+                    1.05%  5.3017ms         1  5.3017ms  5.3017ms  5.3017ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.00%  11.584us         8  1.4480us  1.3760us  1.7280us  [CUDA memset]
+      API calls:   60.76%  4.14259s         4  1.03565s  556.58ms  2.40176s  cudaMallocHost
+                   17.53%  1.19519s         8  149.40ms  1.2936ms  1.18378s  cudaMalloc
+                   13.21%  900.87ms         4  225.22ms  201.42ms  285.61ms  cudaFreeHost
+                    7.07%  482.01ms        13  37.077ms  12.320us  146.55ms  cudaMemcpy
+                    1.12%  76.071ms         8  9.5088ms  2.3282ms  56.429ms  cudaFree
+                    0.13%  8.8626ms       384  23.079us       0ns  2.0354ms  cuDeviceGetAttribute
+                    0.08%  5.3584ms         3  1.7861ms  18.639us  5.3185ms  cudaThreadSynchronize
+                    0.06%  4.1463ms         4  1.0366ms  923.04us  1.2018ms  cuDeviceTotalMem
+                    0.03%  1.7647ms         1  1.7647ms  1.7647ms  1.7647ms  cudaGetDeviceProperties
+                    0.01%  577.33us         4  144.33us  87.812us  252.46us  cuDeviceGetName
+                    0.00%  167.17us        10  16.717us  8.9860us  69.576us  cudaLaunchKernel
+                    0.00%  148.27us         8  18.533us  10.353us  68.493us  cudaMemset
+                    0.00%  66.234us        42  1.5770us     572ns  10.770us  cudaGetLastError
+                    0.00%  29.244us         4  7.3110us  4.7680us  11.893us  cuDeviceGetPCIBusId
+                    0.00%  14.648us         2  7.3240us  4.1070us  10.541us  cudaSetDevice
+                    0.00%  7.6670us         8     958ns     800ns  1.3590us  cuDeviceGet
+                    0.00%  4.4130us         3  1.4710us     851ns  2.5740us  cuDeviceGetCount
+                    0.00%  4.0650us         4  1.0160us     933ns  1.2150us  cuDeviceGetUuid
+                    0.00%  1.5950us         1  1.5950us  1.5950us  1.5950us  cudaGetDeviceCount
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 12.951263904571533
+Worker 3: TIME_SINCE_START     3 12.955510139465332
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 6
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 6
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 6
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 6
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 6
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 6
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+4855959415254 bemps_begin: pid 46442 , num_blocks 2097152 , threads_per_block 256
+4855959475487 bemps_beacon: pid 46442 , bemps_tid 0 , mem_B 4699717908 , warps 16777216 , thread_blocks 2097152
+Performing GPU computation
+Training done
+4862967014322 _bemps_dump_stats: Dumping bemps stats
+4862967028392 _bemps_dump_stats: count of beacon times: 1
+4862967040355 _bemps_dump_stats: min beacon time (ns): 770461483
+4862967042573 _bemps_dump_stats: max beacon time (ns): 770461483
+4862967044506 _bemps_dump_stats: avg beacon time (ns): 7.70461e+08
+4862967081679 _bemps_dump_stats: count of free times: 1
+4862967083457 _bemps_dump_stats: min free time (ns): 39622
+4862967085389 _bemps_dump_stats: max free time (ns): 39622
+4862967087917 _bemps_dump_stats: avg free time (ns): 39622
+
+==46442== NVPROF is profiling process 46442, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46442== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46442== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   83.35%  1.40586s         5  281.17ms  1.5040us  503.50ms  [CUDA memcpy HtoD]
+                   15.43%  260.17ms         3  86.724ms  187.17us  245.58ms  [CUDA memcpy DtoH]
+                    0.65%  10.978ms         1  10.978ms  10.978ms  10.978ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.57%  9.6295ms         1  9.6295ms  9.6295ms  9.6295ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   55.86%  1.67815s         8  209.77ms  27.728us  503.78ms  cudaMemcpy
+                   41.95%  1.26024s         6  210.04ms  14.854us  1.24539s  cudaMalloc
+                    1.01%  30.200ms         6  5.0333ms  44.335us  14.263ms  cudaFree
+                    0.58%  17.547ms       384  45.695us     721ns  2.8207ms  cuDeviceGetAttribute
+                    0.37%  11.099ms         1  11.099ms  11.099ms  11.099ms  cudaThreadSynchronize
+                    0.18%  5.3652ms         4  1.3413ms  731.41us  1.8824ms  cuDeviceTotalMem
+                    0.05%  1.3605ms         4  340.13us  131.24us  620.24us  cuDeviceGetName
+                    0.00%  133.40us         2  66.701us  59.447us  73.956us  cudaLaunchKernel
+                    0.00%  19.256us         1  19.256us  19.256us  19.256us  cudaSetDevice
+                    0.00%  18.364us         4  4.5910us  3.4090us  5.5200us  cuDeviceGetPCIBusId
+                    0.00%  10.140us         8  1.2670us     795ns  3.0340us  cuDeviceGet
+                    0.00%  5.0610us         3  1.6870us     800ns  3.0880us  cuDeviceGetCount
+                    0.00%  4.8980us         4  1.2240us  1.0370us  1.5650us  cuDeviceGetUuid
+
+Worker 11: TOTAL_BENCHMARK_TIME 11 22.671713829040527
+Worker 11: TIME_SINCE_START     11 22.683765172958374
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 7
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 7
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 7
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 7
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 7
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+4856247707251 bemps_begin: pid 46477 , num_blocks 2097152 , threads_per_block 256
+4856247765283 bemps_beacon: pid 46477 , bemps_tid 0 , mem_B 4699717908 , warps 16777216 , thread_blocks 2097152
+Performing GPU computation
+Training done
+4863249793335 _bemps_dump_stats: Dumping bemps stats
+4863249805805 _bemps_dump_stats: count of beacon times: 1
+4863249820005 _bemps_dump_stats: min beacon time (ns): 670829345
+4863249823647 _bemps_dump_stats: max beacon time (ns): 670829345
+4863249826600 _bemps_dump_stats: avg beacon time (ns): 6.70829e+08
+4863249873983 _bemps_dump_stats: count of free times: 1
+4863249877128 _bemps_dump_stats: min free time (ns): 45426
+4863249879866 _bemps_dump_stats: max free time (ns): 45426
+4863249882496 _bemps_dump_stats: avg free time (ns): 45426
+
+==46477== NVPROF is profiling process 46477, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46477== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46477== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   84.51%  1.44976s         5  289.95ms  1.4080us  520.05ms  [CUDA memcpy HtoD]
+                   14.29%  245.19ms         3  81.731ms  185.89us  232.03ms  [CUDA memcpy DtoH]
+                    0.64%  10.980ms         1  10.980ms  10.980ms  10.980ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.56%  9.6425ms         1  9.6425ms  9.6425ms  9.6425ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   55.07%  1.70788s         8  213.49ms  41.592us  520.13ms  cudaMemcpy
+                   43.66%  1.35404s         6  225.67ms  15.331us  1.34688s  cudaMalloc
+                    0.45%  13.881ms         6  2.3136ms  37.000us  4.2750ms  cudaFree
+                    0.36%  11.126ms         1  11.126ms  11.126ms  11.126ms  cudaThreadSynchronize
+                    0.29%  9.0137ms       384  23.473us     227ns  1.2855ms  cuDeviceGetAttribute
+                    0.15%  4.6296ms         4  1.1574ms  933.47us  1.7587ms  cuDeviceTotalMem
+                    0.02%  714.98us         4  178.75us  97.212us  313.75us  cuDeviceGetName
+                    0.00%  108.54us         2  54.267us  47.984us  60.551us  cudaLaunchKernel
+                    0.00%  16.999us         4  4.2490us  3.6880us  5.5780us  cuDeviceGetPCIBusId
+                    0.00%  13.086us         1  13.086us  13.086us  13.086us  cudaSetDevice
+                    0.00%  7.8980us         8     987ns     414ns  1.3870us  cuDeviceGet
+                    0.00%  5.1790us         3  1.7260us  1.1090us  2.5030us  cuDeviceGetCount
+                    0.00%  4.2500us         4  1.0620us     669ns  1.6930us  cuDeviceGetUuid
+
+Worker 15: TOTAL_BENCHMARK_TIME 15 23.072798490524292
+Worker 15: TIME_SINCE_START     15 23.08828568458557
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+4855710719373 bemps_begin: pid 46486 , num_blocks 1 , threads_per_block 16
+4855710781456 bemps_beacon: pid 46486 , bemps_tid 0 , mem_B 8590458888 , warps 1 , thread_blocks 1
+Processing bottom-right matrix
+4863687168542 _bemps_dump_stats: Dumping bemps stats
+4863687185138 _bemps_dump_stats: count of beacon times: 1
+4863687193682 _bemps_dump_stats: min beacon time (ns): 397788711
+4863687195369 _bemps_dump_stats: max beacon time (ns): 397788711
+4863687197905 _bemps_dump_stats: avg beacon time (ns): 3.97789e+08
+4863687227219 _bemps_dump_stats: count of free times: 1
+4863687229052 _bemps_dump_stats: min free time (ns): 41821
+4863687231522 _bemps_dump_stats: max free time (ns): 41821
+4863687233633 _bemps_dump_stats: avg free time (ns): 41821
+
+==46486== NVPROF is profiling process 46486, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+==46486== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+==46486== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   74.92%  4.03561s         1  4.03561s  4.03561s  4.03561s  [CUDA memcpy DtoH]
+                   23.46%  1.26361s         2  631.81ms  554.19ms  709.43ms  [CUDA memcpy HtoD]
+                    0.82%  44.218ms      2047  21.601us  5.1840us  50.688us  needle_cuda_shared_2(int*, int*, int, int, int, int)
+                    0.81%  43.462ms      2048  21.221us  5.4080us  52.671us  needle_cuda_shared_1(int*, int*, int, int, int, int)
+      API calls:   82.90%  5.32063s         3  1.77354s  554.30ms  4.05689s  cudaMemcpy
+                   14.71%  944.37ms         2  472.18ms  7.5068ms  936.86ms  cudaMalloc
+                    1.20%  76.889ms      4095  18.776us  7.7670us  107.63us  cudaLaunchKernel
+                    1.06%  68.204ms         2  34.102ms  5.7765ms  62.427ms  cudaFree
+                    0.07%  4.4794ms       384  11.665us     923ns  792.15us  cuDeviceGetAttribute
+                    0.05%  3.4409ms         4  860.23us  802.34us  992.84us  cuDeviceTotalMem
+                    0.01%  365.42us         4  91.354us  71.266us  132.49us  cuDeviceGetName
+                    0.00%  23.393us         1  23.393us  23.393us  23.393us  cudaSetDevice
+                    0.00%  22.488us         4  5.6220us  4.9870us  6.3550us  cuDeviceGetPCIBusId
+                    0.00%  12.791us         8  1.5980us  1.1490us  2.8070us  cuDeviceGet
+                    0.00%  6.9280us         3  2.3090us  1.3520us  3.6300us  cuDeviceGetCount
+                    0.00%  6.4630us         4  1.6150us  1.3400us  1.8620us  cuDeviceGetUuid
+
+Worker 7: TOTAL_BENCHMARK_TIME 7 23.10103487968445
+Worker 7: TIME_SINCE_START     7 23.108518600463867
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 9
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+4856363057597 bemps_begin: pid 46431 , num_blocks 2097152 , threads_per_block 256
+4856363113411 bemps_beacon: pid 46431 , bemps_tid 0 , mem_B 4699717908 , warps 16777216 , thread_blocks 2097152
+Performing GPU computation
+Training done
+4863616606956 _bemps_dump_stats: Dumping bemps stats
+4863616618949 _bemps_dump_stats: count of beacon times: 1
+4863616627588 _bemps_dump_stats: min beacon time (ns): 1040569888
+4863616629750 _bemps_dump_stats: max beacon time (ns): 1040569888
+4863616631802 _bemps_dump_stats: avg beacon time (ns): 1.04057e+09
+4863616667665 _bemps_dump_stats: count of free times: 1
+4863616670028 _bemps_dump_stats: min free time (ns): 48364
+4863616672106 _bemps_dump_stats: max free time (ns): 48364
+4863616674236 _bemps_dump_stats: avg free time (ns): 48364
+
+==46431== NVPROF is profiling process 46431, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46431== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46431== Warning: 4 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46431== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   84.91%  1.49951s         5  299.90ms  1.7280us  527.23ms  [CUDA memcpy HtoD]
+                   13.92%  245.79ms         3  81.930ms  187.17us  232.31ms  [CUDA memcpy DtoH]
+                    0.62%  10.976ms         1  10.976ms  10.976ms  10.976ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.55%  9.6340ms         1  9.6340ms  9.6340ms  9.6340ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   57.75%  1.75767s         8  219.71ms  32.166us  527.46ms  cudaMemcpy
+                   40.14%  1.22159s         6  203.60ms  15.765us  1.16624s  cudaMalloc
+                    0.73%  22.291ms       384  58.050us       0ns  5.9450ms  cuDeviceGetAttribute
+                    0.56%  16.999ms         6  2.8331ms  32.564us  10.113ms  cudaFree
+                    0.40%  12.044ms         4  3.0110ms  1.7577ms  6.0364ms  cuDeviceTotalMem
+                    0.36%  11.084ms         1  11.084ms  11.084ms  11.084ms  cudaThreadSynchronize
+                    0.06%  1.7600ms         4  440.00us  174.96us  1.1215ms  cuDeviceGetName
+                    0.00%  132.79us         2  66.396us  59.000us  73.792us  cudaLaunchKernel
+                    0.00%  16.413us         4  4.1030us  2.8690us  6.5930us  cuDeviceGetPCIBusId
+                    0.00%  12.995us         1  12.995us  12.995us  12.995us  cudaSetDevice
+                    0.00%  8.8580us         8  1.1070us     833ns  1.4900us  cuDeviceGet
+                    0.00%  5.2380us         3  1.7460us  1.1380us  2.3330us  cuDeviceGetCount
+                    0.00%  3.8500us         4     962ns     732ns  1.0860us  cuDeviceGetUuid
+
+Worker 5: TOTAL_BENCHMARK_TIME 5 23.379013299942017
+Worker 5: TIME_SINCE_START     5 23.384817600250244
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+4856454365955 bemps_begin: pid 46447 , num_blocks 2097152 , threads_per_block 256
+4856454424307 bemps_beacon: pid 46447 , bemps_tid 0 , mem_B 4699717908 , warps 16777216 , thread_blocks 2097152
+Performing GPU computation
+Training done
+4863545750644 _bemps_dump_stats: Dumping bemps stats
+4863545759268 _bemps_dump_stats: count of beacon times: 1
+4863545768842 _bemps_dump_stats: min beacon time (ns): 949113913
+4863545770930 _bemps_dump_stats: max beacon time (ns): 949113913
+4863545772958 _bemps_dump_stats: avg beacon time (ns): 9.49114e+08
+4863545810708 _bemps_dump_stats: count of free times: 1
+4863545813156 _bemps_dump_stats: min free time (ns): 46965
+4863545815248 _bemps_dump_stats: max free time (ns): 46965
+4863545817568 _bemps_dump_stats: avg free time (ns): 46965
+
+==46447== NVPROF is profiling process 46447, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46447== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==46447== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   84.09%  1.47867s         5  295.73ms  2.3360us  521.06ms  [CUDA memcpy HtoD]
+                   14.71%  258.73ms         3  86.242ms  193.95us  244.13ms  [CUDA memcpy DtoH]
+                    0.62%  10.936ms         1  10.936ms  10.936ms  10.936ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.57%  10.001ms         1  10.001ms  10.001ms  10.001ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   57.62%  1.74997s         8  218.75ms  33.176us  521.35ms  cudaMemcpy
+                   40.23%  1.22188s         6  203.65ms  11.768us  1.16654s  cudaMalloc
+                    0.79%  23.965ms       384  62.408us      98ns  5.6982ms  cuDeviceGetAttribute
+                    0.59%  18.000ms         6  3.0000ms  27.332us  11.226ms  cudaFree
+                    0.36%  10.958ms         1  10.958ms  10.958ms  10.958ms  cudaThreadSynchronize
+                    0.32%  9.7908ms         4  2.4477ms  1.2669ms  5.3784ms  cuDeviceTotalMem
+                    0.08%  2.3088ms         4  577.19us  166.89us  1.0755ms  cuDeviceGetName
+                    0.01%  153.01us         2  76.505us  74.487us  78.523us  cudaLaunchKernel
+                    0.00%  18.267us         4  4.5660us  3.7310us  6.2820us  cuDeviceGetPCIBusId
+                    0.00%  16.677us         1  16.677us  16.677us  16.677us  cudaSetDevice
+                    0.00%  8.8940us         8  1.1110us     843ns  1.4700us  cuDeviceGet
+                    0.00%  4.5960us         3  1.5320us     851ns  2.8180us  cuDeviceGetCount
+                    0.00%  3.8700us         4     967ns     718ns  1.0990us  cuDeviceGetUuid
+
+Worker 12: TOTAL_BENCHMARK_TIME 12 23.387155294418335
+Worker 12: TIME_SINCE_START     12 23.400625944137573
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 11
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 11
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 11
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 11
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 11
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 11
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 11
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 11
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 11
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 11
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 11
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 11
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 11
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 11
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 11
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 11
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 11
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 11
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+4858356320419 bemps_begin: pid 46434 , num_blocks 1000000 , threads_per_block 128
+4858356407253 bemps_beacon: pid 46434 , bemps_tid 0 , mem_B 7856000000 , warps 4000000 , thread_blocks 1000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.490978002548 s, 10.278461456299 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000226000004 s,  0.001557992306 % : GPU MEM: ALO
+ 5.913512229919 s, 40.766395568848 % : GPU MEM: COPY IN
+ 6.791838169098 s, 46.821376800537 % : GPU: KERNEL
+ 0.297675997019 s,  2.052109956741 % : GPU MEM: COPY OUT
+ 0.011618999764 s,  0.080098725855 % : GPU MEM: FRE
+Total time:
+14.505848884583 s
+4865779753899 _bemps_dump_stats: Dumping bemps stats
+4865779782192 _bemps_dump_stats: count of beacon times: 1
+4865779793528 _bemps_dump_stats: min beacon time (ns): 70820914
+4865779796060 _bemps_dump_stats: max beacon time (ns): 70820914
+4865779797929 _bemps_dump_stats: avg beacon time (ns): 7.08209e+07
+4865779829605 _bemps_dump_stats: count of free times: 1
+4865779831451 _bemps_dump_stats: min free time (ns): 40362
+4865779833706 _bemps_dump_stats: max free time (ns): 40362
+4865779835621 _bemps_dump_stats: avg free time (ns): 40362
+
+==46434== NVPROF is profiling process 46434, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46434== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46434== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   58.49%  2.98241s         1  2.98241s  2.98241s  2.98241s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   35.68%  1.81939s         4  454.85ms  149.82ms  828.53ms  [CUDA memcpy HtoD]
+                    5.83%  297.53ms         1  297.53ms  297.53ms  297.53ms  [CUDA memcpy DtoH]
+      API calls:   53.43%  4.14188s         2  2.07094s  1.15947s  2.98241s  cudaThreadSynchronize
+                   27.32%  2.11797s         5  423.59ms  149.93ms  828.84ms  cudaMemcpy
+                   18.90%  1.46527s         4  366.32ms  2.9388ms  1.44951s  cudaMalloc
+                    0.15%  11.477ms         4  2.8692ms  1.1770ms  4.5987ms  cudaFree
+                    0.13%  10.097ms       384  26.294us     731ns  1.9496ms  cuDeviceGetAttribute
+                    0.05%  3.5191ms         4  879.77us  643.85us  1.1606ms  cuDeviceTotalMem
+                    0.01%  1.1347ms         4  283.69us  116.64us  672.13us  cuDeviceGetName
+                    0.00%  118.87us         1  118.87us  118.87us  118.87us  cudaLaunchKernel
+                    0.00%  21.156us         4  5.2890us  4.3200us  7.1410us  cuDeviceGetPCIBusId
+                    0.00%  15.278us         1  15.278us  15.278us  15.278us  cudaSetDevice
+                    0.00%  8.1040us         8  1.0130us     762ns  1.7320us  cuDeviceGet
+                    0.00%  4.6390us         4  1.1590us  1.0640us  1.4220us  cuDeviceGetUuid
+                    0.00%  4.3940us         3  1.4640us     917ns  2.3250us  cuDeviceGetCount
+                    0.00%  1.3130us         1  1.3130us  1.3130us  1.3130us  cudaGetLastError
+
+Worker 8: TOTAL_BENCHMARK_TIME 8 25.467061758041382
+Worker 8: TIME_SINCE_START     8 25.475874662399292
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 12
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 12
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 12
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 12
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 12
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 12
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+4858883067055 bemps_begin: pid 46489 , num_blocks 1000000 , threads_per_block 128
+4858883187089 bemps_beacon: pid 46489 , bemps_tid 0 , mem_B 7856000000 , warps 4000000 , thread_blocks 1000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.827200055122 s, 12.178215026855 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000199000002 s,  0.001326326979 % : GPU MEM: ALO
+ 5.927713871002 s, 39.507976531982 % : GPU MEM: COPY IN
+ 6.829203128815 s, 45.516365051270 % : GPU: KERNEL
+ 0.274078994989 s,  1.826725482941 % : GPU MEM: COPY OUT
+ 0.145446002483 s,  0.969391763210 % : GPU MEM: FRE
+Total time:
+15.003841400146 s
+4866498135953 _bemps_dump_stats: Dumping bemps stats
+4866498162785 _bemps_dump_stats: count of beacon times: 1
+4866498173265 _bemps_dump_stats: min beacon time (ns): 44918591
+4866498175432 _bemps_dump_stats: max beacon time (ns): 44918591
+4866498177566 _bemps_dump_stats: avg beacon time (ns): 4.49186e+07
+4866498203631 _bemps_dump_stats: count of free times: 1
+4866498205777 _bemps_dump_stats: min free time (ns): 35289
+4866498207834 _bemps_dump_stats: max free time (ns): 35289
+4866498210047 _bemps_dump_stats: avg free time (ns): 35289
+
+==46489== NVPROF is profiling process 46489, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46489== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46489== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   57.90%  2.98641s         1  2.98641s  2.98641s  2.98641s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   36.79%  1.89792s         4  474.48ms  125.09ms  795.08ms  [CUDA memcpy HtoD]
+                    5.31%  273.94ms         1  273.94ms  273.94ms  273.94ms  [CUDA memcpy DtoH]
+      API calls:   51.02%  4.11076s         2  2.05538s  1.12435s  2.98642s  cudaThreadSynchronize
+                   26.97%  2.17288s         5  434.58ms  125.25ms  795.39ms  cudaMemcpy
+                   18.15%  1.46257s         4  365.64ms  1.4728ms  1.45130s  cudaMalloc
+                    1.80%  145.29ms         4  36.324ms  1.7388ms  83.286ms  cudaFree
+                    1.07%  85.816ms       384  223.48us     961ns  37.600ms  cuDeviceGetAttribute
+                    0.54%  43.388ms         4  10.847ms  804.99us  39.840ms  cuDeviceTotalMem
+                    0.45%  36.227ms         4  9.0566ms  82.560us  35.426ms  cuDeviceGetName
+                    0.00%  101.33us         1  101.33us  101.33us  101.33us  cudaLaunchKernel
+                    0.00%  22.086us         4  5.5210us  4.5220us  6.6100us  cuDeviceGetPCIBusId
+                    0.00%  17.243us         1  17.243us  17.243us  17.243us  cudaSetDevice
+                    0.00%  10.701us         8  1.3370us  1.1280us  2.0750us  cuDeviceGet
+                    0.00%  5.6040us         3  1.8680us  1.2490us  2.8620us  cuDeviceGetCount
+                    0.00%  5.1050us         4  1.2760us  1.2120us  1.4340us  cuDeviceGetUuid
+                    0.00%  1.3230us         1  1.3230us  1.3230us  1.3230us  cudaGetLastError
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 25.99926209449768
+Worker 0: TIME_SINCE_START     0 26.00113272666931
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 13
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+4858970502121 bemps_begin: pid 46483 , num_blocks 1000000 , threads_per_block 128
+4858970610500 bemps_beacon: pid 46483 , bemps_tid 0 , mem_B 7856000000 , warps 4000000 , thread_blocks 1000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.799587011337 s, 11.947650909424 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000153000001 s,  0.001015783288 % : GPU MEM: ALO
+ 5.955851078033 s, 39.541530609131 % : GPU MEM: COPY IN
+ 7.011767864227 s, 46.551876068115 % : GPU: KERNEL
+ 0.283558994532 s,  1.882578372955 % : GPU MEM: COPY OUT
+ 0.011349000037 s,  0.075347222388 % : GPU MEM: FRE
+Total time:
+15.062267303467 s
+4866638849887 _bemps_dump_stats: Dumping bemps stats
+4866638874688 _bemps_dump_stats: count of beacon times: 1
+4866638885006 _bemps_dump_stats: min beacon time (ns): 57616309
+4866638887177 _bemps_dump_stats: max beacon time (ns): 57616309
+4866638889219 _bemps_dump_stats: avg beacon time (ns): 5.76163e+07
+4866638912241 _bemps_dump_stats: count of free times: 1
+4866638914731 _bemps_dump_stats: min free time (ns): 31381
+4866638916745 _bemps_dump_stats: max free time (ns): 31381
+4866638918974 _bemps_dump_stats: avg free time (ns): 31381
+
+==46483== NVPROF is profiling process 46483, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46483== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==46483== Warning: 1 API trace records have same start and end timestamps.
+This can happen because of short execution duration of CUDA APIs and low timer resolution on the underlying operating system.
+==46483== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   55.76%  2.98275s         1  2.98275s  2.98275s  2.98275s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   38.94%  2.08269s         4  520.67ms  216.96ms  838.96ms  [CUDA memcpy HtoD]
+                    5.30%  283.39ms         1  283.39ms  283.39ms  283.39ms  [CUDA memcpy DtoH]
+      API calls:   51.27%  4.01527s         2  2.00763s  1.03251s  2.98276s  cudaThreadSynchronize
+                   30.23%  2.36771s         5  473.54ms  217.79ms  839.10ms  cudaMemcpy
+                   18.07%  1.41532s         4  353.83ms  2.0873ms  1.40274s  cudaMalloc
+                    0.19%  15.107ms       384  39.341us       0ns  2.3826ms  cuDeviceGetAttribute
+                    0.14%  11.224ms         4  2.8060ms  1.2467ms  4.3413ms  cudaFree
+                    0.06%  4.5302ms         4  1.1326ms  676.52us  1.4693ms  cuDeviceTotalMem
+                    0.02%  1.8547ms         4  463.67us  208.32us  885.71us  cuDeviceGetName
+                    0.00%  80.419us         1  80.419us  80.419us  80.419us  cudaLaunchKernel
+                    0.00%  25.903us         4  6.4750us  4.5570us  9.4880us  cuDeviceGetPCIBusId
+                    0.00%  11.915us         1  11.915us  11.915us  11.915us  cudaSetDevice
+                    0.00%  8.6810us         8  1.0850us     802ns  1.4710us  cuDeviceGet
+                    0.00%  4.5740us         3  1.5240us  1.0390us  2.4960us  cuDeviceGetCount
+                    0.00%  4.2570us         4  1.0640us     996ns  1.1570us  cuDeviceGetUuid
+                    0.00%  1.2840us         1  1.2840us  1.2840us  1.2840us  cudaGetLastError
+
+Worker 2: TOTAL_BENCHMARK_TIME 2 26.2708477973938
+Worker 2: TIME_SINCE_START     2 26.27424716949463
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 14
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 14
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 14
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 14
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 14
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 14
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 14
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 14
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 14
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 14
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 14
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 14
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 14
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 14
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 14
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 14
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 14
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 14
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 14
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 14
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 14
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 14
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 14
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 14
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 14
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 14
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 14
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 14
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 14
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 14
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 14
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 14
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 14
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+4864266745381 bemps_begin: pid 46492 , num_blocks 1331000 , threads_per_block 128
+4864266803483 bemps_beacon: pid 46492 , bemps_tid 0 , mem_B 10456336000 , warps 5324000 , thread_blocks 1331000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.011962056160 s,  6.256340980530 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000157000002 s,  0.000970634865 % : GPU MEM: ALO
+ 8.827474594116 s, 54.574871063232 % : GPU MEM: COPY IN
+ 5.895043849945 s, 36.445446014404 % : GPU: KERNEL
+ 0.358271002769 s,  2.214970111847 % : GPU MEM: COPY OUT
+ 0.082071997225 s,  0.507400870323 % : GPU MEM: FRE
+Total time:
+16.174980163574 s
+4870993722927 _bemps_dump_stats: Dumping bemps stats
+4870993744642 _bemps_dump_stats: count of beacon times: 1
+4870993754693 _bemps_dump_stats: min beacon time (ns): 68537708
+4870993756720 _bemps_dump_stats: max beacon time (ns): 68537708
+4870993758675 _bemps_dump_stats: avg beacon time (ns): 6.85377e+07
+4870993785168 _bemps_dump_stats: count of free times: 1
+4870993787275 _bemps_dump_stats: min free time (ns): 34551
+4870993789208 _bemps_dump_stats: max free time (ns): 34551
+4870993791245 _bemps_dump_stats: avg free time (ns): 34551
+
+==46492== NVPROF is profiling process 46492, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==46492== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==46492== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.85%  3.98658s         1  3.98658s  3.98658s  3.98658s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.78%  1.28195s         4  320.49ms  102.95ms  536.04ms  [CUDA memcpy HtoD]
+                    6.36%  358.12ms         1  358.12ms  358.12ms  358.12ms  [CUDA memcpy DtoH]
+      API calls:   72.51%  4.60105s         2  2.30052s  614.40ms  3.98665s  cudaThreadSynchronize
+                   25.85%  1.64064s         5  328.13ms  103.08ms  536.15ms  cudaMemcpy
+                    1.29%  81.929ms         4  20.482ms  1.5327ms  55.433ms  cudaFree
+                    0.24%  15.083ms         4  3.7708ms  1.6199ms  5.9994ms  cudaMalloc
+                    0.05%  3.3396ms         4  834.91us  818.89us  859.73us  cuDeviceTotalMem
+                    0.05%  3.2548ms       384  8.4760us     917ns  329.25us  cuDeviceGetAttribute
+                    0.00%  311.95us         4  77.986us  69.183us  98.038us  cuDeviceGetName
+                    0.00%  58.015us         1  58.015us  58.015us  58.015us  cudaLaunchKernel
+                    0.00%  22.461us         4  5.6150us  4.7970us  7.4010us  cuDeviceGetPCIBusId
+                    0.00%  12.890us         8  1.6110us  1.0830us  2.6720us  cuDeviceGet
+                    0.00%  7.1460us         3  2.3820us  1.0300us  4.1510us  cuDeviceGetCount
+                    0.00%  6.6640us         1  6.6640us  6.6640us  6.6640us  cudaSetDevice
+                    0.00%  5.4670us         4  1.3660us  1.1970us  1.6380us  cuDeviceGetUuid
+                    0.00%     947ns         1     947ns     947ns     947ns  cudaGetLastError
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 30.413751363754272
+Worker 1: TIME_SINCE_START     1 30.416521787643433
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 12: Worklist is empty. Retrying get().
+Worker 12: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 15
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 15
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 15
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 15
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 15
+Worker 13: Worklist is empty. Retrying get().
+Worker 13: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 15: Worklist is empty. Retrying get().
+Worker 15: jobs_processed.value is 15
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 15
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+4871102364323 bemps_begin: pid 46454 , num_blocks 4194304 , threads_per_block 256
+4871102416326 bemps_beacon: pid 46454 , bemps_tid 0 , mem_B 9397338388 , warps 33554432 , thread_blocks 4194304
+Performing GPU computation
+Training done
+4879119399193 _bemps_dump_stats: Dumping bemps stats
+4879119407488 _bemps_dump_stats: count of beacon times: 1
+4879119415827 _bemps_dump_stats: min beacon time (ns): 255686267
+4879119417876 _bemps_dump_stats: max beacon time (ns): 255686267
+4879119419798 _bemps_dump_stats: avg beacon time (ns): 2.55686e+08
+4879119448881 _bemps_dump_stats: count of free times: 1
+4879119451118 _bemps_dump_stats: min free time (ns): 25414
+4879119453115 _bemps_dump_stats: max free time (ns): 25414
+4879119455249 _bemps_dump_stats: avg free time (ns): 25414
+
+==46454== NVPROF is profiling process 46454, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==46454== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==46454== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   77.98%  1.73642s         5  347.28ms  1.4400us  567.79ms  [CUDA memcpy HtoD]
+                   19.39%  431.71ms         3  143.90ms  169.15us  407.61ms  [CUDA memcpy DtoH]
+                    1.33%  29.692ms         1  29.692ms  29.692ms  29.692ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+                    1.30%  28.934ms         1  28.934ms  28.934ms  28.934ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+      API calls:   78.82%  2.20006s         8  275.01ms  17.779us  567.84ms  cudaMemcpy
+                   19.50%  544.43ms         6  90.739ms  9.3430us  536.14ms  cudaMalloc
+                    1.04%  28.964ms         1  28.964ms  28.964ms  28.964ms  cudaThreadSynchronize
+                    0.45%  12.511ms         6  2.0851ms  39.745us  5.6567ms  cudaFree
+                    0.10%  2.8346ms         4  708.66us  707.07us  710.94us  cuDeviceTotalMem
+                    0.08%  2.2507ms       384  5.8610us     690ns  278.12us  cuDeviceGetAttribute
+                    0.01%  196.96us         4  49.240us  44.751us  57.398us  cuDeviceGetName
+                    0.00%  94.051us         2  47.025us  45.953us  48.098us  cudaLaunchKernel
+                    0.00%  11.492us         4  2.8730us  2.0600us  3.7700us  cuDeviceGetPCIBusId
+                    0.00%  8.8650us         1  8.8650us  8.8650us  8.8650us  cudaSetDevice
+                    0.00%  6.9670us         8     870ns     746ns  1.0190us  cuDeviceGet
+                    0.00%  3.4810us         3  1.1600us     755ns  1.5370us  cuDeviceGetCount
+                    0.00%  3.3730us         4     843ns     812ns     900ns  cuDeviceGetUuid
+
+Worker 14: TOTAL_BENCHMARK_TIME 14 39.10642337799072
+Worker 14: TIME_SINCE_START     14 39.12102508544922
+Worker 14: TOTAL_EXPERIMENT_TIME 39.12106800079346
+Worker 14: Exiting normally
+Worker 4: Worklist is empty.
+Worker 4: Exiting normally
+Worker 2: Worklist is empty.
+Worker 2: Exiting normally
+Worker 5: Worklist is empty.
+Worker 5: Exiting normally
+Worker 12: Worklist is empty.
+Worker 12: Exiting normally
+Worker 1: Worklist is empty.
+Worker 1: Exiting normally
+Worker 8: Worklist is empty.
+Worker 8: Exiting normally
+Worker 11: Worklist is empty.
+Worker 11: Exiting normally
+Worker 10: Worklist is empty.
+Worker 10: Exiting normally
+Worker 6: Worklist is empty.
+Worker 6: Exiting normally
+Worker 9: Worklist is empty.
+Worker 9: Exiting normally
+Worker 13: Worklist is empty.
+Worker 13: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 15: Worklist is empty.
+Worker 15: Exiting normally
+Worker 7: Worklist is empty.
+Worker 7: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.

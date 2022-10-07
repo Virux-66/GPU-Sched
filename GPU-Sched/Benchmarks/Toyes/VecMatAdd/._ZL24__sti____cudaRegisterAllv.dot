@@ -1,0 +1,5 @@
+digraph "CFG for '_ZL24__sti____cudaRegisterAllv' function" {
+	label="CFG for '_ZL24__sti____cudaRegisterAllv' function";
+
+	Node0x55f8461aec30 [shape=record,label="{entry:\l  %callback_fp = alloca void (i8**)*, align 8\l  %call = call i8** @__cudaRegisterFatBinary(i8* bitcast\l... (%struct.__fatBinC_Wrapper_t* @_ZL15__fatDeviceText to i8*))\l  store i8** %call, i8*** @_ZL20__cudaFatCubinHandle, align 8\l  store void (i8**)* @_ZL31__nv_cudaEntityRegisterCallbackPPv, void (i8**)**\l... %callback_fp, align 8\l  %0 = load void (i8**)*, void (i8**)** %callback_fp, align 8\l  %1 = load i8**, i8*** @_ZL20__cudaFatCubinHandle, align 8\l  call void %0(i8** %1)\l  %2 = load i8**, i8*** @_ZL20__cudaFatCubinHandle, align 8\l  call void @__cudaRegisterFatBinaryEnd(i8** %2)\l  %call1 = call i32 @atexit(void ()* @_ZL26__cudaUnregisterBinaryUtilv) #6\l  ret void\l}"];
+}

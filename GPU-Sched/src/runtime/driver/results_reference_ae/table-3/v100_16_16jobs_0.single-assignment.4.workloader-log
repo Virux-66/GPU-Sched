@@ -1,0 +1,635 @@
+Parsing args
+Starting driver
+  workload_file: /home/ubuntu/GPU-Sched/src/runtime/driver/workloads/ppopp21-volta/p100_16_16jobs_0.wl
+  sched_alg: single-assignment
+  num_processes: 4
+Worker 0: Starting
+Worker 0: 0 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 1: Starting
+Worker 1: 1 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+Main process: Waiting for workers...
+Worker 2: Starting
+Worker 2: 2 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 3: Starting
+Worker 3: 3 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		16384x16384
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 805306368
+6838264424995 bemps_begin: pid 78981 , num_blocks 1048576 , threads_per_block 256
+6838264471392 bemps_beacon: pid 78981 , bemps_tid 0 , mem_B 8321499136 , cores 8388608
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (16384 x 16384)
+6845730719306 _bemps_dump_stats: Dumping bemps stats
+6845730745041 _bemps_dump_stats: count of beacon times: 1
+6845730752918 _bemps_dump_stats: min beacon time (ns): 150720
+6845730755108 _bemps_dump_stats: max beacon time (ns): 150720
+6845730757278 _bemps_dump_stats: avg beacon time (ns): 150720
+6845730809618 _bemps_dump_stats: count of free times: 1
+6845730811740 _bemps_dump_stats: min free time (ns): 23255
+6845730813841 _bemps_dump_stats: max free time (ns): 23255
+6845730815841 _bemps_dump_stats: avg free time (ns): 23255
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 9.703503847122192
+Worker 3: TIME_SINCE_START     3 9.708485841751099
+Worker 3: 4 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+6847675803410 bemps_begin: pid 79087 , num_blocks 262144 , threads_per_block 256
+6847675847558 bemps_beacon: pid 79087 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+6850092876734 _bemps_dump_stats: Dumping bemps stats
+6850092901801 _bemps_dump_stats: count of beacon times: 1
+6850092909692 _bemps_dump_stats: min beacon time (ns): 161864
+6850092911934 _bemps_dump_stats: max beacon time (ns): 161864
+6850092914164 _bemps_dump_stats: avg beacon time (ns): 161864
+6850092933941 _bemps_dump_stats: count of free times: 1
+6850092936035 _bemps_dump_stats: min free time (ns): 23022
+6850092938187 _bemps_dump_stats: max free time (ns): 23022
+6850092940218 _bemps_dump_stats: avg free time (ns): 23022
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 4 3.976705551147461
+Worker 3: TIME_SINCE_START     4 13.685388565063477
+Worker 3: 5 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+6852827793360 bemps_begin: pid 78976 , num_blocks 1000000 , threads_per_block 128
+6852827852001 bemps_beacon: pid 78976 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.159929037094 s,  9.232949256897 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000149000000 s,  0.001186029054 % : GPU MEM: ALO
+ 5.581618785858 s, 44.429279327393 % : GPU MEM: COPY IN
+ 5.314185142517 s, 42.300521850586 % : GPU: KERNEL
+ 0.493867993355 s,  3.931152820587 % : GPU MEM: COPY OUT
+ 0.013179999776 s,  0.104911834002 % : GPU MEM: FRE
+Total time:
+12.562930107117 s
+6859101789601 _bemps_dump_stats: Dumping bemps stats
+6859101813925 _bemps_dump_stats: count of beacon times: 1
+6859101824637 _bemps_dump_stats: min beacon time (ns): 184506
+6859101826877 _bemps_dump_stats: max beacon time (ns): 184506
+6859101829188 _bemps_dump_stats: avg beacon time (ns): 184506
+6859101858913 _bemps_dump_stats: count of free times: 1
+6859101860967 _bemps_dump_stats: min free time (ns): 35612
+6859101862926 _bemps_dump_stats: max free time (ns): 35612
+6859101864962 _bemps_dump_stats: avg free time (ns): 35612
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 22.807772874832153
+Worker 0: TIME_SINCE_START     0 22.81012749671936
+Worker 0: 6 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+6852957517791 bemps_begin: pid 78980 , num_blocks 1000000 , threads_per_block 128
+6852957576165 bemps_beacon: pid 78980 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 1.124523043633 s,  8.971253395081 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000136999995 s,  0.001092962804 % : GPU MEM: ALO
+ 5.701583862305 s, 45.486270904541 % : GPU MEM: COPY IN
+ 5.203590869904 s, 41.513366699219 % : GPU: KERNEL
+ 0.494659990072 s,  3.946313619614 % : GPU MEM: COPY OUT
+ 0.010240999982 s,  0.081700965762 % : GPU MEM: FRE
+Total time:
+12.534735679626 s
+6859126009732 _bemps_dump_stats: Dumping bemps stats
+6859126032771 _bemps_dump_stats: count of beacon times: 1
+6859126042158 _bemps_dump_stats: min beacon time (ns): 184802
+6859126044422 _bemps_dump_stats: max beacon time (ns): 184802
+6859126046591 _bemps_dump_stats: avg beacon time (ns): 184802
+6859126067824 _bemps_dump_stats: count of free times: 1
+6859126069962 _bemps_dump_stats: min free time (ns): 36561
+6859126071859 _bemps_dump_stats: max free time (ns): 36561
+6859126073878 _bemps_dump_stats: avg free time (ns): 36561
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 2 22.81244921684265
+Worker 2: TIME_SINCE_START     2 22.816560745239258
+Worker 2: 7 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+6857107434080 bemps_begin: pid 78978 , num_blocks 1331000 , threads_per_block 128
+6857107485615 bemps_beacon: pid 78978 , bemps_tid 0 , mem_B 10456336000 , cores 5324000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.459894001484 s,  3.195895671844 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000138999996 s,  0.000965938962 % : GPU MEM: ALO
+ 7.446823120117 s, 51.749465942383 % : GPU MEM: COPY IN
+ 6.111283779144 s, 42.468540191650 % : GPU: KERNEL
+ 0.358467012644 s,  2.491059064865 % : GPU MEM: COPY OUT
+ 0.013536999933 s,  0.094071336091 % : GPU MEM: FRE
+Total time:
+14.390144348145 s
+6864044917508 _bemps_dump_stats: Dumping bemps stats
+6864044945549 _bemps_dump_stats: count of beacon times: 1
+6864044955565 _bemps_dump_stats: min beacon time (ns): 161842
+6864044957781 _bemps_dump_stats: max beacon time (ns): 161842
+6864044960344 _bemps_dump_stats: avg beacon time (ns): 161842
+6864044992473 _bemps_dump_stats: count of free times: 1
+6864044994599 _bemps_dump_stats: min free time (ns): 31769
+6864044996545 _bemps_dump_stats: max free time (ns): 31769
+6864044998631 _bemps_dump_stats: avg free time (ns): 31769
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 27.712199449539185
+Worker 1: TIME_SINCE_START     1 27.7155020236969
+Worker 1: 8 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+6864673877712 bemps_begin: pid 79139 , num_blocks 2097152 , threads_per_block 256
+6864673927786 bemps_beacon: pid 79139 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+6867794051182 _bemps_dump_stats: Dumping bemps stats
+6867794073009 _bemps_dump_stats: count of beacon times: 1
+6867794081913 _bemps_dump_stats: min beacon time (ns): 115006638
+6867794084096 _bemps_dump_stats: max beacon time (ns): 115006638
+6867794086180 _bemps_dump_stats: avg beacon time (ns): 1.15007e+08
+6867794107682 _bemps_dump_stats: count of free times: 1
+6867794109728 _bemps_dump_stats: min free time (ns): 21998
+6867794111675 _bemps_dump_stats: max free time (ns): 21998
+6867794113637 _bemps_dump_stats: avg free time (ns): 21998
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 5 17.929253578186035
+Worker 3: TIME_SINCE_START     5 31.614829778671265
+Worker 3: 9 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+6859298860198 bemps_begin: pid 79219 , num_blocks 1048576 , threads_per_block 256
+6859298890385 bemps_beacon: pid 79219 , bemps_tid 0 , mem_B 6442450944 , cores 8388608
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+6869052767217 _bemps_dump_stats: Dumping bemps stats
+6869052787547 _bemps_dump_stats: count of beacon times: 1
+6869052793640 _bemps_dump_stats: min beacon time (ns): 168658982
+6869052795847 _bemps_dump_stats: max beacon time (ns): 168658982
+6869052798002 _bemps_dump_stats: avg beacon time (ns): 1.68659e+08
+6869052816716 _bemps_dump_stats: count of free times: 1
+6869052818724 _bemps_dump_stats: min free time (ns): 21848
+6869052820969 _bemps_dump_stats: max free time (ns): 21848
+6869052822921 _bemps_dump_stats: avg free time (ns): 21848
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 6 9.812551021575928
+Worker 0: TIME_SINCE_START     6 32.62293338775635
+Worker 0: 10 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+6869111604979 bemps_begin: pid 79320 , num_blocks 262144 , threads_per_block 256
+6869111636252 bemps_beacon: pid 79320 , bemps_tid 0 , mem_B 1610612736 , cores 2097152
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+6871926452344 _bemps_dump_stats: Dumping bemps stats
+6871926476330 _bemps_dump_stats: count of beacon times: 1
+6871926482772 _bemps_dump_stats: min beacon time (ns): 167145361
+6871926485028 _bemps_dump_stats: max beacon time (ns): 167145361
+6871926487195 _bemps_dump_stats: avg beacon time (ns): 1.67145e+08
+6871926509096 _bemps_dump_stats: count of free times: 1
+6871926511202 _bemps_dump_stats: min free time (ns): 23440
+6871926513170 _bemps_dump_stats: max free time (ns): 23440
+6871926515121 _bemps_dump_stats: avg free time (ns): 23440
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 10 2.8560404777526855
+Worker 0: TIME_SINCE_START     10 35.47915506362915
+Worker 0: 11 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+WG size of kernel = 16 X 16
+6868103802464 bemps_begin: pid 79307 , num_blocks 1048576 , threads_per_block 256
+6868103832482 bemps_beacon: pid 79307 , bemps_tid 0 , mem_B 6442450944 , cores 8388608
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+6877324400071 _bemps_dump_stats: Dumping bemps stats
+6877324425931 _bemps_dump_stats: count of beacon times: 1
+6877324432406 _bemps_dump_stats: min beacon time (ns): 45277855
+6877324434616 _bemps_dump_stats: max beacon time (ns): 45277855
+6877324436717 _bemps_dump_stats: avg beacon time (ns): 4.52779e+07
+6877324457437 _bemps_dump_stats: count of free times: 1
+6877324459530 _bemps_dump_stats: min free time (ns): 22558
+6877324461530 _bemps_dump_stats: max free time (ns): 22558
+6877324463480 _bemps_dump_stats: avg free time (ns): 22558
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 9 9.262247323989868
+Worker 3: TIME_SINCE_START     9 40.877331495285034
+Worker 3: 12 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+6873062709260 bemps_begin: pid 79221 , num_blocks 1 , threads_per_block 16
+6873062753785 bemps_beacon: pid 79221 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+6879233118816 _bemps_dump_stats: Dumping bemps stats
+6879233142686 _bemps_dump_stats: count of beacon times: 1
+6879233150816 _bemps_dump_stats: min beacon time (ns): 164885109
+6879233153035 _bemps_dump_stats: max beacon time (ns): 164885109
+6879233155232 _bemps_dump_stats: avg beacon time (ns): 1.64885e+08
+6879233179469 _bemps_dump_stats: count of free times: 1
+6879233181512 _bemps_dump_stats: min free time (ns): 21844
+6879233183559 _bemps_dump_stats: max free time (ns): 21844
+6879233185514 _bemps_dump_stats: avg free time (ns): 21844
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 7 19.9766047000885
+Worker 2: TIME_SINCE_START     7 42.793347120285034
+Worker 2: 13 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 16384x16384 -f -5 -l 3
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+6880022197226 bemps_begin: pid 79267 , num_blocks 1000000 , threads_per_block 128
+6880022259357 bemps_beacon: pid 79267 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.555365979671 s,  4.872174739838 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000140999997 s,  0.001236979966 % : GPU MEM: ALO
+ 5.652864933014 s, 49.592063903809 % : GPU MEM: COPY IN
+ 4.795766830444 s, 42.072822570801 % : GPU: KERNEL
+ 0.271221995354 s,  2.379405736923 % : GPU MEM: COPY OUT
+ 0.123368002474 s,  1.082296133041 % : GPU MEM: FRE
+Total time:
+11.398729324341 s
+6885577219213 _bemps_dump_stats: Dumping bemps stats
+6885577245890 _bemps_dump_stats: count of beacon times: 1
+6885577256107 _bemps_dump_stats: min beacon time (ns): 189095
+6885577258291 _bemps_dump_stats: max beacon time (ns): 189095
+6885577260473 _bemps_dump_stats: avg beacon time (ns): 189095
+6885577285704 _bemps_dump_stats: count of free times: 1
+6885577287737 _bemps_dump_stats: min free time (ns): 34356
+6885577289637 _bemps_dump_stats: max free time (ns): 34356
+6885577291619 _bemps_dump_stats: avg free time (ns): 34356
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 8 21.455568552017212
+Worker 1: TIME_SINCE_START     8 49.17126965522766
+Worker 1: 14 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		16384x16384
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 805306368
+6880841989619 bemps_begin: pid 79422 , num_blocks 1048576 , threads_per_block 256
+6880842045503 bemps_beacon: pid 79422 , bemps_tid 0 , mem_B 8321499136 , cores 8388608
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 137 , gx = 86 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (16384 x 16384)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (16384 x 16384)
+6888324442319 _bemps_dump_stats: Dumping bemps stats
+6888324466566 _bemps_dump_stats: count of beacon times: 1
+6888324475236 _bemps_dump_stats: min beacon time (ns): 174493
+6888324477401 _bemps_dump_stats: max beacon time (ns): 174493
+6888324479484 _bemps_dump_stats: avg beacon time (ns): 174493
+6888324503737 _bemps_dump_stats: count of free times: 1
+6888324505806 _bemps_dump_stats: min free time (ns): 25000
+6888324507824 _bemps_dump_stats: max free time (ns): 25000
+6888324509835 _bemps_dump_stats: avg free time (ns): 25000
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 13 9.263983488082886
+Worker 2: TIME_SINCE_START     13 52.05752611160278
+Worker 2: 15 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+6886588438809 bemps_begin: pid 79348 , num_blocks 2097152 , threads_per_block 256
+6886588490541 bemps_beacon: pid 79348 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+6889761789145 _bemps_dump_stats: Dumping bemps stats
+6889761814880 _bemps_dump_stats: count of beacon times: 1
+6889761823683 _bemps_dump_stats: min beacon time (ns): 83024116
+6889761826041 _bemps_dump_stats: max beacon time (ns): 83024116
+6889761828499 _bemps_dump_stats: avg beacon time (ns): 8.30241e+07
+6889761857426 _bemps_dump_stats: count of free times: 1
+6889761859544 _bemps_dump_stats: min free time (ns): 24171
+6889761861591 _bemps_dump_stats: max free time (ns): 24171
+6889761863626 _bemps_dump_stats: avg free time (ns): 24171
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 11 18.44225287437439
+Worker 0: TIME_SINCE_START     11 53.92158794403076
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+6891940471262 bemps_begin: pid 79402 , num_blocks 2097152 , threads_per_block 256
+6891940522510 bemps_beacon: pid 79402 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+6895163340475 _bemps_dump_stats: Dumping bemps stats
+6895163363270 _bemps_dump_stats: count of beacon times: 1
+6895163371945 _bemps_dump_stats: min beacon time (ns): 191273722
+6895163374082 _bemps_dump_stats: max beacon time (ns): 191273722
+6895163376117 _bemps_dump_stats: avg beacon time (ns): 1.91274e+08
+6895163398973 _bemps_dump_stats: count of free times: 1
+6895163401021 _bemps_dump_stats: min free time (ns): 21832
+6895163403031 _bemps_dump_stats: max free time (ns): 21832
+6895163405042 _bemps_dump_stats: avg free time (ns): 21832
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 12 18.444700002670288
+Worker 3: TIME_SINCE_START     12 59.32233667373657
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 14
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+6903053167199 bemps_begin: pid 79510 , num_blocks 2097152 , threads_per_block 256
+6903053208533 bemps_beacon: pid 79510 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+6906342232346 _bemps_dump_stats: Dumping bemps stats
+6906342256350 _bemps_dump_stats: count of beacon times: 1
+6906342264001 _bemps_dump_stats: min beacon time (ns): 282242097
+6906342266228 _bemps_dump_stats: max beacon time (ns): 282242097
+6906342268344 _bemps_dump_stats: avg beacon time (ns): 2.82242e+08
+6906342290219 _bemps_dump_stats: count of free times: 1
+6906342292264 _bemps_dump_stats: min free time (ns): 22771
+6906342294279 _bemps_dump_stats: max free time (ns): 22771
+6906342296283 _bemps_dump_stats: avg free time (ns): 22771
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 15 18.332310676574707
+Worker 2: TIME_SINCE_START     15 70.39002203941345
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 15
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+6914591627837 bemps_begin: pid 79485 , num_blocks 4194304 , threads_per_block 256
+6914591674227 bemps_beacon: pid 79485 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+6920398601906 _bemps_dump_stats: Dumping bemps stats
+6920398626579 _bemps_dump_stats: count of beacon times: 1
+6920398635464 _bemps_dump_stats: min beacon time (ns): 195838892
+6920398637699 _bemps_dump_stats: max beacon time (ns): 195838892
+6920398639904 _bemps_dump_stats: avg beacon time (ns): 1.95839e+08
+6920398660991 _bemps_dump_stats: count of free times: 1
+6920398663048 _bemps_dump_stats: min free time (ns): 22585
+6920398665045 _bemps_dump_stats: max free time (ns): 22585
+6920398667031 _bemps_dump_stats: avg free time (ns): 22585
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 14 35.616703510284424
+Worker 1: TIME_SINCE_START     14 84.78816747665405
+Worker 1: TOTAL_EXPERIMENT_TIME 84.78820705413818
+Worker 1: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Worker 2: Worklist is empty.
+Worker 2: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.

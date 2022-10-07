@@ -1,0 +1,2817 @@
+Parsing args
+Starting driver
+  workload_file: /home/ubuntu/GPU-Sched/src/runtime/driver/workloads/ppopp21-volta/p100_50_32jobs_0.wl
+  sched_alg: cg
+  num_processes: 12
+Worker 0: Starting
+Worker 0: 0 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+Worker 1: Starting
+Worker 1: 1 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+Worker 2: Starting
+Worker 2: 2 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+Worker 3: Starting
+Worker 3: 3 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+Worker 4: Starting
+Worker 4: 4 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+Worker 5: Starting
+Worker 5: 5 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 6: Starting
+Worker 6: 6 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+Worker 7: Starting
+Worker 7: 7 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+Worker 8: Starting
+Worker 8: 8 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+Worker 9: Starting
+Worker 9: 9 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+Worker 10: Starting
+Main process: Waiting for workers...
+Worker 10: 10 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+Worker 11: Starting
+Worker 11: 11 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+13333874685547 bemps_begin: pid 20048 , num_blocks 262144 , threads_per_block 256
+13333874720498 bemps_beacon: pid 20048 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+13336193538320 _bemps_dump_stats: Dumping bemps stats
+13336193565543 _bemps_dump_stats: count of beacon times: 1
+13336193573382 _bemps_dump_stats: min beacon time (ns): 146095
+13336193575387 _bemps_dump_stats: max beacon time (ns): 146095
+13336193577632 _bemps_dump_stats: avg beacon time (ns): 146095
+13336193600901 _bemps_dump_stats: count of free times: 1
+13336193603256 _bemps_dump_stats: min free time (ns): 24036
+13336193605126 _bemps_dump_stats: max free time (ns): 24036
+13336193607439 _bemps_dump_stats: avg free time (ns): 24036
+
+
+Worker 10: TOTAL_BENCHMARK_TIME 10 3.585209846496582
+Worker 10: TIME_SINCE_START     10 3.597580671310425
+Worker 10: 12 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+13333874476303 bemps_begin: pid 20032 , num_blocks 262144 , threads_per_block 256
+13333874533675 bemps_beacon: pid 20032 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+13336219553768 _bemps_dump_stats: Dumping bemps stats
+13336219576915 _bemps_dump_stats: count of beacon times: 1
+13336219584525 _bemps_dump_stats: min beacon time (ns): 172505
+13336219586634 _bemps_dump_stats: max beacon time (ns): 172505
+13336219588685 _bemps_dump_stats: avg beacon time (ns): 172505
+13336219613160 _bemps_dump_stats: count of free times: 1
+13336219615159 _bemps_dump_stats: min free time (ns): 24446
+13336219617260 _bemps_dump_stats: max free time (ns): 24446
+13336219619481 _bemps_dump_stats: avg free time (ns): 24446
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 4 3.6480648517608643
+Worker 4: TIME_SINCE_START     4 3.6540353298187256
+Worker 4: 13 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+13336559810817 bemps_begin: pid 20023 , num_blocks 524288 , threads_per_block 256
+13336559859885 bemps_beacon: pid 20023 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+13338164835996 _bemps_dump_stats: Dumping bemps stats
+13338164859652 _bemps_dump_stats: count of beacon times: 1
+13338164867984 _bemps_dump_stats: min beacon time (ns): 435478422
+13338164870236 _bemps_dump_stats: max beacon time (ns): 435478422
+13338164872396 _bemps_dump_stats: avg beacon time (ns): 4.35478e+08
+13338164895762 _bemps_dump_stats: count of free times: 1
+13338164897938 _bemps_dump_stats: min free time (ns): 23827
+13338164900044 _bemps_dump_stats: max free time (ns): 23827
+13338164902180 _bemps_dump_stats: avg free time (ns): 23827
+
+
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+13336384793603 bemps_begin: pid 20025 , num_blocks 524288 , threads_per_block 256
+13336384845071 bemps_beacon: pid 20025 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+13338140664623 _bemps_dump_stats: Dumping bemps stats
+13338140691777 _bemps_dump_stats: count of beacon times: 1
+13338140700142 _bemps_dump_stats: min beacon time (ns): 407628344
+13338140702650 _bemps_dump_stats: max beacon time (ns): 407628344
+13338140704856 _bemps_dump_stats: avg beacon time (ns): 4.07628e+08
+13338140726786 _bemps_dump_stats: count of free times: 1
+13338140728913 _bemps_dump_stats: min free time (ns): 23461
+13338140731034 _bemps_dump_stats: max free time (ns): 23461
+13338140733181 _bemps_dump_stats: avg free time (ns): 23461
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 5.84501051902771
+Worker 1: TIME_SINCE_START     1 5.848288059234619
+Worker 2: TOTAL_BENCHMARK_TIME 2 5.8442158699035645
+Worker 2: TIME_SINCE_START     2 5.848371744155884
+Worker 1: 14 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+Worker 2: 15 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+13336248005936 bemps_begin: pid 20047 , num_blocks 1 , threads_per_block 16
+13336248053252 bemps_beacon: pid 20047 , bemps_tid 0 , mem_B 2147745800 , cores 1
+Processing bottom-right matrix
+13338680931967 _bemps_dump_stats: Dumping bemps stats
+13338680957515 _bemps_dump_stats: count of beacon times: 1
+13338680965350 _bemps_dump_stats: min beacon time (ns): 120131179
+13338680967516 _bemps_dump_stats: max beacon time (ns): 120131179
+13338680969729 _bemps_dump_stats: avg beacon time (ns): 1.20131e+08
+13338681000210 _bemps_dump_stats: count of free times: 1
+13338681002326 _bemps_dump_stats: min free time (ns): 22105
+13338681004431 _bemps_dump_stats: max free time (ns): 22105
+13338681006628 _bemps_dump_stats: avg free time (ns): 22105
+
+
+Worker 11: TOTAL_BENCHMARK_TIME 11 6.022435426712036
+Worker 11: TIME_SINCE_START     11 6.036335468292236
+Worker 11: 16 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+13337571683615 bemps_begin: pid 20075 , num_blocks 262144 , threads_per_block 256
+13337571739840 bemps_beacon: pid 20075 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+13339808409482 _bemps_dump_stats: Dumping bemps stats
+13339808434099 _bemps_dump_stats: count of beacon times: 1
+13339808442763 _bemps_dump_stats: min beacon time (ns): 183387
+13339808444966 _bemps_dump_stats: max beacon time (ns): 183387
+13339808447350 _bemps_dump_stats: avg beacon time (ns): 183387
+13339808470083 _bemps_dump_stats: count of free times: 1
+13339808472226 _bemps_dump_stats: min free time (ns): 23844
+13339808474362 _bemps_dump_stats: max free time (ns): 23844
+13339808476536 _bemps_dump_stats: avg free time (ns): 23844
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 13 3.5370845794677734
+Worker 4: TIME_SINCE_START     13 7.191327810287476
+Worker 4: 17 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+13340477914222 bemps_begin: pid 20098 , num_blocks 262144 , threads_per_block 256
+13340477964770 bemps_beacon: pid 20098 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+13342429694277 _bemps_dump_stats: Dumping bemps stats
+13342429718020 _bemps_dump_stats: count of beacon times: 1
+13342429726206 _bemps_dump_stats: min beacon time (ns): 159392
+13342429728843 _bemps_dump_stats: max beacon time (ns): 159392
+13342429731365 _bemps_dump_stats: avg beacon time (ns): 159392
+13342429754037 _bemps_dump_stats: count of free times: 1
+13342429756267 _bemps_dump_stats: min free time (ns): 24604
+13342429758181 _bemps_dump_stats: max free time (ns): 24604
+13342429760440 _bemps_dump_stats: avg free time (ns): 24604
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 17 2.977545738220215
+Worker 4: TIME_SINCE_START     17 10.169068098068237
+Worker 4: 18 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+13342015778435 bemps_begin: pid 20090 , num_blocks 1 , threads_per_block 16
+13342015827654 bemps_beacon: pid 20090 , bemps_tid 0 , mem_B 2147745800 , cores 1
+Processing bottom-right matrix
+13343677185844 _bemps_dump_stats: Dumping bemps stats
+13343677209175 _bemps_dump_stats: count of beacon times: 1
+13343677217942 _bemps_dump_stats: min beacon time (ns): 50293895
+13343677220447 _bemps_dump_stats: max beacon time (ns): 50293895
+13343677222539 _bemps_dump_stats: avg beacon time (ns): 5.02939e+07
+13343677244899 _bemps_dump_stats: count of free times: 1
+13343677246962 _bemps_dump_stats: min free time (ns): 20705
+13343677249040 _bemps_dump_stats: max free time (ns): 20705
+13343677251080 _bemps_dump_stats: avg free time (ns): 20705
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 14 5.170801162719727
+Worker 1: TIME_SINCE_START     14 11.019292116165161
+Worker 1: 19 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+suc
+The file was not opened for reading
+13333629405311 bemps_begin: pid 20045 , num_blocks 236329 , threads_per_block 512
+13333629465915 bemps_beacon: pid 20045 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000006029580 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000042207059 % : READ COMMAND LINE PARAMETERS
+ 0.000026000000 s,  0.000156769063 % : READ IMAGE FROM FILE
+ 0.527432978153 s,  3.180199146271 % : RESIZE IMAGE
+ 0.395660012960 s,  2.385663509369 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.063602998853 s,  0.383499354124 % : COPY DATA TO CPU->GPU
+ 0.000037000002 s,  0.000223094452 % : EXTRACT IMAGE
+ 1.229779958725 s,  7.415056228638 % : COMPUTE
+ 0.000006000000 s,  0.000036177476 % : COMPRESS IMAGE
+ 0.051596000791 s,  0.311102181673 % : COPY DATA TO GPU->CPU
+14.273982048035 s, 86.066108703613 % : SAVE IMAGE INTO FILE
+ 0.042773000896 s,  0.257903218269 % : FREE MEMORY
+Total time:
+16.584903717041 s
+13349298669971 _bemps_dump_stats: Dumping bemps stats
+13349298696582 _bemps_dump_stats: count of beacon times: 1
+13349298704639 _bemps_dump_stats: min beacon time (ns): 161939
+13349298706893 _bemps_dump_stats: max beacon time (ns): 161939
+13349298709009 _bemps_dump_stats: avg beacon time (ns): 161939
+13349298729138 _bemps_dump_stats: count of free times: 1
+13349298731212 _bemps_dump_stats: min free time (ns): 33601
+13349298733222 _bemps_dump_stats: max free time (ns): 33601
+13349298735195 _bemps_dump_stats: avg free time (ns): 33601
+
+
+Worker 9: TOTAL_BENCHMARK_TIME 9 16.632856369018555
+Worker 9: TIME_SINCE_START     9 16.64444351196289
+Worker 9: 20 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+Worker 8 got error: 1
+Worker 8 dumping error: 
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+13348581891342 bemps_begin: pid 20042 , num_blocks 1000000 , threads_per_block 128
+13348581949202 bemps_beacon: pid 20042 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+13348839706578 _bemps_dump_stats: Dumping bemps stats
+13348839727615 _bemps_dump_stats: count of beacon times: 1
+13348839736416 _bemps_dump_stats: min beacon time (ns): 182612
+13348839738677 _bemps_dump_stats: max beacon time (ns): 182612
+13348839741035 _bemps_dump_stats: avg beacon time (ns): 182612
+13348839763740 _bemps_dump_stats: count of free times: 0
+13348839765787 _bemps_dump_stats: min free time (ns): 0
+13348839767794 _bemps_dump_stats: max free time (ns): 0
+13348839769819 _bemps_dump_stats: avg free time (ns): 0
+
+
+Worker 8: TOTAL_BENCHMARK_TIME 8 16.935339212417603
+Worker 8: TIME_SINCE_START     8 16.945558547973633
+Worker 8: 21 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+13346422252205 bemps_begin: pid 20028 , num_blocks 1 , threads_per_block 16
+13346422304899 bemps_beacon: pid 20028 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+13352065587042 _bemps_dump_stats: Dumping bemps stats
+13352065618516 _bemps_dump_stats: count of beacon times: 1
+13352065630778 _bemps_dump_stats: min beacon time (ns): 46094355
+13352065633928 _bemps_dump_stats: max beacon time (ns): 46094355
+13352065636800 _bemps_dump_stats: avg beacon time (ns): 4.60944e+07
+13352065666618 _bemps_dump_stats: count of free times: 1
+13352065669302 _bemps_dump_stats: min free time (ns): 22526
+13352065671923 _bemps_dump_stats: max free time (ns): 22526
+13352065674538 _bemps_dump_stats: avg free time (ns): 22526
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 19.408735513687134
+Worker 3: TIME_SINCE_START     3 19.413759469985962
+Worker 3: 22 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+13343719399012 bemps_begin: pid 20111 , num_blocks 1048576 , threads_per_block 256
+13343719433366 bemps_beacon: pid 20111 , bemps_tid 0 , mem_B 6442450944 , cores 8388608
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+13352895903926 _bemps_dump_stats: Dumping bemps stats
+13352895928642 _bemps_dump_stats: count of beacon times: 1
+13352895935238 _bemps_dump_stats: min beacon time (ns): 45424695
+13352895937495 _bemps_dump_stats: max beacon time (ns): 45424695
+13352895939909 _bemps_dump_stats: avg beacon time (ns): 4.54247e+07
+13352895961151 _bemps_dump_stats: count of free times: 1
+13352895963279 _bemps_dump_stats: min free time (ns): 23798
+13352895965349 _bemps_dump_stats: max free time (ns): 23798
+13352895967370 _bemps_dump_stats: avg free time (ns): 23798
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 19 9.217714786529541
+Worker 1: TIME_SINCE_START     19 20.23720622062683
+Worker 1: 23 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+suc
+The file was not opened for reading
+13339557835635 bemps_begin: pid 20093 , num_blocks 236329 , threads_per_block 512
+13339557890690 bemps_beacon: pid 20093 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: out of memory.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: compress: an illegal memory access was encountered.
+Cuda error: copy back: an illegal memory access was encountered.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000006864376 % : SETUP VARIABLES
+ 0.000009000000 s,  0.000061779385 % : READ COMMAND LINE PARAMETERS
+ 0.000031000000 s,  0.000212795654 % : READ IMAGE FROM FILE
+ 0.523666977882 s,  3.594646930695 % : RESIZE IMAGE
+ 0.660283982754 s,  4.532437324524 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.060727998614 s,  0.416859805584 % : COPY DATA TO CPU->GPU
+ 0.000037000002 s,  0.000253981911 % : EXTRACT IMAGE
+ 0.147271007299 s,  1.010923504829 % : COMPUTE
+ 0.000003000000 s,  0.000020593126 % : COMPRESS IMAGE
+ 0.000002000000 s,  0.000013728752 % : COPY DATA TO GPU->CPU
+13.150038719177 s, 90.266815185547 % : SAVE IMAGE INTO FILE
+ 0.025894999504 s,  0.177753001451 % : FREE MEMORY
+Total time:
+14.567967414856 s
+13353305626843 _bemps_dump_stats: Dumping bemps stats
+13353305652457 _bemps_dump_stats: count of beacon times: 1
+13353305660540 _bemps_dump_stats: min beacon time (ns): 179460
+13353305662786 _bemps_dump_stats: max beacon time (ns): 179460
+13353305665030 _bemps_dump_stats: avg beacon time (ns): 179460
+13353305695739 _bemps_dump_stats: count of free times: 1
+13353305697771 _bemps_dump_stats: min free time (ns): 36513
+13353305699866 _bemps_dump_stats: max free time (ns): 36513
+13353305701816 _bemps_dump_stats: avg free time (ns): 36513
+
+
+Worker 11: TOTAL_BENCHMARK_TIME 16 14.675012350082397
+Worker 11: TIME_SINCE_START     16 20.711557388305664
+Worker 11: 24 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+13348630971229 bemps_begin: pid 20034 , num_blocks 1000000 , threads_per_block 128
+13348631028188 bemps_beacon: pid 20034 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.541615009308 s,  4.931364059448 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000144999998 s,  0.001320214127 % : GPU MEM: ALO
+ 5.667597770691 s, 51.603054046631 % : GPU MEM: COPY IN
+ 4.467360973358 s, 40.674987792969 % : GPU: KERNEL
+ 0.270976990461 s,  2.467225313187 % : GPU MEM: COPY OUT
+ 0.035371001810 s,  0.322050303221 % : GPU MEM: FRE
+Total time:
+10.983066558838 s
+13353801208222 _bemps_dump_stats: Dumping bemps stats
+13353801232764 _bemps_dump_stats: count of beacon times: 1
+13353801244073 _bemps_dump_stats: min beacon time (ns): 177128
+13353801246451 _bemps_dump_stats: max beacon time (ns): 177128
+13353801248694 _bemps_dump_stats: avg beacon time (ns): 177128
+13353801275376 _bemps_dump_stats: count of free times: 1
+13353801277552 _bemps_dump_stats: min free time (ns): 37527
+13353801279608 _bemps_dump_stats: max free time (ns): 37527
+13353801281623 _bemps_dump_stats: avg free time (ns): 37527
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 5 21.14500093460083
+Worker 5: TIME_SINCE_START     5 21.151872873306274
+Worker 5: 25 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+13353016868136 bemps_begin: pid 20119 , num_blocks 524288 , threads_per_block 256
+13353016915585 bemps_beacon: pid 20119 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+13353993200336 _bemps_dump_stats: Dumping bemps stats
+13353993228413 _bemps_dump_stats: count of beacon times: 1
+13353993237093 _bemps_dump_stats: min beacon time (ns): 26922314
+13353993239183 _bemps_dump_stats: max beacon time (ns): 26922314
+13353993241373 _bemps_dump_stats: avg beacon time (ns): 2.69223e+07
+13353993263747 _bemps_dump_stats: count of free times: 1
+13353993265899 _bemps_dump_stats: min free time (ns): 57102
+13353993267952 _bemps_dump_stats: max free time (ns): 57102
+13353993269976 _bemps_dump_stats: avg free time (ns): 57102
+
+
+Worker 9: TOTAL_BENCHMARK_TIME 20 4.765403509140015
+Worker 9: TIME_SINCE_START     20 21.4101083278656
+Worker 9: 26 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+WG size of kernel = 16 X 16
+13352113786072 bemps_begin: pid 20123 , num_blocks 262144 , threads_per_block 256
+13352113818475 bemps_beacon: pid 20123 , bemps_tid 0 , mem_B 1610612736 , cores 2097152
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+13354640368839 _bemps_dump_stats: Dumping bemps stats
+13354640392004 _bemps_dump_stats: count of beacon times: 1
+13354640399169 _bemps_dump_stats: min beacon time (ns): 46265791
+13354640401300 _bemps_dump_stats: max beacon time (ns): 46265791
+13354640403484 _bemps_dump_stats: avg beacon time (ns): 4.62658e+07
+13354640425671 _bemps_dump_stats: count of free times: 1
+13354640427839 _bemps_dump_stats: min free time (ns): 24179
+13354640429846 _bemps_dump_stats: max free time (ns): 24179
+13354640431835 _bemps_dump_stats: avg free time (ns): 24179
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 22 2.5693392753601074
+Worker 3: TIME_SINCE_START     22 21.983322620391846
+Worker 3: 27 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 15000 15000
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+13361903722420 bemps_begin: pid 20037 , num_blocks 4194304 , threads_per_block 256
+13361903771658 bemps_beacon: pid 20037 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+13367518534324 _bemps_dump_stats: Dumping bemps stats
+13367518567439 _bemps_dump_stats: count of beacon times: 1
+13367518577163 _bemps_dump_stats: min beacon time (ns): 45146932
+13367518579289 _bemps_dump_stats: max beacon time (ns): 45146932
+13367518581441 _bemps_dump_stats: avg beacon time (ns): 4.51469e+07
+13367518607559 _bemps_dump_stats: count of free times: 1
+13367518610034 _bemps_dump_stats: min free time (ns): 24802
+13367518612122 _bemps_dump_stats: max free time (ns): 24802
+13367518614191 _bemps_dump_stats: avg free time (ns): 24802
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 6 35.42392635345459
+Worker 6: TIME_SINCE_START     6 35.43173360824585
+Worker 6: 28 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 16777216
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+13365283553438 bemps_begin: pid 20091 , num_blocks 1728000 , threads_per_block 128
+13365283611618 bemps_beacon: pid 20091 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.280708998442 s,  1.526937723160 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000138000003 s,  0.000750661420 % : GPU MEM: ALO
+ 9.735162734985 s, 52.955150604248 % : GPU MEM: COPY IN
+ 7.864931106567 s, 42.781883239746 % : GPU: KERNEL
+ 0.485141992569 s,  2.638966321945 % : GPU MEM: COPY OUT
+ 0.017704000697 s,  0.096302241087 % : GPU MEM: FRE
+Total time:
+18.383787155151 s
+13374459090377 _bemps_dump_stats: Dumping bemps stats
+13374459114892 _bemps_dump_stats: count of beacon times: 1
+13374459126112 _bemps_dump_stats: min beacon time (ns): 192671
+13374459128421 _bemps_dump_stats: max beacon time (ns): 192671
+13374459130548 _bemps_dump_stats: avg beacon time (ns): 192671
+13374459158449 _bemps_dump_stats: count of free times: 1
+13374459160583 _bemps_dump_stats: min free time (ns): 40043
+13374459162642 _bemps_dump_stats: max free time (ns): 40043
+13374459164692 _bemps_dump_stats: avg free time (ns): 40043
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 15 36.004257678985596
+Worker 2: TIME_SINCE_START     15 41.852885484695435
+Worker 2: 29 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+Worker 5 got error: 1
+Worker 5 dumping error: 
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+13374860228361 bemps_begin: pid 20133 , num_blocks 1331000 , threads_per_block 128
+13374860288040 bemps_beacon: pid 20133 , bemps_tid 0 , mem_B 10456336000 , cores 5324000
+13375200726908 _bemps_dump_stats: Dumping bemps stats
+13375200754438 _bemps_dump_stats: count of beacon times: 1
+13375200766501 _bemps_dump_stats: min beacon time (ns): 197663
+13375200768643 _bemps_dump_stats: max beacon time (ns): 197663
+13375200771004 _bemps_dump_stats: avg beacon time (ns): 197663
+13375200811169 _bemps_dump_stats: count of free times: 0
+13375200813296 _bemps_dump_stats: min free time (ns): 0
+13375200815364 _bemps_dump_stats: max free time (ns): 0
+13375200817429 _bemps_dump_stats: avg free time (ns): 0
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 25 22.477113485336304
+Worker 5: TIME_SINCE_START     25 43.62924838066101
+Worker 5: 30 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+Random number generator seed: 7
+Input layer size : 16777216
+Starting training kernel
+13375587544943 bemps_begin: pid 20152 , num_blocks 1048576 , threads_per_block 256
+13375587592549 bemps_beacon: pid 20152 , bemps_tid 0 , mem_B 2350907668 , cores 8388608
+Performing GPU computation
+Training done
+13377363031130 _bemps_dump_stats: Dumping bemps stats
+13377363053281 _bemps_dump_stats: count of beacon times: 1
+13377363061776 _bemps_dump_stats: min beacon time (ns): 46340363
+13377363063977 _bemps_dump_stats: max beacon time (ns): 46340363
+13377363066278 _bemps_dump_stats: avg beacon time (ns): 4.63404e+07
+13377363087752 _bemps_dump_stats: count of free times: 1
+13377363089776 _bemps_dump_stats: min free time (ns): 24357
+13377363091835 _bemps_dump_stats: max free time (ns): 24357
+13377363093843 _bemps_dump_stats: avg free time (ns): 24357
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 28 9.514646053314209
+Worker 6: TIME_SINCE_START     28 44.94658422470093
+Worker 6: 31 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+13372163131490 bemps_begin: pid 20109 , num_blocks 4194304 , threads_per_block 256
+13372163180917 bemps_beacon: pid 20109 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+13377105459715 _bemps_dump_stats: Dumping bemps stats
+13377105489966 _bemps_dump_stats: count of beacon times: 1
+13377105499446 _bemps_dump_stats: min beacon time (ns): 45562430
+13377105501926 _bemps_dump_stats: max beacon time (ns): 45562430
+13377105504458 _bemps_dump_stats: avg beacon time (ns): 4.55624e+07
+13377105542420 _bemps_dump_stats: count of free times: 1
+13377105544488 _bemps_dump_stats: min free time (ns): 23760
+13377105546551 _bemps_dump_stats: max free time (ns): 23760
+13377105548580 _bemps_dump_stats: avg free time (ns): 23760
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 18 34.957900285720825
+Worker 4: TIME_SINCE_START     18 45.12715554237366
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 21
+Worker 8 got error: 1
+Worker 8 dumping error: 
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+13377439413152 bemps_begin: pid 20121 , num_blocks 1728000 , threads_per_block 128
+13377439475505 bemps_beacon: pid 20121 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+13377878088444 _bemps_dump_stats: Dumping bemps stats
+13377878114533 _bemps_dump_stats: count of beacon times: 1
+13377878123549 _bemps_dump_stats: min beacon time (ns): 208921
+13377878125768 _bemps_dump_stats: max beacon time (ns): 208921
+13377878128002 _bemps_dump_stats: avg beacon time (ns): 208921
+13377878152501 _bemps_dump_stats: count of free times: 0
+13377878154650 _bemps_dump_stats: min free time (ns): 0
+13377878156722 _bemps_dump_stats: max free time (ns): 0
+13377878158783 _bemps_dump_stats: avg free time (ns): 0
+
+
+Worker 8: TOTAL_BENCHMARK_TIME 21 29.601126432418823
+Worker 8: TIME_SINCE_START     21 46.546887159347534
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 22
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 22
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 22
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 22
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 22
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 22
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+13374710856214 bemps_begin: pid 20131 , num_blocks 1331000 , threads_per_block 128
+13374710920572 bemps_beacon: pid 20131 , bemps_tid 0 , mem_B 10456336000 , cores 5324000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.516044020653 s,  3.328026056290 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000155000002 s,  0.000999612501 % : GPU MEM: ALO
+ 7.875196933746 s, 50.788040161133 % : GPU MEM: COPY IN
+ 6.726391792297 s, 43.379261016846 % : GPU: KERNEL
+ 0.373791992664 s,  2.410626888275 % : GPU MEM: COPY OUT
+ 0.014427999966 s,  0.093047805130 % : GPU MEM: FRE
+Total time:
+15.506008148193 s
+13382377561633 _bemps_dump_stats: Dumping bemps stats
+13382377590501 _bemps_dump_stats: count of beacon times: 1
+13382377601271 _bemps_dump_stats: min beacon time (ns): 203402
+13382377603498 _bemps_dump_stats: max beacon time (ns): 203402
+13382377605651 _bemps_dump_stats: avg beacon time (ns): 203402
+13382377630830 _bemps_dump_stats: count of free times: 1
+13382377632890 _bemps_dump_stats: min free time (ns): 33581
+13382377634943 _bemps_dump_stats: max free time (ns): 33581
+13382377636950 _bemps_dump_stats: avg free time (ns): 33581
+
+
+Worker 11: TOTAL_BENCHMARK_TIME 24 29.055575609207153
+Worker 11: TIME_SINCE_START     24 49.767327308654785
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 23
+Worker 9 got error: 1
+Worker 9 dumping error: 
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+13381360536247 bemps_begin: pid 20135 , num_blocks 1728000 , threads_per_block 128
+13381360592918 bemps_beacon: pid 20135 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+13381610202628 _bemps_dump_stats: Dumping bemps stats
+13381610226420 _bemps_dump_stats: count of beacon times: 1
+13381610235341 _bemps_dump_stats: min beacon time (ns): 184648
+13381610237529 _bemps_dump_stats: max beacon time (ns): 184648
+13381610239608 _bemps_dump_stats: avg beacon time (ns): 184648
+13381610269194 _bemps_dump_stats: count of free times: 0
+13381610271488 _bemps_dump_stats: min free time (ns): 0
+13381610273528 _bemps_dump_stats: max free time (ns): 0
+13381610275889 _bemps_dump_stats: avg free time (ns): 0
+
+
+Worker 9: TOTAL_BENCHMARK_TIME 26 28.9241681098938
+Worker 9: TIME_SINCE_START     26 50.33451271057129
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 24
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 24
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 24
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 24
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 24
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 24
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 24
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 24
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+13378087819068 bemps_begin: pid 20040 , num_blocks 65536 , threads_per_block 512
+13378087867107 bemps_beacon: pid 20040 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+13385120626822 _bemps_dump_stats: Dumping bemps stats
+13385120651952 _bemps_dump_stats: count of beacon times: 1
+13385120658768 _bemps_dump_stats: min beacon time (ns): 48610827
+13385120660951 _bemps_dump_stats: max beacon time (ns): 48610827
+13385120663120 _bemps_dump_stats: avg beacon time (ns): 4.86108e+07
+13385120690199 _bemps_dump_stats: count of free times: 1
+13385120692310 _bemps_dump_stats: min free time (ns): 21212
+13385120694303 _bemps_dump_stats: max free time (ns): 21212
+13385120696294 _bemps_dump_stats: avg free time (ns): 21212
+
+
+Worker 7: TOTAL_BENCHMARK_TIME 7 52.45381212234497
+Worker 7: TIME_SINCE_START     7 52.46256923675537
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 25
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 25
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 25
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 25
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 25
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 25
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 25
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 25
+suc
+The file was not opened for reading
+13355906214155 bemps_begin: pid 20137 , num_blocks 439454 , threads_per_block 512
+13355906269160 bemps_beacon: pid 20137 , bemps_tid 0 , mem_B 7200240000 , cores 7031264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000003095483 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000021668380 % : READ COMMAND LINE PARAMETERS
+ 0.000029000001 s,  0.000089769004 % : READ IMAGE FROM FILE
+ 0.956371009350 s,  2.960430145264 % : RESIZE IMAGE
+ 0.276946008205 s,  0.857281565666 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.114513002336 s,  0.354473024607 % : COPY DATA TO CPU->GPU
+ 0.000038999999 s,  0.000120723824 % : EXTRACT IMAGE
+ 2.249847888947 s,  6.964365959167 % : COMPUTE
+ 0.000005000000 s,  0.000015477413 % : COMPRESS IMAGE
+ 0.093625999987 s,  0.289817661047 % : COPY DATA TO GPU->CPU
+28.564647674561 s, 88.421371459961 % : SAVE IMAGE INTO FILE
+ 0.049104001373 s,  0.152000591159 % : FREE MEMORY
+Total time:
+32.305137634277 s
+13386989831823 _bemps_dump_stats: Dumping bemps stats
+13386989854683 _bemps_dump_stats: count of beacon times: 1
+13386989862440 _bemps_dump_stats: min beacon time (ns): 159992
+13386989864652 _bemps_dump_stats: max beacon time (ns): 159992
+13386989866756 _bemps_dump_stats: avg beacon time (ns): 159992
+13386989885404 _bemps_dump_stats: count of free times: 1
+13386989887485 _bemps_dump_stats: min free time (ns): 31099
+13386989889439 _bemps_dump_stats: max free time (ns): 31099
+13386989891421 _bemps_dump_stats: avg free time (ns): 31099
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 27 32.34814453125
+Worker 3: TIME_SINCE_START     27 54.33171844482422
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 26
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 26
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 26
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 26
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 26
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 26
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 26
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 26
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 26
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 26
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 26
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 26
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 26
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 26
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 26
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 26
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 26
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 26
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 26
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 26
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 26
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 26
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 26
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 26
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 26
+suc
+The file was not opened for reading
+13377185675510 bemps_begin: pid 20164 , num_blocks 236329 , threads_per_block 512
+13377185740177 bemps_beacon: pid 20164 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: out of memory.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: prepare: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: reduce: an illegal memory access was encountered.
+Cuda error: copy sum: an illegal memory access was encountered.
+Cuda error: srad: an illegal memory access was encountered.
+Cuda error: srad2: an illegal memory access was encountered.
+Cuda error: compress: an illegal memory access was encountered.
+Cuda error: copy back: an illegal memory access was encountered.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000006829732 % : SETUP VARIABLES
+ 0.000008000000 s,  0.000054637854 % : READ COMMAND LINE PARAMETERS
+ 0.000029000001 s,  0.000198062204 % : READ IMAGE FROM FILE
+ 0.533743023872 s,  3.645321369171 % : RESIZE IMAGE
+ 0.774931013584 s,  5.292570590973 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.061296001077 s,  0.418635219336 % : COPY DATA TO CPU->GPU
+ 0.000035000001 s,  0.000239040601 % : EXTRACT IMAGE
+ 0.091912999749 s,  0.627741098404 % : COMPUTE
+ 0.000002000000 s,  0.000013659464 % : COMPRESS IMAGE
+ 0.000003000000 s,  0.000020489195 % : COPY DATA TO GPU->CPU
+13.151781082153 s, 89.823135375977 % : SAVE IMAGE INTO FILE
+ 0.028122000396 s,  0.192065715790 % : FREE MEMORY
+Total time:
+14.641863822937 s
+13390972959925 _bemps_dump_stats: Dumping bemps stats
+13390972981723 _bemps_dump_stats: count of beacon times: 1
+13390972990131 _bemps_dump_stats: min beacon time (ns): 201920
+13390972992200 _bemps_dump_stats: max beacon time (ns): 201920
+13390972994370 _bemps_dump_stats: avg beacon time (ns): 201920
+13390973013257 _bemps_dump_stats: count of free times: 1
+13390973015225 _bemps_dump_stats: min free time (ns): 32917
+13390973017282 _bemps_dump_stats: max free time (ns): 32917
+13390973019208 _bemps_dump_stats: avg free time (ns): 32917
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 30 14.731936931610107
+Worker 5: TIME_SINCE_START     30 58.36144399642944
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 27
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 27
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 27
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 27
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 27
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 27
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 27
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 27
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 27
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 27
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 27
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 27
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 27
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 27
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 27
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 27
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 27
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 27
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 27
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 27
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 27
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 27
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 27
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 27
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 27
+suc
+The file was not opened for reading
+13334785755445 bemps_begin: pid 20020 , num_blocks 781250 , threads_per_block 512
+13334785812800 bemps_beacon: pid 20020 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001610449 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000011273141 % : READ COMMAND LINE PARAMETERS
+ 0.000022000000 s,  0.000035429875 % : READ IMAGE FROM FILE
+ 1.720129966736 s,  2.770181417465 % : RESIZE IMAGE
+ 0.637920975685 s,  1.027339100838 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.210419997573 s,  0.338870644569 % : COPY DATA TO CPU->GPU
+ 0.000040999999 s,  0.000066028399 % : EXTRACT IMAGE
+ 3.993608951569 s,  6.431502819061 % : COMPUTE
+ 0.000005000000 s,  0.000008052244 % : COMPRESS IMAGE
+ 0.183682993054 s,  0.295812070370 % : COPY DATA TO GPU->CPU
+55.249797821045 s, 88.976966857910 % : SAVE IMAGE INTO FILE
+ 0.098857998848 s,  0.159205749631 % : FREE MEMORY
+Total time:
+62.094493865967 s
+13394797558114 _bemps_dump_stats: Dumping bemps stats
+13394797581776 _bemps_dump_stats: count of beacon times: 1
+13394797590110 _bemps_dump_stats: min beacon time (ns): 166739
+13394797592347 _bemps_dump_stats: max beacon time (ns): 166739
+13394797594512 _bemps_dump_stats: avg beacon time (ns): 166739
+13394797619454 _bemps_dump_stats: count of free times: 1
+13394797621399 _bemps_dump_stats: min free time (ns): 42465
+13394797623361 _bemps_dump_stats: max free time (ns): 42465
+13394797625286 _bemps_dump_stats: avg free time (ns): 42465
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 62.172003984451294
+Worker 0: TIME_SINCE_START     0 62.174365758895874
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 28
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 28
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 28
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 28
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 28
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 28
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+13392239025486 bemps_begin: pid 20170 , num_blocks 2097152 , threads_per_block 256
+13392239072698 bemps_beacon: pid 20170 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+13395153970171 _bemps_dump_stats: Dumping bemps stats
+13395153992786 _bemps_dump_stats: count of beacon times: 1
+13395154001799 _bemps_dump_stats: min beacon time (ns): 27370365
+13395154004010 _bemps_dump_stats: max beacon time (ns): 27370365
+13395154006098 _bemps_dump_stats: avg beacon time (ns): 2.73704e+07
+13395154027818 _bemps_dump_stats: count of free times: 1
+13395154029863 _bemps_dump_stats: min free time (ns): 22067
+13395154031812 _bemps_dump_stats: max free time (ns): 22067
+13395154033820 _bemps_dump_stats: avg free time (ns): 22067
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 31 17.862963676452637
+Worker 6: TIME_SINCE_START     31 62.809738636016846
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 29
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 29
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 29
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 29
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 29
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 29
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 29
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 29
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 29
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 29
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 29
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 29
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 29
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 29
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 29
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 29
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 29
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 29
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 29
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 29
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 29
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 29
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 29
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 29
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 29
+suc
+The file was not opened for reading
+13338324490992 bemps_begin: pid 20073 , num_blocks 781250 , threads_per_block 512
+13338324546369 bemps_beacon: pid 20073 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001611545 % : SETUP VARIABLES
+ 0.000009000000 s,  0.000014503902 % : READ COMMAND LINE PARAMETERS
+ 0.000027000000 s,  0.000043511704 % : READ IMAGE FROM FILE
+ 1.718677997589 s,  2.769726276398 % : RESIZE IMAGE
+ 0.627390027046 s,  1.011067032814 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.204440996051 s,  0.329465806484 % : COPY DATA TO CPU->GPU
+ 0.000043000000 s,  0.000069296417 % : EXTRACT IMAGE
+ 4.099271774292 s,  6.606160163879 % : COMPUTE
+ 0.000005000000 s,  0.000008057723 % : COMPRESS IMAGE
+ 0.167410001159 s,  0.269788682461 % : COPY DATA TO GPU->CPU
+55.009151458740 s, 88.649703979492 % : SAVE IMAGE INTO FILE
+ 0.225841000676 s,  0.363952845335 % : FREE MEMORY
+Total time:
+62.052268981934 s
+13398351190523 _bemps_dump_stats: Dumping bemps stats
+13398351213669 _bemps_dump_stats: count of beacon times: 1
+13398351224387 _bemps_dump_stats: min beacon time (ns): 147318
+13398351227262 _bemps_dump_stats: max beacon time (ns): 147318
+13398351230085 _bemps_dump_stats: avg beacon time (ns): 147318
+13398351252124 _bemps_dump_stats: count of free times: 1
+13398351254613 _bemps_dump_stats: min free time (ns): 39801
+13398351257402 _bemps_dump_stats: max free time (ns): 39801
+13398351259946 _bemps_dump_stats: avg free time (ns): 39801
+
+
+Worker 10: TOTAL_BENCHMARK_TIME 12 62.1670138835907
+Worker 10: TIME_SINCE_START     12 65.76485276222229
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 30
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 30
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 30
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 30
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 30
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 30
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 30
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 30
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+13398137967707 bemps_begin: pid 20127 , num_blocks 65536 , threads_per_block 512
+13398138015389 bemps_beacon: pid 20127 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+13405770910760 _bemps_dump_stats: Dumping bemps stats
+13405770936305 _bemps_dump_stats: count of beacon times: 1
+13405770942663 _bemps_dump_stats: min beacon time (ns): 46910951
+13405770944931 _bemps_dump_stats: max beacon time (ns): 46910951
+13405770947205 _bemps_dump_stats: avg beacon time (ns): 4.6911e+07
+13405770970970 _bemps_dump_stats: count of free times: 1
+13405770973136 _bemps_dump_stats: min free time (ns): 20960
+13405770975185 _bemps_dump_stats: max free time (ns): 20960
+13405770977231 _bemps_dump_stats: avg free time (ns): 20960
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 23 52.874621868133545
+Worker 1: TIME_SINCE_START     23 73.11201357841492
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 31
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 31
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 31
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 31
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 31
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 31
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 31
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 31
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 31
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 31
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 31
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 31
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 31
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 31
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 31
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 31
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 31
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 31
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 31
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 31
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 31
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 31
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 31
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 31
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 31
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 31
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 31
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 31
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 31
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 31
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 31
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 31
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+Worker 9: Worklist is empty. Retrying get().
+Worker 9: jobs_processed.value is 31
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 31
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 31
+Worker 8: Worklist is empty. Retrying get().
+Worker 8: jobs_processed.value is 31
+Worker 10: Worklist is empty. Retrying get().
+Worker 10: jobs_processed.value is 31
+Worker 11: Worklist is empty. Retrying get().
+Worker 11: jobs_processed.value is 31
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 31
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+13401364775290 bemps_begin: pid 20158 , num_blocks 1728000 , threads_per_block 128
+13401364831379 bemps_beacon: pid 20158 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.281969010830 s,  1.540627598763 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000140000004 s,  0.000764934695 % : GPU MEM: ALO
+ 9.787945747375 s, 53.479568481445 % : GPU MEM: COPY IN
+ 7.747188091278 s, 42.329235076904 % : GPU: KERNEL
+ 0.468151986599 s,  2.557898044586 % : GPU MEM: COPY OUT
+ 0.016820000485 s,  0.091901436448 % : GPU MEM: FRE
+Total time:
+18.302215576172 s
+13410524598169 _bemps_dump_stats: Dumping bemps stats
+13410524619870 _bemps_dump_stats: count of beacon times: 1
+13410524629895 _bemps_dump_stats: min beacon time (ns): 180967
+13410524632136 _bemps_dump_stats: max beacon time (ns): 180967
+13410524634204 _bemps_dump_stats: avg beacon time (ns): 180967
+13410524658916 _bemps_dump_stats: count of free times: 1
+13410524660964 _bemps_dump_stats: min free time (ns): 28382
+13410524662934 _bemps_dump_stats: max free time (ns): 28382
+13410524664894 _bemps_dump_stats: avg free time (ns): 28382
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 29 36.209234952926636
+Worker 2: TIME_SINCE_START     29 78.06231474876404
+Worker 2: TOTAL_EXPERIMENT_TIME 78.06235265731812
+Worker 2: Exiting normally
+Worker 1: Worklist is empty.
+Worker 1: Exiting normally
+Worker 4: Worklist is empty.
+Worker 4: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Worker 9: Worklist is empty.
+Worker 9: Exiting normally
+Worker 5: Worklist is empty.
+Worker 5: Exiting normally
+Worker 7: Worklist is empty.
+Worker 7: Exiting normally
+Worker 8: Worklist is empty.
+Worker 8: Exiting normally
+Worker 10: Worklist is empty.
+Worker 10: Exiting normally
+Worker 11: Worklist is empty.
+Worker 11: Exiting normally
+Worker 6: Worklist is empty.
+Worker 6: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.

@@ -1,0 +1,12 @@
+
+2020.09.26
+
+These were run anually on sloppyjoe (on the GTX 1080). I just kicked off
+the zero scheduler in the background (so the jobs wouldn't block when they hit
+their beacons). And then I executed the jobs directly with the little driver
+in the folder. Then I saved the results and had a little parser script to
+grab all the kernel and cuda memcpy times.
+
+Thus, I didn't update run-experiment.sh (or workloader.py for that matter) to
+suppor the zero scheduler or to look for these workload files.
+

@@ -1,0 +1,5 @@
+nvprof /home/rudy/wo/gpu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/gaussian/gaussian -s 4096 &
+nvprof /home/rudy/wo/gpu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/gaussian/gaussian -s 4096 &
+nvprof /home/rudy/wo/gpu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/gaussian/gaussian -s 4096 &
+nvprof /home/rudy/wo/gpu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/gaussian/gaussian -s 4096 &
+wait

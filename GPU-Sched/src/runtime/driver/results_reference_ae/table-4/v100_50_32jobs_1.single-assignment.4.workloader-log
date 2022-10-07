@@ -1,0 +1,1766 @@
+Parsing args
+Starting driver
+  workload_file: /home/ubuntu/GPU-Sched/src/runtime/driver/workloads/ppopp21-volta/p100_50_32jobs_1.wl
+  sched_alg: single-assignment
+  num_processes: 4
+Worker 0: Starting
+Worker 0: 0 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+Worker 1: Starting
+Worker 1: 1 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+Main process: Waiting for workers...
+Worker 2: Starting
+Worker 2: 2 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+Worker 3: Starting
+Worker 3: 3 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+25978008101386 bemps_begin: pid 53662 , num_blocks 524288 , threads_per_block 256
+25978008154383 bemps_beacon: pid 53662 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+25980108367755 _bemps_dump_stats: Dumping bemps stats
+25980108380808 _bemps_dump_stats: count of beacon times: 1
+25980108390318 _bemps_dump_stats: min beacon time (ns): 577443649
+25980108392462 _bemps_dump_stats: max beacon time (ns): 577443649
+25980108394568 _bemps_dump_stats: avg beacon time (ns): 5.77444e+08
+25980108421959 _bemps_dump_stats: count of free times: 1
+25980108424249 _bemps_dump_stats: min free time (ns): 29087
+25980108426436 _bemps_dump_stats: max free time (ns): 29087
+25980108428532 _bemps_dump_stats: avg free time (ns): 29087
+
+==53662== NVPROF is profiling process 53662, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==53662== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==53662== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   80.00%  220.82ms         5  44.163ms  1.5360us  76.460ms  [CUDA memcpy HtoD]
+                   18.71%  51.641ms         3  17.214ms  170.18us  48.612ms  [CUDA memcpy DtoH]
+                    0.73%  2.0143ms         1  2.0143ms  2.0143ms  2.0143ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.56%  1.5381ms         1  1.5381ms  1.5381ms  1.5381ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   68.90%  641.34ms         6  106.89ms  9.8080us  638.29ms  cudaMalloc
+                   29.67%  276.18ms         8  34.523ms  18.601us  76.601ms  cudaMemcpy
+                    0.49%  4.5438ms       384  11.832us     945ns  793.15us  cuDeviceGetAttribute
+                    0.37%  3.3987ms         4  849.67us  795.76us  947.47us  cuDeviceTotalMem
+                    0.27%  2.5016ms         6  416.93us  15.917us  855.67us  cudaFree
+                    0.22%  2.0373ms         1  2.0373ms  2.0373ms  2.0373ms  cudaThreadSynchronize
+                    0.07%  658.76us         4  164.69us  59.454us  390.96us  cuDeviceGetName
+                    0.01%  103.08us         2  51.538us  46.864us  56.212us  cudaLaunchKernel
+                    0.00%  19.283us         4  4.8200us  3.5960us  5.9640us  cuDeviceGetPCIBusId
+                    0.00%  14.391us         1  14.391us  14.391us  14.391us  cudaSetDevice
+                    0.00%  13.088us         8  1.6360us  1.1340us  2.2030us  cuDeviceGet
+                    0.00%  6.0100us         3  2.0030us  1.3330us  2.7270us  cuDeviceGetCount
+                    0.00%  5.0330us         4  1.2580us  1.1570us  1.3970us  cuDeviceGetUuid
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 6.7806010246276855
+Worker 1: TIME_SINCE_START     1 6.783954620361328
+Worker 1: 4 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+25977906590415 bemps_begin: pid 53666 , num_blocks 524288 , threads_per_block 256
+25977906642628 bemps_beacon: pid 53666 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+25980032091332 _bemps_dump_stats: Dumping bemps stats
+25980032104183 _bemps_dump_stats: count of beacon times: 1
+25980032115994 _bemps_dump_stats: min beacon time (ns): 241128733
+25980032118710 _bemps_dump_stats: max beacon time (ns): 241128733
+25980032121556 _bemps_dump_stats: avg beacon time (ns): 2.41129e+08
+25980032157501 _bemps_dump_stats: count of free times: 1
+25980032161816 _bemps_dump_stats: min free time (ns): 31037
+25980032164573 _bemps_dump_stats: max free time (ns): 31037
+25980032167477 _bemps_dump_stats: avg free time (ns): 31037
+
+==53666== NVPROF is profiling process 53666, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==53666== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==53666== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   81.45%  255.29ms         5  51.057ms  1.5040us  97.672ms  [CUDA memcpy HtoD]
+                   17.42%  54.605ms         3  18.202ms  169.28us  51.386ms  [CUDA memcpy DtoH]
+                    0.64%  2.0136ms         1  2.0136ms  2.0136ms  2.0136ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.49%  1.5384ms         1  1.5384ms  1.5384ms  1.5384ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   70.73%  902.76ms         6  150.46ms  13.433us  898.25ms  cudaMalloc
+                   24.58%  313.76ms         8  39.220ms  20.307us  97.842ms  cudaMemcpy
+                    3.47%  44.312ms         6  7.3853ms  33.386us  41.166ms  cudaFree
+                    0.69%  8.8443ms       384  23.031us     673ns  1.5237ms  cuDeviceGetAttribute
+                    0.30%  3.8181ms         4  954.53us  510.30us  1.2054ms  cuDeviceTotalMem
+                    0.16%  2.0417ms         1  2.0417ms  2.0417ms  2.0417ms  cudaThreadSynchronize
+                    0.05%  656.28us         4  164.07us  143.72us  189.40us  cuDeviceGetName
+                    0.01%  84.130us         2  42.065us  36.144us  47.986us  cudaLaunchKernel
+                    0.00%  16.678us         4  4.1690us  3.7310us  4.7050us  cuDeviceGetPCIBusId
+                    0.00%  13.440us         1  13.440us  13.440us  13.440us  cudaSetDevice
+                    0.00%  9.8120us         8  1.2260us     876ns  1.9180us  cuDeviceGet
+                    0.00%  4.7760us         3  1.5920us  1.0500us  2.3500us  cuDeviceGetCount
+                    0.00%  4.0230us         4  1.0050us     927ns  1.1690us  cuDeviceGetUuid
+
+Worker 2: TOTAL_BENCHMARK_TIME 2 6.78721809387207
+Worker 2: TIME_SINCE_START     2 6.791495323181152
+Worker 2: 5 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+25981748353993 bemps_begin: pid 53750 , num_blocks 262144 , threads_per_block 256
+25981748402990 bemps_beacon: pid 53750 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+25984262539470 _bemps_dump_stats: Dumping bemps stats
+25984262562741 _bemps_dump_stats: count of beacon times: 1
+25984262570614 _bemps_dump_stats: min beacon time (ns): 163065
+25984262572786 _bemps_dump_stats: max beacon time (ns): 163065
+25984262574922 _bemps_dump_stats: avg beacon time (ns): 163065
+25984262603350 _bemps_dump_stats: count of free times: 1
+25984262605482 _bemps_dump_stats: min free time (ns): 29240
+25984262607430 _bemps_dump_stats: max free time (ns): 29240
+25984262609407 _bemps_dump_stats: avg free time (ns): 29240
+
+==53750== NVPROF is profiling process 53750, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==53750== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==53750== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.01%  64.402ms         3  21.467ms  21.403ms  21.505ms  [CUDA memcpy DtoH]
+                   26.22%  25.577ms         1  25.577ms  25.577ms  25.577ms  [CUDA memcpy HtoD]
+                    3.38%  3.2956ms         9  366.18us  54.047us  854.36us  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    3.03%  2.9579ms         9  328.65us  44.160us  755.61us  [CUDA memcpy DtoD]
+                    1.35%  1.3165ms         1  1.3165ms  1.3165ms  1.3165ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.01%  11.136us         8  1.3920us  1.3120us  1.6320us  [CUDA memset]
+      API calls:   51.71%  1.16125s         4  290.31ms  136.40ms  724.31ms  cudaMallocHost
+                   32.64%  733.01ms         8  91.626ms  514.31us  727.77ms  cudaMalloc
+                   11.01%  247.25ms         4  61.812ms  38.946ms  108.67ms  cudaFreeHost
+                    4.13%  92.666ms        13  7.1281ms  11.993us  27.902ms  cudaMemcpy
+                    0.20%  4.4091ms         8  551.13us  494.27us  796.60us  cudaFree
+                    0.11%  2.3585ms         4  589.63us  254.20us  709.91us  cuDeviceTotalMem
+                    0.10%  2.2301ms       384  5.8070us     677ns  224.33us  cuDeviceGetAttribute
+                    0.06%  1.3460ms         3  448.68us  7.7650us  1.3168ms  cudaThreadSynchronize
+                    0.02%  497.05us         1  497.05us  497.05us  497.05us  cudaGetDeviceProperties
+                    0.01%  278.59us         4  69.647us  45.506us  120.36us  cuDeviceGetName
+                    0.01%  146.17us        10  14.617us  8.7690us  53.095us  cudaLaunchKernel
+                    0.01%  131.40us         8  16.424us  9.9660us  53.771us  cudaMemset
+                    0.00%  56.044us        42  1.3340us     749ns  8.4430us  cudaGetLastError
+                    0.00%  13.316us         4  3.3290us  2.4170us  4.6120us  cuDeviceGetPCIBusId
+                    0.00%  10.778us         2  5.3890us  3.3490us  7.4290us  cudaSetDevice
+                    0.00%  8.0990us         8  1.0120us     814ns  1.8590us  cuDeviceGet
+                    0.00%  3.5510us         4     887ns     786ns  1.0040us  cuDeviceGetUuid
+                    0.00%  3.3410us         3  1.1130us     823ns  1.6330us  cuDeviceGetCount
+                    0.00%  1.6250us         1  1.6250us  1.6250us  1.6250us  cudaGetDeviceCount
+
+Worker 1: TOTAL_BENCHMARK_TIME 4 4.0851356983184814
+Worker 1: TIME_SINCE_START     4 10.869295358657837
+Worker 1: 6 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+25987860305555 bemps_begin: pid 53668 , num_blocks 1 , threads_per_block 16
+25987860357073 bemps_beacon: pid 53668 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+25994183921403 _bemps_dump_stats: Dumping bemps stats
+25994183935617 _bemps_dump_stats: count of beacon times: 1
+25994183947270 _bemps_dump_stats: min beacon time (ns): 301611659
+25994183949920 _bemps_dump_stats: max beacon time (ns): 301611659
+25994183952574 _bemps_dump_stats: avg beacon time (ns): 3.01612e+08
+25994183991698 _bemps_dump_stats: count of free times: 1
+25994183995958 _bemps_dump_stats: min free time (ns): 28719
+25994183998874 _bemps_dump_stats: max free time (ns): 28719
+25994184001649 _bemps_dump_stats: avg free time (ns): 28719
+
+==53668== NVPROF is profiling process 53668, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+==53668== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+==53668== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   72.52%  3.12973s         1  3.12973s  3.12973s  3.12973s  [CUDA memcpy DtoH]
+                   25.59%  1.10444s         2  552.22ms  550.07ms  554.37ms  [CUDA memcpy HtoD]
+                    0.94%  40.716ms      2047  19.890us  5.0560us  51.776us  needle_cuda_shared_2(int*, int*, int, int, int, int)
+                    0.94%  40.532ms      2048  19.791us  5.2160us  51.296us  needle_cuda_shared_1(int*, int*, int, int, int, int)
+      API calls:   86.85%  4.24646s         3  1.41549s  550.15ms  3.14181s  cudaMemcpy
+                   11.17%  546.04ms         2  273.02ms  6.2009ms  539.84ms  cudaMalloc
+                    1.33%  64.945ms      4095  15.859us  7.2700us  69.261us  cudaLaunchKernel
+                    0.55%  27.092ms         2  13.546ms  5.3765ms  21.716ms  cudaFree
+                    0.05%  2.4215ms         4  605.37us  258.29us  748.70us  cuDeviceTotalMem
+                    0.05%  2.2061ms       384  5.7450us     725ns  222.86us  cuDeviceGetAttribute
+                    0.00%  200.68us         4  50.169us  46.151us  61.077us  cuDeviceGetName
+                    0.00%  14.948us         4  3.7370us  2.7210us  4.8080us  cuDeviceGetPCIBusId
+                    0.00%  12.344us         1  12.344us  12.344us  12.344us  cudaSetDevice
+                    0.00%  7.4850us         8     935ns     769ns  1.4480us  cuDeviceGet
+                    0.00%  3.6440us         3  1.2140us     862ns  1.6950us  cuDeviceGetCount
+                    0.00%  3.4110us         4     852ns     840ns     862ns  cuDeviceGetUuid
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 20.62342119216919
+Worker 3: TIME_SINCE_START     3 20.62857222557068
+Worker 3: 7 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+25996839831549 bemps_begin: pid 53747 , num_blocks 1000000 , threads_per_block 128
+25996839887981 bemps_beacon: pid 53747 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.916742980480 s,  7.587841033936 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000140000004 s,  0.001158773783 % : GPU MEM: ALO
+ 5.791449069977 s, 47.935565948486 % : GPU MEM: COPY IN
+ 5.077775001526 s, 42.028514862061 % : GPU: KERNEL
+ 0.284745007753 s,  2.356821775436 % : GPU MEM: COPY OUT
+ 0.010885000229 s,  0.090094663203 % : GPU MEM: FRE
+Total time:
+12.081736564636 s
+26002611063065 _bemps_dump_stats: Dumping bemps stats
+26002611086135 _bemps_dump_stats: count of beacon times: 1
+26002611095953 _bemps_dump_stats: min beacon time (ns): 186750
+26002611098269 _bemps_dump_stats: max beacon time (ns): 186750
+26002611100485 _bemps_dump_stats: avg beacon time (ns): 186750
+26002611127179 _bemps_dump_stats: count of free times: 1
+26002611129264 _bemps_dump_stats: min free time (ns): 31279
+26002611131329 _bemps_dump_stats: max free time (ns): 31279
+26002611133326 _bemps_dump_stats: avg free time (ns): 31279
+
+==53747== NVPROF is profiling process 53747, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==53747== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==53747== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.12%  2.98601s         1  2.98601s  2.98601s  2.98601s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   23.20%  987.73ms         4  246.93ms  82.447ms  402.23ms  [CUDA memcpy HtoD]
+                    6.68%  284.59ms         1  284.59ms  284.59ms  284.59ms  [CUDA memcpy DtoH]
+      API calls:   62.32%  3.52217s         2  1.76108s  536.15ms  2.98602s  cudaThreadSynchronize
+                   22.52%  1.27296s         5  254.59ms  82.623ms  402.35ms  cudaMemcpy
+                   12.43%  702.58ms         4  175.65ms  1.5868ms  655.29ms  cudaMalloc
+                    1.84%  103.83ms       384  270.40us     676ns  66.905ms  cuDeviceGetAttribute
+                    0.68%  38.589ms         4  9.6473ms  255.13us  37.052ms  cuDeviceTotalMem
+                    0.19%  10.764ms         4  2.6909ms  1.1141ms  4.2398ms  cudaFree
+                    0.01%  331.30us         4  82.824us  46.831us  126.00us  cuDeviceGetName
+                    0.00%  59.999us         1  59.999us  59.999us  59.999us  cudaLaunchKernel
+                    0.00%  12.850us         4  3.2120us  2.5700us  3.6420us  cuDeviceGetPCIBusId
+                    0.00%  8.3080us         8  1.0380us     791ns  1.4820us  cuDeviceGet
+                    0.00%  8.0900us         1  8.0900us  8.0900us  8.0900us  cudaSetDevice
+                    0.00%  3.9730us         4     993ns     925ns  1.1680us  cuDeviceGetUuid
+                    0.00%  3.4850us         3  1.1610us     809ns  1.6410us  cuDeviceGetCount
+                    0.00%  1.3610us         1  1.3610us  1.3610us  1.3610us  cudaGetLastError
+
+Worker 2: TOTAL_BENCHMARK_TIME 5 22.55634903907776
+Worker 2: TIME_SINCE_START     5 29.34803056716919
+Worker 2: 8 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+26014036185214 bemps_begin: pid 53796 , num_blocks 4194304 , threads_per_block 256
+26014036237226 bemps_beacon: pid 53796 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+26022145604330 _bemps_dump_stats: Dumping bemps stats
+26022145618422 _bemps_dump_stats: count of beacon times: 1
+26022145627938 _bemps_dump_stats: min beacon time (ns): 366609221
+26022145630029 _bemps_dump_stats: max beacon time (ns): 366609221
+26022145632179 _bemps_dump_stats: avg beacon time (ns): 3.66609e+08
+26022145659457 _bemps_dump_stats: count of free times: 1
+26022145662007 _bemps_dump_stats: min free time (ns): 26657
+26022145664048 _bemps_dump_stats: max free time (ns): 26657
+26022145666156 _bemps_dump_stats: avg free time (ns): 26657
+
+==53796== NVPROF is profiling process 53796, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==53796== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==53796== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   78.28%  1.76723s         5  353.45ms  1.4400us  578.08ms  [CUDA memcpy HtoD]
+                   19.17%  432.75ms         3  144.25ms  168.70us  408.50ms  [CUDA memcpy DtoH]
+                    1.28%  28.939ms         1  28.939ms  28.939ms  28.939ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+                    1.27%  28.784ms         1  28.784ms  28.784ms  28.784ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+      API calls:   79.04%  2.23114s         8  278.89ms  20.678us  578.20ms  cudaMemcpy
+                   19.32%  545.38ms         6  90.897ms  9.7550us  536.97ms  cudaMalloc
+                    1.02%  28.814ms         1  28.814ms  28.814ms  28.814ms  cudaThreadSynchronize
+                    0.44%  12.485ms         6  2.0808ms  17.024us  5.6237ms  cudaFree
+                    0.08%  2.3060ms         4  576.50us  252.30us  694.62us  cuDeviceTotalMem
+                    0.08%  2.2847ms       384  5.9490us     726ns  288.39us  cuDeviceGetAttribute
+                    0.01%  201.99us         4  50.498us  46.321us  61.748us  cuDeviceGetName
+                    0.00%  99.100us         2  49.550us  49.407us  49.693us  cudaLaunchKernel
+                    0.00%  15.853us         4  3.9630us  2.8680us  4.7110us  cuDeviceGetPCIBusId
+                    0.00%  11.573us         1  11.573us  11.573us  11.573us  cudaSetDevice
+                    0.00%  7.6200us         8     952ns     808ns  1.4470us  cuDeviceGet
+                    0.00%  3.6270us         4     906ns     826ns  1.0590us  cuDeviceGetUuid
+                    0.00%  3.4840us         3  1.1610us     800ns  1.6540us  cuDeviceGetCount
+
+Worker 1: TOTAL_BENCHMARK_TIME 6 38.43939542770386
+Worker 1: TIME_SINCE_START     6 49.308913230895996
+Worker 1: 9 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+26019163696051 bemps_begin: pid 53989 , num_blocks 1000000 , threads_per_block 128
+26019163759830 bemps_beacon: pid 53989 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.855826020241 s,  7.318692684174 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000144999998 s,  0.001239983831 % : GPU MEM: ALO
+ 5.642632007599 s, 48.253601074219 % : GPU MEM: COPY IN
+ 4.911389827728 s, 42.000305175781 % : GPU: KERNEL
+ 0.272513985634 s,  2.330434083939 % : GPU MEM: COPY OUT
+ 0.011194000021 s,  0.095726750791 % : GPU MEM: FRE
+Total time:
+11.693700790405 s
+26024765994550 _bemps_dump_stats: Dumping bemps stats
+26024766020748 _bemps_dump_stats: count of beacon times: 1
+26024766030728 _bemps_dump_stats: min beacon time (ns): 207705
+26024766032913 _bemps_dump_stats: max beacon time (ns): 207705
+26024766035129 _bemps_dump_stats: avg beacon time (ns): 207705
+26024766059868 _bemps_dump_stats: count of free times: 1
+26024766061941 _bemps_dump_stats: min free time (ns): 30335
+26024766063949 _bemps_dump_stats: max free time (ns): 30335
+26024766066272 _bemps_dump_stats: avg free time (ns): 30335
+
+==53989== NVPROF is profiling process 53989, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==53989== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+==53989== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.28%  2.98097s         1  2.98097s  2.98097s  2.98097s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   23.29%  988.00ms         4  247.00ms  82.303ms  403.18ms  [CUDA memcpy HtoD]
+                    6.42%  272.38ms         1  272.38ms  272.38ms  272.38ms  [CUDA memcpy DtoH]
+      API calls:   65.57%  3.51216s         2  1.75608s  531.18ms  2.98098s  cudaThreadSynchronize
+                   23.54%  1.26098s         5  252.20ms  82.426ms  403.32ms  cudaMemcpy
+                   10.59%  566.94ms         4  141.74ms  1.5454ms  555.11ms  cudaMalloc
+                    0.21%  11.076ms         4  2.7689ms  1.1376ms  4.6300ms  cudaFree
+                    0.04%  2.3845ms         4  596.12us  256.35us  709.62us  cuDeviceTotalMem
+                    0.04%  2.1830ms       384  5.6850us     718ns  219.97us  cuDeviceGetAttribute
+                    0.00%  197.25us         4  49.312us  44.735us  60.743us  cuDeviceGetName
+                    0.00%  64.688us         1  64.688us  64.688us  64.688us  cudaLaunchKernel
+                    0.00%  13.885us         4  3.4710us  2.6530us  4.6130us  cuDeviceGetPCIBusId
+                    0.00%  9.6480us         1  9.6480us  9.6480us  9.6480us  cudaSetDevice
+                    0.00%  7.4420us         8     930ns     759ns  1.3410us  cuDeviceGet
+                    0.00%  3.3240us         3  1.1080us     788ns  1.5660us  cuDeviceGetCount
+                    0.00%  3.2550us         4     813ns     743ns     968ns  cuDeviceGetUuid
+                    0.00%  1.1550us         1  1.1550us  1.1550us  1.1550us  cudaGetLastError
+
+Worker 2: TOTAL_BENCHMARK_TIME 8 21.994289875030518
+Worker 2: TIME_SINCE_START     8 51.34250831604004
+Worker 2: 10 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+The file was not opened for reading
+25976856422814 bemps_begin: pid 53670 , num_blocks 781250 , threads_per_block 512
+25976856478472 bemps_beacon: pid 53670 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001834351 % : SETUP VARIABLES
+ 0.000010000000 s,  0.000018343511 % : READ COMMAND LINE PARAMETERS
+ 0.000024999999 s,  0.000045858778 % : READ IMAGE FROM FILE
+ 1.723621010780 s,  3.161726236343 % : RESIZE IMAGE
+ 1.643972992897 s,  3.015623569489 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.198330998421 s,  0.363808691502 % : COPY DATA TO CPU->GPU
+ 0.000070000002 s,  0.000128404572 % : EXTRACT IMAGE
+ 4.030409812927 s,  7.393186569214 % : COMPUTE
+ 0.000014000000 s,  0.000025680916 % : COMPRESS IMAGE
+ 0.167480006814 s,  0.307217121124 % : COPY DATA TO GPU->CPU
+46.637664794922 s, 85.549850463867 % : SAVE IMAGE INTO FILE
+ 0.113591998816 s,  0.208367586136 % : FREE MEMORY
+Total time:
+54.515190124512 s
+26028768560056 _bemps_dump_stats: Dumping bemps stats
+26028768579303 _bemps_dump_stats: count of beacon times: 1
+26028768587153 _bemps_dump_stats: min beacon time (ns): 157690
+26028768589692 _bemps_dump_stats: max beacon time (ns): 157690
+26028768592263 _bemps_dump_stats: avg beacon time (ns): 157690
+26028768619277 _bemps_dump_stats: count of free times: 1
+26028768621360 _bemps_dump_stats: min free time (ns): 31811
+26028768623332 _bemps_dump_stats: max free time (ns): 31811
+26028768625295 _bemps_dump_stats: avg free time (ns): 31811
+
+==53670== NVPROF is profiling process 53670, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+==53670== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+==53670== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.62%  1.38678s       100  13.868ms  13.830ms  13.876ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.19%  1.28038s       100  12.804ms  12.797ms  12.810ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.41%  763.79ms       400  1.9095ms  1.7920us  8.5950ms  reduce(long, int, int, float*, float*)
+                   13.95%  611.76ms       100  6.1176ms  6.1052ms  6.1206ms  prepare(long, float*, float*, float*)
+                    4.52%  198.23ms         1  198.23ms  198.23ms  198.23ms  [CUDA memcpy HtoD]
+                    3.12%  136.99ms       201  681.53us  1.5030us  136.67ms  [CUDA memcpy DtoH]
+                    0.10%  4.1929ms         1  4.1929ms  4.1929ms  4.1929ms  extract(long, float*)
+                    0.09%  4.0643ms         1  4.0643ms  4.0643ms  4.0643ms  compress(long, float*)
+      API calls:   86.07%  4.93476s       206  23.955ms  1.1270us  550.27ms  cudaMemcpy
+                   13.33%  764.35ms        12  63.696ms  7.0230us  707.12ms  cudaMalloc
+                    0.33%  18.713ms        12  1.5595ms  6.7210us  2.4056ms  cudaFree
+                    0.14%  7.7811ms       702  11.084us  6.3600us  52.574us  cudaLaunchKernel
+                    0.06%  3.1816ms         4  795.40us  793.73us  799.59us  cuDeviceTotalMem
+                    0.05%  2.8140ms       384  7.3280us     910ns  281.55us  cuDeviceGetAttribute
+                    0.02%  1.3637ms      1704     800ns     696ns  1.7630us  cudaGetLastError
+                    0.01%  289.61us         4  72.401us  57.981us  96.627us  cuDeviceGetName
+                    0.00%  16.317us         4  4.0790us  3.0660us  4.9810us  cuDeviceGetPCIBusId
+                    0.00%  9.7640us         8  1.2200us  1.0240us  1.7970us  cuDeviceGet
+                    0.00%  4.3610us         4  1.0900us  1.0290us  1.1600us  cuDeviceGetUuid
+                    0.00%  4.1460us         3  1.3820us  1.1070us  1.7750us  cuDeviceGetCount
+                    0.00%  3.2130us         1  3.2130us  3.2130us  3.2130us  cudaSetDevice
+                    0.00%  1.5020us         1  1.5020us  1.5020us  1.5020us  cudaGetErrorString
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 55.43064475059509
+Worker 0: TIME_SINCE_START     0 55.43313145637512
+Worker 0: 11 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+26026270879365 bemps_begin: pid 54220 , num_blocks 262144 , threads_per_block 256
+26026270926408 bemps_beacon: pid 54220 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+26029077956612 _bemps_dump_stats: Dumping bemps stats
+26029077984937 _bemps_dump_stats: count of beacon times: 1
+26029077993757 _bemps_dump_stats: min beacon time (ns): 152767
+26029077995815 _bemps_dump_stats: max beacon time (ns): 152767
+26029077997832 _bemps_dump_stats: avg beacon time (ns): 152767
+26029078021876 _bemps_dump_stats: count of free times: 1
+26029078023980 _bemps_dump_stats: min free time (ns): 28740
+26029078025935 _bemps_dump_stats: max free time (ns): 28740
+26029078027977 _bemps_dump_stats: avg free time (ns): 28740
+
+==54220== NVPROF is profiling process 54220, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54220== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54220== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   65.94%  64.261ms         3  21.420ms  21.403ms  21.455ms  [CUDA memcpy DtoH]
+                   26.28%  25.612ms         1  25.612ms  25.612ms  25.612ms  [CUDA memcpy HtoD]
+                    3.39%  3.2988ms         9  366.53us  54.176us  859.07us  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    3.03%  2.9518ms         9  327.98us  44.448us  756.96us  [CUDA memcpy DtoD]
+                    1.35%  1.3180ms         1  1.3180ms  1.3180ms  1.3180ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.01%  11.008us         8  1.3760us  1.3120us  1.7280us  [CUDA memset]
+      API calls:   55.64%  1.41252s         4  353.13ms  182.99ms  734.79ms  cudaMallocHost
+                   31.36%  796.04ms         8  99.506ms  575.60us  790.88ms  cudaMalloc
+                    8.78%  222.80ms         4  55.699ms  42.180ms  72.616ms  cudaFreeHost
+                    3.64%  92.516ms        13  7.1166ms  12.706us  27.928ms  cudaMemcpy
+                    0.31%  7.9150ms         8  989.37us  752.16us  1.1847ms  cudaFree
+                    0.09%  2.2398ms       384  5.8320us     735ns  230.31us  cuDeviceGetAttribute
+                    0.09%  2.2143ms         4  553.57us  255.78us  707.34us  cuDeviceTotalMem
+                    0.05%  1.3463ms         3  448.77us  8.9440us  1.3182ms  cudaThreadSynchronize
+                    0.02%  491.54us         1  491.54us  491.54us  491.54us  cudaGetDeviceProperties
+                    0.01%  203.34us         4  50.833us  45.776us  61.830us  cuDeviceGetName
+                    0.01%  146.77us        10  14.676us  9.1930us  49.676us  cudaLaunchKernel
+                    0.00%  119.83us         8  14.978us  10.007us  41.938us  cudaMemset
+                    0.00%  55.217us        42  1.3140us     742ns  8.0560us  cudaGetLastError
+                    0.00%  13.711us         4  3.4270us  2.4800us  4.9970us  cuDeviceGetPCIBusId
+                    0.00%  8.3060us         2  4.1530us  3.5000us  4.8060us  cudaSetDevice
+                    0.00%  7.9780us         8     997ns     844ns  1.4460us  cuDeviceGet
+                    0.00%  3.7700us         4     942ns     854ns  1.0790us  cuDeviceGetUuid
+                    0.00%  3.5010us         3  1.1670us     879ns  1.5690us  cuDeviceGetCount
+                    0.00%  1.4230us         1  1.4230us  1.4230us  1.4230us  cudaGetDeviceCount
+
+Worker 2: TOTAL_BENCHMARK_TIME 10 4.230890512466431
+Worker 2: TIME_SINCE_START     10 55.57360625267029
+Worker 2: 12 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+26032709008957 bemps_begin: pid 54270 , num_blocks 1 , threads_per_block 16
+26032709059478 bemps_beacon: pid 54270 , bemps_tid 0 , mem_B 2147745800 , cores 1
+Processing bottom-right matrix
+26035067662831 _bemps_dump_stats: Dumping bemps stats
+26035067676860 _bemps_dump_stats: count of beacon times: 1
+26035067685376 _bemps_dump_stats: min beacon time (ns): 382767279
+26035067687441 _bemps_dump_stats: max beacon time (ns): 382767279
+26035067689547 _bemps_dump_stats: avg beacon time (ns): 3.82767e+08
+26035067716951 _bemps_dump_stats: count of free times: 1
+26035067719259 _bemps_dump_stats: min free time (ns): 25551
+26035067721731 _bemps_dump_stats: max free time (ns): 25551
+26035067723815 _bemps_dump_stats: avg free time (ns): 25551
+
+==54270== NVPROF is profiling process 54270, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+==54270== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+==54270== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   73.51%  803.89ms         1  803.89ms  803.89ms  803.89ms  [CUDA memcpy DtoH]
+                   24.58%  268.76ms         2  134.38ms  134.22ms  134.54ms  [CUDA memcpy HtoD]
+                    0.96%  10.462ms      1024  10.217us  5.2480us  22.176us  needle_cuda_shared_1(int*, int*, int, int, int, int)
+                    0.96%  10.449ms      1023  10.214us  5.1200us  21.568us  needle_cuda_shared_2(int*, int*, int, int, int, int)
+      API calls:   65.03%  1.07550s         3  358.50ms  134.33ms  806.54ms  cudaMemcpy
+                   33.32%  551.10ms         2  275.55ms  1.8900ms  549.21ms  cudaMalloc
+                    1.04%  17.131ms      2047  8.3680us  7.7470us  57.368us  cudaLaunchKernel
+                    0.21%  3.4593ms       384  9.0080us     972ns  341.33us  cuDeviceGetAttribute
+                    0.19%  3.1785ms         4  794.62us  419.63us  980.47us  cuDeviceTotalMem
+                    0.18%  3.0483ms         2  1.5241ms  1.4767ms  1.5715ms  cudaFree
+                    0.02%  301.43us         4  75.357us  70.270us  89.548us  cuDeviceGetName
+                    0.00%  15.238us         4  3.8090us  3.5020us  4.2820us  cuDeviceGetPCIBusId
+                    0.00%  14.050us         1  14.050us  14.050us  14.050us  cudaSetDevice
+                    0.00%  11.529us         8  1.4410us  1.2320us  2.3420us  cuDeviceGet
+                    0.00%  5.0940us         3  1.6980us  1.1730us  2.3120us  cuDeviceGetCount
+                    0.00%  5.0830us         4  1.2700us     987ns  1.6060us  cuDeviceGetUuid
+
+Worker 0: TOTAL_BENCHMARK_TIME 11 6.138078689575195
+Worker 0: TIME_SINCE_START     11 61.57140803337097
+Worker 0: 13 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+26036444791588 bemps_begin: pid 54344 , num_blocks 262144 , threads_per_block 256
+26036444839006 bemps_beacon: pid 54344 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+26038951857650 _bemps_dump_stats: Dumping bemps stats
+26038951880075 _bemps_dump_stats: count of beacon times: 1
+26038951888421 _bemps_dump_stats: min beacon time (ns): 151287
+26038951890694 _bemps_dump_stats: max beacon time (ns): 151287
+26038951893214 _bemps_dump_stats: avg beacon time (ns): 151287
+26038951914768 _bemps_dump_stats: count of free times: 1
+26038951916888 _bemps_dump_stats: min free time (ns): 27717
+26038951918928 _bemps_dump_stats: max free time (ns): 27717
+26038951920916 _bemps_dump_stats: avg free time (ns): 27717
+
+==54344== NVPROF is profiling process 54344, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54344== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54344== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.94%  64.645ms         3  21.548ms  21.405ms  21.779ms  [CUDA memcpy DtoH]
+                   25.21%  24.352ms         1  24.352ms  24.352ms  24.352ms  [CUDA memcpy HtoD]
+                    3.42%  3.3004ms         9  366.71us  53.152us  861.63us  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    3.06%  2.9514ms         9  327.94us  44.352us  755.87us  [CUDA memcpy DtoD]
+                    1.36%  1.3168ms         1  1.3168ms  1.3168ms  1.3168ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.01%  11.168us         8  1.3960us  1.3120us  1.6960us  [CUDA memset]
+      API calls:   52.11%  1.16727s         4  291.82ms  138.59ms  719.27ms  cudaMallocHost
+                   31.27%  700.53ms         8  87.566ms  491.78us  695.21ms  cudaMalloc
+                   11.91%  266.68ms         4  66.669ms  42.545ms  114.34ms  cudaFreeHost
+                    4.09%  91.651ms        13  7.0501ms  11.065us  26.687ms  cudaMemcpy
+                    0.20%  4.4211ms         8  552.64us  487.75us  801.41us  cudaFree
+                    0.15%  3.4596ms       384  9.0090us     958ns  351.00us  cuDeviceGetAttribute
+                    0.14%  3.2027ms         4  800.67us  419.73us  1.0121ms  cuDeviceTotalMem
+                    0.06%  1.3413ms         3  447.10us  7.4450us  1.3167ms  cudaThreadSynchronize
+                    0.03%  742.30us         1  742.30us  742.30us  742.30us  cudaGetDeviceProperties
+                    0.01%  306.17us         4  76.542us  70.328us  88.267us  cuDeviceGetName
+                    0.01%  132.59us        10  13.259us  7.8960us  48.384us  cudaLaunchKernel
+                    0.00%  108.88us         8  13.609us  8.7340us  40.890us  cudaMemset
+                    0.00%  58.176us        42  1.3850us     773ns  10.780us  cudaGetLastError
+                    0.00%  15.768us         4  3.9420us  3.5820us  4.8070us  cuDeviceGetPCIBusId
+                    0.00%  11.690us         8  1.4610us  1.0000us  2.0590us  cuDeviceGet
+                    0.00%  11.133us         2  5.5660us  4.5360us  6.5970us  cudaSetDevice
+                    0.00%  5.0840us         3  1.6940us  1.2530us  2.3120us  cuDeviceGetCount
+                    0.00%  4.7050us         4  1.1760us  1.0150us  1.4320us  cuDeviceGetUuid
+                    0.00%  2.3860us         1  2.3860us  2.3860us  2.3860us  cudaGetDeviceCount
+
+Worker 0: TOTAL_BENCHMARK_TIME 13 4.003231763839722
+Worker 0: TIME_SINCE_START     13 65.57484102249146
+Worker 0: 14 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+suc
+The file was not opened for reading
+26024486995805 bemps_begin: pid 54192 , num_blocks 236329 , threads_per_block 512
+26024487050191 bemps_beacon: pid 54192 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000005914708 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000041402960 % : READ COMMAND LINE PARAMETERS
+ 0.000022000000 s,  0.000130123590 % : READ IMAGE FROM FILE
+ 0.521941006184 s,  3.087128877640 % : RESIZE IMAGE
+ 1.568367958069 s,  9.276439666748 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.062936000526 s,  0.372248083353 % : COPY DATA TO CPU->GPU
+ 0.000067000001 s,  0.000396285497 % : EXTRACT IMAGE
+ 1.226925969124 s,  7.256909370422 % : COMPUTE
+ 0.000014000000 s,  0.000082805920 % : COMPRESS IMAGE
+ 0.050781000406 s,  0.300354808569 % : COPY DATA TO GPU->CPU
+13.338239669800 s, 78.891799926758 % : SAVE IMAGE INTO FILE
+ 0.137702003121 s,  0.814467191696 % : FREE MEMORY
+Total time:
+16.907003402710 s
+26040103267018 _bemps_dump_stats: Dumping bemps stats
+26040103285892 _bemps_dump_stats: count of beacon times: 1
+26040103294376 _bemps_dump_stats: min beacon time (ns): 149183
+26040103296619 _bemps_dump_stats: max beacon time (ns): 149183
+26040103298795 _bemps_dump_stats: avg beacon time (ns): 149183
+26040103317789 _bemps_dump_stats: count of free times: 1
+26040103319906 _bemps_dump_stats: min free time (ns): 32708
+26040103322141 _bemps_dump_stats: max free time (ns): 32708
+26040103324196 _bemps_dump_stats: avg free time (ns): 32708
+
+==54192== NVPROF is profiling process 54192, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==54192== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==54192== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.45%  419.77ms       100  4.1977ms  4.1686ms  4.2055ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.02%  387.34ms       100  3.8734ms  3.8701ms  3.8960ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.63%  235.35ms       300  784.51us  14.496us  2.6077ms  reduce(long, int, int, float*, float*)
+                   13.87%  185.15ms       100  1.8515ms  1.8474ms  1.8531ms  prepare(long, float*, float*, float*)
+                    4.71%  62.805ms         1  62.805ms  62.805ms  62.805ms  [CUDA memcpy HtoD]
+                    3.12%  41.698ms       201  207.45us  1.5040us  41.366ms  [CUDA memcpy DtoH]
+                    0.10%  1.2734ms         1  1.2734ms  1.2734ms  1.2734ms  extract(long, float*)
+                    0.09%  1.2298ms         1  1.2298ms  1.2298ms  1.2298ms  compress(long, float*)
+      API calls:   67.40%  1.89759s       206  9.2116ms  1.2250us  565.09ms  cudaMemcpy
+                   28.39%  799.40ms        12  66.616ms  6.5980us  754.02ms  cudaMalloc
+                    3.82%  107.69ms        12  8.9739ms  6.9830us  99.731ms  cudaFree
+                    0.18%  5.1265ms       602  8.5150us  6.6640us  49.284us  cudaLaunchKernel
+                    0.08%  2.2138ms       384  5.7650us     683ns  220.09us  cuDeviceGetAttribute
+                    0.07%  2.0953ms         4  523.83us  251.53us  741.69us  cuDeviceTotalMem
+                    0.04%  1.0952ms      1404     780ns     693ns  1.8660us  cudaGetLastError
+                    0.01%  194.68us         4  48.670us  45.404us  57.933us  cuDeviceGetName
+                    0.00%  11.950us         4  2.9870us  2.2210us  4.1810us  cuDeviceGetPCIBusId
+                    0.00%  7.7030us         8     962ns     735ns  1.4150us  cuDeviceGet
+                    0.00%  3.5860us         1  3.5860us  3.5860us  3.5860us  cudaSetDevice
+                    0.00%  3.5370us         4     884ns     872ns     900ns  cuDeviceGetUuid
+                    0.00%  3.0490us         3  1.0160us     824ns  1.3910us  cuDeviceGetCount
+                    0.00%  1.3090us         1  1.3090us  1.3090us  1.3090us  cudaGetErrorString
+
+Worker 1: TOTAL_BENCHMARK_TIME 9 17.4727942943573
+Worker 1: TIME_SINCE_START     9 66.78190112113953
+Worker 1: 15 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+26042751962058 bemps_begin: pid 54387 , num_blocks 1 , threads_per_block 16
+26042752011040 bemps_beacon: pid 54387 , bemps_tid 0 , mem_B 2147745800 , cores 1
+Processing bottom-right matrix
+26045047745417 _bemps_dump_stats: Dumping bemps stats
+26045047759017 _bemps_dump_stats: count of beacon times: 1
+26045047768738 _bemps_dump_stats: min beacon time (ns): 373362709
+26045047770865 _bemps_dump_stats: max beacon time (ns): 373362709
+26045047772907 _bemps_dump_stats: avg beacon time (ns): 3.73363e+08
+26045047803686 _bemps_dump_stats: count of free times: 1
+26045047805947 _bemps_dump_stats: min free time (ns): 26778
+26045047808029 _bemps_dump_stats: max free time (ns): 26778
+26045047810149 _bemps_dump_stats: avg free time (ns): 26778
+
+==54387== NVPROF is profiling process 54387, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+==54387== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 16384 10
+==54387== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   73.88%  782.38ms         1  782.38ms  782.38ms  782.38ms  [CUDA memcpy DtoH]
+                   24.15%  255.71ms         2  127.86ms  127.81ms  127.90ms  [CUDA memcpy HtoD]
+                    0.99%  10.449ms      1024  10.204us  5.2160us  21.856us  needle_cuda_shared_1(int*, int*, int, int, int, int)
+                    0.99%  10.433ms      1023  10.198us  4.9280us  21.055us  needle_cuda_shared_2(int*, int*, int, int, int, int)
+      API calls:   64.75%  1.04337s         3  347.79ms  127.89ms  787.51ms  cudaMemcpy
+                   33.80%  544.58ms         2  272.29ms  1.8884ms  542.69ms  cudaMalloc
+                    0.91%  14.655ms      2047  7.1590us  6.6480us  56.168us  cudaLaunchKernel
+                    0.19%  2.9867ms         2  1.4934ms  1.4597ms  1.5270ms  cudaFree
+                    0.17%  2.8163ms       384  7.3340us     963ns  278.99us  cuDeviceGetAttribute
+                    0.16%  2.5861ms         4  646.52us  350.74us  766.40us  cuDeviceTotalMem
+                    0.02%  253.79us         4  63.447us  58.762us  75.235us  cuDeviceGetName
+                    0.00%  15.698us         4  3.9240us  3.1150us  5.0570us  cuDeviceGetPCIBusId
+                    0.00%  14.399us         1  14.399us  14.399us  14.399us  cudaSetDevice
+                    0.00%  11.220us         8  1.4020us  1.0700us  2.0380us  cuDeviceGet
+                    0.00%  4.6820us         4  1.1700us  1.1320us  1.2350us  cuDeviceGetUuid
+                    0.00%  4.5190us         3  1.5060us  1.0430us  1.9740us  cuDeviceGetCount
+
+Worker 0: TOTAL_BENCHMARK_TIME 14 6.036457300186157
+Worker 0: TIME_SINCE_START     14 71.61148357391357
+Worker 0: 16 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+26039633525349 bemps_begin: pid 53905 , num_blocks 65536 , threads_per_block 512
+26039633572650 bemps_beacon: pid 53905 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+26047275998267 _bemps_dump_stats: Dumping bemps stats
+26047276010686 _bemps_dump_stats: count of beacon times: 1
+26047276018454 _bemps_dump_stats: min beacon time (ns): 302185495
+26047276020639 _bemps_dump_stats: max beacon time (ns): 302185495
+26047276022614 _bemps_dump_stats: avg beacon time (ns): 3.02185e+08
+26047276048314 _bemps_dump_stats: count of free times: 1
+26047276050637 _bemps_dump_stats: min free time (ns): 26506
+26047276052757 _bemps_dump_stats: max free time (ns): 26506
+26047276054880 _bemps_dump_stats: avg free time (ns): 26506
+
+==53905== NVPROF is profiling process 53905, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+==53905== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+==53905== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   57.69%  160.16ms        20  8.0078ms  1.3760us  98.510ms  [CUDA memcpy HtoD]
+                   35.47%  98.454ms        14  7.0324ms  134.75us  40.918ms  Kernel(Node*, int*, bool*, bool*, bool*, int*, int)
+                    4.15%  11.524ms        15  768.29us  1.6320us  11.500ms  [CUDA memcpy DtoH]
+                    2.69%  7.4569ms        14  532.63us  135.33us  1.5281ms  Kernel2(bool*, bool*, bool*, bool*, int)
+      API calls:   68.68%  630.14ms         7  90.020ms  242.80us  627.42ms  cudaMalloc
+                   30.33%  278.30ms        35  7.9514ms  7.5210us  98.627ms  cudaMemcpy
+                    0.33%  3.0021ms         7  428.87us  182.51us  1.1405ms  cudaFree
+                    0.31%  2.8446ms       384  7.4070us     934ns  305.98us  cuDeviceGetAttribute
+                    0.27%  2.4895ms         4  622.37us  334.26us  778.70us  cuDeviceTotalMem
+                    0.04%  375.21us        28  13.400us  8.6120us  42.983us  cudaLaunchKernel
+                    0.03%  255.31us         4  63.827us  58.905us  76.865us  cuDeviceGetName
+                    0.00%  17.624us         4  4.4060us  3.3580us  6.1030us  cuDeviceGetPCIBusId
+                    0.00%  15.596us         1  15.596us  15.596us  15.596us  cudaSetDevice
+                    0.00%  10.989us         8  1.3730us  1.0970us  2.1770us  cuDeviceGet
+                    0.00%  4.8380us         3  1.6120us  1.0560us  2.2390us  cuDeviceGetCount
+                    0.00%  4.6030us         4  1.1500us  1.1170us  1.1830us  cuDeviceGetUuid
+
+Worker 3: TOTAL_BENCHMARK_TIME 7 53.05904746055603
+Worker 3: TIME_SINCE_START     7 73.68782782554626
+Worker 3: 17 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+suc
+Using device 0: Tesla V100-SXM2-16GB
+Source file:		/home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+ Dimensions:		8192x8192
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp
+precteno 3145782, inputsize 201326592
+26048590361278 bemps_begin: pid 54493 , num_blocks 262144 , threads_per_block 256
+26048590412874 bemps_beacon: pid 54493 , bemps_tid 0 , mem_B 2080374784 , cores 2097152
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 69 , gx = 43 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 35 , gx = 22 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 18 , gx = 11 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.r (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.g (8192 x 8192)
+
+Writing to /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp.dwt.b (8192 x 8192)
+26051072418675 _bemps_dump_stats: Dumping bemps stats
+26051072442805 _bemps_dump_stats: count of beacon times: 1
+26051072451419 _bemps_dump_stats: min beacon time (ns): 180246
+26051072453707 _bemps_dump_stats: max beacon time (ns): 180246
+26051072455958 _bemps_dump_stats: avg beacon time (ns): 180246
+26051072476578 _bemps_dump_stats: count of free times: 1
+26051072478656 _bemps_dump_stats: min free time (ns): 26916
+26051072480698 _bemps_dump_stats: max free time (ns): 26916
+26051072482781 _bemps_dump_stats: avg free time (ns): 26916
+
+==54493== NVPROF is profiling process 54493, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54493== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/dwt2d/dwt2d /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/dwt2d/rgb.bmp -d 8192x8192 -f -5 -l 3
+==54493== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.81%  64.253ms         3  21.418ms  21.403ms  21.434ms  [CUDA memcpy DtoH]
+                   25.31%  24.345ms         1  24.345ms  24.345ms  24.345ms  [CUDA memcpy HtoD]
+                    3.42%  3.2921ms         9  365.79us  53.984us  856.99us  void dwt_cuda::fdwt53Kernel<int=192, int=8>(int const *, int*, int, int, int)
+                    3.07%  2.9528ms         9  328.09us  44.256us  755.90us  [CUDA memcpy DtoD]
+                    1.37%  1.3172ms         1  1.3172ms  1.3172ms  1.3172ms  void c_CopySrcToComponents<int>(int*, int*, int*, unsigned char*, int)
+                    0.01%  10.816us         8  1.3520us  1.2800us  1.6640us  [CUDA memset]
+      API calls:   55.45%  1.24458s         4  311.14ms  134.34ms  738.89ms  cudaMallocHost
+                   31.66%  710.51ms         8  88.813ms  498.14us  705.23ms  cudaMalloc
+                    8.28%  185.77ms         4  46.443ms  37.086ms  50.285ms  cudaFreeHost
+                    4.06%  91.231ms        13  7.0178ms  12.586us  26.658ms  cudaMemcpy
+                    0.19%  4.3730ms         8  546.62us  491.09us  775.75us  cudaFree
+                    0.13%  2.8702ms       384  7.4740us     898ns  293.18us  cuDeviceGetAttribute
+                    0.11%  2.4757ms         4  618.93us  336.44us  762.78us  cuDeviceTotalMem
+                    0.06%  1.3417ms         3  447.23us  6.9490us  1.3180ms  cudaThreadSynchronize
+                    0.03%  623.23us         1  623.23us  623.23us  623.23us  cudaGetDeviceProperties
+                    0.01%  255.42us         4  63.855us  58.983us  76.474us  cuDeviceGetName
+                    0.01%  140.72us        10  14.072us  9.0890us  47.270us  cudaLaunchKernel
+                    0.01%  117.69us         8  14.710us  9.9620us  42.236us  cudaMemset
+                    0.00%  59.189us        42  1.4090us     651ns  10.290us  cudaGetLastError
+                    0.00%  17.619us         4  4.4040us  3.3650us  6.1720us  cuDeviceGetPCIBusId
+                    0.00%  11.600us         8  1.4500us  1.1100us  2.3040us  cuDeviceGet
+                    0.00%  11.427us         2  5.7130us  4.7120us  6.7150us  cudaSetDevice
+                    0.00%  4.8750us         4  1.2180us  1.0290us  1.4290us  cuDeviceGetUuid
+                    0.00%  4.8640us         3  1.6210us  1.0360us  2.2050us  cuDeviceGetCount
+                    0.00%  1.7740us         1  1.7740us  1.7740us  1.7740us  cudaGetDeviceCount
+
+Worker 3: TOTAL_BENCHMARK_TIME 17 4.003551959991455
+Worker 3: TIME_SINCE_START     17 77.69156861305237
+Worker 3: 18 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+suc
+The file was not opened for reading
+26046790945984 bemps_begin: pid 54465 , num_blocks 236329 , threads_per_block 512
+26046790999317 bemps_beacon: pid 54465 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000005897898 % : SETUP VARIABLES
+ 0.000008000000 s,  0.000047183181 % : READ COMMAND LINE PARAMETERS
+ 0.000024999999 s,  0.000147447441 % : READ IMAGE FROM FILE
+ 0.524352014065 s,  3.092574596405 % : RESIZE IMAGE
+ 1.704041957855 s, 10.050265312195 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.058428999037 s,  0.344608247280 % : COPY DATA TO CPU->GPU
+ 0.000062999999 s,  0.000371567556 % : EXTRACT IMAGE
+ 1.222725987434 s,  7.211513042450 % : COMPUTE
+ 0.000015000000 s,  0.000088468463 % : COMPRESS IMAGE
+ 0.050650998950 s,  0.298734426498 % : COPY DATA TO GPU->CPU
+13.352495193481 s, 78.751647949219 % : SAVE IMAGE INTO FILE
+ 0.042387001216 s,  0.249994203448 % : FREE MEMORY
+Total time:
+16.955194473267 s
+26062326312657 _bemps_dump_stats: Dumping bemps stats
+26062326331703 _bemps_dump_stats: count of beacon times: 1
+26062326339060 _bemps_dump_stats: min beacon time (ns): 148505
+26062326341371 _bemps_dump_stats: max beacon time (ns): 148505
+26062326343424 _bemps_dump_stats: avg beacon time (ns): 148505
+26062326445176 _bemps_dump_stats: count of free times: 1
+26062326447726 _bemps_dump_stats: min free time (ns): 33022
+26062326449803 _bemps_dump_stats: max free time (ns): 33022
+26062326451883 _bemps_dump_stats: avg free time (ns): 33022
+
+==54465== NVPROF is profiling process 54465, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==54465== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==54465== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.68%  420.03ms       100  4.2003ms  4.1963ms  4.2039ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.20%  387.21ms       100  3.8721ms  3.8696ms  3.8755ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.43%  231.13ms       300  770.44us  14.528us  2.2383ms  reduce(long, int, int, float*, float*)
+                   13.97%  185.18ms       100  1.8518ms  1.8502ms  1.8551ms  prepare(long, float*, float*, float*)
+                    4.40%  58.294ms         1  58.294ms  58.294ms  58.294ms  [CUDA memcpy HtoD]
+                    3.14%  41.583ms       201  206.88us  1.0560us  41.270ms  [CUDA memcpy DtoH]
+                    0.09%  1.2530ms         1  1.2530ms  1.2530ms  1.2530ms  extract(long, float*)
+                    0.09%  1.2303ms         1  1.2303ms  1.2303ms  1.2303ms  compress(long, float*)
+      API calls:   69.16%  1.85770s       206  9.0180ms  1.1950us  533.85ms  cudaMemcpy
+                   30.10%  808.39ms        12  67.366ms  7.1210us  727.49ms  cudaMalloc
+                    0.31%  8.3037ms        12  691.97us  7.0560us  1.1376ms  cudaFree
+                    0.18%  4.9690ms       602  8.2540us  6.3840us  45.903us  cudaLaunchKernel
+                    0.10%  2.7555ms       384  7.1750us     907ns  279.94us  cuDeviceGetAttribute
+                    0.09%  2.5369ms         4  634.22us  318.54us  760.67us  cuDeviceTotalMem
+                    0.04%  1.0852ms      1404     772ns     696ns  1.6640us  cudaGetLastError
+                    0.01%  250.35us         4  62.587us  57.054us  76.682us  cuDeviceGetName
+                    0.00%  16.987us         4  4.2460us  3.3190us  5.1620us  cuDeviceGetPCIBusId
+                    0.00%  11.133us         8  1.3910us  1.0630us  2.1520us  cuDeviceGet
+                    0.00%  4.7640us         3  1.5880us  1.0900us  2.2730us  cuDeviceGetCount
+                    0.00%  4.5080us         4  1.1270us  1.0170us  1.2770us  cuDeviceGetUuid
+                    0.00%  3.1600us         1  3.1600us  3.1600us  3.1600us  cudaSetDevice
+                    0.00%  1.1660us         1  1.1660us  1.1660us  1.1660us  cudaGetErrorString
+
+Worker 0: TOTAL_BENCHMARK_TIME 16 17.351367235183716
+Worker 0: TIME_SINCE_START     16 88.96304202079773
+Worker 0: 19 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+26062722170955 bemps_begin: pid 54653 , num_blocks 1048576 , threads_per_block 256
+26062722205656 bemps_beacon: pid 54653 , bemps_tid 0 , mem_B 6442450944 , cores 8388608
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+26072374621254 _bemps_dump_stats: Dumping bemps stats
+26072374634843 _bemps_dump_stats: count of beacon times: 1
+26072374642788 _bemps_dump_stats: min beacon time (ns): 246107023
+26072374644912 _bemps_dump_stats: max beacon time (ns): 246107023
+26072374646941 _bemps_dump_stats: avg beacon time (ns): 2.46107e+08
+26072374679280 _bemps_dump_stats: count of free times: 1
+26072374681644 _bemps_dump_stats: min free time (ns): 29753
+26072374683769 _bemps_dump_stats: max free time (ns): 29753
+26072374685744 _bemps_dump_stats: avg free time (ns): 29753
+
+==54653== NVPROF is profiling process 54653, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==54653== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 16384 16384 0 127 0 127 0.5 2
+==54653== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   53.77%  258.07ms         2  129.04ms  128.86ms  129.21ms  [CUDA memcpy HtoD]
+                   38.08%  182.75ms         2  91.377ms  91.262ms  91.491ms  [CUDA memcpy DtoH]
+                    4.14%  19.865ms         2  9.9324ms  9.8891ms  9.9757ms  srad_cuda_2(float*, float*, float*, float*, float*, float*, int, int, float, float)
+                    4.01%  19.239ms         2  9.6195ms  9.5025ms  9.7366ms  srad_cuda_1(float*, float*, float*, float*, float*, float*, int, int, float)
+      API calls:   49.75%  552.37ms         6  92.062ms  1.8332ms  543.11ms  cudaMalloc
+                   43.27%  480.35ms         4  120.09ms  110.78ms  129.29ms  cudaMemcpy
+                    6.44%  71.499ms         6  11.916ms  1.6200ms  63.244ms  cudaFree
+                    0.26%  2.8378ms       384  7.3900us     951ns  281.10us  cuDeviceGetAttribute
+                    0.24%  2.6977ms         4  674.41us  332.51us  819.72us  cuDeviceTotalMem
+                    0.02%  258.81us         4  64.701us  60.170us  76.002us  cuDeviceGetName
+                    0.01%  121.17us         4  30.293us  11.827us  50.650us  cudaLaunchKernel
+                    0.00%  22.246us         4  5.5610us  3.3180us  10.133us  cuDeviceGetPCIBusId
+                    0.00%  14.703us         1  14.703us  14.703us  14.703us  cudaSetDevice
+                    0.00%  12.877us         1  12.877us  12.877us  12.877us  cudaThreadSynchronize
+                    0.00%  10.715us         8  1.3390us  1.0190us  2.0440us  cuDeviceGet
+                    0.00%  4.6890us         4  1.1720us  1.1170us  1.2290us  cuDeviceGetUuid
+                    0.00%  4.5430us         3  1.5140us  1.0110us  1.9400us  cuDeviceGetCount
+
+Worker 0: TOTAL_BENCHMARK_TIME 19 9.814715385437012
+Worker 0: TIME_SINCE_START     19 98.77794361114502
+Worker 0: 20 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+26067369802567 bemps_begin: pid 54408 , num_blocks 1728000 , threads_per_block 128
+26067369856754 bemps_beacon: pid 54408 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.755008995533 s,  4.040870666504 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000138999996 s,  0.000743939483 % : GPU MEM: ALO
+ 9.549793243408 s, 51.111282348633 % : GPU MEM: COPY IN
+ 7.891068935394 s, 42.233650207520 % : GPU: KERNEL
+ 0.470775991678 s,  2.519631862640 % : GPU MEM: COPY OUT
+ 0.017531000078 s,  0.093827359378 % : GPU MEM: FRE
+Total time:
+18.684316635132 s
+26076462340975 _bemps_dump_stats: Dumping bemps stats
+26076462363654 _bemps_dump_stats: count of beacon times: 1
+26076462374656 _bemps_dump_stats: min beacon time (ns): 188806
+26076462376763 _bemps_dump_stats: max beacon time (ns): 188806
+26076462378825 _bemps_dump_stats: avg beacon time (ns): 188806
+26076462405907 _bemps_dump_stats: count of free times: 1
+26076462407962 _bemps_dump_stats: min free time (ns): 33665
+26076462410011 _bemps_dump_stats: max free time (ns): 33665
+26076462412034 _bemps_dump_stats: avg free time (ns): 33665
+
+==54408== NVPROF is profiling process 54408, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==54408== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==54408== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   71.15%  5.16674s         1  5.16674s  5.16674s  5.16674s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.37%  1.62437s         4  406.09ms  135.99ms  662.50ms  [CUDA memcpy HtoD]
+                    6.48%  470.60ms         1  470.60ms  470.60ms  470.60ms  [CUDA memcpy DtoH]
+      API calls:   67.99%  5.70032s         2  2.85016s  533.57ms  5.16675s  cudaThreadSynchronize
+                   24.99%  2.09554s         5  419.11ms  136.07ms  662.62ms  cudaMemcpy
+                    6.73%  564.32ms         4  141.08ms  2.2254ms  546.52ms  cudaMalloc
+                    0.21%  17.391ms         4  4.3478ms  1.7476ms  6.9351ms  cudaFree
+                    0.04%  3.7111ms       384  9.6640us     949ns  597.50us  cuDeviceGetAttribute
+                    0.03%  2.6359ms         4  658.98us  331.44us  794.87us  cuDeviceTotalMem
+                    0.00%  307.87us         4  76.967us  58.495us  111.90us  cuDeviceGetName
+                    0.00%  60.826us         1  60.826us  60.826us  60.826us  cudaLaunchKernel
+                    0.00%  16.234us         4  4.0580us  3.2870us  4.7730us  cuDeviceGetPCIBusId
+                    0.00%  10.651us         8  1.3310us  1.0440us  1.8510us  cuDeviceGet
+                    0.00%  8.9210us         1  8.9210us  8.9210us  8.9210us  cudaSetDevice
+                    0.00%  4.9290us         4  1.2320us  1.0990us  1.3730us  cuDeviceGetUuid
+                    0.00%  4.6550us         3  1.5510us  1.0680us  2.1690us  cuDeviceGetCount
+                    0.00%  1.5090us         1  1.5090us  1.5090us  1.5090us  cudaGetLastError
+
+Worker 1: TOTAL_BENCHMARK_TIME 15 36.474374771118164
+Worker 1: TIME_SINCE_START     15 103.25645971298218
+Worker 1: 21 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+Random number generator seed: 7
+Input layer size : 8388608
+Starting training kernel
+26076191219972 bemps_begin: pid 54753 , num_blocks 524288 , threads_per_block 256
+26076191270647 bemps_beacon: pid 54753 , bemps_tid 0 , mem_B 1176502548 , cores 4194304
+Performing GPU computation
+Training done
+26077937818009 _bemps_dump_stats: Dumping bemps stats
+26077937831208 _bemps_dump_stats: count of beacon times: 1
+26077937840271 _bemps_dump_stats: min beacon time (ns): 226995839
+26077937842341 _bemps_dump_stats: max beacon time (ns): 226995839
+26077937845375 _bemps_dump_stats: avg beacon time (ns): 2.26996e+08
+26077937872130 _bemps_dump_stats: count of free times: 1
+26077937874532 _bemps_dump_stats: min free time (ns): 28114
+26077937876707 _bemps_dump_stats: max free time (ns): 28114
+26077937878707 _bemps_dump_stats: avg free time (ns): 28114
+
+==54753== NVPROF is profiling process 54753, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==54753== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 8388608
+==54753== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   79.67%  214.38ms         5  42.875ms  1.4400us  70.187ms  [CUDA memcpy HtoD]
+                   19.19%  51.649ms         3  17.216ms  171.04us  48.626ms  [CUDA memcpy DtoH]
+                    0.65%  1.7387ms         1  1.7387ms  1.7387ms  1.7387ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.49%  1.3200ms         1  1.3200ms  1.3200ms  1.3200ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   69.39%  643.92ms         6  107.32ms  8.8990us  641.26ms  cudaMalloc
+                   29.05%  269.53ms         8  33.691ms  19.279us  70.241ms  cudaMemcpy
+                    0.65%  6.0068ms       384  15.642us     945ns  667.31us  cuDeviceGetAttribute
+                    0.38%  3.5054ms         4  876.34us  553.73us  1.0042ms  cuDeviceTotalMem
+                    0.27%  2.4900ms         6  415.00us  17.491us  844.95us  cudaFree
+                    0.19%  1.7716ms         1  1.7716ms  1.7716ms  1.7716ms  cudaThreadSynchronize
+                    0.06%  552.31us         4  138.08us  132.42us  144.67us  cuDeviceGetName
+                    0.01%  94.140us         2  47.070us  43.528us  50.612us  cudaLaunchKernel
+                    0.00%  17.097us         4  4.2740us  3.2700us  5.5470us  cuDeviceGetPCIBusId
+                    0.00%  15.597us         1  15.597us  15.597us  15.597us  cudaSetDevice
+                    0.00%  10.803us         8  1.3500us  1.0470us  1.9370us  cuDeviceGet
+                    0.00%  5.2550us         3  1.7510us  1.0220us  2.5950us  cuDeviceGetCount
+                    0.00%  4.5930us         4  1.1480us  1.1010us  1.1940us  cuDeviceGetUuid
+
+Worker 0: TOTAL_BENCHMARK_TIME 20 5.797377109527588
+Worker 0: TIME_SINCE_START     20 104.57551550865173
+Worker 0: 22 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+26078303225719 bemps_begin: pid 54818 , num_blocks 262144 , threads_per_block 256
+26078303260688 bemps_beacon: pid 54818 , bemps_tid 0 , mem_B 1610612736 , cores 2097152
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+26081559058560 _bemps_dump_stats: Dumping bemps stats
+26081559066326 _bemps_dump_stats: count of beacon times: 1
+26081559073650 _bemps_dump_stats: min beacon time (ns): 362472851
+26081559075680 _bemps_dump_stats: max beacon time (ns): 362472851
+26081559077685 _bemps_dump_stats: avg beacon time (ns): 3.62473e+08
+26081559106975 _bemps_dump_stats: count of free times: 1
+26081559109183 _bemps_dump_stats: min free time (ns): 28479
+26081559111227 _bemps_dump_stats: max free time (ns): 28479
+26081559113329 _bemps_dump_stats: avg free time (ns): 28479
+
+==54818== NVPROF is profiling process 54818, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+==54818== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+==54818== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   53.64%  65.224ms         2  32.612ms  32.298ms  32.925ms  [CUDA memcpy HtoD]
+                   37.74%  45.895ms         2  22.947ms  22.938ms  22.957ms  [CUDA memcpy DtoH]
+                    4.70%  5.7150ms         2  2.8575ms  2.8561ms  2.8589ms  srad_cuda_2(float*, float*, float*, float*, float*, float*, int, int, float, float)
+                    3.92%  4.7657ms         2  2.3829ms  2.3703ms  2.3954ms  srad_cuda_1(float*, float*, float*, float*, float*, float*, int, int, float)
+      API calls:   66.23%  544.79ms         6  90.798ms  802.73us  540.67ms  cudaMalloc
+                   18.21%  149.78ms         6  24.963ms  677.72us  72.667ms  cudaFree
+                   14.84%  122.06ms         4  30.515ms  28.312ms  33.036ms  cudaMemcpy
+                    0.34%  2.8277ms       384  7.3630us     912ns  280.08us  cuDeviceGetAttribute
+                    0.32%  2.6248ms         4  656.20us  336.74us  763.76us  cuDeviceTotalMem
+                    0.04%  291.65us         4  72.912us  60.140us  93.339us  cuDeviceGetName
+                    0.01%  108.39us         4  27.096us  10.451us  48.771us  cudaLaunchKernel
+                    0.00%  16.545us         4  4.1360us  3.2210us  5.6170us  cuDeviceGetPCIBusId
+                    0.00%  14.664us         1  14.664us  14.664us  14.664us  cudaSetDevice
+                    0.00%  12.301us         1  12.301us  12.301us  12.301us  cudaThreadSynchronize
+                    0.00%  10.492us         8  1.3110us  1.0370us  2.1010us  cuDeviceGet
+                    0.00%  4.6790us         3  1.5590us  1.0820us  2.1790us  cuDeviceGetCount
+                    0.00%  4.4290us         4  1.1070us  1.0760us  1.1280us  cuDeviceGetUuid
+
+Worker 0: TOTAL_BENCHMARK_TIME 22 3.3714754581451416
+Worker 0: TIME_SINCE_START     22 107.94719004631042
+Worker 0: 23 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+suc
+The file was not opened for reading
+26031945707587 bemps_begin: pid 54273 , num_blocks 781250 , threads_per_block 512
+26031945762651 bemps_beacon: pid 54273 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001771573 % : SETUP VARIABLES
+ 0.000008000000 s,  0.000014172582 % : READ COMMAND LINE PARAMETERS
+ 0.000024000001 s,  0.000042517746 % : READ IMAGE FROM FILE
+ 1.719807028770 s,  3.046763181686 % : RESIZE IMAGE
+ 1.526321053505 s,  2.703988552094 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.202121004462 s,  0.358072042465 % : COPY DATA TO CPU->GPU
+ 0.000071000002 s,  0.000125781662 % : EXTRACT IMAGE
+ 4.025926113129 s,  7.132220268250 % : COMPUTE
+ 0.000014000000 s,  0.000024802017 % : COMPRESS IMAGE
+ 0.173697993159 s,  0.307718634605 % : COPY DATA TO GPU->CPU
+48.682567596436 s, 86.244705200195 % : SAVE IMAGE INTO FILE
+ 0.116460002959 s,  0.206317350268 % : FREE MEMORY
+Total time:
+56.447021484375 s
+26085881130370 _bemps_dump_stats: Dumping bemps stats
+26085881150428 _bemps_dump_stats: count of beacon times: 1
+26085881158828 _bemps_dump_stats: min beacon time (ns): 156768
+26085881161041 _bemps_dump_stats: max beacon time (ns): 156768
+26085881163027 _bemps_dump_stats: avg beacon time (ns): 156768
+26085881186686 _bemps_dump_stats: count of free times: 1
+26085881188692 _bemps_dump_stats: min free time (ns): 43398
+26085881190687 _bemps_dump_stats: max free time (ns): 43398
+26085881192678 _bemps_dump_stats: avg free time (ns): 43398
+
+==54273== NVPROF is profiling process 54273, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+==54273== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+==54273== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.56%  1.38675s       100  13.867ms  13.862ms  13.876ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.14%  1.28041s       100  12.804ms  12.800ms  12.810ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.33%  761.52ms       400  1.9038ms  1.7920us  7.3952ms  reduce(long, int, int, float*, float*)
+                   13.92%  611.79ms       100  6.1179ms  6.1160ms  6.1213ms  prepare(long, float*, float*, float*)
+                    4.60%  202.02ms         1  202.02ms  202.02ms  202.02ms  [CUDA memcpy HtoD]
+                    3.26%  143.18ms       201  712.35us  1.5040us  142.87ms  [CUDA memcpy DtoH]
+                    0.09%  4.1310ms         1  4.1310ms  4.1310ms  4.1310ms  extract(long, float*)
+                    0.09%  4.0656ms         1  4.0656ms  4.0656ms  4.0656ms  compress(long, float*)
+      API calls:   86.54%  4.92183s       206  23.892ms  1.2340us  531.96ms  cudaMemcpy
+                   12.91%  734.34ms        12  61.195ms  6.8450us  683.65ms  cudaMalloc
+                    0.30%  17.024ms        12  1.4186ms  7.2600us  2.2097ms  cudaFree
+                    0.13%  7.4698ms       702  10.640us  6.4100us  62.983us  cudaLaunchKernel
+                    0.05%  2.6953ms         4  673.82us  565.85us  713.89us  cuDeviceTotalMem
+                    0.04%  2.2321ms       384  5.8120us     721ns  245.57us  cuDeviceGetAttribute
+                    0.03%  1.5982ms      1704     937ns     696ns  5.1140us  cudaGetLastError
+                    0.00%  199.29us         4  49.822us  45.614us  60.540us  cuDeviceGetName
+                    0.00%  12.704us         4  3.1760us  2.2520us  4.2980us  cuDeviceGetPCIBusId
+                    0.00%  7.6720us         8     959ns     752ns  1.5440us  cuDeviceGet
+                    0.00%  3.3750us         3  1.1250us     806ns  1.5490us  cuDeviceGetCount
+                    0.00%  3.2700us         1  3.2700us  3.2700us  3.2700us  cudaSetDevice
+                    0.00%  3.2470us         4     811ns     765ns     872ns  cuDeviceGetUuid
+                    0.00%  1.1690us         1  1.1690us  1.1690us  1.1690us  cudaGetErrorString
+
+Worker 2: TOTAL_BENCHMARK_TIME 12 56.951237201690674
+Worker 2: TIME_SINCE_START     12 112.52503490447998
+Worker 2: 24 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+26080587509314 bemps_begin: pid 54536 , num_blocks 4194304 , threads_per_block 256
+26080587557854 bemps_beacon: pid 54536 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+26088524225745 _bemps_dump_stats: Dumping bemps stats
+26088524239820 _bemps_dump_stats: count of beacon times: 1
+26088524248499 _bemps_dump_stats: min beacon time (ns): 222639062
+26088524250710 _bemps_dump_stats: max beacon time (ns): 222639062
+26088524252742 _bemps_dump_stats: avg beacon time (ns): 2.22639e+08
+26088524280811 _bemps_dump_stats: count of free times: 1
+26088524283100 _bemps_dump_stats: min free time (ns): 27374
+26088524285252 _bemps_dump_stats: max free time (ns): 27374
+26088524287386 _bemps_dump_stats: avg free time (ns): 27374
+
+==54536== NVPROF is profiling process 54536, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==54536== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+==54536== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   78.33%  1.77029s         5  354.06ms  1.4080us  579.81ms  [CUDA memcpy HtoD]
+                   19.11%  431.96ms         3  143.99ms  168.99us  407.88ms  [CUDA memcpy DtoH]
+                    1.28%  28.967ms         1  28.967ms  28.967ms  28.967ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+                    1.27%  28.801ms         1  28.801ms  28.801ms  28.801ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+      API calls:   78.84%  2.23343s         8  279.18ms  19.711us  579.96ms  cudaMemcpy
+                   19.52%  552.89ms         6  92.149ms  10.683us  544.24ms  cudaMalloc
+                    1.02%  28.829ms         1  28.829ms  28.829ms  28.829ms  cudaThreadSynchronize
+                    0.45%  12.643ms         6  2.1072ms  18.061us  5.7137ms  cudaFree
+                    0.08%  2.3514ms         4  587.85us  255.82us  718.83us  cuDeviceTotalMem
+                    0.08%  2.3252ms       384  6.0550us     723ns  247.62us  cuDeviceGetAttribute
+                    0.01%  202.97us         4  50.742us  46.019us  61.481us  cuDeviceGetName
+                    0.00%  98.518us         2  49.259us  46.144us  52.374us  cudaLaunchKernel
+                    0.00%  14.366us         4  3.5910us  2.8330us  4.4890us  cuDeviceGetPCIBusId
+                    0.00%  11.129us         1  11.129us  11.129us  11.129us  cudaSetDevice
+                    0.00%  7.7190us         8     964ns     757ns  1.5870us  cuDeviceGet
+                    0.00%  3.4980us         4     874ns     811ns     946ns  cuDeviceGetUuid
+                    0.00%  3.4960us         3  1.1650us     852ns  1.6820us  cuDeviceGetCount
+
+Worker 3: TOTAL_BENCHMARK_TIME 18 37.76719379425049
+Worker 3: TIME_SINCE_START     18 115.45895266532898
+Worker 3: 25 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+26104255077090 bemps_begin: pid 54801 , num_blocks 1728000 , threads_per_block 128
+26104255135834 bemps_beacon: pid 54801 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.894695997238 s,  4.695124149323 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000144000005 s,  0.000755673333 % : GPU MEM: ALO
+ 9.709480285645 s, 50.952739715576 % : GPU MEM: COPY IN
+ 7.962617874146 s, 41.785678863525 % : GPU: KERNEL
+ 0.471228003502 s,  2.472877979279 % : GPU MEM: COPY OUT
+ 0.017688000575 s,  0.092821873724 % : GPU MEM: FRE
+Total time:
+19.055854797363 s
+26113443965545 _bemps_dump_stats: Dumping bemps stats
+26113443987778 _bemps_dump_stats: count of beacon times: 1
+26113443998721 _bemps_dump_stats: min beacon time (ns): 204924
+26113444001035 _bemps_dump_stats: max beacon time (ns): 204924
+26113444003209 _bemps_dump_stats: avg beacon time (ns): 204924
+26113444027573 _bemps_dump_stats: count of free times: 1
+26113444029794 _bemps_dump_stats: min free time (ns): 30016
+26113444031999 _bemps_dump_stats: max free time (ns): 30016
+26113444034239 _bemps_dump_stats: avg free time (ns): 30016
+
+==54801== NVPROF is profiling process 54801, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==54801== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==54801== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.89%  5.16703s         1  5.16703s  5.16703s  5.16703s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.65%  1.65061s         4  412.65ms  137.86ms  672.71ms  [CUDA memcpy HtoD]
+                    6.46%  471.06ms         1  471.06ms  471.06ms  471.06ms  [CUDA memcpy DtoH]
+      API calls:   67.78%  5.70625s         2  2.85313s  539.21ms  5.16704s  cudaThreadSynchronize
+                   25.21%  2.12227s         5  424.45ms  137.95ms  672.85ms  cudaMemcpy
+                    6.74%  567.76ms         4  141.94ms  2.2443ms  550.13ms  cudaMalloc
+                    0.21%  17.570ms         4  4.3924ms  1.7197ms  7.1240ms  cudaFree
+                    0.03%  2.8665ms         4  716.62us  708.50us  729.65us  cuDeviceTotalMem
+                    0.03%  2.1754ms       384  5.6650us     718ns  220.20us  cuDeviceGetAttribute
+                    0.00%  198.23us         4  49.557us  44.908us  61.645us  cuDeviceGetName
+                    0.00%  63.132us         1  63.132us  63.132us  63.132us  cudaLaunchKernel
+                    0.00%  12.779us         4  3.1940us  2.3220us  4.0420us  cuDeviceGetPCIBusId
+                    0.00%  8.6330us         1  8.6330us  8.6330us  8.6330us  cudaSetDevice
+                    0.00%  7.6410us         8     955ns     793ns  1.5820us  cuDeviceGet
+                    0.00%  3.4070us         3  1.1350us     841ns  1.6150us  cuDeviceGetCount
+                    0.00%  3.3280us         4     832ns     768ns     894ns  cuDeviceGetUuid
+                    0.00%  1.0860us         1  1.0860us  1.0860us  1.0860us  cudaGetLastError
+
+Worker 1: TOTAL_BENCHMARK_TIME 21 36.788986682891846
+Worker 1: TIME_SINCE_START     21 140.04563403129578
+Worker 1: 26 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+26107343225597 bemps_begin: pid 54911 , num_blocks 1331000 , threads_per_block 128
+26107343284659 bemps_beacon: pid 54911 , bemps_tid 0 , mem_B 10456336000 , cores 5324000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.763899981976 s,  5.126224994659 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000144999998 s,  0.000973036571 % : GPU MEM: ALO
+ 7.556437015533 s, 50.708206176758 % : GPU MEM: COPY IN
+ 6.206352233887 s, 41.648326873779 % : GPU: KERNEL
+ 0.361782014370 s,  2.427773237228 % : GPU MEM: COPY OUT
+ 0.013187999837 s,  0.088499352336 % : GPU MEM: FRE
+Total time:
+14.901803970337 s
+26114472631842 _bemps_dump_stats: Dumping bemps stats
+26114472655165 _bemps_dump_stats: count of beacon times: 1
+26114472665760 _bemps_dump_stats: min beacon time (ns): 206683
+26114472667834 _bemps_dump_stats: max beacon time (ns): 206683
+26114472669947 _bemps_dump_stats: avg beacon time (ns): 206683
+26114472696697 _bemps_dump_stats: count of free times: 1
+26114472698825 _bemps_dump_stats: min free time (ns): 25964
+26114472700913 _bemps_dump_stats: max free time (ns): 25964
+26114472703021 _bemps_dump_stats: avg free time (ns): 25964
+
+==54911== NVPROF is profiling process 54911, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==54911== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==54911== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   71.11%  3.97554s         1  3.97554s  3.97554s  3.97554s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.42%  1.25339s         4  313.35ms  104.58ms  511.31ms  [CUDA memcpy HtoD]
+                    6.47%  361.62ms         1  361.62ms  361.62ms  361.62ms  [CUDA memcpy DtoH]
+      API calls:   67.42%  4.50871s         2  2.25436s  533.16ms  3.97555s  cudaThreadSynchronize
+                   24.16%  1.61552s         5  323.10ms  104.69ms  511.38ms  cudaMemcpy
+                    8.15%  545.23ms         4  136.31ms  1.8929ms  531.31ms  cudaMalloc
+                    0.20%  13.077ms         4  3.2693ms  1.2030ms  5.2359ms  cudaFree
+                    0.04%  2.7259ms         4  681.46us  675.63us  689.45us  cuDeviceTotalMem
+                    0.03%  2.1984ms       384  5.7240us     725ns  223.54us  cuDeviceGetAttribute
+                    0.00%  225.72us         4  56.430us  45.264us  70.219us  cuDeviceGetName
+                    0.00%  56.403us         1  56.403us  56.403us  56.403us  cudaLaunchKernel
+                    0.00%  13.886us         4  3.4710us  2.6310us  4.6220us  cuDeviceGetPCIBusId
+                    0.00%  9.5380us         1  9.5380us  9.5380us  9.5380us  cudaSetDevice
+                    0.00%  7.4710us         8     933ns     746ns  1.4470us  cuDeviceGet
+                    0.00%  3.7060us         3  1.2350us     784ns  1.9600us  cuDeviceGetCount
+                    0.00%  3.3170us         4     829ns     819ns     838ns  cuDeviceGetUuid
+                    0.00%  1.0980us         1  1.0980us  1.0980us  1.0980us  cudaGetLastError
+
+Worker 2: TOTAL_BENCHMARK_TIME 24 28.483981370925903
+Worker 2: TIME_SINCE_START     24 141.00920820236206
+Worker 2: 27 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 15000 15000
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 110
+26110467095659 bemps_begin: pid 54943 , num_blocks 1331000 , threads_per_block 128
+26110467147457 bemps_beacon: pid 54943 , bemps_tid 0 , mem_B 10456336000 , cores 5324000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.853228986263 s,  5.609826564789 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000146000006 s,  0.000959923549 % : GPU MEM: ALO
+ 7.651360034943 s, 50.306308746338 % : GPU MEM: COPY IN
+ 6.311643123627 s, 41.497909545898 % : GPU: KERNEL
+ 0.379067003727 s,  2.492296934128 % : GPU MEM: COPY OUT
+ 0.014099000022 s,  0.092698372900 % : GPU MEM: FRE
+Total time:
+15.209544181824 s
+26117642996847 _bemps_dump_stats: Dumping bemps stats
+26117643021265 _bemps_dump_stats: count of beacon times: 1
+26117643031577 _bemps_dump_stats: min beacon time (ns): 200408
+26117643033685 _bemps_dump_stats: max beacon time (ns): 200408
+26117643035765 _bemps_dump_stats: avg beacon time (ns): 200408
+26117643062061 _bemps_dump_stats: count of free times: 1
+26117643064376 _bemps_dump_stats: min free time (ns): 35264
+26117643066462 _bemps_dump_stats: max free time (ns): 35264
+26117643068545 _bemps_dump_stats: avg free time (ns): 35264
+
+==54943== NVPROF is profiling process 54943, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==54943== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 110
+==54943== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   69.94%  3.97328s         1  3.97328s  3.97328s  3.97328s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   23.39%  1.32868s         4  332.17ms  109.20ms  552.92ms  [CUDA memcpy HtoD]
+                    6.67%  378.91ms         1  378.91ms  378.91ms  378.91ms  [CUDA memcpy DtoH]
+      API calls:   66.40%  4.50545s         2  2.25272s  532.16ms  3.97328s  cudaThreadSynchronize
+                   25.18%  1.70816s         5  341.63ms  109.32ms  552.99ms  cudaMemcpy
+                    8.14%  552.07ms         4  138.02ms  1.8528ms  538.12ms  cudaMalloc
+                    0.21%  13.954ms         4  3.4886ms  1.4562ms  5.4319ms  cudaFree
+                    0.04%  2.7759ms         4  693.98us  678.00us  711.51us  cuDeviceTotalMem
+                    0.03%  2.2453ms       384  5.8470us     724ns  241.15us  cuDeviceGetAttribute
+                    0.00%  199.25us         4  49.813us  45.386us  61.282us  cuDeviceGetName
+                    0.00%  58.172us         1  58.172us  58.172us  58.172us  cudaLaunchKernel
+                    0.00%  13.275us         4  3.3180us  2.3690us  4.3010us  cuDeviceGetPCIBusId
+                    0.00%  8.0120us         1  8.0120us  8.0120us  8.0120us  cudaSetDevice
+                    0.00%  7.5770us         8     947ns     741ns  1.5080us  cuDeviceGet
+                    0.00%  3.4790us         4     869ns     811ns     930ns  cuDeviceGetUuid
+                    0.00%  3.4740us         3  1.1580us     820ns  1.6260us  cuDeviceGetCount
+                    0.00%  1.1910us         1  1.1910us  1.1910us  1.1910us  cudaGetLastError
+
+Worker 3: TOTAL_BENCHMARK_TIME 25 28.689112424850464
+Worker 3: TIME_SINCE_START     25 144.14825296401978
+Worker 3: 28 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 16777216
+suc
+Random number generator seed: 7
+Input layer size : 16777216
+Starting training kernel
+26125416409248 bemps_begin: pid 55245 , num_blocks 1048576 , threads_per_block 256
+26125416463331 bemps_beacon: pid 55245 , bemps_tid 0 , mem_B 2350907668 , cores 8388608
+Performing GPU computation
+Training done
+26127972176994 _bemps_dump_stats: Dumping bemps stats
+26127972191324 _bemps_dump_stats: count of beacon times: 1
+26127972200055 _bemps_dump_stats: min beacon time (ns): 221013588
+26127972202431 _bemps_dump_stats: max beacon time (ns): 221013588
+26127972204948 _bemps_dump_stats: avg beacon time (ns): 2.21014e+08
+26127972233723 _bemps_dump_stats: count of free times: 1
+26127972236145 _bemps_dump_stats: min free time (ns): 25137
+26127972238289 _bemps_dump_stats: max free time (ns): 25137
+26127972240412 _bemps_dump_stats: avg free time (ns): 25137
+
+==55245== NVPROF is profiling process 55245, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 16777216
+==55245== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 16777216
+==55245== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   79.34%  444.16ms         5  88.832ms  1.4720us  145.64ms  [CUDA memcpy HtoD]
+                   19.22%  107.61ms         3  35.868ms  168.77us  101.45ms  [CUDA memcpy DtoH]
+                    0.79%  4.4085ms         1  4.4085ms  4.4085ms  4.4085ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.65%  3.6637ms         1  3.6637ms  3.6637ms  3.6637ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   49.98%  557.66ms         8  69.707ms  18.113us  145.81ms  cudaMemcpy
+                   48.82%  544.70ms         6  90.784ms  10.138us  541.15ms  cudaMalloc
+                    0.40%  4.4392ms         1  4.4392ms  4.4392ms  4.4392ms  cudaThreadSynchronize
+                    0.35%  3.8873ms         6  647.88us  16.954us  1.5945ms  cudaFree
+                    0.23%  2.6092ms         4  652.30us  449.11us  742.26us  cuDeviceTotalMem
+                    0.20%  2.1817ms       384  5.6810us     615ns  225.81us  cuDeviceGetAttribute
+                    0.02%  196.46us         4  49.115us  44.869us  58.699us  cuDeviceGetName
+                    0.01%  97.355us         2  48.677us  45.079us  52.276us  cudaLaunchKernel
+                    0.00%  13.248us         4  3.3120us  2.3410us  4.2530us  cuDeviceGetPCIBusId
+                    0.00%  11.205us         1  11.205us  11.205us  11.205us  cudaSetDevice
+                    0.00%  7.8070us         8     975ns     792ns  1.5520us  cuDeviceGet
+                    0.00%  3.5330us         3  1.1770us     926ns  1.6330us  cuDeviceGetCount
+                    0.00%  3.3960us         4     849ns     787ns     898ns  cuDeviceGetUuid
+
+Worker 3: TOTAL_BENCHMARK_TIME 28 10.427862405776978
+Worker 3: TIME_SINCE_START     28 154.57630228996277
+Worker 3: 29 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+26126703993041 bemps_begin: pid 54864 , num_blocks 65536 , threads_per_block 512
+26126704042274 bemps_beacon: pid 54864 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+26134402321728 _bemps_dump_stats: Dumping bemps stats
+26134402335063 _bemps_dump_stats: count of beacon times: 1
+26134402342677 _bemps_dump_stats: min beacon time (ns): 377982690
+26134402344839 _bemps_dump_stats: max beacon time (ns): 377982690
+26134402347101 _bemps_dump_stats: avg beacon time (ns): 3.77983e+08
+26134402373244 _bemps_dump_stats: count of free times: 1
+26134402375610 _bemps_dump_stats: min free time (ns): 28104
+26134402377630 _bemps_dump_stats: max free time (ns): 28104
+26134402379721 _bemps_dump_stats: avg free time (ns): 28104
+
+==54864== NVPROF is profiling process 54864, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+==54864== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+==54864== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   59.44%  174.00ms        20  8.6999ms  1.4080us  107.00ms  [CUDA memcpy HtoD]
+                   33.80%  98.931ms        14  7.0665ms  134.91us  41.269ms  Kernel(Node*, int*, bool*, bool*, bool*, int*, int)
+                    4.12%  12.054ms        15  803.63us  1.6320us  12.030ms  [CUDA memcpy DtoH]
+                    2.65%  7.7434ms        14  553.10us  135.62us  1.6112ms  Kernel2(bool*, bool*, bool*, bool*, int)
+      API calls:   58.92%  543.92ms         7  77.703ms  506.79us  539.58ms  cudaMalloc
+                   31.81%  293.64ms        35  8.3898ms  7.5960us  107.11ms  cudaMemcpy
+                    8.68%  80.155ms         7  11.451ms  389.53us  41.526ms  cudaFree
+                    0.28%  2.5676ms         4  641.89us  449.63us  712.47us  cuDeviceTotalMem
+                    0.24%  2.2244ms       384  5.7920us     725ns  224.50us  cuDeviceGetAttribute
+                    0.04%  393.38us        28  14.049us  8.2050us  46.448us  cudaLaunchKernel
+                    0.02%  201.37us         4  50.343us  45.796us  62.341us  cuDeviceGetName
+                    0.00%  15.753us         1  15.753us  15.753us  15.753us  cudaSetDevice
+                    0.00%  15.524us         4  3.8810us  2.8670us  4.7250us  cuDeviceGetPCIBusId
+                    0.00%  7.7510us         8     968ns     757ns  1.5310us  cuDeviceGet
+                    0.00%  4.2500us         3  1.4160us     850ns  2.3830us  cuDeviceGetCount
+                    0.00%  3.4990us         4     874ns     810ns     998ns  cuDeviceGetUuid
+
+Worker 0: TOTAL_BENCHMARK_TIME 23 52.92690396308899
+Worker 0: TIME_SINCE_START     23 160.87434911727905
+Worker 0: 30 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+The file was not opened for reading
+26116573115788 bemps_begin: pid 55208 , num_blocks 439454 , threads_per_block 512
+26116573169076 bemps_beacon: pid 55208 , bemps_tid 0 , mem_B 7200240000 , cores 7031264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000003368858 % : SETUP VARIABLES
+ 0.000010000000 s,  0.000033688579 % : READ COMMAND LINE PARAMETERS
+ 0.000024000001 s,  0.000080852587 % : READ IMAGE FROM FILE
+ 0.971104979515 s,  3.271514892578 % : RESIZE IMAGE
+ 1.429388999939 s,  4.815408706665 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.109232001007 s,  0.367987096310 % : COPY DATA TO CPU->GPU
+ 0.000067000001 s,  0.000225713477 % : EXTRACT IMAGE
+ 2.273977041245 s,  7.660705566406 % : COMPUTE
+ 0.000014000000 s,  0.000047164012 % : COMPRESS IMAGE
+ 0.093961998820 s,  0.316544622183 % : COPY DATA TO GPU->CPU
+24.737274169922 s, 83.336357116699 % : SAVE IMAGE INTO FILE
+ 0.068594999611 s,  0.231086805463 % : FREE MEMORY
+Total time:
+29.683649063110 s
+26144433040411 _bemps_dump_stats: Dumping bemps stats
+26144433059932 _bemps_dump_stats: count of beacon times: 1
+26144433067982 _bemps_dump_stats: min beacon time (ns): 150281
+26144433070298 _bemps_dump_stats: max beacon time (ns): 150281
+26144433072611 _bemps_dump_stats: avg beacon time (ns): 150281
+26144433096812 _bemps_dump_stats: count of free times: 1
+26144433098829 _bemps_dump_stats: min free time (ns): 31688
+26144433100895 _bemps_dump_stats: max free time (ns): 31688
+26144433102928 _bemps_dump_stats: avg free time (ns): 31688
+
+==55208== NVPROF is profiling process 55208, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 15000 15000
+==55208== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 15000 15000
+==55208== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.63%  781.10ms       100  7.8110ms  7.7539ms  7.8185ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.20%  721.26ms       100  7.2126ms  7.2074ms  7.2497ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.52%  432.61ms       400  1.0815ms  1.6640us  4.8464ms  reduce(long, int, int, float*, float*)
+                   13.93%  344.10ms       100  3.4410ms  3.4316ms  3.4433ms  prepare(long, float*, float*, float*)
+                    4.42%  109.15ms         1  109.15ms  109.15ms  109.15ms  [CUDA memcpy HtoD]
+                    3.11%  76.882ms       201  382.50us  1.5040us  76.573ms  [CUDA memcpy DtoH]
+                    0.10%  2.3621ms         1  2.3621ms  2.3621ms  2.3621ms  extract(long, float*)
+                    0.09%  2.2872ms         1  2.2872ms  2.2872ms  2.2872ms  compress(long, float*)
+      API calls:   83.37%  3.01675s       206  14.644ms  1.1680us  549.69ms  cudaMemcpy
+                   15.93%  576.60ms        12  48.050ms  6.5500us  563.66ms  cudaMalloc
+                    0.29%  10.355ms        12  862.88us  6.9700us  1.4109ms  cudaFree
+                    0.18%  6.4369ms       702  9.1690us  6.2280us  49.496us  cudaLaunchKernel
+                    0.10%  3.4401ms         4  860.03us  518.03us  976.00us  cuDeviceTotalMem
+                    0.09%  3.4357ms       384  8.9470us     916ns  362.50us  cuDeviceGetAttribute
+                    0.04%  1.3230ms      1704     776ns     691ns  1.5630us  cudaGetLastError
+                    0.01%  303.01us         4  75.751us  70.420us  89.986us  cuDeviceGetName
+                    0.00%  16.306us         4  4.0760us  3.3710us  4.9250us  cuDeviceGetPCIBusId
+                    0.00%  10.097us         8  1.2620us     981ns  2.1170us  cuDeviceGet
+                    0.00%  5.1580us         4  1.2890us  1.2050us  1.3260us  cuDeviceGetUuid
+                    0.00%  5.0840us         3  1.6940us  1.2530us  2.2260us  cuDeviceGetCount
+                    0.00%  2.6870us         1  2.6870us  2.6870us  2.6870us  cudaSetDevice
+                    0.00%  1.1410us         1  1.1410us  1.1410us  1.1410us  cudaGetErrorString
+
+Worker 2: TOTAL_BENCHMARK_TIME 27 30.05159831047058
+Worker 2: TIME_SINCE_START     27 171.06099915504456
+Worker 2: 31 nvprof /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+26141027847066 bemps_begin: pid 55194 , num_blocks 1728000 , threads_per_block 128
+26141027900574 bemps_beacon: pid 55194 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.812021017075 s,  4.257495880127 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000140999997 s,  0.000739275187 % : GPU MEM: ALO
+ 9.686907768250 s, 50.789295196533 % : GPU MEM: COPY IN
+ 8.086098670959 s, 42.396114349365 % : GPU: KERNEL
+ 0.470192998648 s,  2.465262413025 % : GPU MEM: COPY OUT
+ 0.017373999581 s,  0.091093383729 % : GPU MEM: FRE
+Total time:
+19.072736740112 s
+26150332878458 _bemps_dump_stats: Dumping bemps stats
+26150332901341 _bemps_dump_stats: count of beacon times: 1
+26150332912543 _bemps_dump_stats: min beacon time (ns): 193394
+26150332914915 _bemps_dump_stats: max beacon time (ns): 193394
+26150332916981 _bemps_dump_stats: avg beacon time (ns): 193394
+26150332941654 _bemps_dump_stats: count of free times: 1
+26150332943682 _bemps_dump_stats: min free time (ns): 31769
+26150332945725 _bemps_dump_stats: max free time (ns): 31769
+26150332947740 _bemps_dump_stats: avg free time (ns): 31769
+
+==55194== NVPROF is profiling process 55194, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==55194== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==55194== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.96%  5.16612s         1  5.16612s  5.16612s  5.16612s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.58%  1.64406s         4  411.01ms  137.39ms  669.92ms  [CUDA memcpy HtoD]
+                    6.46%  470.05ms         1  470.05ms  470.05ms  470.05ms  [CUDA memcpy DtoH]
+      API calls:   66.82%  5.69559s         2  2.84779s  529.46ms  5.16613s  cudaThreadSynchronize
+                   24.81%  2.11467s         5  422.93ms  137.50ms  670.02ms  cudaMemcpy
+                    8.10%  690.76ms         4  172.69ms  2.3563ms  640.09ms  cudaMalloc
+                    0.20%  17.255ms         4  4.3138ms  1.7030ms  6.8089ms  cudaFree
+                    0.03%  2.5309ms         4  632.72us  447.79us  721.44us  cuDeviceTotalMem
+                    0.03%  2.2353ms       384  5.8210us     724ns  264.63us  cuDeviceGetAttribute
+                    0.00%  197.31us         4  49.326us  45.351us  59.962us  cuDeviceGetName
+                    0.00%  59.260us         1  59.260us  59.260us  59.260us  cudaLaunchKernel
+                    0.00%  12.410us         4  3.1020us  2.3930us  4.6430us  cuDeviceGetPCIBusId
+                    0.00%  8.8400us         1  8.8400us  8.8400us  8.8400us  cudaSetDevice
+                    0.00%  7.7860us         8     973ns     748ns  1.3310us  cuDeviceGet
+                    0.00%  3.4220us         3  1.1400us     803ns  1.6280us  cuDeviceGetCount
+                    0.00%  3.4080us         4     852ns     801ns     906ns  cuDeviceGetUuid
+                    0.00%  1.1060us         1  1.1060us  1.1060us  1.1060us  cudaGetLastError
+
+Worker 1: TOTAL_BENCHMARK_TIME 26 36.876479387283325
+Worker 1: TIME_SINCE_START     26 176.92230486869812
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 29
+suc
+The file was not opened for reading
+26135996236455 bemps_begin: pid 55426 , num_blocks 236329 , threads_per_block 512
+26135996292138 bemps_beacon: pid 55426 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000005937795 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000041564566 % : READ COMMAND LINE PARAMETERS
+ 0.000022000000 s,  0.000130631495 % : READ IMAGE FROM FILE
+ 0.512490987778 s,  3.043066501617 % : RESIZE IMAGE
+ 1.307942032814 s,  7.766291618347 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.061694998294 s,  0.366332262754 % : COPY DATA TO CPU->GPU
+ 0.000067000001 s,  0.000397832249 % : EXTRACT IMAGE
+ 1.222921967506 s,  7.261460304260 % : COMPUTE
+ 0.000013000000 s,  0.000077191340 % : COMPRESS IMAGE
+ 0.052499998361 s,  0.311734259129 % : COPY DATA TO GPU->CPU
+13.652475357056 s, 81.065597534180 % : SAVE IMAGE INTO FILE
+ 0.031132999808 s,  0.184861376882 % : FREE MEMORY
+Total time:
+16.841268539429 s
+26151588872052 _bemps_dump_stats: Dumping bemps stats
+26151588893632 _bemps_dump_stats: count of beacon times: 1
+26151588901098 _bemps_dump_stats: min beacon time (ns): 173281
+26151588903303 _bemps_dump_stats: max beacon time (ns): 173281
+26151588905431 _bemps_dump_stats: avg beacon time (ns): 173281
+26151588924257 _bemps_dump_stats: count of free times: 1
+26151588926256 _bemps_dump_stats: min free time (ns): 34359
+26151588928243 _bemps_dump_stats: max free time (ns): 34359
+26151588930235 _bemps_dump_stats: avg free time (ns): 34359
+
+==55426== NVPROF is profiling process 55426, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==55426== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+==55426== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   31.55%  420.04ms       100  4.2004ms  4.1965ms  4.2053ms  srad2(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float*, float*)
+                   29.09%  387.22ms       100  3.8722ms  3.8701ms  3.8761ms  srad(float, int, int, long, int*, int*, int*, int*, float*, float*, float*, float*, float, float*, float*)
+                   17.37%  231.20ms       300  770.65us  14.591us  2.2399ms  reduce(long, int, int, float*, float*)
+                   13.91%  185.23ms       100  1.8523ms  1.8508ms  1.8561ms  prepare(long, float*, float*, float*)
+                    4.63%  61.590ms         1  61.590ms  61.590ms  61.590ms  [CUDA memcpy HtoD]
+                    3.26%  43.412ms       201  215.98us  1.5030us  43.103ms  [CUDA memcpy DtoH]
+                    0.09%  1.2537ms         1  1.2537ms  1.2537ms  1.2537ms  extract(long, float*)
+                    0.09%  1.2298ms         1  1.2298ms  1.2298ms  1.2298ms  compress(long, float*)
+      API calls:   75.90%  1.86111s       206  9.0345ms  1.1420us  532.02ms  cudaMemcpy
+                   23.31%  571.60ms        12  47.633ms  6.3730us  563.20ms  cudaMalloc
+                    0.34%  8.3343ms        12  694.52us  6.8510us  1.0972ms  cudaFree
+                    0.21%  5.1149ms       602  8.4960us  6.4850us  50.385us  cudaLaunchKernel
+                    0.10%  2.5637ms         4  640.91us  448.48us  712.66us  cuDeviceTotalMem
+                    0.09%  2.1632ms       384  5.6330us     718ns  222.97us  cuDeviceGetAttribute
+                    0.04%  1.0644ms      1404     758ns     690ns  1.5670us  cudaGetLastError
+                    0.01%  202.86us         4  50.714us  45.254us  62.943us  cuDeviceGetName
+                    0.00%  12.876us         4  3.2190us  2.2670us  4.3530us  cuDeviceGetPCIBusId
+                    0.00%  7.7930us         8     974ns     727ns  1.4900us  cuDeviceGet
+                    0.00%  3.4090us         3  1.1360us     785ns  1.6100us  cuDeviceGetCount
+                    0.00%  3.4000us         1  3.4000us  3.4000us  3.4000us  cudaSetDevice
+                    0.00%  3.3350us         4     833ns     778ns     903ns  cuDeviceGetUuid
+                    0.00%  1.1920us         1  1.1920us  1.1920us  1.1920us  cudaGetErrorString
+
+Worker 0: TOTAL_BENCHMARK_TIME 30 17.353705406188965
+Worker 0: TIME_SINCE_START     30 178.22824501991272
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 30
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 30
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+26159365946062 bemps_begin: pid 55527 , num_blocks 2097152 , threads_per_block 256
+26159365997893 bemps_beacon: pid 55527 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+26163737546694 _bemps_dump_stats: Dumping bemps stats
+26163737560881 _bemps_dump_stats: count of beacon times: 1
+26163737570020 _bemps_dump_stats: min beacon time (ns): 231477320
+26163737572193 _bemps_dump_stats: max beacon time (ns): 231477320
+26163737574203 _bemps_dump_stats: avg beacon time (ns): 2.31477e+08
+26163737601598 _bemps_dump_stats: count of free times: 1
+26163737603912 _bemps_dump_stats: min free time (ns): 27804
+26163737605995 _bemps_dump_stats: max free time (ns): 27804
+26163737608118 _bemps_dump_stats: avg free time (ns): 27804
+
+==55527== NVPROF is profiling process 55527, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==55527== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+==55527== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   78.75%  877.86ms         5  175.57ms  1.4400us  287.05ms  [CUDA memcpy HtoD]
+                   19.50%  217.39ms         3  72.462ms  168.61us  205.23ms  [CUDA memcpy DtoH]
+                    0.98%  10.882ms         1  10.882ms  10.882ms  10.882ms  bpnn_layerforward_CUDA(float*, float*, float*, float*, int, int)
+                    0.77%  8.5982ms         1  8.5982ms  8.5982ms  8.5982ms  bpnn_adjust_weights_cuda(float*, int, float*, int, float*, float*)
+      API calls:   65.16%  1.10610s         8  138.26ms  16.747us  287.18ms  cudaMemcpy
+                   30.29%  514.27ms         6  85.712ms  10.226us  509.12ms  cudaMalloc
+                    3.62%  61.393ms         6  10.232ms  18.122us  54.408ms  cudaFree
+                    0.64%  10.916ms         1  10.916ms  10.916ms  10.916ms  cudaThreadSynchronize
+                    0.14%  2.3477ms         4  586.92us  227.27us  710.56us  cuDeviceTotalMem
+                    0.13%  2.2093ms       384  5.7530us     650ns  230.08us  cuDeviceGetAttribute
+                    0.01%  193.88us         4  48.470us  45.066us  57.529us  cuDeviceGetName
+                    0.01%  92.475us         2  46.237us  43.092us  49.383us  cudaLaunchKernel
+                    0.00%  11.786us         4  2.9460us  2.3200us  3.7210us  cuDeviceGetPCIBusId
+                    0.00%  8.8360us         1  8.8360us  8.8360us  8.8360us  cudaSetDevice
+                    0.00%  7.5350us         8     941ns     772ns  1.5220us  cuDeviceGet
+                    0.00%  3.4730us         4     868ns     832ns     963ns  cuDeviceGetUuid
+                    0.00%  3.3030us         3  1.1010us     816ns  1.4960us  cuDeviceGetCount
+
+Worker 2: TOTAL_BENCHMARK_TIME 31 19.57046341896057
+Worker 2: TIME_SINCE_START     31 190.6316521167755
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 31
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 2: Worklist is empty. Retrying get().
+Worker 2: jobs_processed.value is 31
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 120
+26155487989878 bemps_begin: pid 55357 , num_blocks 1728000 , threads_per_block 128
+26155488052644 bemps_beacon: pid 55357 , bemps_tid 0 , mem_B 13575168000 , cores 6912000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.782586991787 s,  4.062477111816 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000148000006 s,  0.000768280937 % : GPU MEM: ALO
+ 9.728961944580 s, 50.503887176514 % : GPU MEM: COPY IN
+ 8.145416259766 s, 42.283565521240 % : GPU: KERNEL
+ 0.470268994570 s,  2.441207408905 % : GPU MEM: COPY OUT
+ 0.136406004429 s,  0.708095431328 % : GPU MEM: FRE
+Total time:
+19.263788223267 s
+26164888809885 _bemps_dump_stats: Dumping bemps stats
+26164888831116 _bemps_dump_stats: count of beacon times: 1
+26164888841456 _bemps_dump_stats: min beacon time (ns): 221053
+26164888843662 _bemps_dump_stats: max beacon time (ns): 221053
+26164888845764 _bemps_dump_stats: avg beacon time (ns): 221053
+26164888870333 _bemps_dump_stats: count of free times: 1
+26164888872381 _bemps_dump_stats: min free time (ns): 31897
+26164888874412 _bemps_dump_stats: max free time (ns): 31897
+26164888876413 _bemps_dump_stats: avg free time (ns): 31897
+
+==55357== NVPROF is profiling process 55357, command: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==55357== Profiling application: /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 120
+==55357== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   70.97%  5.16681s         1  5.16681s  5.16681s  5.16681s  kernel_gpu_cuda(par_str, dim_str, box_str*, FOUR_VECTOR*, double*, FOUR_VECTOR*)
+                   22.58%  1.64358s         4  410.90ms  137.58ms  669.34ms  [CUDA memcpy HtoD]
+                    6.46%  470.09ms         1  470.09ms  470.09ms  470.09ms  [CUDA memcpy DtoH]
+      API calls:   66.37%  5.73285s         2  2.86643s  566.04ms  5.16682s  cudaThreadSynchronize
+                   24.48%  2.11425s         5  422.85ms  137.67ms  669.45ms  cudaMemcpy
+                    7.50%  648.02ms         4  162.00ms  2.2619ms  630.11ms  cudaMalloc
+                    1.58%  136.27ms         4  34.069ms  1.7337ms  69.934ms  cudaFree
+                    0.03%  2.9879ms       384  7.7800us  1.0220us  299.88us  cuDeviceGetAttribute
+                    0.03%  2.5001ms         4  625.03us  314.36us  781.54us  cuDeviceTotalMem
+                    0.00%  255.60us         4  63.900us  58.636us  78.519us  cuDeviceGetName
+                    0.00%  60.492us         1  60.492us  60.492us  60.492us  cudaLaunchKernel
+                    0.00%  16.410us         4  4.1020us  3.1090us  5.3670us  cuDeviceGetPCIBusId
+                    0.00%  10.683us         8  1.3350us  1.0830us  2.1530us  cuDeviceGet
+                    0.00%  9.5900us         1  9.5900us  9.5900us  9.5900us  cudaSetDevice
+                    0.00%  4.9200us         4  1.2300us  1.1550us  1.3190us  cuDeviceGetUuid
+                    0.00%  4.7360us         3  1.5780us  1.1450us  2.1330us  cuDeviceGetCount
+                    0.00%  1.0580us         1  1.0580us  1.0580us  1.0580us  cudaGetLastError
+
+Worker 3: TOTAL_BENCHMARK_TIME 29 37.07199811935425
+Worker 3: TIME_SINCE_START     29 191.64848804473877
+Worker 3: TOTAL_EXPERIMENT_TIME 191.64852786064148
+Worker 3: Exiting normally
+Worker 1: Worklist is empty.
+Worker 1: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 2: Worklist is empty.
+Worker 2: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.

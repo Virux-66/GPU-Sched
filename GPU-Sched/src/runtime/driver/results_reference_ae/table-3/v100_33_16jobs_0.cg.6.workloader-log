@@ -1,0 +1,719 @@
+Parsing args
+Starting driver
+  workload_file: /home/ubuntu/GPU-Sched/src/runtime/driver/workloads/ppopp21-volta/p100_33_16jobs_0.wl
+  sched_alg: cg
+  num_processes: 6
+Worker 0: Starting
+Worker 0: 0 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+Worker 1: Starting
+Worker 1: 1 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 33554432
+Worker 2: Starting
+Worker 2: 2 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+Worker 3: Starting
+Worker 3: 3 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+Main process: Waiting for workers...
+Worker 4: Starting
+Worker 4: 4 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 16777216
+Worker 5: Starting
+Worker 5: 5 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v2/srad 8192 8192 0 127 0 127 0.5 2
+suc
+WG size of kernel = 16 X 16
+10209695542514 bemps_begin: pid 121946 , num_blocks 262144 , threads_per_block 256
+10209695573464 bemps_beacon: pid 121946 , bemps_tid 0 , mem_B 1610612736 , cores 2097152
+Randomizing the input matrix
+Start the SRAD main loop
+Computation Done
+10212653131457 _bemps_dump_stats: Dumping bemps stats
+10212653153354 _bemps_dump_stats: count of beacon times: 1
+10212653159911 _bemps_dump_stats: min beacon time (ns): 280352444
+10212653162064 _bemps_dump_stats: max beacon time (ns): 280352444
+10212653164334 _bemps_dump_stats: avg beacon time (ns): 2.80352e+08
+10212653192132 _bemps_dump_stats: count of free times: 1
+10212653194228 _bemps_dump_stats: min free time (ns): 21645
+10212653196193 _bemps_dump_stats: max free time (ns): 21645
+10212653198135 _bemps_dump_stats: avg free time (ns): 21645
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 5 3.3123066425323486
+Worker 5: TIME_SINCE_START     5 3.3194069862365723
+Worker 5: 6 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 15000 15000
+suc
+Random number generator seed: 7
+Input layer size : 16777216
+Starting training kernel
+10216991416407 bemps_begin: pid 121945 , num_blocks 1048576 , threads_per_block 256
+10216991467963 bemps_beacon: pid 121945 , bemps_tid 0 , mem_B 2350907668 , cores 8388608
+Performing GPU computation
+Training done
+10218881904496 _bemps_dump_stats: Dumping bemps stats
+10218881927546 _bemps_dump_stats: count of beacon times: 1
+10218881936382 _bemps_dump_stats: min beacon time (ns): 51508625
+10218881938625 _bemps_dump_stats: max beacon time (ns): 51508625
+10218881940853 _bemps_dump_stats: avg beacon time (ns): 5.15086e+07
+10218881962582 _bemps_dump_stats: count of free times: 1
+10218881964749 _bemps_dump_stats: min free time (ns): 22698
+10218881966794 _bemps_dump_stats: max free time (ns): 22698
+10218881968852 _bemps_dump_stats: avg free time (ns): 22698
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 4 9.416717767715454
+Worker 4: TIME_SINCE_START     4 9.4227135181427
+Worker 4: 7 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/backprop/backprop 67108864
+suc
+Random number generator seed: 7
+Input layer size : 33554432
+Starting training kernel
+10224620411683 bemps_begin: pid 121938 , num_blocks 2097152 , threads_per_block 256
+10224620477479 bemps_beacon: pid 121938 , bemps_tid 0 , mem_B 4699717908 , cores 16777216
+Performing GPU computation
+Training done
+10228423193351 _bemps_dump_stats: Dumping bemps stats
+10228423215489 _bemps_dump_stats: count of beacon times: 1
+10228423225591 _bemps_dump_stats: min beacon time (ns): 44847888
+10228423227778 _bemps_dump_stats: max beacon time (ns): 44847888
+10228423229930 _bemps_dump_stats: avg beacon time (ns): 4.48479e+07
+10228423258225 _bemps_dump_stats: count of free times: 1
+10228423260536 _bemps_dump_stats: min free time (ns): 21558
+10228423262559 _bemps_dump_stats: max free time (ns): 21558
+10228423264513 _bemps_dump_stats: avg free time (ns): 21558
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 19.072088479995728
+Worker 1: TIME_SINCE_START     1 19.075453758239746
+Worker 1: 8 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+10223300171024 bemps_begin: pid 121941 , num_blocks 1 , threads_per_block 16
+10223300209293 bemps_beacon: pid 121941 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+10229553586595 _bemps_dump_stats: Dumping bemps stats
+10229553608786 _bemps_dump_stats: count of beacon times: 1
+10229553616721 _bemps_dump_stats: min beacon time (ns): 40312068
+10229553618934 _bemps_dump_stats: max beacon time (ns): 40312068
+10229553621089 _bemps_dump_stats: avg beacon time (ns): 4.03121e+07
+10229553648262 _bemps_dump_stats: count of free times: 1
+10229553650350 _bemps_dump_stats: min free time (ns): 19335
+10229553652391 _bemps_dump_stats: max free time (ns): 19335
+10229553654445 _bemps_dump_stats: avg free time (ns): 19335
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 2 19.926970958709717
+Worker 2: TIME_SINCE_START     2 19.931203842163086
+Worker 2: 9 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/nw/needle 32768 10
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+10223294947947 bemps_begin: pid 121943 , num_blocks 1 , threads_per_block 16
+10223294997179 bemps_beacon: pid 121943 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+10230129357807 _bemps_dump_stats: Dumping bemps stats
+10230129382111 _bemps_dump_stats: count of beacon times: 1
+10230129393308 _bemps_dump_stats: min beacon time (ns): 254763998
+10230129396126 _bemps_dump_stats: max beacon time (ns): 254763998
+10230129399036 _bemps_dump_stats: avg beacon time (ns): 2.54764e+08
+10230129424895 _bemps_dump_stats: count of free times: 1
+10230129427672 _bemps_dump_stats: min free time (ns): 20802
+10230129430218 _bemps_dump_stats: max free time (ns): 20802
+10230129433033 _bemps_dump_stats: avg free time (ns): 20802
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 20.482332468032837
+Worker 3: TIME_SINCE_START     3 20.487452030181885
+Worker 3: 10 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 11000 11000
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+10223334861507 bemps_begin: pid 121935 , num_blocks 1 , threads_per_block 16
+10223334906699 bemps_beacon: pid 121935 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+10230526525982 _bemps_dump_stats: Dumping bemps stats
+10230526548931 _bemps_dump_stats: count of beacon times: 1
+10230526555933 _bemps_dump_stats: min beacon time (ns): 408627750
+10230526558453 _bemps_dump_stats: max beacon time (ns): 408627750
+10230526560761 _bemps_dump_stats: avg beacon time (ns): 4.08628e+08
+10230526581158 _bemps_dump_stats: count of free times: 1
+10230526583266 _bemps_dump_stats: min free time (ns): 20375
+10230526585274 _bemps_dump_stats: max free time (ns): 20375
+10230526587369 _bemps_dump_stats: avg free time (ns): 20375
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 21.057555675506592
+Worker 0: TIME_SINCE_START     0 21.0600266456604
+Worker 0: 11 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+suc
+The file was not opened for reading
+10214558730930 bemps_begin: pid 121993 , num_blocks 439454 , threads_per_block 512
+10214558807499 bemps_beacon: pid 121993 , bemps_tid 0 , mem_B 7200240000 , cores 7031264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000003318130 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000023226910 % : READ COMMAND LINE PARAMETERS
+ 0.000024000001 s,  0.000079635123 % : READ IMAGE FROM FILE
+ 0.952091991901 s,  3.159164905548 % : RESIZE IMAGE
+ 1.015880942345 s,  3.370825290680 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.114564001560 s,  0.380138248205 % : COPY DATA TO CPU->GPU
+ 0.000037999998 s,  0.000126088940 % : EXTRACT IMAGE
+ 2.255429029465 s,  7.483807086945 % : COMPUTE
+ 0.000005000000 s,  0.000016590649 % : COMPRESS IMAGE
+ 0.093120001256 s,  0.308984279633 % : COPY DATA TO GPU->CPU
+25.581287384033 s, 84.882041931152 % : SAVE IMAGE INTO FILE
+ 0.125008001924 s,  0.414792835712 % : FREE MEMORY
+Total time:
+30.137456893921 s
+10243147158854 _bemps_dump_stats: Dumping bemps stats
+10243147180920 _bemps_dump_stats: count of beacon times: 1
+10243147189173 _bemps_dump_stats: min beacon time (ns): 168363
+10243147191405 _bemps_dump_stats: max beacon time (ns): 168363
+10243147193566 _bemps_dump_stats: avg beacon time (ns): 168363
+10243147212976 _bemps_dump_stats: count of free times: 1
+10243147214942 _bemps_dump_stats: min free time (ns): 32263
+10243147216934 _bemps_dump_stats: max free time (ns): 32263
+10243147218911 _bemps_dump_stats: avg free time (ns): 32263
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 6 30.21801447868347
+Worker 5: TIME_SINCE_START     6 33.53768038749695
+Worker 5: 12 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+suc
+The file was not opened for reading
+10231265790456 bemps_begin: pid 122176 , num_blocks 236329 , threads_per_block 512
+10231265848152 bemps_beacon: pid 122176 , bemps_tid 0 , mem_B 3872176000 , cores 3781264
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000006313228 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000044192599 % : READ COMMAND LINE PARAMETERS
+ 0.000024000001 s,  0.000151517481 % : READ IMAGE FROM FILE
+ 0.520726978779 s,  3.287468433380 % : RESIZE IMAGE
+ 0.971023023129 s,  6.130289554596 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.058765999973 s,  0.371003180742 % : COPY DATA TO CPU->GPU
+ 0.000037000002 s,  0.000233589439 % : EXTRACT IMAGE
+ 1.212072014809 s,  7.652086734772 % : COMPUTE
+ 0.000005000000 s,  0.000031566138 % : COMPRESS IMAGE
+ 0.050468001515 s,  0.318616002798 % : COPY DATA TO GPU->CPU
+12.988559722900 s, 81.999740600586 % : SAVE IMAGE INTO FILE
+ 0.038067001849 s,  0.240325644612 % : FREE MEMORY
+Total time:
+15.839756965637 s
+10246017238088 _bemps_dump_stats: Dumping bemps stats
+10246017256714 _bemps_dump_stats: count of beacon times: 1
+10246017264048 _bemps_dump_stats: min beacon time (ns): 161139
+10246017266248 _bemps_dump_stats: max beacon time (ns): 161139
+10246017268490 _bemps_dump_stats: avg beacon time (ns): 161139
+10246017287437 _bemps_dump_stats: count of free times: 1
+10246017289479 _bemps_dump_stats: min free time (ns): 34207
+10246017291534 _bemps_dump_stats: max free time (ns): 34207
+10246017293511 _bemps_dump_stats: avg free time (ns): 34207
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 10 16.06805729866028
+Worker 3: TIME_SINCE_START     10 36.55571484565735
+Worker 3: 13 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/srad/srad_v1/srad 100 0.5 20000 20000
+suc
+WG size of kernel = 16 
+Start Needleman-Wunsch
+Processing top-left matrix
+10243345183911 bemps_begin: pid 122171 , num_blocks 1 , threads_per_block 16
+10243345231744 bemps_beacon: pid 122171 , bemps_tid 0 , mem_B 8590458888 , cores 1
+Processing bottom-right matrix
+10249335090663 _bemps_dump_stats: Dumping bemps stats
+10249335112314 _bemps_dump_stats: count of beacon times: 1
+10249335120719 _bemps_dump_stats: min beacon time (ns): 139860835
+10249335122906 _bemps_dump_stats: max beacon time (ns): 139860835
+10249335125033 _bemps_dump_stats: avg beacon time (ns): 1.39861e+08
+10249335144579 _bemps_dump_stats: count of free times: 1
+10249335146700 _bemps_dump_stats: min free time (ns): 20655
+10249335148776 _bemps_dump_stats: max free time (ns): 20655
+10249335150841 _bemps_dump_stats: avg free time (ns): 20655
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 9 19.781742334365845
+Worker 2: TIME_SINCE_START     9 39.71314191818237
+Worker 2: 14 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/bfs/bfs /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/data/bfs/inputGen/graph32M.txt
+suc
+Random number generator seed: 7
+Input layer size : 67108864
+Starting training kernel
+10248418284095 bemps_begin: pid 122069 , num_blocks 4194304 , threads_per_block 256
+10248418336124 bemps_beacon: pid 122069 , bemps_tid 0 , mem_B 9397338388 , cores 33554432
+Performing GPU computation
+Training done
+10252308781239 _bemps_dump_stats: Dumping bemps stats
+10252308802276 _bemps_dump_stats: count of beacon times: 1
+10252308811596 _bemps_dump_stats: min beacon time (ns): 307067581
+10252308813988 _bemps_dump_stats: max beacon time (ns): 307067581
+10252308816153 _bemps_dump_stats: avg beacon time (ns): 3.07068e+08
+10252308843064 _bemps_dump_stats: count of free times: 1
+10252308845155 _bemps_dump_stats: min free time (ns): 20930
+10252308847208 _bemps_dump_stats: max free time (ns): 20930
+10252308849387 _bemps_dump_stats: avg free time (ns): 20930
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 7 33.81457805633545
+Worker 4: TIME_SINCE_START     7 43.23755168914795
+Worker 4: 15 /home/ubuntu/GPU-Sched/Benchmarks/rodinia_cuda_3.1/cuda/lavaMD/lavaMD -boxes1d 100
+suc
+thread block size of kernel = 128 
+Configuration used: boxes1d = 100
+10268397794410 bemps_begin: pid 122402 , num_blocks 1000000 , threads_per_block 128
+10268397848265 bemps_beacon: pid 122402 , bemps_tid 0 , mem_B 7856000000 , cores 4000000
+Time spent in different stages of GPU_CUDA KERNEL:
+ 0.437002003193 s,  4.013277530670 % : GPU: SET DEVICE / DRIVER INIT
+ 0.000140000004 s,  0.001285712351 % : GPU MEM: ALO
+ 5.514476776123 s, 50.643081665039 % : GPU MEM: COPY IN
+ 4.652376174927 s, 42.725841522217 % : GPU: KERNEL
+ 0.270534992218 s,  2.484501361847 % : GPU MEM: COPY OUT
+ 0.014375000261 s,  0.132015109062 % : GPU MEM: FRE
+Total time:
+10.888904571533 s
+10273722434871 _bemps_dump_stats: Dumping bemps stats
+10273722457792 _bemps_dump_stats: count of beacon times: 1
+10273722467661 _bemps_dump_stats: min beacon time (ns): 174312
+10273722469917 _bemps_dump_stats: max beacon time (ns): 174312
+10273722472186 _bemps_dump_stats: avg beacon time (ns): 174312
+10273722494987 _bemps_dump_stats: count of free times: 1
+10273722497100 _bemps_dump_stats: min free time (ns): 28515
+10273722499122 _bemps_dump_stats: max free time (ns): 28515
+10273722501439 _bemps_dump_stats: avg free time (ns): 28515
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 15 20.878262996673584
+Worker 4: TIME_SINCE_START     15 64.11599397659302
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 11
+suc
+The file was not opened for reading
+10231175297472 bemps_begin: pid 122160 , num_blocks 781250 , threads_per_block 512
+10231175353782 bemps_beacon: pid 122160 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001886240 % : SETUP VARIABLES
+ 0.000009000000 s,  0.000016976157 % : READ COMMAND LINE PARAMETERS
+ 0.000023000001 s,  0.000043383508 % : READ IMAGE FROM FILE
+ 1.722496032715 s,  3.249039888382 % : RESIZE IMAGE
+ 0.709648013115 s,  1.338566064835 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.198677003384 s,  0.374752432108 % : COPY DATA TO CPU->GPU
+ 0.000037999998 s,  0.000071677103 % : EXTRACT IMAGE
+ 4.022810935974 s,  7.587985038757 % : COMPUTE
+ 0.000006000000 s,  0.000011317437 % : COMPRESS IMAGE
+ 0.166589006782 s,  0.314226746559 % : COPY DATA TO GPU->CPU
+46.080204010010 s, 86.918296813965 % : SAVE IMAGE INTO FILE
+ 0.115033000708 s,  0.216979786754 % : FREE MEMORY
+Total time:
+53.015537261963 s
+10281780982150 _bemps_dump_stats: Dumping bemps stats
+10281781003574 _bemps_dump_stats: count of beacon times: 1
+10281781011750 _bemps_dump_stats: min beacon time (ns): 155692
+10281781013975 _bemps_dump_stats: max beacon time (ns): 155692
+10281781016159 _bemps_dump_stats: avg beacon time (ns): 155692
+10281781034080 _bemps_dump_stats: count of free times: 1
+10281781036024 _bemps_dump_stats: min free time (ns): 34426
+10281781038053 _bemps_dump_stats: max free time (ns): 34426
+10281781040003 _bemps_dump_stats: avg free time (ns): 34426
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 8 53.05897307395935
+Worker 1: TIME_SINCE_START     8 72.13463068008423
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 12
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 12
+suc
+The file was not opened for reading
+10233103787866 bemps_begin: pid 122186 , num_blocks 781250 , threads_per_block 512
+10233103839471 bemps_beacon: pid 122186 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000000000000 s,  0.000000000000 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000013315727 % : READ COMMAND LINE PARAMETERS
+ 0.000023000001 s,  0.000043751676 % : READ IMAGE FROM FILE
+ 1.699466943741 s,  3.232805490494 % : RESIZE IMAGE
+ 1.071784019470 s,  2.038797616959 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.191591992974 s,  0.364455252886 % : COPY DATA TO CPU->GPU
+ 0.000037999998 s,  0.000072285380 % : EXTRACT IMAGE
+ 3.994869947433 s,  7.599228858948 % : COMPUTE
+ 0.000006000000 s,  0.000011413481 % : COMPRESS IMAGE
+ 0.166456997395 s,  0.316642284393 % : COPY DATA TO GPU->CPU
+45.304340362549 s, 86.180030822754 % : SAVE IMAGE INTO FILE
+ 0.140834003687 s,  0.267901003361 % : FREE MEMORY
+Total time:
+52.569416046143 s
+10283319399848 _bemps_dump_stats: Dumping bemps stats
+10283319420043 _bemps_dump_stats: count of beacon times: 1
+10283319427761 _bemps_dump_stats: min beacon time (ns): 149974
+10283319429957 _bemps_dump_stats: max beacon time (ns): 149974
+10283319432331 _bemps_dump_stats: avg beacon time (ns): 149974
+10283319450000 _bemps_dump_stats: count of free times: 1
+10283319451960 _bemps_dump_stats: min free time (ns): 30559
+10283319453944 _bemps_dump_stats: max free time (ns): 30559
+10283319455921 _bemps_dump_stats: avg free time (ns): 30559
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 11 52.653263092041016
+Worker 0: TIME_SINCE_START     11 73.71349835395813
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 13
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 13
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 13
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+10288283772399 bemps_begin: pid 122302 , num_blocks 65536 , threads_per_block 512
+10288283818913 bemps_beacon: pid 122302 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+10296739835291 _bemps_dump_stats: Dumping bemps stats
+10296739855112 _bemps_dump_stats: count of beacon times: 1
+10296739862059 _bemps_dump_stats: min beacon time (ns): 119890763
+10296739864193 _bemps_dump_stats: max beacon time (ns): 119890763
+10296739866675 _bemps_dump_stats: avg beacon time (ns): 1.19891e+08
+10296739893979 _bemps_dump_stats: count of free times: 1
+10296739896201 _bemps_dump_stats: min free time (ns): 20641
+10296739898164 _bemps_dump_stats: max free time (ns): 20641
+10296739900164 _bemps_dump_stats: avg free time (ns): 20641
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 12 53.55397582054138
+Worker 5: TIME_SINCE_START     12 87.09184885025024
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 14
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 14
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 14
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 14
+suc
+The file was not opened for reading
+10248503351739 bemps_begin: pid 122333 , num_blocks 781250 , threads_per_block 512
+10248503403501 bemps_beacon: pid 122333 , bemps_tid 0 , mem_B 12800320000 , cores 12500000
+Cuda error: setup: invalid argument.
+Time spent in different stages of the application:
+ 0.000001000000 s,  0.000001919238 % : SETUP VARIABLES
+ 0.000007000000 s,  0.000013434664 % : READ COMMAND LINE PARAMETERS
+ 0.000023000001 s,  0.000044142464 % : READ IMAGE FROM FILE
+ 1.693663954735 s,  3.250543355942 % : RESIZE IMAGE
+ 1.064717054367 s,  2.043444871902 % : GPU DRIVER INIT, CPU/GPU SETUP, MEMORY ALLOCATION
+ 0.280395001173 s,  0.538144648075 % : COPY DATA TO CPU->GPU
+ 0.000036000001 s,  0.000069092552 % : EXTRACT IMAGE
+ 3.996157884598 s,  7.669576168060 % : COMPUTE
+ 0.000005000000 s,  0.000009596188 % : COMPRESS IMAGE
+ 0.166283994913 s,  0.319138497114 % : COPY DATA TO GPU->CPU
+44.732421875000 s, 85.852142333984 % : SAVE IMAGE INTO FILE
+ 0.170313999057 s,  0.326873034239 % : FREE MEMORY
+Total time:
+52.104022979736 s
+10298349714789 _bemps_dump_stats: Dumping bemps stats
+10298349736088 _bemps_dump_stats: count of beacon times: 1
+10298349743339 _bemps_dump_stats: min beacon time (ns): 146778
+10298349745563 _bemps_dump_stats: max beacon time (ns): 146778
+10298349747751 _bemps_dump_stats: avg beacon time (ns): 146778
+10298349764142 _bemps_dump_stats: count of free times: 1
+10298349766089 _bemps_dump_stats: min free time (ns): 29699
+10298349768060 _bemps_dump_stats: max free time (ns): 29699
+10298349770040 _bemps_dump_stats: avg free time (ns): 29699
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 13 52.51085305213928
+Worker 3: TIME_SINCE_START     13 89.06675028800964
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 15
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 15
+Worker 5: Worklist is empty. Retrying get().
+Worker 5: jobs_processed.value is 15
+Worker 4: Worklist is empty. Retrying get().
+Worker 4: jobs_processed.value is 15
+Worker 1: Worklist is empty. Retrying get().
+Worker 1: jobs_processed.value is 15
+suc
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+10301075574582 bemps_begin: pid 122367 , num_blocks 65536 , threads_per_block 512
+10301075621926 bemps_beacon: pid 122367 , bemps_tid 0 , mem_B 1308592369 , cores 1048576
+Kernel Executed 14 times
+Result stored in result.txt
+10315049857093 _bemps_dump_stats: Dumping bemps stats
+10315049879117 _bemps_dump_stats: count of beacon times: 1
+10315049886709 _bemps_dump_stats: min beacon time (ns): 278700324
+10315049888912 _bemps_dump_stats: max beacon time (ns): 278700324
+10315049890994 _bemps_dump_stats: avg beacon time (ns): 2.787e+08
+10315049912041 _bemps_dump_stats: count of free times: 1
+10315049914127 _bemps_dump_stats: min free time (ns): 24192
+10315049916310 _bemps_dump_stats: max free time (ns): 24192
+10315049918301 _bemps_dump_stats: avg free time (ns): 24192
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 14 65.99506521224976
+Worker 2: TIME_SINCE_START     14 105.70845437049866
+Worker 2: TOTAL_EXPERIMENT_TIME 105.70850157737732
+Worker 2: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Worker 5: Worklist is empty.
+Worker 5: Exiting normally
+Worker 4: Worklist is empty.
+Worker 4: Exiting normally
+Worker 1: Worklist is empty.
+Worker 1: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.

@@ -1,0 +1,5 @@
+digraph "CFG for '_ZL10cudaMallocIfE9cudaErrorPPT_m' function" {
+	label="CFG for '_ZL10cudaMallocIfE9cudaErrorPPT_m' function";
+
+	Node0x55f8461a5560 [shape=record,label="{entry:\l  %devPtr.addr = alloca float**, align 8\l  %size.addr = alloca i64, align 8\l  store float** %devPtr, float*** %devPtr.addr, align 8\l  store i64 %size, i64* %size.addr, align 8\l  %0 = load float**, float*** %devPtr.addr, align 8\l  %1 = bitcast float** %0 to i8*\l  %2 = bitcast i8* %1 to i8**\l  %3 = load i64, i64* %size.addr, align 8\l  %call = call i32 @cudaMalloc(i8** %2, i64 %3)\l  ret i32 %call\l}"];
+}

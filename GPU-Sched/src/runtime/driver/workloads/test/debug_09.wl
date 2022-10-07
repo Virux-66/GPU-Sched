@@ -1,0 +1,1 @@
+cat /home/rudy/wo/gpu/GPU-Sched/Benchmarks/darknet/image-names-large-full.txt | /home/rudy/wo/gpu/GPU-Sched/Benchmarks/darknet/darknet classifier predict /home/rudy/wo/gpu/GPU-Sched/Benchmarks/darknet/cfg/imagenet1k-cporter.data /home/rudy/wo/gpu/GPU-Sched/Benchmarks/darknet/cfg/darknet19.cfg /home/rudy/wo/gpu/GPU-Sched/Benchmarks/darknet/weights/darknet19.weights
