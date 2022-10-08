@@ -46,6 +46,7 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   buildCUDATasks(M);
   instrument(M);
 
+
   return true;
 }
 
@@ -56,6 +57,7 @@ void GPUBeaconPass::buildCUDATasks(Module &M) {
   // firstly, construct a unitTask for each CUDA kernel, then merge them
   // together if necessary.
   for (auto Invoke : CUDAInfo.getKernelInvokes()) {
+
     auto GridInfo = getGridCtor(Invoke);
     auto BlockInfo = getBlockCtor(Invoke);
     auto AllocOps = getMemAllocOps(Invoke);
@@ -63,7 +65,6 @@ void GPUBeaconPass::buildCUDATasks(Module &M) {
     CUDAUnitTask CT(GridInfo, BlockInfo, Invoke.getPush(), AllocOps, FreeOps);
     Tmp.push_back(CT);
   }
-
   // merge several unit tasks into a complex task if they
   // share some memory objects
   std::vector<bool> mask(Tmp.size(), false);
@@ -83,7 +84,6 @@ void GPUBeaconPass::buildCUDATasks(Module &M) {
         }
       }
     }
-
     if (Union.size() == 1)
       Tasks.push_back(new CUDAUnitTask(Tmp[i]));
     else {
@@ -236,6 +236,7 @@ bool GPUBeaconPass::dominate(MemAllocInfo &MAI, InvokeInfo &II) {
 }
 
 bool GPUBeaconPass::dominate(GridCtorInfo &GCI, InvokeInfo &II) {
+
   auto Ctor = GCI.getCall();
   auto Push = II.getPush();
   return dominate(Ctor, Push);
@@ -255,11 +256,13 @@ bool GPUBeaconPass::postDominate(MemFreeInfo &MFI, InvokeInfo &II) {
 
 bool GPUBeaconPass::dominate(CallInst *C1, CallInst *C2) {
   Function *F = C1->getFunction();
-
+  dbgs() << "dominate stuff1\n";
   // C1 and C2 does not belong to the same function
   if (F != C2->getFunction()) return false;
+  dbgs() << "dominate stuff2\n";
 
-  auto &DT = getAnalysis<DominatorTreeWrapperPass>(*F).getDomTree();
+  auto &DT = getAnalysis<DominatorTreeWrapperPass>(*F).getDomTree();    //BUG!!!!!!!!!!!!!!!!!1
+  dbgs() << "dominate stuff3\n";
 
   return DT.dominates(C1, C2);
 }
