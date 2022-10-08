@@ -9,8 +9,8 @@ add_definitions(${LLVM_DEFINITIONS})
 include_directories(${LLVM_INCLUDE_DIRS})
 link_directories(${LLVM_LIBRARY_DIRS})
 
-include_directories(/home/eailab/tmp/GPU-Sched)
-link_directories(/home/eailab/tmp/GPU-Sched/libstatus)
+include_directories(${CMAKE_SOURCE_DIR}/../../)
+link_directories(${CMAKE_SOURCE_DIR}/../../libstatus/)
 
 add_subdirectory(passes)  # Use your pass name here.
 add_subdirectory(runtime)  # Use your pass name here.
