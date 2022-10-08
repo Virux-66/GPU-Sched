@@ -1,1 +1,1 @@
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:../Sched-build/passes/analysis:../Sched-build/passes/wrappers:../Sched-build/runtime/bemps:../Sched-build/runtime/lazy
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/Sched-build/passes/analysis:/home/Sched-build/passes/wrappers:/home/Sched-build/runtime/bemps:/home/Sched-build/runtime/lazy
