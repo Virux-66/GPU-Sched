@@ -177,7 +177,7 @@ struct gpu_and_mem_s {
   long *mem_B;    // points to a gpu_in_use mem_B member
 };
 
-typedef struct {
+typedef struct {  //this struct will eventually be written to file. 
   int num_beacons;
   int num_frees;
   int max_len_boomers;
