@@ -105,7 +105,7 @@ bemps_stopwatch_t bemps_stopwatches[BEMPS_NUM_STOPWATCHES];
 // long long           *timestamp_p;
 // bemps_sched_notif_t *sched_notif_p;
 
-static inline long long _get_time_ns(void) {
+static inline long long _get_time_ns(void) { //get monotonic time
   struct timespec tv = {0};
   if (clock_gettime(CLOCK_MONOTONIC, &tv) != 0) {
     fprintf(stderr, "ERROR: _get_time_ns failed\n");
@@ -354,7 +354,7 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *beacon) {
                << "warps " << beacon->warps << " , "
                << "thread_blocks " << beacon->thread_blocks << "\n");
 
-  q_idx = _push_beacon(beacon);
+  q_idx = _push_beacon(beacon); //after batch size is met, _push_beacon will signal scheduler
   bemps_tid_to_q_idx[bemps_tid] = q_idx;
 
   comm = &bemps_shm.comm[q_idx];
@@ -391,7 +391,7 @@ void bemps_begin(int id, int gx, int gy, int gz, int bx, int by, int bz,
 
   bemps_stopwatch_start(&bemps_stopwatches[BEMPS_STOPWATCH_BEACON]);
   if (!beacon_initialized) {
-    beacon_initialized = !bemps_init();
+    beacon_initialized = !bemps_init(); //open shared memory and map shared file to memory
   }
 
   num_blocks        = gx * gy * gz;
