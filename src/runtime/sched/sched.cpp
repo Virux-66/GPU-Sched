@@ -90,9 +90,11 @@
 // of the generic value given by cudaGetDeviceProperties. (Could try to
 // use a percentage of max in order to make it more generic, but that's
 // not tested yet.)
+
 //#define WARPS_PER_SM 64 //for 3080Ti, the maximum warp per SM is 48, as with V100, P100 and 1080 the number is 64
 #define WARPS_PER_SM 48
-#define THREAD_BLOCKS_PER_SM 32
+//#define THREAD_BLOCKS_PER_SM 32 //for any other mentioned GPU other than 3080Ti, the value is 32.
+#define THREAD_BLOCKS_PER_SM 16
 #define GTX_1080_SPECS_MEM_B (8116L * 1024 * 1024)
 //#define V100_SXM2_SPECS_MEM_B (10000L * 1024 * 1024)
 //#define V100_SXM2_SPECS_MEM_B (13000L * 1024 * 1024)
