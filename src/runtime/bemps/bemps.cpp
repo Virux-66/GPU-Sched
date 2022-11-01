@@ -573,7 +573,7 @@ bemps_shm_t *bemps_sched_init(int max_batch_size) {
   int err;
   size_t shm_sz;
 
-  fd = shm_open("/bemps", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+  fd = shm_open("/bemps", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR); //create a shared memory file which can be read and written
   if (fd == -1) {
     fprintf(stderr, "ERROR bemps_sched_init: shm_open failed\n");
     exit(1);
@@ -582,12 +582,12 @@ bemps_shm_t *bemps_sched_init(int max_batch_size) {
   shm_sz = (sizeof(bemps_shm_gen_t))                            // gen
            + (sizeof(bemps_shm_comm_t) * BEMPS_BEACON_BUF_SZ);  // comm
 
-  rc = ftruncate(fd, shm_sz);
+  rc = ftruncate(fd, shm_sz); //truncate a file to a specified length
   if (rc == -1) {
     fprintf(stderr, "ERROR bemps_sched_init: ftruncate failed\n");
     exit(2);
   }
-
+  //map files or device to memory: void *mmap(void *addr, size_t length, int port,int flags,int fd, off_t offset) MAP_SHARED: share this mapping. Updates to the mapping are visible to other process mapping the same region, and are carried through to the underlying file.
   bemps_shm.gen = (bemps_shm_gen_t *)mmap(NULL, shm_sz, PROT_READ | PROT_WRITE,
                                           MAP_SHARED, fd, 0);
   if (bemps_shm.gen == MAP_FAILED) {
@@ -608,16 +608,16 @@ bemps_shm_t *bemps_sched_init(int max_batch_size) {
   BEMPS_LOG("bemps_shm.comm:     " << bemps_shm.comm << "\n");
 
   for (i = 0; i < BEMPS_BEACON_BUF_SZ; i++) {
-    sem_init(&bemps_shm.comm[i].sched_notif.sem,
-             1,   // share across processes
+    sem_init(&bemps_shm.comm[i].sched_notif.sem,  //int sem_init(sem_t* sem,int pshared, unsigned int value)
+             1,   // share across processes       //pshared: 0 indicate the semaphore is shared between the threads of a process; non-0 indicate the semaphore is shared between processes.
              0);  // starting value
     _reset_comm(&bemps_shm.comm[i]);
   }
 
-  pthread_mutexattr_init(&bemps_shm.gen->lockattr);
-  pthread_condattr_init(&bemps_shm.gen->condattr);
+  pthread_mutexattr_init(&bemps_shm.gen->lockattr); //initialize the mutex attribute object
+  pthread_condattr_init(&bemps_shm.gen->condattr);  //initilize the condition variable attibute object
 
-  pthread_mutexattr_setpshared(&bemps_shm.gen->lockattr,
+  pthread_mutexattr_setpshared(&bemps_shm.gen->lockattr,  
                                PTHREAD_PROCESS_SHARED);
   pthread_condattr_setpshared(&bemps_shm.gen->condattr, PTHREAD_PROCESS_SHARED);
 
