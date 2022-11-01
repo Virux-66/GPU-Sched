@@ -34,8 +34,8 @@ backprop.o: backprop.c backprop.h
 	$(CC) $(CC_FLAGS) backprop.c -c
 
 backprop_cuda.o: backprop_cuda.cu backprop.h
-	$(NVCC) --cuda backprop_cuda.cu -o /tmp/backprop_cuda.ii
-	$(CC) $(CC_FLAGS) -mllvm -debug-only="visitor" -mllvm -debug-only="build"  -Xclang -load -Xclang $(BEMPS_PASS) /tmp/backprop_cuda.ii -c
+	$(NVCC) --cuda backprop_cuda.cu -o backprop_cuda.ii
+	$(CC) $(CC_FLAGS) -Xclang -load -Xclang $(BEMPS_PASS) backprop_cuda.ii -c
 
 imagenet.o: imagenet.c backprop.h
 	$(CC) $(CC_FLAGS) imagenet.c -c

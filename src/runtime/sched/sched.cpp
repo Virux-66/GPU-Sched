@@ -69,9 +69,9 @@
   .cores = 10240,                   \
   .num_sms              = 80,       \
   .thread_blocks_per_sm = 16,       \
-  .warps_per_sm         = 64,       \
+  .warps_per_sm         = 48,       \       
   .total_thread_blocks  = 80 * 16,  \
-  .total_warps          = 80 * 64   \
+  .total_warps          = 80 * 48   \
 }
 
 // FIXME
@@ -90,7 +90,8 @@
 // of the generic value given by cudaGetDeviceProperties. (Could try to
 // use a percentage of max in order to make it more generic, but that's
 // not tested yet.)
-#define WARPS_PER_SM 64
+//#define WARPS_PER_SM 64 //for 3080Ti, the maximum warp per SM is 48, as with V100, P100 and 1080 the number is 64
+#define WARPS_PER_SM 48
 #define THREAD_BLOCKS_PER_SM 32
 #define GTX_1080_SPECS_MEM_B (8116L * 1024 * 1024)
 //#define V100_SXM2_SPECS_MEM_B (10000L * 1024 * 1024)
