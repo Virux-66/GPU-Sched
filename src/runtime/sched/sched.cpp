@@ -165,7 +165,7 @@ struct gpu_s {
 
 struct gpu_in_use_s {
   unsigned int active_jobs;
-  int compute_saturated; // 1 if 1 job saturated the compute units. else 0
+  int compute_saturated; // 1 if 1 job saturated the compute units. else 0. saturated doesn't indicate one task make use of all compute resource of GPU and thus, no any other tasks can be issued to this GPU. This member is used to quick allocation which does't account each assignment of warps to SMs. 
   long mem_B; //  mem_B IN USE
   long warps; //  warps IN USE
   int curr_sm; // the next streaming multiprocessor to assign
@@ -177,10 +177,10 @@ struct gpu_and_mem_s {
   long *mem_B;    // points to a gpu_in_use mem_B member
 };
 
-typedef struct {  //this struct will eventually be written to file. 
-  int num_beacons;
-  int num_frees;
-  int max_len_boomers;
+typedef struct {          //this struct will eventually be written to file. 
+  int num_beacons;        //record how many tasks need scheduling.
+  int num_frees;          //record how many tasks are freed. Normally, num_frees = num_beacons.
+  int max_len_boomers;    //the maximum number of fetching tasks from shared queue once.
   int max_age;
   int max_observed_batch_size;
 } sched_stats_t;
@@ -215,8 +215,8 @@ int CG_JOBS_PER_GPU = 0; // set by command-line args
 //
 // MGB scheduler
 //
-std::list<bemps_shm_comm_t *> boomers;
-std::map<pid_t, std::vector<std::pair<int, int>> > pid_to_sm_assignments;
+std::list<bemps_shm_comm_t *> boomers;  //store bemps_shm_comm_t that are fetched from shared queue.
+std::map<pid_t, std::vector<std::pair<int, int>> > pid_to_sm_assignments; //this map store the how thread blocks and warp are assigned(to SMs)
 
 
 bemps_shm_t *bemps_shm_p;
@@ -496,7 +496,7 @@ bool allocate_compute(struct gpu_s *GPU,
   // If the GPU has no jobs running on it, and this job would saturate all
   // the compute units, then don't both with SM assignment. Just mark it as
   // compute-saturated and return true (to say that the GPU should be allocated)
-  if (saturates_compute(GPU, comm) && gpu_in_use->active_jobs == 0){
+  if (saturates_compute(GPU, comm) && gpu_in_use->active_jobs == 0){  //quick allocation
     BEMPS_SCHED_LOG("Compute would be saturated and there are no active jobs.\n");
     gpu_in_use->compute_saturated = 1;
     return true;
@@ -549,7 +549,7 @@ void release_compute(struct gpu_s *GPU,
                      struct gpu_in_use_s *gpu_in_use,
                      bemps_shm_comm_t *comm) {
   int i;
-  std::vector<std::pair<int,int>> &sms = *gpu_in_use->sms;
+  std::vector<std::pair<int,int>> &sms = *gpu_in_use->sms;  //gpu_in_use->sms records the number of thread blocks and warps that are allocated to any one of SMs in the GPU.
 
   if (gpu_in_use->compute_saturated) {
     gpu_in_use->compute_saturated = 0;
@@ -584,7 +584,7 @@ void release_compute(struct gpu_s *GPU,
 // Or instead of stopping after finding the first GPU (with most available
 // memory) that can support the compute requirements, exhaust all of them to
 // find the one that also has the least compute load.
-void sched_mgb(void) {
+void sched_mgb(void) {  //account for whether both requirement for thread blcoks and warps are met.
   int tmp_dev_id;
   int *head_p;
   int *tail_p;
@@ -650,7 +650,7 @@ void sched_mgb(void) {
         assert(comm->beacon.mem_B);
         BEMPS_SCHED_LOG("First loop seeing mem_B: " << comm->beacon.mem_B
                                                     << "\n");
-        if (comm->beacon.mem_B < 0) {
+        if (comm->beacon.mem_B < 0) { //kernel finished, release resource
           BEMPS_SCHED_LOG("Received free-beacon for pid " << comm->pid << "\n");
           stats.num_frees++;
           tmp_dev_id = comm->sched_notif.device_id;
@@ -666,7 +666,7 @@ void sched_mgb(void) {
           release_compute(&GPUS[tmp_dev_id], &gpus_in_use[tmp_dev_id], comm);
           gpus_in_use[tmp_dev_id].active_jobs--;
           --*jobs_running_on_gpu;
-        } else {
+        } else {                    //kernel not issued yet, set it waiting 
           stats.num_beacons++;
           boomers.push_back(comm);
           batch_size++; // batch size doesn't include free() beacons
@@ -707,10 +707,10 @@ void sched_mgb(void) {
       int target_dev_id = 0;
 
       // sort the GPUs based by memory that's in use, from least to greatest
-      qsort(gpus_by_mem, NUM_GPUS, sizeof(struct gpu_and_mem_s), sort_gpu_by_mem_in_use);
-
-      // Now attempt to assign the process to a GPU.
-      g = 0;
+      qsort(gpus_by_mem, NUM_GPUS, sizeof(struct gpu_and_mem_s), sort_gpu_by_mem_in_use);   //struct gpu_and_mem_s{
+                                                                                                //int which_gpu;
+      // Now attempt to assign the process to a GPU.                                            //long* mem_B;
+      g = 0;                                                                                //}
       do {
         which_gpu  = gpus_by_mem[g].which_gpu;
         assert(*gpus_by_mem[g].mem_B == gpus_in_use[which_gpu].mem_B);
@@ -729,7 +729,7 @@ void sched_mgb(void) {
         allocated = allocate_compute(&GPUS[which_gpu],
                                      &gpus_in_use[which_gpu],
                                      comm);
-        if (allocated) {
+        if (allocated) {  //if allocation fails , try the next GPU
           target_dev_id = which_gpu;
           assigned = 1;
           break;
