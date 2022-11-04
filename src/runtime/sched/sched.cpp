@@ -127,8 +127,8 @@ int SCHED_ALIVE_COUNT = 0;
   } while(0)
 
 
-#define SCHED_NUM_STOPWATCHES 2
-typedef enum {
+#define SCHED_NUM_STOPWATCHES 3   //FIX: replaced by 3
+typedef enum {//timing type
  // time the scheduler spends awake and processing
   SCHED_STOPWATCH_AWAKE = 0,
 
@@ -584,7 +584,7 @@ void release_compute(struct gpu_s *GPU,
 // Or instead of stopping after finding the first GPU (with most available
 // memory) that can support the compute requirements, exhaust all of them to
 // find the one that also has the least compute load.
-void sched_mgb(void) {  //account for whether both requirement for thread blcoks and warps are met.
+void sched_mgb(void) {//Alg.2  //account for whether both requirement for thread blcoks and warps are met.
   int tmp_dev_id;
   int *head_p;
   int *tail_p;
@@ -991,7 +991,7 @@ void sched_mgb(void) {  //account for whether both requirement for thread blcoks
 // XXX This algorithm treats memory as a hard requirement, and
 // then chooses the GPU with the fewest current warps. It doesn't consider
 // thread blocks. It doesn't consider when warp limits might be saturated.
-void sched_mgb_basic(void) {
+void sched_mgb_basic(void) {  //Alg.3
   int tmp_dev_id;
   int *head_p;
   int *tail_p;

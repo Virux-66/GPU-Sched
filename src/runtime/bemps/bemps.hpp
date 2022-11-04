@@ -82,7 +82,7 @@ typedef struct {
   bemps_shm_gen_t *gen;
   bemps_shm_comm_t *comm;
 } bemps_shm_t;
-//this struct is used to record how much time a task is scheduled
+//this struct is used to record time period
 typedef struct {   
     unsigned long long n; // number of timings taken
     long long ts; // holds most recent starting timestamp from get-time-ns()
