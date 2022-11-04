@@ -6,13 +6,15 @@ function ae_run() {
 
     for WORKLOAD in ${WORKLOADS[@]}; do
         for SCHED_ALG in "${!SCHED_ALG_TO_ARGS_ARR[@]}"; do
-
+            #SCHED_ALG_TO_ARGS_ARR: [mgb_basic]="MGB_ARGS_ARR" [mgb]="MGB_ARGS_ARR"
+            #SCHED_ALG: mgb_basic mgb
             #echo ${SCHED_ALG}
             ARGS_ARR_STR=${SCHED_ALG_TO_ARGS_ARR[$SCHED_ALG]}
             #echo $ARGS_ARR_STR
             eval ARGS_ARR=\${${ARGS_ARR_STR}[@]}
-            for ARGS in ${ARGS_ARR[@]}; do
-                #echo $ARGS
+            #echo "$ARGS_ARR" #16
+            for ARGS in ${ARGS_ARR[@]}; do  #This loop has two part: launch scheduler and launch workloader
+                #echo $ARGS #16
                 WORKLOAD_NO_EXT=`basename $WORKLOAD .wl`
                 #ARGS=${SCHED_ALG_TO_ARGS[$SCHED_ALG]}
                 EXPERIMENT_BASENAME=${RESULTS_PATH}/${WORKLOAD_NO_EXT}.${SCHED_ALG}.${ARGS}
@@ -23,7 +25,7 @@ function ae_run() {
                 if [ "${SCHED_ALG}" == "cg" ]; then
                     SCHED_ARGS=${ARGS}
                 fi
-
+                
                 echo "Launching scheduler for ${EXPERIMENT_BASENAME}"
                 ${BEMPS_SCHED_PATH}/bemps_sched ${SCHED_ALG} ${SCHED_ARGS} \
                   &> ${EXPERIMENT_BASENAME}.sched-log &
@@ -38,7 +40,7 @@ function ae_run() {
                 # delay here.
                 sleep 3
 
-                echo "Launching workoader for ${EXPERIMENT_BASENAME}"
+                echo "Launching workloader for ${EXPERIMENT_BASENAME}"
                 ${WORKLOADER_PATH}/workloader.py \
                   ${WORKLOADS_PATH}/${WORKLOAD}  \
                   ${SCHED_ALG} \
@@ -52,7 +54,7 @@ function ae_run() {
 
                 echo "Workloader done"
                 echo "Killing scheduler"
-                kill -2 ${SCHED_PID}
+                kill -2 ${SCHED_PID}       #We can't use Ctrl+C to kill scheduler process, the only way is kill it by its process ID, -2 equivalent to ctrl c
                 sleep 5 # maybe a good idea before moving sched-stats.out
                 mv ./sched-stats.out ${EXPERIMENT_BASENAME}.sched-stats
                 mv ./sched_gpu.csv ${EXPERIMENT_BASENAME}-sched_gpu.csv

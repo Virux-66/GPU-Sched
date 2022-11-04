@@ -9,6 +9,7 @@ add_definitions(${LLVM_DEFINITIONS})
 include_directories(${LLVM_INCLUDE_DIRS})
 link_directories(${LLVM_LIBRARY_DIRS})
 
+#Both these two line are for finding libstatus
 include_directories(${CMAKE_SOURCE_DIR}/../../)
 link_directories(${CMAKE_SOURCE_DIR}/../../libstatus/)
 
