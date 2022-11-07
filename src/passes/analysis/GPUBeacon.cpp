@@ -256,13 +256,10 @@ bool GPUBeaconPass::postDominate(MemFreeInfo &MFI, InvokeInfo &II) {
 
 bool GPUBeaconPass::dominate(CallInst *C1, CallInst *C2) {
   Function *F = C1->getFunction();
-  dbgs() << "dominate stuff1\n";
   // C1 and C2 does not belong to the same function
   if (F != C2->getFunction()) return false;
-  dbgs() << "dominate stuff2\n";
 
   auto &DT = getAnalysis<DominatorTreeWrapperPass>(*F).getDomTree();    //BUG!!!!!!!!!!!!!!!!!1
-  dbgs() << "dominate stuff3\n";
 
   return DT.dominates(C1, C2);
 }

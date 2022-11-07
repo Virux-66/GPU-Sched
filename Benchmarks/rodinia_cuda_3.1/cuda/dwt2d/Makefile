@@ -22,8 +22,8 @@ include ../../common/make.config
 # Common flags
 COMMONFLAGS += $(INCLUDES) 
 NVCCFLAGS += $(COMMONFLAGS)
-CXXFLAGS += $(COMMONFLAGS)
-CFLAGS += $(COMMONFLAGS) -std=c99 
+CXXFLAGS += $(COMMONFLAGS) 
+CFLAGS += $(COMMONFLAGS) -std=c99
 LDFLAGS += -L$(CUDA_INSTALL_PATH)/lib64 -lcudart -lrt -L$(LAZY_LIB_DIR) -llazy
 
 # Debug/release flags
@@ -82,5 +82,5 @@ $(EXECUTABLE): $(COBJS) $(CXXOBJS) $(CUOBJS)
 	$(LINK) -o $(EXECUTABLE) $(COBJS) $(CXXOBJS) $(CUOBJS) $(LDFLAGS)
 
 clean:
-	rm -f $(COBJS) $(CXXOBJS) $(CUOBJS) $(EXECUTABLE)
+	rm -f $(COBJS) $(CXXOBJS) $(CUOBJS) $(EXECUTABLE) dwt.cu.ii
 	rm *.bmp.dwt.*		
