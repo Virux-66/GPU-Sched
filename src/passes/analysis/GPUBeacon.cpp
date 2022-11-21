@@ -1,4 +1,4 @@
-
+#include<iostream>
 #include "GPUBeacon.h"
 
 #include <llvm/IR/InstIterator.h>
@@ -25,6 +25,7 @@ int GPUBeaconPass::getDistance(Instruction *S, Instruction *E) {
 }
 
 bool GPUBeaconPass::runOnModule(Module &M) {
+  std::cout << "Hello\n";
   SmallVector<Type *, 4> ParamTys;
   auto &Ctx = M.getContext();
 
@@ -39,6 +40,7 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockY
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockZ
   ParamTys.push_back(Type::getInt64Ty(Ctx));  // for cuda memory size
+  //ParamTys.push_back(Type::getFloatTy(Ctx));  // for arithmetic intensity
   FunctionType *BTy = FunctionType::get(Type::getVoidTy(Ctx), ParamTys, false);
   BeaconBegin = M.getOrInsertFunction("bemps_begin", BTy);
 

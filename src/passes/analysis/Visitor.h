@@ -15,6 +15,7 @@ class VisitorBase {
   void visitModule(Module &M);
   virtual void visitFunction(Function &F);
   virtual void visitCallInst(CallInst *CI) {}
+  virtual void visitStoreInst(StoreInst *SI){}
 };
 
 class CUDAVisitor : public VisitorBase {
@@ -29,12 +30,16 @@ class CUDAVisitor : public VisitorBase {
   std::map<Value *, std::vector<MemAllocInfo>> MemAllocs;
   std::map<Value *, std::vector<MemFreeInfo>> MemFrees;
 
+  //tracking the arithmetic intensity of a kernel
+  llvm::Value* arithmetic_intensity;
+
   // in some case, a copy of grid is used so need to track
   // them where is the initial grid object
   std::map<Value *, Value *> AggMap;
   std::map<Value *, Value *> CoerseMap;
 
   virtual void visitCallInst(CallInst *CI);
+  virtual void visitStoreInst(StoreInst *SI);
   bool isDim3Struct(Type *Ty);
 
  public:

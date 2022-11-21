@@ -1,4 +1,4 @@
-
+#include<iostream>
 #include "Visitor.h"
 
 #include <llvm/IR/IntrinsicInst.h>
@@ -14,9 +14,10 @@ void VisitorBase::visitModule(Module &M) {
   }
 }
 
-void VisitorBase::visitFunction(Function &F) {
+void VisitorBase::visitFunction(Function &F) {//find the variable arithmetic_intesnity within every function.
   for (inst_iterator I = inst_begin(F), E = inst_end(F); I != E; ++I) {
     if (isa<CallInst>(&*I)) visitCallInst(dyn_cast<CallInst>(&*I));
+    if (isa<llvm::StoreInst>(&*I)) visitStoreInst(llvm::dyn_cast<llvm::StoreInst>(&*I));
   }
 }
 
@@ -91,6 +92,17 @@ void CUDAVisitor::visitCallInst(CallInst *CI) {
   } else if (!Callee->isIntrinsic() && StringRef(name).startswith("__cuda") ||
              StringRef(name).startswith("cuda")) {
     dbgs() << "[Info] Unhandled CUDA Operation: " << name << "\n";
+  }
+}
+
+void CUDAVisitor::visitStoreInst(StoreInst *SI){
+  std::cout <<SI->getName().str()<<'\n';
+  if(SI->getName().str()=="arithmetic_intensity"){
+    arithmetic_intensity=SI;
+    DEBUG_WITH_TYPE("visitor",{
+      llvm::dbgs()<<"[Info] Meet an declaration of arithmetic_intensity: \n";
+      std::cout << arithmetic_intensity->getName().str()<<'\n';
+    });
   }
 }
 
