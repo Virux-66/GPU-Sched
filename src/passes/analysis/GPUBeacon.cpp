@@ -31,7 +31,7 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for TaskID
   FunctionType *ETy = FunctionType::get(Type::getVoidTy(Ctx), ParamTys, false);
   BeaconRelease = M.getOrInsertFunction("bemps_free", ETy);
-
+  //bemps_begin(int gridX,int gridY,int gridZ,int blockX,int blockY,int blockZ,int memSize, float);
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for gridX
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for gridY
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for gridZ
@@ -39,7 +39,7 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockY
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockZ
   ParamTys.push_back(Type::getInt64Ty(Ctx));  // for cuda memory size
-  //ParamTys.push_back(Type::getFloatTy(Ctx));  // for arithmetic intensity
+  ParamTys.push_back(Type::getFloatTy(Ctx));  // for arithmetic intensity
   FunctionType *BTy = FunctionType::get(Type::getVoidTy(Ctx), ParamTys, false);
   BeaconBegin = M.getOrInsertFunction("bemps_begin", BTy);
 
@@ -289,7 +289,7 @@ bool GPUBeaconPass::postDominate(CallInst *C1, CallInst *C2) {
 
 char GPUBeaconPass::ID = 0;
 
-#if 0
+#if 1
 static RegisterPass<GPUBeaconPass> X("GB", "GPUBeacon", false, false);
 
 #else
