@@ -16,8 +16,10 @@ void VisitorBase::visitModule(Module &M) {
 
 void VisitorBase::visitFunction(Function &F) {//find the variable arithmetic_intesnity within every function.
   for (inst_iterator I = inst_begin(F), E = inst_end(F); I != E; ++I) {
-    if (isa<CallInst>(&*I)) visitCallInst(dyn_cast<CallInst>(&*I));
-    if (isa<llvm::StoreInst>(&*I)) visitStoreInst(llvm::dyn_cast<llvm::StoreInst>(&*I));
+    if (isa<CallInst>(&*I)) 
+      visitCallInst(dyn_cast<CallInst>(&*I));
+    else if (isa<llvm::AllocaInst>(&*I)) 
+      visitAllocaInst(llvm::dyn_cast<llvm::AllocaInst>(&*I));
   }
 }
 
@@ -95,11 +97,13 @@ void CUDAVisitor::visitCallInst(CallInst *CI) {
   }
 }
 
-void CUDAVisitor::visitStoreInst(StoreInst *SI){
-  std::cout <<SI->getName().str()<<'\n';
+void CUDAVisitor::visitAllocaInst(llvm::AllocaInst *SI){
+  if(!SI) return;
+  //std::cout <<SI->getName().str() <<'\n';
+  //std::cout <<"Hello world\n";
   if(SI->getName().str()=="arithmetic_intensity"){
     arithmetic_intensity=SI;
-    DEBUG_WITH_TYPE("visitor",{
+    DEBUG_WITH_TYPE("arithmetic",{
       llvm::dbgs()<<"[Info] Meet an declaration of arithmetic_intensity: \n";
       std::cout << arithmetic_intensity->getName().str()<<'\n';
     });

@@ -25,7 +25,6 @@ int GPUBeaconPass::getDistance(Instruction *S, Instruction *E) {
 }
 
 bool GPUBeaconPass::runOnModule(Module &M) {
-  std::cout << "Hello\n";
   SmallVector<Type *, 4> ParamTys;
   auto &Ctx = M.getContext();
 

@@ -15,7 +15,7 @@ class VisitorBase {
   void visitModule(Module &M);
   virtual void visitFunction(Function &F);
   virtual void visitCallInst(CallInst *CI) {}
-  virtual void visitStoreInst(StoreInst *SI){}
+  virtual void visitAllocaInst(AllocaInst *SI){}
 };
 
 class CUDAVisitor : public VisitorBase {
@@ -39,7 +39,7 @@ class CUDAVisitor : public VisitorBase {
   std::map<Value *, Value *> CoerseMap;
 
   virtual void visitCallInst(CallInst *CI);
-  virtual void visitStoreInst(StoreInst *SI);
+  virtual void visitAllocaInst(AllocaInst *SI);
   bool isDim3Struct(Type *Ty);
 
  public:
