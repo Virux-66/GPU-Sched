@@ -218,6 +218,7 @@ static inline int _push_beacon(bemps_beacon_t *beacon_p) {
   comm->beacon.mem_B = beacon_p->mem_B;
   comm->beacon.warps = beacon_p->warps;
   comm->beacon.thread_blocks = beacon_p->thread_blocks;
+  comm->beacon.arithmetic_intensity = beacon_p->arithmetic_intensity; //custom: add kernel's arithmetic_intensity to comm in shared memory
   comm->pid = pid;
 
   // XXX This should be the last field that we change in the comm structure,
@@ -352,7 +353,8 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *beacon) {
                << "bemps_tid " << bemps_tid << " , "
                << "mem_B " << beacon->mem_B << " , "
                << "warps " << beacon->warps << " , "
-               << "thread_blocks " << beacon->thread_blocks << "\n");
+               << "thread_blocks " << beacon->thread_blocks << " , " 
+               << "arithmetic intensity " << beacon->arithmetic_intensity<<"\n");
 
   q_idx = _push_beacon(beacon); //after batch size is met, _push_beacon will signal scheduler
   bemps_tid_to_q_idx[bemps_tid] = q_idx;
@@ -413,6 +415,7 @@ void bemps_begin(int id, int gx, int gy, int gz, int bx, int by, int bz,
 #endif
   beacon.warps = warps;
   beacon.thread_blocks = num_blocks;
+  beacon.arithmetic_intensity=arithmetic_intensity;
   bemps_beacon(id, &beacon);
   bemps_stopwatch_end(&bemps_stopwatches[BEMPS_STOPWATCH_BEACON]);
 }

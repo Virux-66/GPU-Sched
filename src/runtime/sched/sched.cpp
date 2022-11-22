@@ -74,6 +74,16 @@
   .total_warps          = 80 * 48   \
 }
 
+#define RTX_3060_SPECS{             \
+  .mem_B = 12288L * 1024 * 1024,    \
+  .cores = 3584,                    \
+  .num_sms              = 28,       \
+  .thread_blocks_per_sm = 16,       \
+  .warps_per_sm         = 48,       \
+  .total_thread_blocks  = 28 * 16,  \
+  .total_warps          = 28 * 48   \
+}
+
 // FIXME
 // kepler, maxwell, pascal, volta all have 64 warps per sm. not clear how to
 // get it with cudaGetDeviceProperties, so we're hard-coding it for now.
@@ -92,6 +102,7 @@
 // not tested yet.)
 
 //#define WARPS_PER_SM 64 //for 3080Ti, the maximum warp per SM is 48, as with V100, P100 and 1080 the number is 64
+#define WARP_SIZE    32  //for 3080Ti and 3060
 #define WARPS_PER_SM 48
 //#define THREAD_BLOCKS_PER_SM 32 //for any other mentioned GPU other than 3080Ti, the value is 32.
 #define THREAD_BLOCKS_PER_SM 16
@@ -100,6 +111,7 @@
 //#define V100_SXM2_SPECS_MEM_B (13000L * 1024 * 1024)
 #define V100_SXM2_SPECS_MEM_B (14000L * 1024 * 1024)
 #define RTX_3080Ti_SEPCS_MEM_B (12288L * 1024 * 1024)
+#define RTX_3060_SPECS_MEM_B   (12288L * 1024 * 1024)
 
 #ifdef BEMPS_SCHED_DEBUG
 #define BEMPS_SCHED_LOG(str)                                          \
@@ -302,7 +314,10 @@ static inline void init_gpus(void) {
     } else if(strncmp(prop.name,"NVIDIA GeForce RTX 3080 Ti",26)==0){
         BEMPS_SCHED_LOG("  adjusting mem_B for NVIDIA GeForce RTX 3080Ti" << "\n");
         GPUS[i].mem_B = RTX_3080Ti_SEPCS_MEM_B;
-    } else if(strncmp(prop.name, "Tesla V100-SXM2-16GB", 20) == 0){
+    } else if(strncmp(prop.name,"NVIDIA GeForce RTX 3060",23)==0){
+        BEMPS_SCHED_LOG(" adjusting mem_B for NVIDIA GeForce RTX 3060" << '\n'); 
+        GPUS[i].mem_B=  RTX_3060_SPECS_MEM_B;
+    }else if(strncmp(prop.name, "Tesla V100-SXM2-16GB", 20) == 0){
         BEMPS_SCHED_LOG("  adjusting mem_B for Tesla V100-SXM2-16GB" << "\n");
         GPUS[i].mem_B = V100_SXM2_SPECS_MEM_B;
     } else {

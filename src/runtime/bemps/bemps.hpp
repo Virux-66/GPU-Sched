@@ -16,6 +16,7 @@ typedef struct {
   long mem_B; // Signed. Negatives currently used for frees. Improve later.
   long warps; // same
   long thread_blocks; // same
+  float arithmetic_intensity;  //determine a kernel whether compute-bound or bandwidth
   // TODO: constant memory
 } bemps_beacon_t;
 
