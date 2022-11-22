@@ -125,7 +125,7 @@ extern "C" cudaError_t cudaKernelLaunchPrepare(uint64_t gxy, int gz,
 #endif
 
   if (R.toIssue()) {
-    bemps_begin(id, gx, gy, gz, bx, by, bz, membytes);
+    bemps_begin(id, gx, gy, gz, bx, by, bz, membytes,-1); //populate arithmetic_intensity with invail value
     R.disableIssue();
   }
   cudaError_t err = R.prepare();

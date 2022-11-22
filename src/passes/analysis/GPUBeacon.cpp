@@ -133,7 +133,6 @@ void GPUBeaconPass::instrument(Module &M) {
     // adjust the postion of cudaMalloc: move cudaMalloc after bemps_begin such that GPU allocates
     // memory after bemps_begin finishes
     for (auto op : CUDAMemOps) {
-      std::cout << '\n'<< op->getName().str() <<'\n';
       if (!postDominate(op, beacon)) {
         // dbgs() << "OP: " << *op;
         for (auto it = op->user_begin(); it != op->user_end(); it++) {
@@ -298,7 +297,7 @@ bool GPUBeaconPass::postDominate(CallInst *C1, CallInst *C2) {
 
 char GPUBeaconPass::ID = 0;
 
-#if 1
+#if 0
 static RegisterPass<GPUBeaconPass> X("GB", "GPUBeacon", false, false);
 
 #else
