@@ -354,7 +354,7 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *beacon) {
                << "mem_B " << beacon->mem_B << " , "
                << "warps " << beacon->warps << " , "
                << "thread_blocks " << beacon->thread_blocks << " , " 
-               << "arithmetic intensity " << beacon->arithmetic_intensity<<"\n");
+               << "arithmetic_intensity " << beacon->arithmetic_intensity<<"\n");
 
   q_idx = _push_beacon(beacon); //after batch size is met, _push_beacon will signal scheduler
   bemps_tid_to_q_idx[bemps_tid] = q_idx;

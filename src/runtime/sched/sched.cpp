@@ -162,7 +162,8 @@ typedef enum {
   SCHED_ALG_CG_E,
   SCHED_ALG_MGB_BASIC_E,           // mgb from original ppopp21 submission
   //SCHED_ALG_MGB_SIMPLE_COMPUTE_E,  // mgb simple compute
-  SCHED_ALG_MGB_E      // mgb with SM scheduler emulation
+  SCHED_ALG_MGB_E,     // mgb with SM scheduler emulation
+  SCHED_ALG_AI_E       // heuristic algorithm based on arithmetic intensity
 } sched_alg_e;
 
 struct gpu_s {
@@ -581,6 +582,9 @@ void release_compute(struct gpu_s *GPU,
 }
 
 
+vod sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
+
+}
 
 
 // Our custom scheduler, multi-GPU with beacons
@@ -1748,6 +1752,9 @@ void sched(void) {
   } else if (which_scheduler == SCHED_ALG_MGB_E) {
     BEMPS_SCHED_LOG("Starting mgb scheduler\n");
     sched_mgb();
+  } else if(which_scheduler == SCHED_ALG_AI_E) {
+    BEMPS_SCHED_LOG("Starting ai-heuristic scheduelr\n");
+    sched_ai_heuristic();
   } else {
     fprintf(stderr, "ERROR: Invalid scheduling algorithm\n");
     exit(2);
