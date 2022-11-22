@@ -60,6 +60,10 @@ class CUDAVisitor : public VisitorBase {
   std::vector<GridCtorInfo> &getDimCtor(Value *Pointer) {
     return GridCtors[Pointer];
   }
+
+  llvm::Value *getArithmeticPtr(){
+    return arithmetic_intensity;
+  }
 };
 
 #endif

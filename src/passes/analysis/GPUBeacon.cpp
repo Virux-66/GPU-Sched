@@ -123,10 +123,17 @@ void GPUBeaconPass::instrument(Module &M) {
 
     Args.push_back(tot);
 
+    // load arithmetic_intensity from arithmetic_intensity pointer and
+    //insert the load instruction before bemps_begin and push the ai_value to paramemter list
+    auto ai_value=IRB.CreateLoad(CUDAInfo.getArithmeticPtr(),"ai");
+    Args.push_back(ai_value);
+
     auto beacon = IRB.CreateCall(BeaconBegin, Args);
 
-    // adjust the postion of cudaMalloc
+    // adjust the postion of cudaMalloc: move cudaMalloc after bemps_begin such that GPU allocates
+    // memory after bemps_begin finishes
     for (auto op : CUDAMemOps) {
+      std::cout << '\n'<< op->getName().str() <<'\n';
       if (!postDominate(op, beacon)) {
         // dbgs() << "OP: " << *op;
         for (auto it = op->user_begin(); it != op->user_end(); it++) {
@@ -138,6 +145,8 @@ void GPUBeaconPass::instrument(Module &M) {
         op->moveAfter(beacon);
       }
     }
+
+
 
     IRB.SetInsertPoint(*CUDAFreeOps.rbegin());
     auto beacon_end = IRB.CreateCall(BeaconRelease, TID);
