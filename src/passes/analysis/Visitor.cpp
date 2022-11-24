@@ -107,6 +107,8 @@ void CUDAVisitor::visitAllocaInst(llvm::AllocaInst *SI){
       llvm::dbgs()<<"[Info] Meet an declaration of arithmetic_intensity: \n";
       std::cout << arithmetic_intensity->getName().str()<<'\n';
     });
+  } else if(SI->getName().str()==""){
+
   }
 }
 

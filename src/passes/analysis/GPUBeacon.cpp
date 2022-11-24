@@ -41,6 +41,8 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockZ
   ParamTys.push_back(Type::getInt64Ty(Ctx));  // for cuda memory size
   ParamTys.push_back(Type::getFloatTy(Ctx));  // for arithmetic intensity
+  ParamTys.push_back(Type::getFloatTy(Ctx));  // for number of floating-point operation
+  ParamTys.push_back(Type::getFloatTy(Ctx));  // for number of bytes transferred from and to memory
   FunctionType *BTy = FunctionType::get(Type::getVoidTy(Ctx), ParamTys, false);
   BeaconBegin = M.getOrInsertFunction("bemps_begin", BTy);
 
@@ -125,9 +127,18 @@ void GPUBeaconPass::instrument(Module &M) {
 
     // load arithmetic_intensity from arithmetic_intensity pointer and
     //insert the load instruction before bemps_begin and push the ai_value to paramemter list
-    assert(CUDAInfo.getArithmeticPtr()&&"The declaration of this program doesn't exit\n");
+    assert(CUDAInfo.getArithmeticPtr()&&"The declaration of arithmetic_intensity doesn't exist in this program\n");
     auto ai_value=IRB.CreateLoad(CUDAInfo.getArithmeticPtr(),"ai");
     Args.push_back(ai_value);
+    // load the number of floating-point operation from floating-point operation pointer and 
+    // insert the load before bemps_begin and push the num_fp to paramemter list
+    assert(CUDAInfo.getFloatingPointPtr()&&"The declaration of num_floatingPoint doesn't exist in this program\n");
+    auto num_fp=IRB.CreateLoad(CUDAInfo.getFloatingPointPtr(),"num_fp");
+    Args.push_back(num_fp);
+    // load the number of transferred bytes
+    assert(CUDAInfo.getTransferredBytes()&&"The declaration of num_transferredBytes doesn't exist in this program\n");
+    auto num_tb=IRB.CreateLoad(CUDAInfo.getTransferredBytes(),"num_tb");
+    Args.push_back(num_tb); 
 
     auto beacon = IRB.CreateCall(BeaconBegin, Args);
 

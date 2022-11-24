@@ -33,6 +33,12 @@ class CUDAVisitor : public VisitorBase {
   //tracking the arithmetic intensity of a kernel
   llvm::Value* arithmetic_intensity=nullptr;
 
+  //tracking the floating-point operation
+  llvm::Value* num_floatingPoint=nullptr;
+
+  //tracking the bytes transferred from and to memory
+  llvm::Value* num_transferredBytes=nullptr;
+
   // in some case, a copy of grid is used so need to track
   // them where is the initial grid object
   std::map<Value *, Value *> AggMap;
@@ -63,6 +69,14 @@ class CUDAVisitor : public VisitorBase {
 
   llvm::Value *getArithmeticPtr(){
     return arithmetic_intensity;
+  }
+
+  llvm::Value *getFloatingPointPtr(){
+    return num_floatingPoint;
+  }
+
+  llvm::Value *getTransferredBytes(){
+    return num_transferredBytes;
   }
 };
 
