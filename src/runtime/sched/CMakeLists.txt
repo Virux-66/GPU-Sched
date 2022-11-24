@@ -10,4 +10,9 @@ include_directories(
     /usr/local/cuda/include
 )
 
-target_link_libraries(bemps_sched ${LIBRT} bemps pthread status)
+set_property(
+    TARGET bemps_sched
+    PROPERTY CXX_STANDARD 17
+)
+
+target_link_libraries(bemps_sched ${LIBRT} bemps pthread status ortools)

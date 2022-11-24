@@ -260,7 +260,8 @@ void usage_and_exit(char *prog_name) {
              "cg, "
              "mgb_basic, "
              //"mgb_simple_compute, "
-             "or mgb\n"
+             "mgb, "
+             "ai-heuristic\n"
       "\n"
       "    jobs_per_gpu is required and only valid for cg; it is an int that\n"
       "    specifies the maximum number of jobs that can be run a GPU\n");
@@ -583,7 +584,9 @@ void release_compute(struct gpu_s *GPU,
 
 
 void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
-
+  std::cout << "This schduler algorithm has not been implemented yet" <<std::endl;
+  std::cout << "Program exit\n"<<std::endl;
+  sigint_handler(0);
 }
 
 
@@ -1827,6 +1830,8 @@ void parse_args(int argc, char **argv) {
       gpus_by_mem[i].which_gpu = i;
       gpus_by_mem[i].mem_B = &gpus_in_use[i].mem_B;
     }
+  } else if (strncmp(argv[1],"ai-heuristic",13)==0) {
+      which_scheduler = SCHED_ALG_AI_E;
   } else {
     usage_and_exit(argv[0]);
   }
