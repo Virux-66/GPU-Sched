@@ -1,4 +1,5 @@
 #include<iostream>
+#include<assert.h>
 #include "GPUBeacon.h"
 
 #include <llvm/IR/InstIterator.h>
@@ -46,7 +47,6 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   CUDAInfo.collect(M);
   buildCUDATasks(M);
   instrument(M);
-
 
   return true;
 }
@@ -125,6 +125,7 @@ void GPUBeaconPass::instrument(Module &M) {
 
     // load arithmetic_intensity from arithmetic_intensity pointer and
     //insert the load instruction before bemps_begin and push the ai_value to paramemter list
+    assert(CUDAInfo.getArithmeticPtr()&&"The declaration of this program doesn't exit\n");
     auto ai_value=IRB.CreateLoad(CUDAInfo.getArithmeticPtr(),"ai");
     Args.push_back(ai_value);
 

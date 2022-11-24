@@ -31,7 +31,7 @@ class CUDAVisitor : public VisitorBase {
   std::map<Value *, std::vector<MemFreeInfo>> MemFrees;
 
   //tracking the arithmetic intensity of a kernel
-  llvm::Value* arithmetic_intensity;
+  llvm::Value* arithmetic_intensity=nullptr;
 
   // in some case, a copy of grid is used so need to track
   // them where is the initial grid object

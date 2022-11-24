@@ -582,7 +582,7 @@ void release_compute(struct gpu_s *GPU,
 }
 
 
-vod sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
+void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
 
 }
 
