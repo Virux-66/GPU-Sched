@@ -605,8 +605,8 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
   long mem_to_add;
 
 
-  head_p = &bemps_shm_p->beacon_q_head;
-  tail_p = &bemps_shm_p->beacon_q_tail;
+  head_p = &bemps_shm_p->gen->beacon_q_head;
+  tail_p = &bemps_shm_p->gen->beacon_q_tail;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
 
@@ -647,8 +647,8 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
                                                     <<"\n");
         if(comm->beacon.mem_B<0){
           BEMPS_SCHED_LOG("Received free-beacon for pid " << comm->pid << "\n");
-          stats.num_free++;
-          tem_dev_id = comm->sched_notify.device_id;
+          stats.num_frees++;
+          tmp_dev_id = comm->sched_notif.device_id;
           //Add (don't substract), because mem_B is negative already
           long tmp_bytes_to_free = comm->beacon.mem_B;  
           long tmp_warps_to_free = comm->beacon.warps;

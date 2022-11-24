@@ -17,6 +17,8 @@ typedef struct {
   long warps; // same
   long thread_blocks; // same
   float arithmetic_intensity;  //determine a kernel whether compute-bound or bandwidth
+  float num_fp;                // the number of floating-point operation
+  float num_tb;                // the number of bytes to transferred from or to memory
   // TODO: constant memory
 } bemps_beacon_t;
 
@@ -99,7 +101,8 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *bemps_beacon);
 
 extern "C" {
 void bemps_begin(int id, int gx, int gy, int gz, int bx, int by, int bz,
-                 int64_t memsize,float arithmetic_intensity);
+                 int64_t memsize,float arithmetic_intensity,
+                 float num_fp, float num_tb);
 }
 
 /*

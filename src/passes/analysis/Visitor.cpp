@@ -97,18 +97,27 @@ void CUDAVisitor::visitCallInst(CallInst *CI) {
   }
 }
 
-void CUDAVisitor::visitAllocaInst(llvm::AllocaInst *SI){
-  if(!SI) return;
+void CUDAVisitor::visitAllocaInst(llvm::AllocaInst *AI){
+  if(!AI) return;
   //std::cout <<SI->getName().str() <<'\n';
   //std::cout <<"Hello world\n";
-  if(SI->getName().str()=="arithmetic_intensity"){
-    arithmetic_intensity=SI;
-    DEBUG_WITH_TYPE("arithmetic",{
+  if(AI->getName().str()=="arithmetic_intensity"){
+    arithmetic_intensity=AI;
+    DEBUG_WITH_TYPE("ai",{
       llvm::dbgs()<<"[Info] Meet an declaration of arithmetic_intensity: \n";
       std::cout << arithmetic_intensity->getName().str()<<'\n';
     });
-  } else if(SI->getName().str()==""){
-
+  } else if(AI->getName().str()=="num_floatingPoint"){
+    num_floatingPoint=AI;
+    DEBUG_WITH_TYPE("ai",{
+      llvm::dbgs()<<"[info] Meet an declaration of num_floatingPoint: \n";
+      std::cout << num_floatingPoint->getName().str() << '\n';
+    });
+  } else if(AI->getName().str()=="num_transferredBytes"){
+    num_transferredBytes=AI;
+    DEBUG_WITH_TYPE("ai",{
+      llvm::dbgs()<<"[info] Meet an declaration of num_transferredBytes: \n";
+    });
   }
 }
 
