@@ -604,12 +604,86 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
   long mem_in_use;
   long mem_to_add;
 
+
   head_p = &bemps_shm_p->beacon_q_head;
   tail_p = &bemps_shm_p->beacon_q_tail;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
 
+  while(1){
+    set_wakeup_time_ns(&ts);
+    pthread_mutex_lock(&bemps_shm_p->gen->lock);
+    pthread_cond_timedwait(&bemps_shm_p->gen->cond,&bemps_shm_p->gen->lock,
+                            &ts);
+    bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]); 
+    ALIVE_MSG(); 
+    
+    batch_size=0;
+    // First loop: This while loop is used to fetch the beacon to be scheduled in shared memory
+    // In this loop, compared to other mgb algorithm ,we don't track thread blocks allocation
+    while(*tail_p!=*head_p){
+      BEMPS_SCHED_LOG("*head_p: "<<(*head_p)<<'\n');
+      BEMPS_SCHED_LOG("*tail_p: "<<(*tail_p)<<'\n');
 
+      comm = &bemps_shm_p->comm[*tail_p];
+
+      while(comm->state != BEMPS_BEACON_STATE_BEACON_FIRED_E){
+        // TODO probably want to track a stat for this case
+        BEMPS_SCHED_LOG("WARNING: Scheduler hit a beacon before FIRED "
+                        << "was set. (Not a bug, but unless we're "
+                        << "flooded with beacons, this should be rare."
+                        << "\n");
+        BEMPS_SCHED_LOG("WARNING: *tail_p: " << (*tail_p) << "\n");
+        // FIXME sync shouldn't hurt, but may not help?
+        __sync_synchronize();
+      }
+
+      if(comm->exit_flag){
+        BEMPS_SCHED_LOG("seening exit flag\n");
+        comm->exit_flag=0; 
+      } else{
+        assert(comm->beacon.mem_B);
+        BEMPS_SCHED_LOG("First loop seening mem_B: "<<comm->beacon.mem_B 
+                                                    <<"\n");
+        if(comm->beacon.mem_B<0){
+          BEMPS_SCHED_LOG("Received free-beacon for pid " << comm->pid << "\n");
+          stats.num_free++;
+          tem_dev_id = comm->sched_notify.device_id;
+          //Add (don't substract), because mem_B is negative already
+          long tmp_bytes_to_free = comm->beacon.mem_B;  
+          long tmp_warps_to_free = comm->beacon.warps;
+          BEMPS_SCHED_LOG("Freeing "<<tmp_bytes_to_free << "bytes "
+                                    <<"from device" << tmp_dev_id <<"\n");
+          BEMPS_SCHED_LOG("Freeing "<<tmp_warps_to_free << " warps "
+                                   <<"from device "<< tmp_warps_to_free<< "\n" );
+          gpus_in_use[tmp_dev_id].mem_B += tmp_bytes_to_free;
+          gpus_in_use[tmp_dev_id].warps += tmp_warps_to_free;
+
+          //in this our custom algorithm, we don't track the the allocation of mapping thread block to SMs
+          //release_compute(&GPUS[tmp_dev_id],&gpus_in_use[tmp_dev_id],comm)
+
+          gpus_in_use[tmp_dev_id].active_jobs--;
+          --*jobs_running_on_gpu;
+        } else {
+          stats.num_beacons++;
+          boomers.push_back(comm);
+          batch_size++;
+          ++*jobs_waiting_on_gpu;
+        }
+      }
+      
+      *tail_p = (*tail_p + 1) & (BEMPS_BEACON_BUF_SZ - 1);
+    }
+  
+    if(batch_size > stats.max_observed_batch_size) {
+      stats.max_observed_batch_size = batch_size;
+    }
+
+    //Second loop: use Google or-tools to schedule kernel according to their arithmetic intensity
+    //The problem we need to address is a integer linear prgramming problem which is a NP-hard problem
+    //in this case, we use Google or-tools to handle it.
+    
+  }
 
   /*
   std::cout << "This schduler algorithm has not been implemented yet" <<std::endl;
