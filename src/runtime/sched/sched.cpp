@@ -20,6 +20,8 @@
 
 #include "bemps.hpp"
 
+#include "ortools/linear_solver/linear_solver.h"
+
 //#define BEMPS_SCHED_DEBUG
 
 #define SCHED_DEFAULT_BATCH_SIZE 1
@@ -584,9 +586,36 @@ void release_compute(struct gpu_s *GPU,
 
 
 void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
+  int tmp_dev_id;
+  int* head_p;
+  int* tail_p;
+  int* jobs_running_on_gpu;
+  int* jobs_waiting_on_gpu;
+  int assigned;
+  struct timespec ts;
+  int boomers_len;
+  int i;
+  int g;
+  bemps_shm_comm_t* comm;
+  int batch_size;
+  int which_gpu;
+  bool allocated;
+  long mem_max;
+  long mem_in_use;
+  long mem_to_add;
+
+  head_p = &bemps_shm_p->beacon_q_head;
+  tail_p = &bemps_shm_p->beacon_q_tail;
+  jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
+  jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
+
+
+
+  /*
   std::cout << "This schduler algorithm has not been implemented yet" <<std::endl;
   std::cout << "Program exit\n"<<std::endl;
   sigint_handler(0);
+  */
 }
 
 

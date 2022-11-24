@@ -58,7 +58,7 @@ typedef struct {
 
   // For batching algorithms, the size of the batch before we signal the
   // scheduler.
-  int max_batch_size;
+  int max_batch_size; //this variable is set by scheduler when it initialize shared memory
 
   // For jobs with dynamic job pressure, these variables can be read by a
   // driver to help decide whether or not increase or decrease the number of
