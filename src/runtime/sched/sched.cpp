@@ -117,9 +117,14 @@
 #define RTX_3060_SPECS_MEM_B   (12288L * 1024 * 1024)
 
 //repective arithmetic intensity that can make kernels achieve ridge point
-#define RTX_3060_SPECS_AI_ OP_PER_B
-#define RTX_3080Ti_SPECS_AI_ OP_PER_B
-
+//these values are not supposed to write in to the structure gpu_s.
+//Beacause for the same version with different memory probably come with different bandwidth.
+//So for a scheduler program used in practice, this value should be measured before
+//scheduler starts.
+#define RTX_3060_SPECS_AI_FP32_DRAM     0
+#define RTX_3060_SPECS_AI_FP32_L1       0
+#define RTX_3080Ti_SPECS_AI_FP32_DRAM  (37.736f)
+#define RTX_3080Ti_SPECS_AI_FP32_L1    (16.484f)
 
 #ifdef BEMPS_SCHED_DEBUG
 #define BEMPS_SCHED_LOG(str)                                          \
@@ -598,16 +603,20 @@ void release_compute(struct gpu_s *GPU,
 //This function wraps up those integer linear algorithm,
 //such that we can choose which specifc algorithm to address our integer linear probelm.
 //solve_alg_e used to sepcify which integer linear algorithm to use.
-std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*> unscheduled_set,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E){
+std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>& unscheduled_set,
+                                                  float ai_ridge,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
+{
   if(SOLVE_ALG_TYPE==solve_alg_e::SOLVE_ALG_ZERO_E){
     std::unique_ptr<operations_research::MPSolver> solver(
             operations_research::MPSolver::CreateSolver("SCIP"));
     assert(solver&&"Can't initialize integer linear solver\n");
-    
+
   }
 }
 
-void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
+//Our heuristic algorithm is designed to fit different version GPU, which have different ridge arithmetic intensity
+//Assuming the GPU-system with single or multiple homogeneous GPUs, the parameter ai_ridge represents ridge arithmetic intensity(>0)
+void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based on kernel's arithmetic intensity
   int tmp_dev_id;
   int* head_p;
   int* tail_p;
@@ -631,6 +640,8 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
   tail_p = &bemps_shm_p->gen->beacon_q_tail;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
+
+  assert(ai_ridge&&"Invaild ridge arithmetic intensity\n");
 
   while(1){
     set_wakeup_time_ns(&ts);
@@ -710,7 +721,7 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
     //    we don't have to find another kernel when the collective arithmetic intensity of concurrent set 
     //    achieves ridge point of the device.
 
-
+  
 
 
 
@@ -1893,8 +1904,8 @@ void sched(void) {
     BEMPS_SCHED_LOG("Starting mgb scheduler\n");
     sched_mgb();
   } else if(which_scheduler == SCHED_ALG_AI_E) {
-    BEMPS_SCHED_LOG("Starting ai-heuristic scheduelr\n");
-    sched_ai_heuristic();
+    BEMPS_SCHED_LOG("Starting ai-heuristic scheduler\n");
+    sched_ai_heuristic(RTX_3080Ti_SPECS_AI_FP32_DRAM);
   } else {
     fprintf(stderr, "ERROR: Invalid scheduling algorithm\n");
     exit(2);
