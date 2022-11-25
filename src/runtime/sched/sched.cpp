@@ -19,8 +19,9 @@
 #include <libstatus/profiler.h>
 
 #include "bemps.hpp"
-
+//the library for solving integer linear programming.
 #include "ortools/linear_solver/linear_solver.h"
+#include <memory>
 
 //#define BEMPS_SCHED_DEBUG
 
@@ -115,6 +116,11 @@
 #define RTX_3080Ti_SEPCS_MEM_B (12288L * 1024 * 1024)
 #define RTX_3060_SPECS_MEM_B   (12288L * 1024 * 1024)
 
+//repective arithmetic intensity that can make kernels achieve ridge point
+#define RTX_3060_SPECS_AI_ OP_PER_B
+#define RTX_3080Ti_SPECS_AI_ OP_PER_B
+
+
 #ifdef BEMPS_SCHED_DEBUG
 #define BEMPS_SCHED_LOG(str)                                          \
   do {                                                                \
@@ -167,6 +173,10 @@ typedef enum {
   SCHED_ALG_MGB_E,     // mgb with SM scheduler emulation
   SCHED_ALG_AI_E       // heuristic algorithm based on arithmetic intensity
 } sched_alg_e;
+
+typedef enum{
+  SOLVE_ALG_ZERO_E=0
+} solve_alg_e;
 
 struct gpu_s {
   long mem_B;
@@ -585,6 +595,18 @@ void release_compute(struct gpu_s *GPU,
 }
 
 
+//This function wraps up those integer linear algorithm,
+//such that we can choose which specifc algorithm to address our integer linear probelm.
+//solve_alg_e used to sepcify which integer linear algorithm to use.
+std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*> unscheduled_set,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E){
+  if(SOLVE_ALG_TYPE==solve_alg_e::SOLVE_ALG_ZERO_E){
+    std::unique_ptr<operations_research::MPSolver> solver(
+            operations_research::MPSolver::CreateSolver("SCIP"));
+    assert(solver&&"Can't initialize integer linear solver\n");
+    
+  }
+}
+
 void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's arithmetic intensity
   int tmp_dev_id;
   int* head_p;
@@ -603,7 +625,7 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
   long mem_max;
   long mem_in_use;
   long mem_to_add;
-
+  //The following variable is used to solve integer linear programming problem
 
   head_p = &bemps_shm_p->gen->beacon_q_head;
   tail_p = &bemps_shm_p->gen->beacon_q_tail;
@@ -682,7 +704,19 @@ void sched_ai_heuristic(void){ //heuristic scheduling algorithm based on kerne's
     //Second loop: use Google or-tools to schedule kernel according to their arithmetic intensity
     //The problem we need to address is a integer linear prgramming problem which is a NP-hard problem
     //in this case, we use Google or-tools to handle it.
-    
+    //In this algorithm, we premise the following assmptions:
+    //  -Every kernel has more thread blocks than device's SMs. 
+    //    Based on this assumption and the assignment algorithm of thread blocks to SM, which is round-robin,
+    //    we don't have to find another kernel when the collective arithmetic intensity of concurrent set 
+    //    achieves ridge point of the device.
+
+
+
+
+
+
+
+
   }
 
   /*

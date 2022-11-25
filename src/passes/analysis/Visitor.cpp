@@ -117,6 +117,7 @@ void CUDAVisitor::visitAllocaInst(llvm::AllocaInst *AI){
     num_transferredBytes=AI;
     DEBUG_WITH_TYPE("ai",{
       llvm::dbgs()<<"[info] Meet an declaration of num_transferredBytes: \n";
+      std::cout << num_transferredBytes->getName().str() <<'\n';
     });
   }
 }
