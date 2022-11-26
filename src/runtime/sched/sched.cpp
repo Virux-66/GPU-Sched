@@ -607,9 +607,18 @@ void release_compute(struct gpu_s *GPU,
 //such that we can choose which specifc algorithm to address our integer linear probelm.
 //solve_alg_e used to sepcify which integer linear algorithm to use.
 //If the return object, std::list::size()==0, that indicates solver doesn't find a feasible or optimal solution.
+//This should never modify (push or pop) the unscheduled_list. Because the solution from here is not necessarily
+//the expected solution. The expected solution makes the epsilon minimum.
 std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>& unscheduled_list,int64_t epsilon,
                                                   float ai_ridge,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
+  BEMPS_SCHED_LOG("Unscheduled list size: " << unscheduler_list.size() << '\n');
+  BEMPS_SCHED_LOG("epsilon: " << epsilon <<'\n');
+  BEMPS_SCHED_LOG("ai_ridge: " << ai_ridge <<'\n');
+  BEMPS_SCHED_LOG("algorithm type: " << SOLVE_ALG_TYPE << '\n');
+
+  std::list<bemps_shm_comm_t*> return_list;
+
   if(SOLVE_ALG_TYPE==solve_alg_e::SOLVE_ALG_ZERO_E){
     operations_research::sat::CpModelBuilder cp_model;
     const operations_research::Domain domain(0,1);
@@ -664,8 +673,35 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
     //Solving problem
     const operations_research::sat::CpSolverResponse response = 
     operations_research::sat::Solve(cp_model.Build());
-    
+
+    if(response.status()==operations_research::sat::CpSolverStatus::OPTIMAL ||
+       response.status()==operations_research::sat::CpSolverStatus::FEASIBLE ){
+        var_index=0;
+        for(std::list<bemps_shm_comm_t*>::iterator b_itera=unscheduled_list.begin(),
+                                                   e_itera=unscheduled_list.end();
+                                                   b_itera!=e_itera;
+                                                   b_itera++)
+        {
+          if(operations_research::sat::SolutionIntegerValue(response,var_vec[var_index])==1)
+            return_list.push_back(*b_itera);
+          ++var_index;
+        }
+    }else{
+      BEMPS_SCHED_LOG("Not find a feasible or optimal solution\n");
+    }
+
   }
+  return return_list;
+}
+
+//This function uses binary search to find the solution such that the inequality satifies the minimum epsilon.
+//The epsilon ranges from [0,output_value]. We leave how to set a best maximum epsilon such that it can speed up the algorithm behind.
+//Up to now, we first try the value as int64_t 100.
+std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_comm_t*>& unscheduled_list, 
+                                                          float ai_ridge, int64_t max_epsilon=100, 
+                                                          solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
+{
+  
 }
 
 //Our heuristic algorithm is designed to fit different version GPU, which have different ridge arithmetic intensity
@@ -695,7 +731,7 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
 
-  assert(ai_ridge&&"Invaild ridge arithmetic intensity\n");
+  assert((ai_ridge<=0)&&"Invaild ridge arithmetic intensity\n");
 
   while(1){
     set_wakeup_time_ns(&ts);
@@ -782,6 +818,8 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
 
 
 
+
+    bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
   }
 
   /*
