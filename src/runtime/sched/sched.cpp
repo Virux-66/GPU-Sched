@@ -20,7 +20,10 @@
 
 #include "bemps.hpp"
 //the library for solving integer linear programming.
+#include "ortools/sat/cp_model.h"
+#include "ortools/sat/cp_model.pb.h"
 #include "ortools/linear_solver/linear_solver.h"
+#include "ortools/sat/cp_model_solver.h"
 #include <memory>
 
 //#define BEMPS_SCHED_DEBUG
@@ -603,14 +606,65 @@ void release_compute(struct gpu_s *GPU,
 //This function wraps up those integer linear algorithm,
 //such that we can choose which specifc algorithm to address our integer linear probelm.
 //solve_alg_e used to sepcify which integer linear algorithm to use.
-std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>& unscheduled_set,
+//If the return object, std::list::size()==0, that indicates solver doesn't find a feasible or optimal solution.
+std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>& unscheduled_list,int64_t epsilon,
                                                   float ai_ridge,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
   if(SOLVE_ALG_TYPE==solve_alg_e::SOLVE_ALG_ZERO_E){
-    std::unique_ptr<operations_research::MPSolver> solver(
-            operations_research::MPSolver::CreateSolver("SCIP"));
-    assert(solver&&"Can't initialize integer linear solver\n");
+    operations_research::sat::CpModelBuilder cp_model;
+    const operations_research::Domain domain(0,1);
+    std::vector<operations_research::sat::IntVar> var_vec;
+    int unscheduled_list_size=unscheduled_list.size();
 
+    operations_research::sat::LinearExpr accm_x_times_F;
+    operations_research::sat::LinearExpr accm_x_times_B;
+    operations_research::sat::LinearExpr accm_x_times_M;
+
+    operations_research::sat::LinearExpr r_accm_x_times_B;
+    operations_research::sat::LinearExpr epsilon_accm_x_times_B;
+    operations_research::sat::LinearExpr minus_epsilon_accm_x_times_B;
+    //declare model variable xi 
+    for(int i=0;i<unscheduled_list_size;i++)
+      var_vec.push_back(cp_model.NewIntVar(domain));
+  
+    // constrcut linear expression
+    int var_index=0;  //remember that set to zero when used to index
+    for(std::list<bemps_shm_comm_t*>::iterator b_itera=unscheduled_list.begin(),
+                                               e_itera=unscheduled_list.end();
+                                               b_itera!=e_itera;
+                                               b_itera++)
+    {
+      int64_t F_i = static_cast<int64_t>((*b_itera)->beacon.num_fp);
+      int64_t B_i = static_cast<int64_t>((*b_itera)->beacon.num_tb);
+      int64_t M_i = static_cast<int64_t>((*b_itera)->beacon.mem_B);
+
+      operations_research::sat::LinearExpr tmp_xF=
+      operations_research::sat::LinearExpr(var_vec[var_index])*F_i;
+      operations_research::sat::LinearExpr tmp_xB=
+      operations_research::sat::LinearExpr(var_vec[var_index])*B_i;
+      operations_research::sat::LinearExpr tmp_xM=
+      operations_research::sat::LinearExpr(var_vec[var_index])*M_i;
+
+      accm_x_times_F+=tmp_xF;
+      accm_x_times_B+=tmp_xB; 
+
+      var_index+=1;
+    }
+
+    r_accm_x_times_B=accm_x_times_B*static_cast<int64_t>(ai_ridge);
+    epsilon_accm_x_times_B=accm_x_times_B*epsilon;
+    minus_epsilon_accm_x_times_B=epsilon_accm_x_times_B*(-1);
+
+    //add model constraint
+    cp_model.AddLessOrEqual(minus_epsilon_accm_x_times_B,
+                            accm_x_times_F-r_accm_x_times_B);
+    cp_model.AddLessOrEqual(accm_x_times_F-r_accm_x_times_B,
+                            epsilon_accm_x_times_B);
+    
+    //Solving problem
+    const operations_research::sat::CpSolverResponse response = 
+    operations_research::sat::Solve(cp_model.Build());
+    
   }
 }
 
