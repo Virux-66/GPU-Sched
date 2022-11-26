@@ -16,6 +16,8 @@ include_directories(${ortools_INCLUDE_DIRS})
 link_directories(${ortools_LIBRARY_DIRS})
 #message(STATUS ${ortools_FOUND})
 
+#add_compile_options(-Wall)
+
 #Both these two line are for finding libstatus
 include_directories(${CMAKE_SOURCE_DIR}/../../)
 link_directories(${CMAKE_SOURCE_DIR}/../../libstatus/)

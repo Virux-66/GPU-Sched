@@ -112,7 +112,7 @@ void InvokeInfo::retrieveMemArgs() {
   if (KernelInvoke == nullptr)
     unreachable("No CUDA Kernel Invoke found", cudaPush);
 
-  for (int i = 0; i < KernelInvoke->getNumArgOperands(); i++) {
+  for (unsigned int i = 0; i < KernelInvoke->getNumArgOperands(); i++) {
     auto arg = KernelInvoke->getArgOperand(i);
     if (!arg->getType()->isPointerTy()) continue;
     auto tmp = getBase(arg);
@@ -147,7 +147,7 @@ std::vector<Value *> CUDAUnitTask::getGridDims() {
   std::vector<Value *> dims;
   std::vector<std::string> name({"", "gridX", "gridY", "gridZ"});
 
-  for (int i = 1; i < gridCtor->getNumArgOperands(); i++) {
+  for (unsigned int i = 1; i < gridCtor->getNumArgOperands(); i++) {
     dbgs() << name[i] << ": " << *gridCtor->getArgOperand(i) << "\n";
     dims.push_back(gridCtor->getArgOperand(i));
   }
@@ -159,7 +159,7 @@ std::vector<Value *> CUDAUnitTask::getBlockDims() {
   std::vector<Value *> dims;
   std::vector<std::string> name({"", "blockX", "blockY", "blockZ"});
 
-  for (int i = 1; i < blockCtor->getNumArgOperands(); i++) {
+  for (unsigned int i = 1; i < blockCtor->getNumArgOperands(); i++) {
     dbgs() << name[i] << ": " << *blockCtor->getArgOperand(i) << "\n";
     dims.push_back(blockCtor->getArgOperand(i));
   }

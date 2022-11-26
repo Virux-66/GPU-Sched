@@ -13,12 +13,12 @@
 
 // The beacon type for an application calling the bemps library.
 typedef struct {
-  long mem_B; // Signed. Negatives currently used for frees. Improve later.
+  int64_t mem_B; // Signed. Negatives currently used for frees. Improve later.
   long warps; // same
   long thread_blocks; // same
   float arithmetic_intensity;  //determine a kernel whether compute-bound or bandwidth
-  float num_fp;                // the number of floating-point operation
-  float num_tb;                // the number of bytes to transferred from or to memory
+  int64_t num_fp;                // the number of floating-point operation
+  int64_t num_tb;                // the number of bytes to transferred from or to memory
   // TODO: constant memory
 } bemps_beacon_t;
 
@@ -102,7 +102,7 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *bemps_beacon);
 extern "C" {
 void bemps_begin(int id, int gx, int gy, int gz, int bx, int by, int bz,
                  int64_t memsize,float arithmetic_intensity,
-                 float num_fp, float num_tb);
+                 int64_t num_fp, int64_t num_tb);
 }
 
 /*

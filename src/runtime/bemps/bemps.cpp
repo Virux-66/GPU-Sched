@@ -390,7 +390,7 @@ void bemps_beacon(int bemps_tid, bemps_beacon_t *beacon) {
 extern "C" {
 void bemps_begin(int id, int gx, int gy, int gz, int bx, int by, int bz,
                  int64_t membytes,float arithmetic_intensity,
-                 float num_fp, float num_tb) {
+                 int64_t num_fp, int64_t num_tb) {
   long num_blocks;
   long threads_per_block;
   long warps;

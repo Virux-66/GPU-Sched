@@ -237,7 +237,7 @@ void WrapperPass::fixKernelParameters(CallInst *cudaPush)
 
   dbgs() << "Kernel Invoke: " << *Invoke;
 
-  for (int i = 0; i < Invoke->getNumArgOperands(); i++)
+  for (unsigned int i = 0; i < Invoke->getNumArgOperands(); i++)
   {
     auto arg = Invoke->getArgOperand(i);
     if (arg->getType()->isPointerTy())

@@ -41,8 +41,8 @@ bool GPUBeaconPass::runOnModule(Module &M) {
   ParamTys.push_back(Type::getInt32Ty(Ctx));  // for blockZ
   ParamTys.push_back(Type::getInt64Ty(Ctx));  // for cuda memory size
   ParamTys.push_back(Type::getFloatTy(Ctx));  // for arithmetic intensity
-  ParamTys.push_back(Type::getFloatTy(Ctx));  // for number of floating-point operation
-  ParamTys.push_back(Type::getFloatTy(Ctx));  // for number of bytes transferred from and to memory
+  ParamTys.push_back(Type::getInt64Ty(Ctx));  // for number of floating-point operation
+  ParamTys.push_back(Type::getInt64Ty(Ctx));  // for number of bytes transferred from and to memory
   FunctionType *BTy = FunctionType::get(Type::getVoidTy(Ctx), ParamTys, false);
   BeaconBegin = M.getOrInsertFunction("bemps_begin", BTy);
 
