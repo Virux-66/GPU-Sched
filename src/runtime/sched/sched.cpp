@@ -787,7 +787,7 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
     Here it should be a queue rather than a list.
     Because it's supposed to first in, firt out.
   */ 
-  std::queue<std::list<bemps_shm_comm_t*>> ready_to_schdule_queue;
+  std::queue<std::list<bemps_shm_comm_t*>> ready_queue;
 
   head_p = &bemps_shm_p->gen->beacon_q_head;
   tail_p = &bemps_shm_p->gen->beacon_q_tail;
@@ -904,10 +904,64 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
       assert(!return_list.empty() \ 
       &&"Not get a feasible concurrent set, which is impossible if boomers not empty\n");
       bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
-      ready_to_schdule_queue.push(return_list);
+      ready_queue.push(return_list);
     }
 
+    BEMPS_SCHED_LOG("ready_queue len: " << ready_queue.size() <<"\n");
 
+    g=0;
+    assigned=0;
+    std::list<bemps_shm_comm_t*> one_off;
+    do{
+      one_off = ready_queue.front(); //visit but not pop it right now;
+      int one_off_size = one_off.size(); 
+      for(auto b_itera=one_off.begin(),e_itera=one_off.end();
+          b_itera!=e_itera; ++b_itera){
+        if((*b_itera)->age > stats.max_age){
+          stats.max_age = (*b_itera)->age;
+        }
+      }
+
+      /*
+      In mgb or mgb_basic algorithm, for every GPU, we need to check 
+      whether the GPU has sufficient memory and sufficient compute resource.
+      However, in this algorithm, we only check whether the GPU is compute-saturated
+      (or whether there is no any active job on the device.)
+      */
+      if(gpus_in_use[g].compute_saturated==0){
+        long tmp_bytes_to_allocate = 0;
+        long tmp_warps_to_allocate = 0;
+        for(auto b_itera=one_off.begin(),e_itera=one_off.end();
+        b_itera!=e_itera; ++b_itera){
+              tmp_bytes_to_allocate+=(*b_itera)->beacon.mem_B;
+              tmp_warps_to_allocate+=(*b_itera)->beacon.warps;
+              (*b_itera)->sched_notif.device_id = g;
+              (*b_itera)->state = BEMPS_BEACON_STATE_BEACON_FIRED_E;
+        }
+        gpus_in_use[g].active_jobs=one_off_size;
+        gpus_in_use[g].mem_B=tmp_bytes_to_allocate;
+        gpus_in_use[g].warps=tmp_warps_to_allocate;
+        gpus_in_use[g].compute_saturated=1;
+        jobs_waiting_on_gpu-=one_off_size;
+        jobs_running_on_gpu+=one_off_size;
+        assigned=1;
+        ready_queue.pop();
+        break;
+      }
+      g++;
+    }while(g < NUM_GPUS);
+
+    if(!assigned){
+      for(auto b_itera=one_off.begin(),e_itera=one_off.end();
+          b_itera!=e_itera; ++b_itera){
+            (*b_itera)->age++;
+      }
+    }else{
+      for(auto b_itera=one_off.begin(),e_itera=one_off.end();
+          b_itera!=e_itera ; ++b_itera){
+            sem_post(&((*b_itera)->sched_notif.sem));
+      }
+    }
 
     bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
   }
