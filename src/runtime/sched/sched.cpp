@@ -701,7 +701,48 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
                                                           float ai_ridge, int64_t max_epsilon=100, 
                                                           solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
-  
+  int64_t left=0;
+  int64_t right=max_epsilon;
+  int64_t middle_epsilon;	//we hope target_epsilon as small as possible
+	std::list<bemps_shm_comm_t*> return_list;
+    while(left<=right){
+        std::list<bemps_shm_comm_t*> tmp_return_list;
+        int64_t middle_epsion=(left+right)/2;
+    	tmp_return_list=integer_linear_solver(unscheduled_list,middle_epsilon,
+                	                          ai_ridge, SOLVE_ALG_TYPE);
+        if(left==right){
+        	if(!tmp_return_list.empty())
+                return_list=tmp_return_list;
+            break;
+        }else{
+            if(!tmp_return_list.empty())
+                right=middle_epsilon-1;
+            else
+                left=middle_epsilon+1;
+        }
+    }
+    
+    assert(!return_list.empty()&&"Solver can't find a feasible solution, which is very wired in our custom algorithm. So terminate the program now\n");
+    
+    //After breaking the above loop, those bemps_shm_comm_t to be scheduled have been determined. They should be removed from unscheduled_list.
+    //FIXME: Is there a more efficient algorithm to remove those kernel to be scheduled?
+    for(std::list<bemps_shm_comm_t*>::iterator b_sched_itera=return_list.begin(),
+       										   e_sched_itera=return_list.end();
+       										   b_sched_itera!=e_sched_itera;
+       										   b_sched_itera++)
+    {
+       for(std::list<bemps_shm_comm_t*>::iterator b_unsched_itera=unscheduled_list.begin(),
+          										  e_unsched_itera=unscheduled_list.end();
+          										  b_unsched_itera!=e_unsched_itera;
+          										  b_unsched_itera++)
+       {
+           if(*b_unsched_itera==*b_sched_itera)
+               //erase() or remove? should be verified!!!!
+               unscheduled_list.erase(b_unsched_itera);
+       }
+    }
+    
+    return return_list;
 }
 
 //Our heuristic algorithm is designed to fit different version GPU, which have different ridge arithmetic intensity
