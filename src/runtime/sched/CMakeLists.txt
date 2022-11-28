@@ -1,7 +1,7 @@
 add_executable(bemps_sched 
     sched.cpp)
 
-#set(CMAKE_BUILD_TYPE Debug)
+add_compile_options(-g)
 
 find_library(LIBRT rt HINTS /usr/local/cuda/lib64)
 

@@ -80,7 +80,7 @@
   .total_warps          = 80 * 48   \
 }
 
-#define RTX_3060_SPECS{             \
+#define RTX_3060_SPECS {            \
   .mem_B = 12288L * 1024 * 1024,    \
   .cores = 3584,                    \
   .num_sms              = 28,       \
@@ -779,9 +779,9 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
   int batch_size;
   int which_gpu;
   bool allocated;
-  long mem_max;
-  long mem_in_use;
-  long mem_to_add;
+  //long mem_max; //not need, gurantee memory safe when decision-making.
+  //long mem_in_use;
+  //long mem_to_add;
 
   /*
     Here it should be a queue rather than a list.
@@ -871,6 +871,14 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
       stats.max_observed_batch_size = batch_size;
     }
 
+    boomers_len = boomers.size();
+    if(boomers_len>stats.max_len_boomers){
+      stats.max_len_boomers = boomers_len;
+    }
+    if(boomers_len>0){
+      BEMPS_SCHED_LOG("boomers_len: " << boomers_len <<"\n");
+    }
+
     //Second loop: use Google or-tools to schedule kernel according to their arithmetic intensity
     //The problem we need to address is a integer linear prgramming problem which is a NP-hard problem
     //in this case, we use Google or-tools to handle it.
@@ -884,15 +892,8 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
       because we don't schedule beacon by taking considering of
       their memory footprint.
     */
-    //boomers.sort(mem_footprint_compare);
 
-    boomers_len = boomers.size();
-    if(boomers_len>stats.max_len_boomers){
-      stats.max_len_boomers = boomers_len;
-    }
-    if(boomers_len>0){
-      BEMPS_SCHED_LOG("boomers_len: " << boomers_len <<"\n");
-    }
+    //boomers.sort(mem_footprint_compare);
 
     /*
     Decision process. We should measure the period of time it takes.
@@ -901,27 +902,29 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
       bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
       std::list<bemps_shm_comm_t*> return_list = 
       binary_search_to_find_solution(boomers,ai_ridge);
-      assert(!return_list.empty() \ 
-      &&"Not get a feasible concurrent set, which is impossible if boomers not empty\n");
+      assert(!return_list.empty()\
+      && "Not get a feasible concurrent set, which is impossible if boomers not empty\n");
       bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
       ready_queue.push(return_list);
     }
 
     BEMPS_SCHED_LOG("ready_queue len: " << ready_queue.size() <<"\n");
 
-    g=0;
     assigned=0;
     std::list<bemps_shm_comm_t*> one_off;
+    for(g=0; g<NUM_GPUS; ++g){
     do{
       one_off = ready_queue.front(); //visit but not pop it right now;
       int one_off_size = one_off.size(); 
+
+      /* The process of observd max age of eac beacon  can be put together with modifying age
       for(auto b_itera=one_off.begin(),e_itera=one_off.end();
           b_itera!=e_itera; ++b_itera){
         if((*b_itera)->age > stats.max_age){
           stats.max_age = (*b_itera)->age;
         }
       }
-
+      */
       /*
       In mgb or mgb_basic algorithm, for every GPU, we need to check 
       whether the GPU has sufficient memory and sufficient compute resource.
@@ -931,13 +934,15 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
       if(gpus_in_use[g].compute_saturated==0){
         long tmp_bytes_to_allocate = 0;
         long tmp_warps_to_allocate = 0;
+
         for(auto b_itera=one_off.begin(),e_itera=one_off.end();
         b_itera!=e_itera; ++b_itera){
               tmp_bytes_to_allocate+=(*b_itera)->beacon.mem_B;
               tmp_warps_to_allocate+=(*b_itera)->beacon.warps;
-              (*b_itera)->sched_notif.device_id = g;
+              (*b_itera)->sched_notif.device_id = g;          //set target GPU for each beacon in the concurrent set
               (*b_itera)->state = BEMPS_BEACON_STATE_BEACON_FIRED_E;
         }
+
         gpus_in_use[g].active_jobs=one_off_size;
         gpus_in_use[g].mem_B=tmp_bytes_to_allocate;
         gpus_in_use[g].warps=tmp_warps_to_allocate;
@@ -952,8 +957,11 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
     }while(g < NUM_GPUS);
 
     if(!assigned){
+      //modifyng the observed max and beacon's age
       for(auto b_itera=one_off.begin(),e_itera=one_off.end();
           b_itera!=e_itera; ++b_itera){
+            if((*b_itera)->age > stats.max_age)
+              stats.max_age = (*b_itera)->age;
             (*b_itera)->age++;
       }
     }else{
@@ -962,15 +970,9 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
             sem_post(&((*b_itera)->sched_notif.sem));
       }
     }
-
+    }
     bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
   }
-
-  /*
-  std::cout << "This schduler algorithm has not been implemented yet" <<std::endl;
-  std::cout << "Program exit\n"<<std::endl;
-  sigint_handler(0);
-  */
 }
 
 
