@@ -155,7 +155,7 @@ int SCHED_ALIVE_COUNT = 0;
   } while(0)
 
 
-#define SCHED_NUM_STOPWATCHES 3   //FIX: replaced by 3
+#define SCHED_NUM_STOPWATCHES 4   //FIX: replaced by 4
 typedef enum {//timing type
  // time the scheduler spends awake and processing
   SCHED_STOPWATCH_AWAKE = 0,
@@ -164,8 +164,10 @@ typedef enum {//timing type
   SCHED_STOPWATCH_ALLOCATE_COMPUTE_SUCCESS,
 
   // time spent in allocate_compute() when resources aren't available
-  SCHED_STOPWATCH_ALLOCATE_COMPUTE_FAIL
+  SCHED_STOPWATCH_ALLOCATE_COMPUTE_FAIL,
 
+  // time spent in decision-making of integer linear programming
+  SCHED_STOPWATCH_DECISION_MAKING
 } sched_stopwatch_e;
 
 
@@ -197,8 +199,20 @@ struct gpu_s {
 };
 
 struct gpu_in_use_s {
+  /*
+  In sched_ai_heuristic, only if active_jobs is equal to,
+  scheduler can issue concurent set to GPU.
+  */
   unsigned int active_jobs;
-  int compute_saturated; // 1 if 1 job saturated the compute units. else 0. saturated doesn't indicate one task make use of all compute resource of GPU and thus, no any other tasks can be issued to this GPU. This member is used to quick allocation which does't account each assignment of warps to SMs. 
+  /*
+  1 if 1 job saturated the compute units. else 0. 
+  saturated doesn't indicate one task make use of all compute resource of GPU and thus, 
+  no any other tasks can be issued to this GPU. 
+  This member is used to quick allocation which does't account each assignment of warps to SMs. 
+  In sched_ai_heuristic algorithm, compute_saturated =1 indicates there is concurrent set in a specific GPU
+  Once a concurrent set is issued, compute_saturated should be set to 1.
+  */
+  int compute_saturated; 
   long mem_B; //  mem_B IN USE
   long warps; //  warps IN USE
   int curr_sm; // the next streaming multiprocessor to assign
@@ -705,10 +719,13 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
   int64_t right=max_epsilon;
   int64_t middle_epsilon;	//we hope target_epsilon as small as possible
 	std::list<bemps_shm_comm_t*> return_list;
+  assert(!unscheduled_list.empty()&&"Unscheduled list must not be empty\n");
+
     while(left<=right){
         std::list<bemps_shm_comm_t*> tmp_return_list;
         int64_t middle_epsion=(left+right)/2;
-    	tmp_return_list=integer_linear_solver(unscheduled_list,middle_epsilon,
+        //If no solution if found, this function return emtpy.
+    	  tmp_return_list=integer_linear_solver(unscheduled_list,middle_epsilon,
                 	                          ai_ridge, SOLVE_ALG_TYPE);
         if(left==right){
         	if(!tmp_return_list.empty())
@@ -722,7 +739,7 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
         }
     }
     
-    assert(!return_list.empty()&&"Solver can't find a feasible solution, which is very wired in our custom algorithm. So terminate the program now\n");
+    assert(!return_list.empty()&&"Solver can't find a feasible solution,which is very wired in our custom algorithm. So terminate the program now\n");
     
     //After breaking the above loop, those bemps_shm_comm_t to be scheduled have been determined. They should be removed from unscheduled_list.
     //FIXME: Is there a more efficient algorithm to remove those kernel to be scheduled?
@@ -737,7 +754,7 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
           										  b_unsched_itera++)
        {
            if(*b_unsched_itera==*b_sched_itera)
-               //erase() or remove? should be verified!!!!
+               //erase() rather than remove. erase() removes element by its position (iteration)
                unscheduled_list.erase(b_unsched_itera);
        }
     }
@@ -765,12 +782,18 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
   long mem_max;
   long mem_in_use;
   long mem_to_add;
-  //The following variable is used to solve integer linear programming problem
+
+  /*
+    Here it should be a queue rather than a list.
+    Because it's supposed to first in, firt out.
+  */ 
+  std::queue<std::list<bemps_shm_comm_t*>> ready_to_schdule_queue;
 
   head_p = &bemps_shm_p->gen->beacon_q_head;
   tail_p = &bemps_shm_p->gen->beacon_q_tail;
   jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
-  jobs_running_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
+  jobs_waiting_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
+
 
   assert((ai_ridge<=0)&&"Invaild ridge arithmetic intensity\n");
 
@@ -823,10 +846,15 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
           gpus_in_use[tmp_dev_id].mem_B += tmp_bytes_to_free;
           gpus_in_use[tmp_dev_id].warps += tmp_warps_to_free;
 
-          //in this our custom algorithm, we don't track the the allocation of mapping thread block to SMs
+          //in this custom algorithm, we don't track the the allocation of mapping thread block to SMs
           //release_compute(&GPUS[tmp_dev_id],&gpus_in_use[tmp_dev_id],comm)
 
           gpus_in_use[tmp_dev_id].active_jobs--;
+          /*We use gpus_in_use[index].compute_saturate to indicate
+          whether the whole concurrent set is completed.
+          compute_saturated=0 means we are able to issue concurrent set to this GPU*/
+          if(gpus_in_use[tmp_dev_id].active_jobs==0)
+            gpus_in_use[tmp_dev_id].compute_saturated=0;
           --*jobs_running_on_gpu;
         } else {
           stats.num_beacons++;
@@ -852,11 +880,32 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
     //    we don't have to find another kernel when the collective arithmetic intensity of concurrent set 
     //    achieves ridge point of the device.
 
-  
+    /*Not sort beacon by their memory footprint, 
+      because we don't schedule beacon by taking considering of
+      their memory footprint.
+    */
+    //boomers.sort(mem_footprint_compare);
 
+    boomers_len = boomers.size();
+    if(boomers_len>stats.max_len_boomers){
+      stats.max_len_boomers = boomers_len;
+    }
+    if(boomers_len>0){
+      BEMPS_SCHED_LOG("boomers_len: " << boomers_len <<"\n");
+    }
 
-
-
+    /*
+    Decision process. We should measure the period of time it takes.
+    */
+    if(!boomers.empty()){
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
+      std::list<bemps_shm_comm_t*> return_list = 
+      binary_search_to_find_solution(boomers,ai_ridge);
+      assert(!return_list.empty() \ 
+      &&"Not get a feasible concurrent set, which is impossible if boomers not empty\n");
+      bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
+      ready_to_schdule_queue.push(return_list);
+    }
 
 
 
