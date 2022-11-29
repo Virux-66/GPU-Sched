@@ -795,7 +795,7 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
   jobs_waiting_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
 
 
-  assert((ai_ridge<=0)&&"Invaild ridge arithmetic intensity\n");
+  assert((ai_ridge>=0)&&"Invaild ridge arithmetic intensity\n");
 
   while(1){
     set_wakeup_time_ns(&ts);
@@ -913,6 +913,8 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
     assigned=0;
     std::list<bemps_shm_comm_t*> one_off;
     for(g=0; g<NUM_GPUS; ++g){
+      if(ready_queue.size()==0) //without this statement, std::queue::fornt() will cause segment fault once ready_queue is emtpy.
+        break;
     do{
       one_off = ready_queue.front(); //visit but not pop it right now;
       int one_off_size = one_off.size(); 
