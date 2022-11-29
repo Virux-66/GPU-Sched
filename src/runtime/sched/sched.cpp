@@ -1007,9 +1007,10 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
             (*b_itera)->age++;
       }
     }else{
+      int errnumber;  //for debug ,check whether sem_post succeeds.
       for(auto b_itera=one_off.begin(),e_itera=one_off.end();
           b_itera!=e_itera ; ++b_itera){
-            sem_post(&((*b_itera)->sched_notif.sem));
+            errnumber=sem_post(&((*b_itera)->sched_notif.sem));
       }
     }
     }
