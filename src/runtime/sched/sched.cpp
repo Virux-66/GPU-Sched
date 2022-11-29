@@ -366,6 +366,12 @@ static inline void init_gpus(void) {
     GPUS[i].total_thread_blocks = prop.multiProcessorCount * THREAD_BLOCKS_PER_SM;
     GPUS[i].total_warps = prop.multiProcessorCount * WARPS_PER_SM;
 
+    //Virux: Due to random value after malloc, we should initalize gpus_in_use manually.
+    gpus_in_use[i].active_jobs=0;
+    gpus_in_use[i].compute_saturated=0;
+    gpus_in_use[i].mem_B=0;
+    gpus_in_use[i].warps=0;
+    gpus_in_use[i].curr_sm=0;
     gpus_in_use[i].sms = new std::vector<std::pair<int, int>>;
   }
 
@@ -624,7 +630,7 @@ void release_compute(struct gpu_s *GPU,
 //This should never modify (push or pop) the unscheduled_list. Because the solution from here is not necessarily
 //the expected solution. The expected solution makes the epsilon minimum.
 std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>& unscheduled_list,int64_t epsilon,
-                                                  float ai_ridge,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
+                                                  float ai_ridge,bool& feasible,solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
   BEMPS_SCHED_LOG("Unscheduled list size: " << unscheduler_list.size() << '\n');
   BEMPS_SCHED_LOG("epsilon: " << epsilon <<'\n');
@@ -639,16 +645,20 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
     std::vector<operations_research::sat::IntVar> var_vec;
     int unscheduled_list_size=unscheduled_list.size();
 
+    // linear expression
     operations_research::sat::LinearExpr accm_x_times_F;
     operations_research::sat::LinearExpr accm_x_times_B;
     operations_research::sat::LinearExpr accm_x_times_M;
-
     operations_research::sat::LinearExpr r_accm_x_times_B;
     operations_research::sat::LinearExpr epsilon_accm_x_times_B;
     operations_research::sat::LinearExpr minus_epsilon_accm_x_times_B;
+    operations_research::sat::LinearExpr accm_x;
+
     //declare model variable xi 
-    for(int i=0;i<unscheduled_list_size;i++)
+    for(int i=0;i<unscheduled_list_size;i++){
       var_vec.push_back(cp_model.NewIntVar(domain));
+      accm_x += operations_research::sat::LinearExpr(var_vec[i]);
+    }
   
     // constrcut linear expression
     int var_index=0;  //remember that set to zero when used to index
@@ -677,19 +687,30 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
     r_accm_x_times_B=accm_x_times_B*static_cast<int64_t>(ai_ridge);
     epsilon_accm_x_times_B=accm_x_times_B*epsilon;
     minus_epsilon_accm_x_times_B=epsilon_accm_x_times_B*(-1);
-
+/*
+    std::cout << accm_x <<std::endl;
+    std::cout << accm_x_times_F <<std::endl;
+    std::cout << accm_x_times_B << std::endl;
+    std::cout << r_accm_x_times_B.DebugString() << std::endl;
+    std::cout << epsilon_accm_x_times_B.DebugString() <<std::endl;
+    std::cout << minus_epsilon_accm_x_times_B.DebugString() << std::endl;
+*/
     //add model constraint
     cp_model.AddLessOrEqual(minus_epsilon_accm_x_times_B,
                             accm_x_times_F-r_accm_x_times_B);
     cp_model.AddLessOrEqual(accm_x_times_F-r_accm_x_times_B,
                             epsilon_accm_x_times_B);
+    cp_model.AddGreaterThan(accm_x,0);
     
+    //FixME: we don't add memory footprint yet.
+
     //Solving problem
     const operations_research::sat::CpSolverResponse response = 
     operations_research::sat::Solve(cp_model.Build());
 
     if(response.status()==operations_research::sat::CpSolverStatus::OPTIMAL ||
        response.status()==operations_research::sat::CpSolverStatus::FEASIBLE ){
+        feasible=true;
         var_index=0;
         for(std::list<bemps_shm_comm_t*>::iterator b_itera=unscheduled_list.begin(),
                                                    e_itera=unscheduled_list.end();
@@ -715,6 +736,7 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
                                                           float ai_ridge, int64_t max_epsilon=100, 
                                                           solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
+  bool feasible=false;
   int64_t left=0;
   int64_t right=max_epsilon;
   int64_t middle_epsilon;	//we hope target_epsilon as small as possible
@@ -723,16 +745,20 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
 
     while(left<=right){
         std::list<bemps_shm_comm_t*> tmp_return_list;
-        int64_t middle_epsion=(left+right)/2;
+        middle_epsilon=(left+right)/2;
+        feasible=false;
         //If no solution if found, this function return emtpy.
     	  tmp_return_list=integer_linear_solver(unscheduled_list,middle_epsilon,
-                	                          ai_ridge, SOLVE_ALG_TYPE);
+                	                          ai_ridge,feasible, SOLVE_ALG_TYPE);
+        
+        //Every next time will be better than the previous time
+        if(!tmp_return_list.empty()){
+          return_list=tmp_return_list;
+        }        
         if(left==right){
-        	if(!tmp_return_list.empty())
-                return_list=tmp_return_list;
             break;
         }else{
-            if(!tmp_return_list.empty())
+            if(feasible)
                 right=middle_epsilon-1;
             else
                 left=middle_epsilon+1;
@@ -748,15 +774,29 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
        										   b_sched_itera!=e_sched_itera;
        										   b_sched_itera++)
     {
+
+
+
+
        for(std::list<bemps_shm_comm_t*>::iterator b_unsched_itera=unscheduled_list.begin(),
           										  e_unsched_itera=unscheduled_list.end();
           										  b_unsched_itera!=e_unsched_itera;
-          										  b_unsched_itera++)
+          										  /*b_unsched_itera++*/)
        {
-           if(*b_unsched_itera==*b_sched_itera)
+           
+           if(*b_unsched_itera==*b_sched_itera){
                //erase() rather than remove. erase() removes element by its position (iteration)
-               unscheduled_list.erase(b_unsched_itera);
+               //Can't directly erase an iterator and then increase it. It leads to the increament in above near for loop invaild.
+               auto to_be_deleted=b_unsched_itera;
+               b_unsched_itera++;
+               unscheduled_list.erase(to_be_deleted);
+           }
+            
        }
+
+
+
+
     }
     
     return return_list;
