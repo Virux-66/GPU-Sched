@@ -842,13 +842,14 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
     pthread_mutex_lock(&bemps_shm_p->gen->lock);
     pthread_cond_timedwait(&bemps_shm_p->gen->cond,&bemps_shm_p->gen->lock,
                             &ts);
+    pthread_mutex_unlock(&bemps_shm_p->gen->lock);
     bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]); 
     ALIVE_MSG(); 
     
     batch_size=0;
     // First loop: This while loop is used to fetch the beacon to be scheduled in shared memory
     // In this loop, compared to other mgb algorithm ,we don't track thread blocks allocation
-    while(*tail_p!=*head_p){
+    while(*tail_p!=*head_p){ 
       BEMPS_SCHED_LOG("*head_p: "<<(*head_p)<<'\n');
       BEMPS_SCHED_LOG("*tail_p: "<<(*tail_p)<<'\n');
 
