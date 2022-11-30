@@ -990,8 +990,8 @@ void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based 
         gpus_in_use[g].mem_B=tmp_bytes_to_allocate;
         gpus_in_use[g].warps=tmp_warps_to_allocate;
         gpus_in_use[g].compute_saturated=1;
-        jobs_waiting_on_gpu-=one_off_size;
-        jobs_running_on_gpu+=one_off_size;
+        (*jobs_waiting_on_gpu)=(*jobs_waiting_on_gpu)-one_off_size;
+        (*jobs_running_on_gpu)=(*jobs_running_on_gpu)+one_off_size;
         assigned=1;
         ready_queue.pop();
         break;
