@@ -733,7 +733,7 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
 //The epsilon ranges from [0,output_value]. We leave how to set a best maximum epsilon such that it can speed up the algorithm behind.
 //Up to now, we first try the value as int64_t 100.
 std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_comm_t*>& unscheduled_list, 
-                                                          float ai_ridge, int64_t max_epsilon=100, 
+                                                          const float ai_ridge, int64_t max_epsilon=100, 
                                                           solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
   bool feasible=false;
@@ -783,12 +783,13 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
           										  b_unsched_itera!=e_unsched_itera;
           										  /*b_unsched_itera++*/)
        {
-           
-           if(*b_unsched_itera==*b_sched_itera){
+           auto to_be_deleted=b_unsched_itera;           
+           b_unsched_itera++;
+           if(*to_be_deleted==*b_sched_itera){
                //erase() rather than remove. erase() removes element by its position (iteration)
                //Can't directly erase an iterator and then increase it. It leads to the increament in above near for loop invaild.
-               auto to_be_deleted=b_unsched_itera;
-               b_unsched_itera++;
+               //auto to_be_deleted=b_unsched_itera;
+               //b_unsched_itera++;
                unscheduled_list.erase(to_be_deleted);
            }
             
@@ -804,7 +805,7 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
 
 //Our heuristic algorithm is designed to fit different version GPU, which have different ridge arithmetic intensity
 //Assuming the GPU-system with single or multiple homogeneous GPUs, the parameter ai_ridge represents ridge arithmetic intensity(>0)
-void sched_ai_heuristic(float ai_ridge){ //heuristic scheduling algorithm based on kernel's arithmetic intensity
+void sched_ai_heuristic(const float ai_ridge){ //heuristic scheduling algorithm based on kernel's arithmetic intensity
   int tmp_dev_id;
   int* head_p;
   int* tail_p;
