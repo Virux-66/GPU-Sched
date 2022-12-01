@@ -105,7 +105,7 @@ bemps_stopwatch_t bemps_stopwatches[BEMPS_NUM_STOPWATCHES];
 // long long           *timestamp_p;
 // bemps_sched_notif_t *sched_notif_p;
 
-static inline long long _get_time_ns(void) { //get monotonic time
+static inline long long _get_time_ns(void) { //get monotonic time, return in nanosecond.
   struct timespec tv = {0};
   if (clock_gettime(CLOCK_MONOTONIC, &tv) != 0) {
     fprintf(stderr, "ERROR: _get_time_ns failed\n");

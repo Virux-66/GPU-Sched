@@ -229,7 +229,7 @@ typedef struct {          //this struct will eventually be written to file.
   int num_frees;          //record how many tasks are freed. Normally, num_frees = num_beacons.
   int max_len_boomers;    //the maximum number of fetching tasks from shared queue once.
   int max_age;
-  int max_observed_batch_size;
+  int max_observed_batch_size;  //record what is maximum batch size that are fetched from shared memory.
 } sched_stats_t;
 
 
@@ -409,11 +409,13 @@ void dump_stats(void) {
   bemps_stopwatch_t *sa;
   bemps_stopwatch_t *acs;
   bemps_stopwatch_t *acf;
+  bemps_stopwatch_t *dm;
 
   stats_file.open("sched-stats.out");
   sa  = &sched_stopwatches[SCHED_STOPWATCH_AWAKE];
   acs = &sched_stopwatches[SCHED_STOPWATCH_ALLOCATE_COMPUTE_SUCCESS];
   acf = &sched_stopwatches[SCHED_STOPWATCH_ALLOCATE_COMPUTE_FAIL];
+  dm  = &sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING];
 
   BEMPS_SCHED_LOG("Caught interrupt. Exiting.\n");
   STATS_LOG("num_beacons: " << stats.num_beacons << "\n");
@@ -436,6 +438,10 @@ void dump_stats(void) {
   STATS_LOG("min-acf-time-(ns): " << acf->min << "\n");
   STATS_LOG("max-acf-time-(ns): " << acf->max << "\n");
   STATS_LOG("avg-acf-time-(ns): " << acf->avg << "\n");
+  STATS_LOG("count-of-decision-making-times: " << dm->n << "\n");
+  STATS_LOG("min-decision-time-(ns): " << dm->min << "\n");
+  STATS_LOG("max-decision-time-(ns): " << dm->max << "\n");
+  STATS_LOG("avg-decision-time-(ns): " << dm->avg << "\n");
 #endif
 
   stats_file.close();
