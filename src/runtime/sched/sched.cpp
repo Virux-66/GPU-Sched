@@ -839,6 +839,12 @@ void sched_ai_heuristic(const float ai_ridge){ //heuristic scheduling algorithm 
   assert((ai_ridge>=0)&&"Invaild ridge arithmetic intensity\n");
 
   while(1){
+    /*
+    Virux: It seems that or-tools reset SIGINT handler, 
+    so for each launch of scheduler, we need to reset SIGINT handler.
+    Such repeating seting looks not pretty elegant. 
+    */
+    signal(SIGINT,sigint_handler);
     set_wakeup_time_ns(&ts);
     pthread_mutex_lock(&bemps_shm_p->gen->lock);
     pthread_cond_timedwait(&bemps_shm_p->gen->cond,&bemps_shm_p->gen->lock,
