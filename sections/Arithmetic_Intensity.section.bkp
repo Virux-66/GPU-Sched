@@ -1,0 +1,146 @@
+Identifier: "Arithmetic_Intensity"
+DisplayName: "Arithmetic Intensity"
+Description: "Overview of arithmetic intensity and its raw metrics"
+
+
+MetricDefinitions{
+
+	MetricDefinitions{
+		Name: "derived__double_floating_point_dadd_and_dmul"
+		Expression:  "sm__sass_thread_inst_executed_op_dadd_pred_on.sum + sm__sass_thread_inst_executed_op_dmul_pred_on.sum"
+	}
+	MetricDefinitions{
+		Name: "derived__double_floating_point_dfma"
+		Expression: "sm__sass_thread_inst_executed_op_dfma_pred_on.sum * 2"
+	}
+	MetricDefinitions{
+		Name: "derived__double_floating_point_sum"
+		Expression: "derived__double_floating_point_dadd_and_dmul + derived__double_floating_point_dfma"
+	}
+
+	MetricDefinitions{
+		Name: "derived__single_floating_point_fadd_and_fmul"
+		Expression:  "sm__sass_thread_inst_executed_op_fadd_pred_on.sum + sm__sass_thread_inst_executed_op_fmul_pred_on.sum"
+	}
+	MetricDefinitions{
+		Name: "derived__single_floating_point_ffma"
+		Expression: "sm__sass_thread_inst_executed_op_ffma_pred_on.sum * 2"
+	}
+	MetricDefinitions{
+		Name: "derived__single_floating_point_sum"
+		Expression: "derived__single_floating_point_fadd_and_fmul + derived__single_floating_point_ffma"
+	}
+
+	MetricDefinitions{
+		Name: "derived__half_floating_point_hadd_and_hmul"
+		Expression:  "sm__sass_thread_inst_executed_op_hadd_pred_on.sum + sm__sass_thread_inst_executed_op_hmul_pred_on.sum"
+	}
+	MetricDefinitions{
+		Name: "derived__half_floating_point_hfma"
+		Expression: "sm__sass_thread_inst_executed_op_hfma_pred_on.sum * 2"
+	}
+	MetricDefinitions{
+		Name: "derived__half_floating_point_sum"
+		Expression: "derived__half_floating_point_hadd_and_hmul + derived__half_floating_point_hfma"
+	}
+
+	MetricDefinitions{
+		Name: "derived__double_single_floating_point_sum"
+		Expression: "derived__double_floating_point_sum + derived__single_floating_point_sum"
+	}
+	MetricDefinitions{
+		Name: "derived__floating_point_sum"
+		Expression: "derived__double_single_floating_point_sum + derived__half_floating_point_sum"
+	}
+
+	MetricDefinitions{
+		Name: "derived__Arithmetic_Intensity_dram"
+		Expression: "derived__floating_point_sum / dram__bytes.sum"
+	}
+	MetricDefinitions{
+		Name: "derived__Arithmetic_Intensity_L1"
+		Expression: "derived__floating_point_sum / l1tex_t_bytes.sum"
+	}
+	MetricDefinitions{
+		Name: "derived__Arithmetic_Intensity_L2"
+		Expression: "derived__floating_point_sum / lts__t_bytes.sum"
+	}
+
+
+
+}
+Header{
+	Metrics{
+		Label: "Bytes from DRAM"
+		Name:  "dram__bytes.sum"
+	}
+	Metrics{
+		Label: "Write Bytes to DRAM"
+		Name:  "dram__bytes_write.sum"
+	}
+	Metrics{
+		Label: "Read Bytes from DRAM"
+		Name:  "dram__bytes_read.sum"
+	}
+
+	Metrics{
+		Label: "Bytes from L1"
+		Name:  "l1tex__t_bytes.sum"
+	}	
+	Metrics{
+		Label: "Bytes from L2"
+		Name:  "lts__t_bytes.sum"	
+	}
+
+	Metrics{
+		Label: "Double floating-point Add"
+		Name:  "sm__sass_thread_inst_executed_op_dadd_pred_on.sum"
+	}
+	Metrics{
+		Label: "Double floating-point Mul"
+		Name:  "sm__sass_thread_inst_executed_op_dmul_pred_on.sum"
+	}
+	Metrics{
+		Label: "Double floating-point Fma"
+		Name:  "sm__sass_thread_inst_executed_op_dfma_pred_on.sum"
+	}
+
+	Metrics{
+		Label: "Single floating-point Add"
+		Name:  "sm__sass_thread_inst_executed_op_fadd_pred_on.sum"
+	}
+	Metrics{
+		Label: "Single floating-point Mul"
+		Name:  "sm__sass_thread_inst_executed_op_fmul_pred_on.sum"
+	}
+	Metrics{
+		Label: "Single floating-point Fma"
+		Name:  "sm__sass_thread_inst_executed_op_ffma_pred_on.sum"
+	}
+
+	Metrics{
+		Label: "Half floating-point Add"
+		Name:  "sm__sass_thread_inst_executed_op_hadd_pred_on.sum"
+	}
+	Metrics{
+		Label: "Half floating-point Mul"
+		Name:  "sm__sass_thread_inst_executed_op_hmul_pred_on.sum"
+	}
+	Metrics{
+		Label: "Half floating-point Fma"
+		Name:  "sm__sass_thread_inst_executed_op_hfma_pred_on.sum"
+	}
+
+	Metrics{
+		Label: "Number of Double Operation"
+		Name:  "derived__double_floating_point_sum"
+	}	
+	Metrics{
+		Label: "Number of Single Operation"
+		Name:  "derived__single_floating_point_sum"
+	}
+	Metrics{
+		Label: "Number of Half Operation"
+		Name:  "derived__half_floating_point_sum"
+	}
+}
