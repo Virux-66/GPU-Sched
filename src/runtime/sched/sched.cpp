@@ -272,8 +272,8 @@ sched_stats_t stats;
 sched_alg_e which_scheduler;
 int max_batch_size;
 
-int NUM_GPUS = 0; // set by init_gpus()
-
+int NUM_GPUS = 0; // set by init_gpus(). In our system, this varialbe also indicates uni-gpu system or multi-gpu system.
+                          //It's initialized in init_gpus(), then reset in parse_args.
 struct gpu_s *GPUS;
 struct gpu_in_use_s *gpus_in_use;
 struct gpu_and_mem_s *gpus_by_mem;
@@ -281,7 +281,7 @@ struct gpu_and_mem_s *gpus_by_mem;
 void usage_and_exit(char *prog_name) {
   printf("\n");
   printf("Usage:\n");
-  printf("    %s <which_scheduler> [jobs_per_gpu]\n", prog_name);
+  printf("    %s <which_scheduler> [jobs_per_gpu] <num_of_gpu>\n", prog_name);
   printf("\n");
   printf(
       "    which_scheduler is one of:\n"
@@ -298,7 +298,15 @@ void usage_and_exit(char *prog_name) {
              "ai-heuristic\n"
       "\n"
       "    jobs_per_gpu is required and only valid for cg; it is an int that\n"
-      "    specifies the maximum number of jobs that can be run a GPU\n");
+      "    specifies the maximum number of jobs that can be run a GPU\n"
+      "\n"
+      "    num_of_gpu is one of:\n" 
+      "      "
+             "uni-gpu, "
+             "multi-gpu\n"
+      "\n"
+      "    Up to 2022.12.1, ai-heuristic is only effective for uni-gpu\n"
+      );
   printf("\n");
   printf("\n");
   exit(1);
@@ -418,6 +426,9 @@ void dump_stats(void) {
   dm  = &sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING];
 
   BEMPS_SCHED_LOG("Caught interrupt. Exiting.\n");
+  //Due to this system is designed for both uni-gpu and multi-gpu system.
+  //It's convenient to know how many GPUs in the current system.
+  STATS_LOG("num_used_gpus: " << NUM_GPUS <<"\n");
   STATS_LOG("num_beacons: " << stats.num_beacons << "\n");
   STATS_LOG("num_frees: " << stats.num_frees << "\n");
   STATS_LOG("max_len_boomers: " << stats.max_len_boomers << "\n");
@@ -811,6 +822,7 @@ std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_
 
 //Our heuristic algorithm is designed to fit different version GPU, which have different ridge arithmetic intensity
 //Assuming the GPU-system with single or multiple homogeneous GPUs, the parameter ai_ridge represents ridge arithmetic intensity(>0)
+//Up to 2022.12.1, this algorithm can only handle single GPU system.
 void sched_ai_heuristic(const float ai_ridge){ //heuristic scheduling algorithm based on kernel's arithmetic intensity
   int tmp_dev_id;
   int* head_p;
@@ -2215,16 +2227,18 @@ void parse_args(int argc, char **argv) {
 
   max_batch_size = SCHED_DEFAULT_BATCH_SIZE;
 
-  if (argc > 3) {
+  if (argc > 4) {
     usage_and_exit(argv[0]);
   }
 
-  if (argc == 1) {
+  if (argc <= 2) {
     usage_and_exit(argv[0]);
   }
 
   if (strncmp(argv[1], "zero", 5) == 0) {
     which_scheduler = SCHED_ALG_ZERO_E;
+    NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
+
   //} else if (strncmp(argv[1], "round-robin", 12) == 0) {
   //  which_scheduler = SCHED_ALG_ROUND_ROBIN_E;
   //} else if (strncmp(argv[1], "round-robin-beacons", 20) == 0) {
@@ -2234,11 +2248,13 @@ void parse_args(int argc, char **argv) {
   //  max_batch_size = SCHED_VECTOR_BATCH_SIZE;
   } else if (strncmp(argv[1], "single-assignment", 18) == 0) {
     which_scheduler = SCHED_ALG_SINGLE_ASSIGNMENT_E;
+    NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
   } else if (strncmp(argv[1], "cg", 3) == 0) {
     which_scheduler = SCHED_ALG_CG_E;
-    if (argc != 3) {
+    if (argc != 4) {
       usage_and_exit(argv[0]);
     }
+    NUM_GPUS=((strncmp(argv[3],"uni-gpu",8)==0)?1:NUM_GPUS);
     for (i = 0; i < strlen(argv[2]); i++) {
       if (!isdigit(argv[2][i])) {
         usage_and_exit(argv[0]);
@@ -2252,10 +2268,12 @@ void parse_args(int argc, char **argv) {
   } else if (strncmp(argv[1], "mgb", 3) == 0) {
     if (strncmp(argv[1], "mgb_basic", 10) == 0) {
       which_scheduler = SCHED_ALG_MGB_BASIC_E;
+      NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
     //} else if (strncmp(argv[1], "mgb_simple_compute", 19) == 0) {
     //  which_scheduler = SCHED_ALG_MGB_SIMPLE_COMPUTE_E;
     } else if (strncmp(argv[1], "mgb", 4) == 0) {
       which_scheduler = SCHED_ALG_MGB_E;
+      NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
     } else {
       usage_and_exit(argv[0]);
     }
@@ -2275,11 +2293,12 @@ void parse_args(int argc, char **argv) {
     }
   } else if (strncmp(argv[1],"ai-heuristic",13)==0) {
       which_scheduler = SCHED_ALG_AI_E;
+      NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
   } else {
     usage_and_exit(argv[0]);
   }
 
-  if (which_scheduler != SCHED_ALG_CG_E && argc != 2) {
+  if (which_scheduler != SCHED_ALG_CG_E && argc != 3) {
     usage_and_exit(argv[0]);
   }
 }
