@@ -697,6 +697,7 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
 
       accm_x_times_F+=tmp_xF;
       accm_x_times_B+=tmp_xB; 
+      accm_x_times_M+=tmp_xM;
 
       var_index+=1;
     }
@@ -717,6 +718,8 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
                             accm_x_times_F-r_accm_x_times_B);
     cp_model.AddLessOrEqual(accm_x_times_F-r_accm_x_times_B,
                             epsilon_accm_x_times_B);
+    cp_model.AddLessOrEqual(accm_x_times_M,
+                          static_cast<int64_t>(GPUS[0].mem_B));   //Here we assume the system with homogeneous GPU, so we use the 0 GPU to represent others.
     cp_model.AddGreaterThan(accm_x,0);
     
     //FixME: we don't add memory footprint yet.
