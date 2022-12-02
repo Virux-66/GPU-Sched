@@ -246,10 +246,10 @@ mkdir -p results
 for WORKLOAD in ${WORKLOADS[@]}; do
     for SCHED_ALG in "${!SCHED_ALG_TO_ARGS_ARR[@]}"; do
 
-        #echo ${SCHED_ALG}
-        ARGS_ARR_STR=${SCHED_ALG_TO_ARGS_ARR[$SCHED_ALG]}
+        #echo ${SCHED_ALG}      #${SCHED_ALG}=mgb_basic
+        ARGS_ARR_STR=${SCHED_ALG_TO_ARGS_ARR[$SCHED_ALG]}   #$ARGS_ARR_STR="MGB_ARGS_ARR"
         #echo $ARGS_ARR_STR
-        eval ARGS_ARR=\${${ARGS_ARR_STR}[@]}
+        eval ARGS_ARR=\${${ARGS_ARR_STR}[@]}                #just for simplicity
         for ARGS in ${ARGS_ARR[@]}; do
             #echo $ARGS
             WORKLOAD_NO_EXT=`basename $WORKLOAD .wl`
@@ -281,9 +281,9 @@ for WORKLOAD in ${WORKLOADS[@]}; do
             ${WORKLOADER_PATH}/workloader.py \
               ${WORKLOADS_PATH}/${WORKLOAD}  \
               ${SCHED_ALG} \
-              ${ARGS} \
-              &> ${EXPERIMENT_BASENAME}.workloader-log &
-            WORKLOADER_PID=$!
+              ${ARGS} \                                             #only cg algorithm has schedule argument
+              &> ${EXPERIMENT_BASENAME}.workloader-log &            # > is truncate while >> is append. ${EXPERIMENT_BASENAME}.workloader-log
+            WORKLOADER_PID=$!                                       # is created if it doesn't exist. 
             echo "Workloader is running with pid ${WORKLOADER_PID}"
 
             echo "Waiting for workloader to complete"

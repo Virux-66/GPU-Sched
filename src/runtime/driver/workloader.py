@@ -13,7 +13,7 @@ import struct
 
 
 def print_flush(s):
-    print(s, flush=True)
+    print(s, flush=True)    #flush: specifying if the output is flushed(True) or buffered (False)
 
 
 def usage_and_exit():
@@ -197,7 +197,7 @@ print_flush('Parsing args')
 ENABLE_DYNAMIC_JOB_PRESSURE = False
 if len(sys.argv) != 4:
     usage_and_exit()
-workload_file = sys.argv[1]
+workload_file = sys.argv[1]     #sys.argv[index] return a string
 sched_alg     = sys.argv[2]
 if sched_alg not in {'zero', 'single-assignment', 'cg', 'mgb', 'mgb_basic', 'mgb_simple_compute', 'mgb'}:
     usage_and_exit()
@@ -207,13 +207,13 @@ if sched_alg in {'mgb_basic', 'mgb_simple_compute', 'mgb'}:
         max_gpu_waiting_jobs = int(mgb_args[1])
         ENABLE_DYNAMIC_JOB_PRESSURE = True
     num_processes = int(mgb_args[0])
-else:
+else:                   #cg and  single-assignment
     num_processes = int(sys.argv[3])
 
 
 
 print_flush('Starting driver')
-print_flush('  workload_file: {}'.format(workload_file))
+print_flush('  workload_file: {}'.format(workload_file))        #subtitute workload_file to {}
 print_flush('  sched_alg: {}'.format(sched_alg))
 print_flush('  num_processes: {}'.format(num_processes))
 if ENABLE_DYNAMIC_JOB_PRESSURE:

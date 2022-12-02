@@ -31,7 +31,8 @@
 #define SCHED_DEFAULT_BATCH_SIZE 1
 #define SCHED_VECTOR_BATCH_SIZE 10
 #define SCHED_MGB_BATCH_SIZE    10
-
+#define SCHED_AI_BATCH_SIZE     10    //for efficient decision making, the batch size for ai-heuristic algorithm should be not too small
+                                      //this paramemter probably need modifying when running the whole experiment.
 // jobs that we allow onto each GPU before checking the threshold.
 #define SCHED_MGB_SIMPLE_COMPUTE_MIN_JOBS  (1)
 // after min_jobs is exceeded, we check:
@@ -305,7 +306,6 @@ void usage_and_exit(char *prog_name) {
              "uni-gpu, "
              "multi-gpu\n"
       "\n"
-      "    Up to 2022.12.1, ai-heuristic is only effective for uni-gpu\n"
       );
   printf("\n");
   printf("\n");
@@ -2296,6 +2296,7 @@ void parse_args(int argc, char **argv) {
     }
   } else if (strncmp(argv[1],"ai-heuristic",13)==0) {
       which_scheduler = SCHED_ALG_AI_E;
+      max_batch_size = SCHED_AI_BATCH_SIZE;
       NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
   } else {
     usage_and_exit(argv[0]);
