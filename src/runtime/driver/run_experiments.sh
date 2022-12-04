@@ -16,8 +16,8 @@
 
 #BASE_PATH=/home/rudy/wo/gpu
 #BASE_PATH=/home/cc
-BASE_PATH=/home/ubuntu
-BEMPS_SCHED_PATH=${BASE_PATH}/GPU-Sched/build/runtime/sched
+BASE_PATH=/home/eailab/Tmp
+BEMPS_SCHED_PATH=${BASE_PATH}/sched-build/runtime/sched
 WORKLOADER_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver
 #WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/test
 #WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/ppopp21
@@ -246,12 +246,12 @@ mkdir -p results
 for WORKLOAD in ${WORKLOADS[@]}; do
     for SCHED_ALG in "${!SCHED_ALG_TO_ARGS_ARR[@]}"; do
 
-        #echo ${SCHED_ALG}      #${SCHED_ALG}=mgb_basic
+        echo ${SCHED_ALG}      #${SCHED_ALG}=mgb_basic
         ARGS_ARR_STR=${SCHED_ALG_TO_ARGS_ARR[$SCHED_ALG]}   #$ARGS_ARR_STR="MGB_ARGS_ARR"
-        #echo $ARGS_ARR_STR
+        echo $ARGS_ARR_STR
         eval ARGS_ARR=\${${ARGS_ARR_STR}[@]}                #just for simplicity
         for ARGS in ${ARGS_ARR[@]}; do
-            #echo $ARGS
+            echo $ARGS
             WORKLOAD_NO_EXT=`basename $WORKLOAD .wl`
             #ARGS=${SCHED_ALG_TO_ARGS[$SCHED_ALG]}
             EXPERIMENT_BASENAME=${RESULTS_PATH}/${WORKLOAD_NO_EXT}.${SCHED_ALG}.${ARGS}
@@ -281,7 +281,7 @@ for WORKLOAD in ${WORKLOADS[@]}; do
             ${WORKLOADER_PATH}/workloader.py \
               ${WORKLOADS_PATH}/${WORKLOAD}  \
               ${SCHED_ALG} \
-              ${ARGS} \                                             #only cg algorithm has schedule argument
+              ${ARGS} \                                             #only cg algorithm has schedule argument. ${ARGS}="" is also an vaild argument.
               &> ${EXPERIMENT_BASENAME}.workloader-log &            # > is truncate while >> is append. ${EXPERIMENT_BASENAME}.workloader-log
             WORKLOADER_PID=$!                                       # is created if it doesn't exist. 
             echo "Workloader is running with pid ${WORKLOADER_PID}"

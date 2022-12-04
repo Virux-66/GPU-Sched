@@ -221,7 +221,7 @@ if ENABLE_DYNAMIC_JOB_PRESSURE:
     print_flush('  max_gpu_waiting_jobs: {}'.format(max_gpu_waiting_jobs))
 
 
-q = multiprocessing.Queue()
+q = multiprocessing.Queue()         #This queue is used to store GPU executable
 jp_lock = multiprocessing.Lock()
 jp_cond = multiprocessing.Condition(jp_lock)
 jobs_processed = multiprocessing.Value('i', 0)
@@ -245,7 +245,7 @@ if ENABLE_DYNAMIC_JOB_PRESSURE:
         pool_workers.append(p)
         p.start()
 
-
+#This script handle the entire worklaod, which consists of 16 or 32 process.
 for i in range(num_processes):
     p = multiprocessing.Process(target=worker_main, args=(q,active_jobs,jobs_processed,i,experiment_start_time,jp_lock,jp_cond,))
     workers.append(p)
