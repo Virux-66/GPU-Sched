@@ -76,7 +76,7 @@
   .cores = 10240,                   \
   .num_sms              = 80,       \
   .thread_blocks_per_sm = 16,       \
-  .warps_per_sm         = 48,       \       
+  .warps_per_sm         = 48,       \
   .total_thread_blocks  = 80 * 16,  \
   .total_warps          = 80 * 48   \
 }
