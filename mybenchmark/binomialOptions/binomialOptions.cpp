@@ -121,13 +121,6 @@ int main(int argc, char **argv)
     printf("binomialOptionsGPU() time: %f msec\n", gpuTime);
     printf("Options per second       : %f     \n", OPT_N / (gpuTime * 0.001));
 
-    printf("Running CPU binomial tree...\n");
-
-    for (i = 0; i < OPT_N; i++)
-    {
-        binomialOptionsCPU(callValueCPU[i], optionData[i]);
-    }
-
     printf("Shutting down...\n");
 
     sdkDeleteTimer(&hTimer);

@@ -32,4 +32,4 @@ binomialOptions_kernel.o: binomialOptions_kernel.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ binomialOptions_kernel.ii
 
 clean:
-	rm -f binomialOptions_gold.o binomialOptions.o binomialOptions_kernel.ii binomialOptions_kernel.o
+	rm -f binomialOptions_gold.o binomialOptions.o binomialOptions_kernel.ii binomialOptions_kernel.o binomialOptions
