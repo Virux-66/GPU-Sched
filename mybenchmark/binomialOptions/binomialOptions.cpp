@@ -128,76 +128,11 @@ int main(int argc, char **argv)
         binomialOptionsCPU(callValueCPU[i], optionData[i]);
     }
 
-    printf("Comparing the results...\n");
-    sumDelta = 0;
-    sumRef   = 0;
-    printf("GPU binomial vs. Black-Scholes\n");
-
-    for (i = 0; i < OPT_N; i++)
-    {
-        sumDelta += fabs(callValueBS[i] - callValueGPU[i]);
-        sumRef += fabs(callValueBS[i]);
-    }
-
-    if (sumRef >1E-5)
-    {
-        printf("L1 norm: %E\n", (double)(sumDelta / sumRef));
-    }
-    else
-    {
-        printf("Avg. diff: %E\n", (double)(sumDelta / (real)OPT_N));
-    }
-
-    printf("CPU binomial vs. Black-Scholes\n");
-    sumDelta = 0;
-    sumRef   = 0;
-
-    for (i = 0; i < OPT_N; i++)
-    {
-        sumDelta += fabs(callValueBS[i]- callValueCPU[i]);
-        sumRef += fabs(callValueBS[i]);
-    }
-
-    if (sumRef >1E-5)
-    {
-        printf("L1 norm: %E\n", sumDelta / sumRef);
-    }
-    else
-    {
-        printf("Avg. diff: %E\n", (double)(sumDelta / (real)OPT_N));
-    }
-
-    printf("CPU binomial vs. GPU binomial\n");
-    sumDelta = 0;
-    sumRef   = 0;
-
-    for (i = 0; i < OPT_N; i++)
-    {
-        sumDelta += fabs(callValueGPU[i] - callValueCPU[i]);
-        sumRef += callValueCPU[i];
-    }
-
-    if (sumRef > 1E-5)
-    {
-        printf("L1 norm: %E\n", errorVal = sumDelta / sumRef);
-    }
-    else
-    {
-        printf("Avg. diff: %E\n", (double)(sumDelta / (real)OPT_N));
-    }
-
     printf("Shutting down...\n");
 
     sdkDeleteTimer(&hTimer);
 
     printf("\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n\n");
 
-    if (errorVal > 5e-4)
-    {
-        printf("Test failed!\n");
-        exit(EXIT_FAILURE);
-    }
-
-    printf("Test passed\n");
     exit(EXIT_SUCCESS);
 }
