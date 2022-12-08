@@ -31,4 +31,4 @@ scan.o: scan.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ scan.ii
 	
 clean:
-	rm -f main.o scan_gold.o scan.o scan
+	rm -f main.o scan_gold.o scan.o scan scan.ii
