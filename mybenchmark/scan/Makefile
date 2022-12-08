@@ -17,15 +17,18 @@ else
 	NVCC_FLAGS+=-O1
 endif
 
-BlackScholes: BlackScholes_gold.o BlackScholes.o
+scan: main.o scan_gold.o scan.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $^
 
-BlackScholes_gold.o: BlackScholes_gold.cpp
+main.o: main.cpp
 	${CC} ${CC_FLAGS} -c -o $@ $<
 
-BlackScholes.o: BlackScholes.cu
-	${NVCC} --cuda -o BlackScholes.ii $<
-	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ BlackScholes.ii
+scan_gold.o: scan_gold.cpp
+	${CC} ${CC_FLAGS} -I${INCLUDES} -c -o $@ $<
 
+scan.o: scan.cu
+	${NVCC} ${INCLUDES} --cuda -o scan.ii scan.cu
+	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ scan.ii
+	
 clean:
-	rm -f BlackScholes.ii BlackScholes_gold.o BlackScholes.o BlackScholes
+	rm -f main.o scan_gold.o scan.o scan
