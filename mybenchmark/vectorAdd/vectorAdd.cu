@@ -45,14 +45,15 @@ vectorAdd(const float *A, const float *B, float *C, int numElements)
  */
 int main(void)
 {
-    volatile int64_t num_floatingPoint=10;
-    volatile int64_t num_transferredBytes=10;
-    volatile float arithmetic_intensity=1.0;
+    volatile int64_t num_floatingPoint=100000000;
+    volatile int64_t num_transferredBytes=1288490188;
+    volatile float arithmetic_intensity=0.0776;
     // Error code to check return values for CUDA calls
     cudaError_t err = cudaSuccess;
 
     // Print the vector length to be used, and compute its size
-    int numElements = 50000;
+    //int numElements = 50000;
+    int numElements = 100000000;
     size_t size = numElements * sizeof(float);
     printf("[Vector addition of %d elements]\n", numElements);
 
