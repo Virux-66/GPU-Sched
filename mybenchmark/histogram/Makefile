@@ -20,6 +20,9 @@ endif
 histogram: main.o histogram256.o histogram_gold.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $^
 
+histogram_native: main.o histogram256_native.o histogram_gold.o
+	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $^
+
 main.o: main.cpp
 	${CC} ${CC_FLAGS} ${INCLUDES} -c -o $@ $<
 
@@ -30,5 +33,8 @@ histogram256.o: histogram256.cu
 	${NVCC} --cuda ${INCLUDES} -o histogram256.ii histogram256.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ histogram256.ii
 
+histogram256_native.o: histogram256.cu
+	${NVCC} ${NVCC_FLAGS} ${INCLUDES} -c -o $@ $<
+
 clean:
-	rm -f histogram histogram256.ii histogram256.o histogram_gold.o main.o 
+	rm -f histogram histogram256.ii histogram256.o histogram_gold.o main.o histogram256_native.o histogram_native

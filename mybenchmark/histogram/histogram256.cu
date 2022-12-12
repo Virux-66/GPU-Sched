@@ -180,7 +180,8 @@ extern "C" int cuda_main(int argc,char** argv){
     uint  *d_PartialHistograms;
     //StopWatchInterface *hTimer = NULL;
     int PassFailFlag = 1;
-    uint byteCount = 64 * 1048576;
+    //uint byteCount = 64 * 1048576;
+    uint byteCount = 512 * 1048576;
     uint uiSizeMult = 1;
 
     cudaDeviceProp deviceProp;
