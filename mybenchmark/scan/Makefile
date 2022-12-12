@@ -20,6 +20,9 @@ endif
 scan: main.o scan_gold.o scan.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $^
 
+scan_native: main.o scan_gold.o scan_native.o
+	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $^
+
 main.o: main.cpp
 	${CC} ${CC_FLAGS} -c -o $@ $<
 
@@ -30,5 +33,8 @@ scan.o: scan.cu
 	${NVCC} ${INCLUDES} --cuda -o scan.ii scan.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ scan.ii
 	
+scan_native.o: scan.cu
+	${NVCC} -O1 -I../common/inc -c -o $@ $<
+
 clean:
-	rm -f main.o scan_gold.o scan.o scan scan.ii
+	rm -f main.o scan_gold.o scan.o scan scan.ii scan_native scan_native.o

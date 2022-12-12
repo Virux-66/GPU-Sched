@@ -291,9 +291,9 @@ extern "C" size_t scanExclusiveLarge(
 */
 extern "C" int cuda_main(int argc,char** argv){
 
-    volatile int64_t num_floatingPoint=10;
-    volatile int64_t num_transferredBytes=10;
-    volatile float arithmetic_intensity=1.0;
+    volatile int64_t num_floatingPoint=0;
+    volatile int64_t num_transferredBytes=436469760;
+    volatile float arithmetic_intensity=0;
 
     printf("%s Starting...\n\n", argv[0]);
 
@@ -303,7 +303,8 @@ extern "C" int cuda_main(int argc,char** argv){
     uint *d_Input, *d_Output, *d_Buf;
     uint *h_Input, *h_OutputCPU, *h_OutputGPU;
     //StopWatchInterface  *hTimer = NULL;
-    const uint N = 13 * 1048576 / 2;
+    //const uint N = 13 * 1048576 / 2;
+    const uint N = 52 * 1048576;
 
     printf("Allocating and initializing host arrays...\n");
     h_Input     = (uint *)malloc(N * sizeof(uint));
@@ -345,7 +346,7 @@ extern "C" int cuda_main(int argc,char** argv){
         {
             //szWorkgroup = scanExclusiveLarge(d_Output, d_Input, N / arrayLength, arrayLength);
             uint batchSize=N / arrayLength;
-            uint grid=(batchSize * arrayLength)/(4*THREADBLOCK_SIZE);
+            uint grid=(batchSize * arrayLength)/(4 * THREADBLOCK_SIZE);
             uint block=THREADBLOCK_SIZE;
             //Check power-of-two factorization
             uint log2L;
