@@ -48,6 +48,7 @@ int main(void)
     volatile int64_t num_floatingPoint=100000000;
     volatile int64_t num_transferredBytes=1288490188;
     volatile float arithmetic_intensity=0.0776;
+
     // Error code to check return values for CUDA calls
     cudaError_t err = cudaSuccess;
 

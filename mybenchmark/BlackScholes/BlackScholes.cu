@@ -51,7 +51,7 @@ float RandFloat(float low, float high)
 ////////////////////////////////////////////////////////////////////////////////
 // Data configuration
 ////////////////////////////////////////////////////////////////////////////////
-const int OPT_N = 4000000;  //If we want scale up this program, we just need to increase OPT_N
+const int OPT_N = 80000000;  //If we want scale up this program, we just need to increase OPT_N
 const int  NUM_ITERATIONS = 512;
 
 
@@ -66,9 +66,9 @@ const float    VOLATILITY = 0.30f;
 ////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char **argv)
 {
-    volatile int64_t num_floatingPoint=10;
-    volatile int64_t num_transferredBytes=10;
-    volatile float arithmetic_intensity=1.0;
+    volatile int64_t num_floatingPoint=5751322851;
+    volatile int64_t num_transferredBytes=1677721.6;
+    volatile float arithmetic_intensity=3.3477;
     // Start logs
     printf("[%s] - Starting...\n", argv[0]);
 

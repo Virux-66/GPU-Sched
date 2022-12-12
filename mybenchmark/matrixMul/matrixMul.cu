@@ -116,9 +116,9 @@ int MatrixMultiply(int argc, char **argv, int block_size, const dim3 &dimsA,
                    const dim3 &dimsB) {
 
   //Virux: The following varialbe need adding manually.
-  volatile int64_t num_floatingPoint=10;
-  volatile int64_t num_transferredBytes=10;
-  volatile float arithmetic_intensity=1.0;
+  volatile int64_t num_floatingPoint=17179869184;
+  volatile int64_t num_transferredBytes=946591498;
+  volatile float arithmetic_intensity=18.149;
 
   // Allocate host memory for matrices A and B
   unsigned int size_A = dimsA.x * dimsA.y;
@@ -237,8 +237,10 @@ int main(int argc, char **argv) {
 
   //int dev=0;
   int block_size = 32;
-  dim3 dimsA(5 * 2 * block_size, 5 * 2 * block_size, 1);
-  dim3 dimsB(5 * 4 * block_size, 5 * 2 * block_size, 1);
+  //dim3 dimsA(5 * 2 * block_size, 5 * 2 * block_size, 1);
+  //dim3 dimsB(5 * 4 * block_size, 5 * 2 * block_size, 1);
+  dim3 dimsA(64 * block_size, 64 * block_size, 1);
+  dim3 dimsB(64* block_size, 64 * block_size, 1);
   printf("[Matrix A: %d x %d   Matrix B: %d x %d]\n",dimsA.y,dimsA.x,dimsB.y,dimsB.x);
   int matrix_result = MatrixMultiply(argc, argv, block_size, dimsA, dimsB);
   printf("[Matrix Multiply Using CUDA] - Finished...\n");
