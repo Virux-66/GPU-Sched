@@ -118,9 +118,9 @@ extern "C" void binomialOptionsGPU(
     int optN
 )
 {
-    volatile int64_t num_floatingPoint=10;
-    volatile int64_t num_transferredBytes=10;
-    volatile float arithmetic_intensity=1.0;
+    volatile int64_t num_floatingPoint=6511611904;
+    volatile int64_t num_transferredBytes=45466;
+    volatile float arithmetic_intensity=143220;
 
     __TOptionData h_OptionData[MAX_OPTIONS];
 

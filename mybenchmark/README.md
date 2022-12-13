@@ -47,7 +47,7 @@ In this document, the specifications of all benchmarks used in this system are d
   - Memory footprint: 1.5 KB
   - Memory traffic: 19.33 KB
   - fp operation: 406975744
-  - arithmetic intensity: 21264.7004
+  - arithmetic intensity: 20560.6440
   - type: compute-bound
 
 
