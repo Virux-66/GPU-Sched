@@ -18,10 +18,10 @@ else
 endif
 
 
-matrixMul: matrixMul.o 
+matrixMul_1024: matrixMul.o 
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $<
 matrixMul.o: matrixMul.cu
 	${NVCC}  ${INCLUDES} --cuda -o matrixMul.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ matrixMul.ii
 clean:
-	rm -f matrixMul.ii matrixMul.o matrixMul
+	rm -f matrixMul.ii matrixMul.o matrixMul_1024
