@@ -170,7 +170,7 @@ WORKLOADS=(
     #v100_0_8jobs_2.wl
     #v100_0_8jobs_3.wl
     #3080Ti_8jobs_0.wl
-    3080Ti_1jobs_1.wl
+    3080Ti_16jobs_1.wl
 )
 
 ZERO_ARGS_ARR=(
@@ -231,7 +231,7 @@ declare -A SCHED_ALG_TO_ARGS_ARR=(
 )
 
 
-
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/eailab/Tmp/sched-build/runtime/bemps:/home/eailab/Tmp/libstatus
 
 mkdir -p results
 
@@ -257,7 +257,7 @@ for WORKLOAD in ${WORKLOADS[@]}; do
             fi
 
             echo "Launching scheduler for ${EXPERIMENT_BASENAME}"
-            ${BEMPS_SCHED_PATH}/bemps_sched ${SCHED_ALG} ${SCHED_ARGS} \
+            ${BEMPS_SCHED_PATH}/bemps_sched ${SCHED_ALG} ${SCHED_ARGS} uni-gpu \
               &> ${EXPERIMENT_BASENAME}.sched-log &
             SCHED_PID=$!
             echo "Scheduler is running with pid ${SCHED_PID}"
