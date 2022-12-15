@@ -18,8 +18,11 @@ else
 endif
 
 
-binomialOptions: binomialOptions_gold.o binomialOptions_kernel.o binomialOptions.o
+binomialOptions_1024: binomialOptions_gold.o binomialOptions_kernel.o binomialOptions.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $^
+
+binomialOptions_1024_native: binomialOptions_gold.o binomialOptions_kernel_native.o binomialOptions.o
+	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $^
 
 binomialOptions_gold.o: binomialOptions_gold.cpp
 	${CC} ${CC_FLAGS} -c -o $@ $<
@@ -31,5 +34,8 @@ binomialOptions_kernel.o: binomialOptions_kernel.cu
 	${NVCC} ${INCLUDES} --cuda -o binomialOptions_kernel.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ binomialOptions_kernel.ii
 
+binomialOptions_kernel_native.o: binomialOptions_kernel.cu
+	${NVCC} -O1 ${INCLUDES} -c -o $@ $<
+
 clean:
-	rm -f binomialOptions_gold.o binomialOptions.o binomialOptions_kernel.ii binomialOptions_kernel.o binomialOptions
+	rm -f binomialOptions_gold.o binomialOptions.o binomialOptions_kernel.ii binomialOptions_kernel.o binomialOptions_1024 binomialOptions_kernel_native.o binomialOptions_1024_native

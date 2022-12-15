@@ -391,7 +391,7 @@ extern "C" int cuda_main(int argc,char** argv){
 
         cudaDeviceSynchronize();
 
-        printf("Validating the results...\n");
+        //printf("Validating the results...\n");
         printf("...reading back GPU results\n");
         cudaMemcpy(h_OutputGPU, d_Output, N * sizeof(uint), cudaMemcpyDeviceToHost);
 

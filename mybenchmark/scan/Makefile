@@ -34,7 +34,7 @@ scan.o: scan.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ scan.ii
 	
 scan_native.o: scan.cu
-	${NVCC} -O1 -I../common/inc -c -o $@ $<
+	${NVCC} -O1 ${INCLUDES} -c -o $@ $<
 
 clean:
 	rm -f main.o scan_gold.o scan.o scan scan.ii scan_native scan_native.o

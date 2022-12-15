@@ -19,8 +19,16 @@ endif
 
 vectorAdd: vectorAdd.o 
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -L${BEMPS_LIB_DIR} -lcudart -lm -lbemps -o $@ $<
+
+vectorAdd_native: vectorAdd_native.o
+	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $<
+
 vectorAdd.o: vectorAdd.cu
 	${NVCC} ${INCLUDES} --cuda -o vectorAdd.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ vectorAdd.ii
+
+vectorAdd_native.o: vectorAdd.cu
+	${NVCC} ${INCLUDES} -O1 -c -o $@ $<
+
 clean:
-	rm -f vectorAdd vectorAdd.ii vectorAdd.o
+	rm -f vectorAdd vectorAdd.ii vectorAdd.o vectorAdd_native vectorAdd_native.o

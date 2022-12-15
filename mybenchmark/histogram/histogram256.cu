@@ -169,9 +169,9 @@ extern "C" void histogram256(
 */
 const int numRuns = 1;
 extern "C" int cuda_main(int argc,char** argv){
-    volatile int64_t num_floatingPoint=10;
-    volatile int64_t num_transferredBytes=10;
-    volatile float arithmetic_intensity=1.0;
+    volatile int64_t num_floatingPoint=0;
+    volatile int64_t num_transferredBytes=563315999;
+    volatile float arithmetic_intensity=0;
 
     uchar *h_Data;
     uint  *h_HistogramCPU, *h_HistogramGPU;
@@ -269,7 +269,7 @@ extern "C" int cuda_main(int argc,char** argv){
 
         cudaDeviceSynchronize();
 
-        printf("\nValidating GPU results...\n");
+        //printf("\nValidating GPU results...\n");
         printf(" ...reading back GPU results\n");
         cudaMemcpy(h_HistogramGPU, d_Histogram, HISTOGRAM256_BIN_COUNT * sizeof(uint), cudaMemcpyDeviceToHost);
 /*
@@ -289,7 +289,7 @@ extern "C" int cuda_main(int argc,char** argv){
                 PassFailFlag = 0;
             }
 */
-        printf(PassFailFlag ? " ...256-bin histograms match\n\n" : " ***256-bin histograms do not match!!!***\n\n");
+        //printf(PassFailFlag ? " ...256-bin histograms match\n\n" : " ***256-bin histograms do not match!!!***\n\n");
 
         printf("Shutting down 256-bin histogram...\n\n\n");
         //closeHistogram256();
@@ -303,7 +303,7 @@ extern "C" int cuda_main(int argc,char** argv){
     free(h_HistogramCPU);
     free(h_Data);
 
-    printf("\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n\n");
+    //printf("\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n\n");
 
     //printf("%s - Test Summary\n", sSDKsample);
 
