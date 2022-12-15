@@ -199,9 +199,9 @@ if len(sys.argv) != 4:
     usage_and_exit()
 workload_file = sys.argv[1]     #sys.argv[index] return a string
 sched_alg     = sys.argv[2]
-if sched_alg not in {'zero', 'single-assignment', 'cg', 'mgb', 'mgb_basic', 'mgb_simple_compute', 'mgb'}:
+if sched_alg not in {'zero', 'single-assignment', 'cg', 'mgb', 'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic'}:
     usage_and_exit()
-if sched_alg in {'mgb_basic', 'mgb_simple_compute', 'mgb'}:
+if sched_alg in {'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic'}:
     mgb_args = sys.argv[3].split('.')
     if len(mgb_args) == 2:
         max_gpu_waiting_jobs = int(mgb_args[1])

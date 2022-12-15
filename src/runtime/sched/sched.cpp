@@ -706,9 +706,10 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
     epsilon_accm_x_times_B=accm_x_times_B*epsilon;
     minus_epsilon_accm_x_times_B=epsilon_accm_x_times_B*(-1);
 /*
-    std::cout << accm_x <<std::endl;
-    std::cout << accm_x_times_F <<std::endl;
-    std::cout << accm_x_times_B << std::endl;
+    std::cout << accm_x.DebugString() <<std::endl;
+    std::cout << accm_x_times_F.DebugString() <<std::endl;
+    std::cout << accm_x_times_B.DebugString() << std::endl;
+    std::cout << accm_x_times_M.DebugString() << std::endl;
     std::cout << r_accm_x_times_B.DebugString() << std::endl;
     std::cout << epsilon_accm_x_times_B.DebugString() <<std::endl;
     std::cout << minus_epsilon_accm_x_times_B.DebugString() << std::endl;
@@ -753,7 +754,7 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
 //The epsilon ranges from [0,output_value]. We leave how to set a best maximum epsilon such that it can speed up the algorithm behind.
 //Up to now, we first try the value as int64_t 100.
 std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_comm_t*>& unscheduled_list, 
-                                                          const float ai_ridge, int64_t max_epsilon=100, 
+                                                          const float ai_ridge, int64_t max_epsilon=200, 
                                                           solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
   bool feasible=false;

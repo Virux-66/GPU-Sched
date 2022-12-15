@@ -6,7 +6,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - Memory footprint: ~1.2 GB
   - Memory traffic: ~1.2 GB
   - fp operation: 100,000,000
-
   - arithmetic intensity: 0.0776
   - type: bandwidth-bound
 

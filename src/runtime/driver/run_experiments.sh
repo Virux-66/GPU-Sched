@@ -170,7 +170,9 @@ WORKLOADS=(
     #v100_0_8jobs_2.wl
     #v100_0_8jobs_3.wl
     #3080Ti_8jobs_0.wl
-    3080Ti_16jobs_1.wl
+
+    3080Ti_8jobs_1.wl
+    #3080Ti_2jobs_2.wl
 )
 
 ZERO_ARGS_ARR=(
@@ -219,13 +221,16 @@ MGB_ARGS_ARR=(
     #24.10 # num procs . max jobs waiting for GPU
     #48.10 # num procs . max jobs waiting for GPU
 )
-
+AI_ARGS_ARR=(
+    8
+)
 
 declare -A SCHED_ALG_TO_ARGS_ARR=(
     #[zero]="ZERO_ARGS_ARR"
     #[single-assignment]="SINGLE_ASSIGNMENT_ARGS_ARR"
     #[cg]="CG_ARGS_ARR"
-    [mgb_basic]="MGB_ARGS_ARR"
+    #[mgb_basic]="MGB_ARGS_ARR"
+    [ai-heuristic]="AI_ARGS_ARR"
     #[mgb_simple_compute]="MGB_ARGS_ARR"
     #[mgb]="MGB_ARGS_ARR"
 )

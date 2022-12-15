@@ -3,7 +3,7 @@
 
 #include <semaphore.h>
 
-#define BEMPS_STATS
+//#define BEMPS_STATS
 
 #define BEMPS_BEACON_BUF_SZ 0x1000
 
