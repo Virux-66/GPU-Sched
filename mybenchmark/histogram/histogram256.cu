@@ -167,7 +167,7 @@ extern "C" void histogram256(
     getLastCudaError("mergeHistogram256Kernel() execution failed\n");
 }
 */
-const int numRuns = 1;
+//const int numRuns = 1;
 extern "C" int cuda_main(int argc,char** argv){
     volatile int64_t num_floatingPoint=0;
     volatile int64_t num_transferredBytes=563315999;
@@ -179,17 +179,17 @@ extern "C" int cuda_main(int argc,char** argv){
     uint  *d_Histogram;
     uint  *d_PartialHistograms;
     //StopWatchInterface *hTimer = NULL;
-    int PassFailFlag = 1;
+    //int PassFailFlag = 1;
     //uint byteCount = 64 * 1048576;
     uint byteCount = 512 * 1048576;
-    uint uiSizeMult = 1;
-
+    //uint uiSizeMult = 1;
+/*
     cudaDeviceProp deviceProp;
     deviceProp.major = 0;
     deviceProp.minor = 0;
-
+*/
     // set logfile name and start logs
-    //printf("[%s] - Starting...\n", sSDKsample);
+    printf("[%s] - Starting...\n", argv[0]);
 
     //Use command-line specified CUDA device, otherwise use device with highest Gflops/s
     //int dev = findCudaDevice(argc, (const char **)argv);
@@ -210,13 +210,10 @@ extern "C" int cuda_main(int argc,char** argv){
     }
     */
 
-    printf("Initializing data...\n");
-    printf("...allocating CPU memory.\n");
     h_Data         = (uchar *)malloc(byteCount);
     h_HistogramCPU = (uint *)malloc(HISTOGRAM256_BIN_COUNT * sizeof(uint));
     h_HistogramGPU = (uint *)malloc(HISTOGRAM256_BIN_COUNT * sizeof(uint));
 
-    printf("...generating input data\n");
     srand(2009);
 
     for (uint i = 0; i < byteCount; i++)
@@ -224,17 +221,14 @@ extern "C" int cuda_main(int argc,char** argv){
         h_Data[i] = rand() % 256;
     }
 
-    printf("...allocating GPU memory and copying input data\n\n");
     cudaMalloc((void **)&d_Data, byteCount);
     cudaMalloc((void **)&d_Histogram, HISTOGRAM256_BIN_COUNT * sizeof(uint));
     cudaMalloc((void **)&d_PartialHistograms, PARTIAL_HISTOGRAM256_COUNT * HISTOGRAM256_BIN_COUNT * sizeof(uint));
     cudaMemcpy(d_Data, h_Data, byteCount, cudaMemcpyHostToDevice);
 
     {
-        printf("Initializing 256-bin histogram...\n");
         //initHistogram256();
 
-        printf("Running 256-bin GPU histogram for %u bytes (%u runs)...\n\n", byteCount, numRuns);
 
         //for (int iter = -1; iter < numRuns; iter++)
         {
@@ -270,7 +264,6 @@ extern "C" int cuda_main(int argc,char** argv){
         cudaDeviceSynchronize();
 
         //printf("\nValidating GPU results...\n");
-        printf(" ...reading back GPU results\n");
         cudaMemcpy(h_HistogramGPU, d_Histogram, HISTOGRAM256_BIN_COUNT * sizeof(uint), cudaMemcpyDeviceToHost);
 /*
         printf(" ...histogram256CPU()\n");
@@ -291,11 +284,10 @@ extern "C" int cuda_main(int argc,char** argv){
 */
         //printf(PassFailFlag ? " ...256-bin histograms match\n\n" : " ***256-bin histograms do not match!!!***\n\n");
 
-        printf("Shutting down 256-bin histogram...\n\n\n");
         //closeHistogram256();
     }
 
-    printf("Shutting down...\n");
+    printf("[%s] - Shutting down...\n",argv[0]);
     cudaFree(d_Histogram);
     cudaFree(d_Data);
     cudaFree(d_PartialHistograms);
@@ -308,13 +300,7 @@ extern "C" int cuda_main(int argc,char** argv){
     //printf("%s - Test Summary\n", sSDKsample);
 
     // pass or fail (for both 64 bit and 256 bit histograms)
-    if (!PassFailFlag)
-    {
-        printf("Test failed!\n");
-        exit(EXIT_FAILURE);
-    }
 
-    printf("Test passed\n");
     exit(EXIT_SUCCESS);
     return 0;
 }

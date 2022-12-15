@@ -295,7 +295,7 @@ extern "C" int cuda_main(int argc,char** argv){
     volatile int64_t num_transferredBytes=436469760;
     volatile float arithmetic_intensity=0;
 
-    printf("%s Starting...\n\n", argv[0]);
+    printf("[%s] - Starting...\n", argv[0]);
 
     //Use command-line specified CUDA device, otherwise use device with highest Gflops/s
     //findCudaDevice(argc, (const char **)argv);
@@ -306,7 +306,6 @@ extern "C" int cuda_main(int argc,char** argv){
     //const uint N = 13 * 1048576 / 2;
     const uint N = 52 * 1048576;
 
-    printf("Allocating and initializing host arrays...\n");
     h_Input     = (uint *)malloc(N * sizeof(uint));
     h_OutputCPU = (uint *)malloc(N * sizeof(uint));
     h_OutputGPU = (uint *)malloc(N * sizeof(uint));
@@ -317,7 +316,6 @@ extern "C" int cuda_main(int argc,char** argv){
         h_Input[i] = rand();
     }
 
-    printf("Allocating and initializing CUDA arrays...\n");
     cudaMalloc((void **)&d_Input, N * sizeof(uint));
     cudaMalloc((void **)&d_Output, N * sizeof(uint));
     cudaMalloc((void**)&d_Buf,(MAX_BATCH_ELEMENTS / (4 * THREADBLOCK_SIZE)) * sizeof(uint));
@@ -325,21 +323,18 @@ extern "C" int cuda_main(int argc,char** argv){
     uint4* d_Input_uint4=(uint4*)d_Input;
     cudaMemcpy(d_Input, h_Input, N * sizeof(uint), cudaMemcpyHostToDevice);
 
-    printf("Initializing CUDA-C scan...\n\n");
     //initScan();
 
     int globalFlag = 1;
     size_t szWorkgroup;
     const int iCycles = 1;  //replace iCycles by 1, avoiding unnecessary iterations
 
-    printf("***Running GPU scan for large arrays (%u identical iterations)...\n\n", iCycles);
 
     //uint arrayLength=MIN_LARGE_ARRAY_SIZE;
     uint arrayLength=MAX_LARGE_ARRAY_SIZE;
 
     //for (uint arrayLength = MIN_LARGE_ARRAY_SIZE; arrayLength <= MAX_LARGE_ARRAY_SIZE; arrayLength <<= 1)
     {
-        printf("Running scan for %u elements (%u arrays)...\n", arrayLength, N / arrayLength);
         cudaDeviceSynchronize();
 
         for (int i = 0; i < iCycles; i++)
@@ -392,7 +387,6 @@ extern "C" int cuda_main(int argc,char** argv){
         cudaDeviceSynchronize();
 
         //printf("Validating the results...\n");
-        printf("...reading back GPU results\n");
         cudaMemcpy(h_OutputGPU, d_Output, N * sizeof(uint), cudaMemcpyDeviceToHost);
 
         /* 
@@ -428,7 +422,7 @@ extern "C" int cuda_main(int argc,char** argv){
 
     }
 
-    printf("Shutting down...\n");
+    printf("[%s] - Shutting down...\n",argv[0]);
     //closeScan();
     cudaFree(d_Output);
     cudaFree(d_Input);

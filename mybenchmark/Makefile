@@ -24,3 +24,12 @@ clean:
 	+${MAKE} clean -C ./scan/
 	+${MAKE} clean -C ./vectorAdd/
 	
+native:
+	+${MAKE} binomialOptions_1024_native -C ./binomialOptions_1024/
+	+${MAKE} binomialOptions_64_native -C ./binomialOptions_64/
+	+${MAKE} BlackScholes_native -C ./BlackScholes/
+	+${MAKE} histogram_native -C ./histogram/
+	+${MAKE} matrixMul_1024_native -C ./matrixMul_1024/
+	+${MAKE} matrixMul_2048_native -C ./matrixMul_2048/
+	+${MAKE} scan_native -C ./scan/
+	+${MAKE} vectorAdd_native -C ./vectorAdd/

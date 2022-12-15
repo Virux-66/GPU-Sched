@@ -233,7 +233,7 @@ int MatrixMultiply(int argc, char **argv, int block_size, const dim3 &dimsA,
  */
 int main(int argc, char **argv) {
   //cudaSetDevice(1);
-  printf("[Matrix Multiply Using CUDA] - Starting...\n");
+  printf("[%s] - Starting...\n",argv[0]);
 
   //int dev=0;
   int block_size = 32;
@@ -241,8 +241,7 @@ int main(int argc, char **argv) {
   //dim3 dimsB(5 * 4 * block_size, 5 * 2 * block_size, 1);
   dim3 dimsA(32 * block_size, 32 * block_size, 1);
   dim3 dimsB(32 * block_size, 32 * block_size, 1);
-  printf("[Matrix A: %d x %d   Matrix B: %d x %d]\n",dimsA.y,dimsA.x,dimsB.y,dimsB.x);
   int matrix_result = MatrixMultiply(argc, argv, block_size, dimsA, dimsB);
-  printf("[Matrix Multiply Using CUDA] - Finished...\n");
+  printf("[%s] - Shutting down...\n", argv[0]);
   exit(matrix_result);
 }

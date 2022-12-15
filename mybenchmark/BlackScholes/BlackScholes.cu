@@ -52,7 +52,7 @@ float RandFloat(float low, float high)
 // Data configuration
 ////////////////////////////////////////////////////////////////////////////////
 const int OPT_N = 80000000;  //If we want scale up this program, we just need to increase OPT_N
-const int  NUM_ITERATIONS = 512;
+//const int  NUM_ITERATIONS = 512;
 
 
 const int          OPT_SZ = OPT_N * sizeof(float);
@@ -95,16 +95,14 @@ int main(int argc, char **argv)
     *d_OptionStrike,
     *d_OptionYears;
 
-    double
-    delta, ref, sum_delta, sum_ref, max_delta, L1norm, gpuTime;
+    //double
+    //delta ;
 
     int i;
 
     //findCudaDevice(argc, (const char **)argv);
 
 
-    printf("Initializing data...\n");
-    printf("...allocating CPU memory for options.\n");
     h_CallResultCPU = (float *)malloc(OPT_SZ);
     h_PutResultCPU  = (float *)malloc(OPT_SZ);
     h_CallResultGPU = (float *)malloc(OPT_SZ);
@@ -116,14 +114,12 @@ int main(int argc, char **argv)
     int grid=((OPT_N/2)+128-1)/128;
     int block=128;
 
-    printf("...allocating GPU memory for options.\n");
     cudaMalloc((void **)&d_CallResult,   OPT_SZ);
     cudaMalloc((void **)&d_PutResult,    OPT_SZ);
     cudaMalloc((void **)&d_StockPrice,   OPT_SZ);
     cudaMalloc((void **)&d_OptionStrike, OPT_SZ);
     cudaMalloc((void **)&d_OptionYears,  OPT_SZ);
 
-    printf("...generating input data in CPU mem.\n");
     srand(5347);
 
     //Generate options set
@@ -136,18 +132,15 @@ int main(int argc, char **argv)
         h_OptionYears[i]   = RandFloat(0.25f, 10.0f);
     }
 
-    printf("...copying input data to GPU mem.\n");
     //Copy options data to GPU memory for further processing
     cudaMemcpy(d_StockPrice,  h_StockPrice,   OPT_SZ, cudaMemcpyHostToDevice);
     cudaMemcpy(d_OptionStrike, h_OptionStrike,  OPT_SZ, cudaMemcpyHostToDevice);
     cudaMemcpy(d_OptionYears,  h_OptionYears,   OPT_SZ, cudaMemcpyHostToDevice);
-    printf("Data init done.\n\n");
 
 
-    printf("Executing Black-Scholes GPU kernel (%i iterations)...\n", NUM_ITERATIONS);
     cudaDeviceSynchronize();
 
-    BlackScholesGPU<<<grid, 128/*480, 128*/>>>(
+    BlackScholesGPU<<<grid, block/*480, 128*/>>>(
         (float2 *)d_CallResult,
         (float2 *)d_PutResult,
         (float2 *)d_StockPrice,
@@ -161,21 +154,17 @@ int main(int argc, char **argv)
     cudaDeviceSynchronize();
 
 
-    printf("\nReading back GPU results...\n");
     //Read back GPU results to compare them to CPU results
     cudaMemcpy(h_CallResultGPU, d_CallResult, OPT_SZ, cudaMemcpyDeviceToHost);
     cudaMemcpy(h_PutResultGPU,  d_PutResult,  OPT_SZ, cudaMemcpyDeviceToHost);
 
 
-    printf("Shutting down...\n");
-    printf("...releasing GPU memory.\n");
     cudaFree(d_OptionYears);
     cudaFree(d_OptionStrike);
     cudaFree(d_StockPrice);
     cudaFree(d_PutResult);
     cudaFree(d_CallResult);
 
-    printf("...releasing CPU memory.\n");
     free(h_OptionYears);
     free(h_OptionStrike);
     free(h_StockPrice);
@@ -183,7 +172,7 @@ int main(int argc, char **argv)
     free(h_CallResultGPU);
     free(h_PutResultCPU);
     free(h_CallResultCPU);
-    printf("Shutdown done.\n");
+    printf("[%s] - Shutdown done...\n",argv[0]);
 
     exit(EXIT_SUCCESS);
 }

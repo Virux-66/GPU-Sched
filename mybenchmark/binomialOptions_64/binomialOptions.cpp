@@ -23,8 +23,6 @@
 #include <math.h>
 #include <cuda_runtime.h>
 
-#include <helper_functions.h>
-#include <helper_cuda.h>
 
 #include "binomialOptions_common.h"
 #include "realtype.h"
@@ -74,7 +72,6 @@ int main(int argc, char **argv)
 {
     printf("[%s] - Starting...\n", argv[0]);
 
-    int devID = findCudaDevice(argc, (const char **)argv);
 
     const int OPT_N = MAX_OPTIONS;
 
@@ -87,13 +84,9 @@ int main(int argc, char **argv)
     real
     sumDelta, sumRef, gpuTime, errorVal;
 
-    StopWatchInterface *hTimer = NULL;
     int i;
 
-    sdkCreateTimer(&hTimer);
 
-    printf("Generating input data...\n");
-    //Generate options set
     srand(123);
 
     for (i = 0; i < OPT_N; i++)
@@ -106,26 +99,15 @@ int main(int argc, char **argv)
         BlackScholesCall(callValueBS[i], optionData[i]);
     }
 
-    printf("Running GPU binomial tree...\n");
-    checkCudaErrors(cudaDeviceSynchronize());
-    sdkResetTimer(&hTimer);
-    sdkStartTimer(&hTimer);
+    cudaDeviceSynchronize();
 
     binomialOptionsGPU(callValueGPU, optionData, OPT_N);
 
-    checkCudaErrors(cudaDeviceSynchronize());
-    sdkStopTimer(&hTimer);
-    gpuTime = sdkGetTimerValue(&hTimer);
-    printf("Options count            : %i     \n", OPT_N);
-    printf("Time steps               : %i     \n", NUM_STEPS);
-    printf("binomialOptionsGPU() time: %f msec\n", gpuTime);
-    printf("Options per second       : %f     \n", OPT_N / (gpuTime * 0.001));
+    cudaDeviceSynchronize();
 
-    printf("Shutting down...\n");
+    printf("[%s] - Shutting down...\n", argv[0]);
 
-    sdkDeleteTimer(&hTimer);
 
-    printf("\nNOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.\n\n");
 
     exit(EXIT_SUCCESS);
 }
