@@ -67,7 +67,7 @@ const float    VOLATILITY = 0.30f;
 int main(int argc, char **argv)
 {
     volatile int64_t num_floatingPoint=5751322851;
-    volatile int64_t num_transferredBytes=1677721.6;
+    volatile int64_t num_transferredBytes=1717986918;
     volatile float arithmetic_intensity=3.3477;
     // Start logs
     printf("[%s] - Starting...\n", argv[0]);
