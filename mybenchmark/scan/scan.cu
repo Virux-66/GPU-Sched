@@ -211,84 +211,7 @@ static uint iDivUp(uint dividend, uint divisor)
 {
     return ((dividend % divisor) == 0) ? (dividend / divisor) : (dividend / divisor + 1);
 }
-/*
-extern "C" size_t scanExclusiveShort(
-    uint *d_Dst,
-    uint *d_Src,
-    uint batchSize,
-    uint arrayLength
-)
-{
-    //Check power-of-two factorization
-    uint log2L;
-    uint factorizationRemainder = factorRadix2(log2L, arrayLength);
-    assert(factorizationRemainder == 1);
 
-    //Check supported size range
-    assert((arrayLength >= MIN_SHORT_ARRAY_SIZE) && (arrayLength <= MAX_SHORT_ARRAY_SIZE));
-
-    //Check total batch size limit
-    assert((batchSize * arrayLength) <= MAX_BATCH_ELEMENTS);
-
-    //Check all threadblocks to be fully packed with data
-    assert((batchSize * arrayLength) % (4 * THREADBLOCK_SIZE) == 0);
-
-    scanExclusiveShared<<<(batchSize * arrayLength) / (4 * THREADBLOCK_SIZE), THREADBLOCK_SIZE>>>(
-        (uint4 *)d_Dst,
-        (uint4 *)d_Src,
-        arrayLength
-    );
-    getLastCudaError("scanExclusiveShared() execution FAILED\n");
-
-    return THREADBLOCK_SIZE;
-}
-
-extern "C" size_t scanExclusiveLarge(
-    uint *d_Output,
-    uint *d_Input,
-    uint batchSize,
-    uint arrayLength
-)
-{
-    //Check power-of-two factorization
-    uint log2L;
-    uint factorizationRemainder = factorRadix2(log2L, arrayLength);
-    assert(factorizationRemainder == 1);
-
-    //Check supported size range
-    assert((arrayLength >= MIN_LARGE_ARRAY_SIZE) && (arrayLength <= MAX_LARGE_ARRAY_SIZE));
-
-    //Check total batch size limit
-    assert((batchSize * arrayLength) <= MAX_BATCH_ELEMENTS);
-
-    scanExclusiveShared<<<(batchSize * arrayLength) / (4 * THREADBLOCK_SIZE), THREADBLOCK_SIZE>>>(
-        (uint4 *)d_Output,
-        (uint4 *)d_Input,
-        4 * THREADBLOCK_SIZE
-    );
-    getLastCudaError("scanExclusiveShared() execution FAILED\n");
-
-    //Not all threadblocks need to be packed with input data:
-    //inactive threads of highest threadblock just don't do global reads and writes
-    const uint blockCount2 = iDivUp((batchSize * arrayLength) / (4 * THREADBLOCK_SIZE), THREADBLOCK_SIZE);
-    scanExclusiveShared2<<< blockCount2, THREADBLOCK_SIZE>>>(
-        (uint *)d_Buf,
-        (uint *)d_Output,
-        (uint *)d_Input,
-        (batchSize *arrayLength) / (4 * THREADBLOCK_SIZE),
-        arrayLength / (4 * THREADBLOCK_SIZE)
-    );
-    getLastCudaError("scanExclusiveShared2() execution FAILED\n");
-
-    uniformUpdate<<<(batchSize *arrayLength) / (4 * THREADBLOCK_SIZE), THREADBLOCK_SIZE>>>(
-        (uint4 *)d_Output,
-        (uint *)d_Buf
-    );
-    getLastCudaError("uniformUpdate() execution FAILED\n");
-
-    return THREADBLOCK_SIZE;
-}
-*/
 extern "C" int cuda_main(int argc,char** argv){
 
     volatile int64_t num_floatingPoint=0;
@@ -386,39 +309,8 @@ extern "C" int cuda_main(int argc,char** argv){
 
         cudaDeviceSynchronize();
 
-        //printf("Validating the results...\n");
+
         cudaMemcpy(h_OutputGPU, d_Output, N * sizeof(uint), cudaMemcpyDeviceToHost);
-
-        /* 
-        printf("...scanExclusiveHost()\n");
-        scanExclusiveHost(h_OutputCPU, h_Input, N / arrayLength, arrayLength);
-
-        // Compare GPU results with CPU results and accumulate error for this test
-        printf(" ...comparing the results\n");
-        int localFlag = 1;
-
-        for (uint i = 0; i < N; i++)
-        {
-            if (h_OutputCPU[i] != h_OutputGPU[i])
-            {
-                localFlag = 0;
-                break;
-            }
-        }
-
-        // Log message on individual test result, then accumulate to global flag
-        printf(" ...Results %s\n\n", (localFlag == 1) ? "Match" : "DON'T Match !!!");
-        globalFlag = globalFlag && localFlag;
-
-        // Data log
-        if (arrayLength == MAX_LARGE_ARRAY_SIZE)
-        {
-            printf("\n");
-            //printf("scan, Throughput = %.4f MElements/s, Time = %.5f s, Size = %u Elements, NumDevsUsed = %u, Workgroup = %u\n",
-                   //(1.0e-6 * (double)arrayLength/timerValue), timerValue, (unsigned int)arrayLength, 1, (unsigned int)szWorkgroup);
-            printf("\n");
-        }
-        */
 
     }
 
