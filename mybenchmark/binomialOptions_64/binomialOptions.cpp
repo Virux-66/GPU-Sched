@@ -105,7 +105,7 @@ int main(int argc, char **argv)
 
     cudaDeviceSynchronize();
 
-    printf("[%s] - Shutting down...\n", argv[0]);
+    printf("[%s] - Shutdown done...\n", argv[0]);
 
 
 

@@ -287,7 +287,6 @@ extern "C" int cuda_main(int argc,char** argv){
         //closeHistogram256();
     }
 
-    printf("[%s] - Shutting down...\n",argv[0]);
     cudaFree(d_Histogram);
     cudaFree(d_Data);
     cudaFree(d_PartialHistograms);
@@ -301,6 +300,6 @@ extern "C" int cuda_main(int argc,char** argv){
 
     // pass or fail (for both 64 bit and 256 bit histograms)
 
-    exit(EXIT_SUCCESS);
+    printf("[%s] - Shutdown done...\n",argv[0]);
     return 0;
 }

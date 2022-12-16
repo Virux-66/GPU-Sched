@@ -422,7 +422,7 @@ extern "C" int cuda_main(int argc,char** argv){
 
     }
 
-    printf("[%s] - Shutting down...\n",argv[0]);
+    printf("[%s] - Shutdown done...\n",argv[0]);
     //closeScan();
     cudaFree(d_Output);
     cudaFree(d_Input);

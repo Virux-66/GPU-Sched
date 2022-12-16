@@ -132,7 +132,7 @@ int main(int argc, char** argv)
     free(h_A);
     free(h_B);
     free(h_C);
-    printf("[%s] - Shutting down...\n",argv[0]);
+    printf("[%s] - Shutdown done...\n",argv[0]);
     return 0;
 }
 

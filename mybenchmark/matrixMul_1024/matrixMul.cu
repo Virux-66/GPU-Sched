@@ -242,6 +242,6 @@ int main(int argc, char **argv) {
   dim3 dimsA(32 * block_size, 32 * block_size, 1);
   dim3 dimsB(32 * block_size, 32 * block_size, 1);
   int matrix_result = MatrixMultiply(argc, argv, block_size, dimsA, dimsB);
-  printf("[%s] - Shutting down...\n", argv[0]);
+  printf("[%s] - Shutdown done...\n", argv[0]);
   exit(matrix_result);
 }

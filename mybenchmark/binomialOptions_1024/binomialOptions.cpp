@@ -110,7 +110,7 @@ int main(int argc, char **argv)
     binomialOptionsGPU(callValueGPU, optionData, OPT_N);
 
     checkCudaErrors(cudaDeviceSynchronize());
-    printf("[%s] - Shutting down...\n",argv[0]);
+    printf("[%s] - Shutdown done...\n",argv[0]);
 
 
 
