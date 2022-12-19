@@ -10,7 +10,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - type: bandwidth-bound
 
 
-
 - `${CUDA_HOME}/samples/0_Simple/matrixMul`: when data size is large enough, it is bandwidth-bound.
   - data size: -wA=-hA=-wB=-hB=2048
   - Launch Stats: 4096 blocks of 1024 threads
@@ -19,6 +18,7 @@ In this document, the specifications of all benchmarks used in this system are d
   - fp operation: 17,179,869,184
   - arithmetic intensity: 18.149
   - type: bandwidth-bound
+
 
   `${CUDA_HOME}/samples/0_Simple/matrixMul`:
   - data size: -wA=-hA=-wB=-hB=1024
@@ -30,7 +30,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - type: compute-bound
 
 
-
 - `${CUDA_HOME}/samples/4_Finance/binomialOptions`
   - data size: `MAX_OPTIONS`= 1024
   - Launch stats: 1024 blocks of 128 threads
@@ -40,13 +39,43 @@ In this document, the specifications of all benchmarks used in this system are d
   - arithmetic intensity: 143220
   - type: compute-bound
 
+
 - `${CUDA_HOME}/sample/4_Finance/binomialOptions`
   - data size: `MAX_OPTIONS`=64
   - Launch stats: 64 blocks of 128 threads 
   - Memory footprint: 1.5 KB
   - Memory traffic: 19.33 KB
-  - fp operation: 406975744
+  - fp operation: 406,975,744
   - arithmetic intensity: 20560.6440
+  - type: compute-bound
+
+- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
+  - data size: `MAX_OPTIONS`=1
+  - Launch stats: 1 blocks of 128 threads
+  - Memory footprint: 24 B
+  - Memory traffic: 17.66 KB 
+  - fp operation: 6,358,996
+  - arithmetic intensity: 351.639
+  - type: compute-bound
+
+
+- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
+  - data size: `MAX_OPTIONS`=2
+  - Launch stats: 2 blocks of 128 threads
+  - Memory footprint: 48 B
+  - Memory traffic: 17.92 KB
+  - fp operation: 12,717,992
+  - arithmetic intensity: 693.075
+  - type: compute-bound
+
+
+- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
+  - data size: `MAX_OPTIONS`=3
+  - Launch stats: 3 blocks of 128 threads
+  - Memory footprint: 72 B
+  - Memory traffic: 18.56 KB
+  - fp operation: 19,076,988
+  - arithmetic intensity:1003.764 
   - type: compute-bound
 
 
@@ -60,7 +89,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - type: bandwidth-bound
 
 
-
 - `${CUDA_HOME}/samples/6_Advanced/scan`: `scanExclusiveShared`, `scanExclusiveShared2`, `uniformUpdate`
   - data size: 208 arrays of 262144 elements
   - Launch stats: 53248 blocks of 256 threads
@@ -70,7 +98,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - arithmetic intensity: 0
   - type: bandwidth-bound
 
-  
 
 - `${CUDA_HOME}/samples/3_Imaging/histogram`: `histogram256Kernel`, `mergeHistogram256Kernel`
   - data size:  byteCount = 67,108,864

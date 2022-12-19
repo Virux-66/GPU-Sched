@@ -5,8 +5,9 @@
 #	make clean
 
 all:
-	+${MAKE} -C ./binomialOptions_1024/
-	+${MAKE} -C ./binomialOptions_64/
+	+${MAKE} -C ./binomialOptions_1/
+	+${MAKE} -C ./binomialOptions_2/
+	+${MAKE} -C ./binomialOptions_3/
 	+${MAKE} -C ./BlackScholes/
 	+${MAKE} -C ./histogram/
 	+${MAKE} -C ./matrixMul_1024/
@@ -15,8 +16,9 @@ all:
 	+${MAKE} -C ./vectorAdd/
 
 clean:
-	+${MAKE} clean -C ./binomialOptions_1024/
-	+${MAKE} clean -C ./binomialOptions_64/
+	+${MAKE} clean -C ./binomialOptions_1/
+	+${MAKE} clean -C ./binomialOptions_2/
+	+${MAKE} clean -C ./binomialOptions_3/
 	+${MAKE} clean -C ./BlackScholes/
 	+${MAKE} clean -C ./histogram/
 	+${MAKE} clean -C ./matrixMul_1024/
@@ -25,8 +27,9 @@ clean:
 	+${MAKE} clean -C ./vectorAdd/
 	
 native:
-	+${MAKE} binomialOptions_1024_native -C ./binomialOptions_1024/
-	+${MAKE} binomialOptions_64_native -C ./binomialOptions_64/
+	+${MAKE} binomialOptions_1_native -C ./binomialOptions_1/
+	+${MAKE} binomialOptions_2_native -C ./binomialOptions_2/
+	+${MAKE} binomialOptions_3_native -C ./binomialOptions_3/
 	+${MAKE} BlackScholes_native -C ./BlackScholes/
 	+${MAKE} histogram_native -C ./histogram/
 	+${MAKE} matrixMul_1024_native -C ./matrixMul_1024/
