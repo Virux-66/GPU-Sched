@@ -182,7 +182,8 @@ typedef enum {
   SCHED_ALG_MGB_BASIC_E,           // mgb from original ppopp21 submission
   //SCHED_ALG_MGB_SIMPLE_COMPUTE_E,  // mgb simple compute
   SCHED_ALG_MGB_E,     // mgb with SM scheduler emulation
-  SCHED_ALG_AI_E       // heuristic algorithm based on arithmetic intensity
+  SCHED_ALG_AI_E,      // heuristic algorithm based on arithmetic intensity
+  SCHED_ALG_AI_MGB_BASIC_E //mgb_basic along with heuristic based on arithmetic intensity
 } sched_alg_e;
 
 typedef enum{
@@ -296,7 +297,8 @@ void usage_and_exit(char *prog_name) {
              "mgb_basic, "
              //"mgb_simple_compute, "
              "mgb, "
-             "ai-heuristic\n"
+             "ai-heuristic, "
+             "ai-mgb_basic\n"
       "\n"
       "    jobs_per_gpu is required and only valid for cg; it is an int that\n"
       "    specifies the maximum number of jobs that can be run a GPU\n"
@@ -754,7 +756,7 @@ std::list<bemps_shm_comm_t*> integer_linear_solver(std::list<bemps_shm_comm_t*>&
 //The epsilon ranges from [0,output_value]. We leave how to set a best maximum epsilon such that it can speed up the algorithm behind.
 //Up to now, we first try the value as int64_t 100.
 std::list<bemps_shm_comm_t*> binary_search_to_find_solution(std::list<bemps_shm_comm_t*>& unscheduled_list, 
-                                                          const float ai_ridge, int64_t max_epsilon=1024, //log_2(1000)~ 10
+                                                          const float ai_ridge, int64_t max_epsilon=32768, //log_2(1000)~ 10
                                                           solve_alg_e SOLVE_ALG_TYPE=solve_alg_e::SOLVE_ALG_ZERO_E)
 {
   bool feasible=false;
@@ -1636,6 +1638,189 @@ void sched_mgb_basic(void) {  //Alg.3
   }
 }
 
+/*
+Our custom scheduler algorithm, this algorithm is based on ai-heuristic and mgb_basic
+For a boomers, it first modifies the order of the whole list according to their number of float-point operation
+and number of bytes transferred from and to graphic memory. 
+Then, after the relative order of being modified, scheduler employs mgb_basic to issue kernels as much as possible.
+*/
+void sched_ai_mgb_basic(const float ai_ridge){
+  int tmp_dev_id;
+  int *head_p;
+  int *tail_p;
+  int *jobs_running_on_gpu;
+  int *jobs_waiting_on_gpu;
+  int assigned;
+  struct timespec ts;
+  int boomers_len;
+  int i;
+  bemps_shm_comm_t *comm;
+  int batch_size;
+
+  head_p = &bemps_shm_p->gen->beacon_q_head;
+  tail_p = &bemps_shm_p->gen->beacon_q_tail;
+  jobs_running_on_gpu = &bemps_shm_p->gen->jobs_running_on_gpu;
+  jobs_waiting_on_gpu = &bemps_shm_p->gen->jobs_waiting_on_gpu;
+
+  while (1) {
+    signal(SIGINT, sigint_handler);
+    set_wakeup_time_ns(&ts);
+
+    // wait until we get a signal or time out
+    pthread_mutex_lock(&bemps_shm_p->gen->lock);
+    // TODO spurious wakeups ? shouldn't make a big difference to wake up
+    // randomly from time to time before the batch is ready
+    pthread_cond_timedwait(&bemps_shm_p->gen->cond, &bemps_shm_p->gen->lock,
+                           &ts);
+    pthread_mutex_unlock(&bemps_shm_p->gen->lock);
+    bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
+
+    ALIVE_MSG();
+
+    // First loop: Catch the scheduler's tail back up with the beacon
+    // queue's head. If we see a free-beacon, then reclaim that resource.
+    //BEMPS_SCHED_LOG("*head_p: " << (*head_p) << "\n");
+    //BEMPS_SCHED_LOG("*tail_p: " << (*tail_p) << "\n");
+    batch_size = 0;
+    while (*tail_p != *head_p) {
+      BEMPS_SCHED_LOG("*head_p: " << (*head_p) << "\n");
+      BEMPS_SCHED_LOG("*tail_p: " << (*tail_p) << "\n");
+
+      comm = &bemps_shm_p->comm[*tail_p];
+      while (comm->state != BEMPS_BEACON_STATE_BEACON_FIRED_E) {
+        // TODO probably want to track a stat for this case
+        BEMPS_SCHED_LOG("WARNING: Scheduler hit a beacon before FIRED "
+                        << "was set. (Not a bug, but unless we're "
+                        << "flooded with beacons, this should be rare."
+                        << "\n");
+        BEMPS_SCHED_LOG("WARNING: *tail_p: " << (*tail_p) << "\n");
+        // FIXME sync shouldn't hurt, but may not help?
+        __sync_synchronize();
+      }
+
+      if (comm->exit_flag) {
+        BEMPS_SCHED_LOG("seeing exit flag\n");
+        comm->exit_flag = 0;
+      } else {
+        assert(comm->beacon.mem_B);
+        BEMPS_SCHED_LOG("First loop seeing mem_B: " << comm->beacon.mem_B
+                                                    << "\n");
+        if (comm->beacon.mem_B < 0) {
+          BEMPS_SCHED_LOG("Received free-beacon for pid " << comm->pid << "\n");
+          stats.num_frees++;
+          tmp_dev_id = comm->sched_notif.device_id;
+          // Add (don't subtract), because mem_B is negative already
+          long tmp_bytes_to_free = comm->beacon.mem_B;
+          long tmp_warps_to_free = comm->beacon.warps;
+          BEMPS_SCHED_LOG("Freeing " << tmp_bytes_to_free << " bytes "
+                          << "from device " << tmp_dev_id << "\n");
+          BEMPS_SCHED_LOG("Freeing " << tmp_warps_to_free << " warps "
+                          << "from device " << tmp_dev_id << "\n");
+          gpus_in_use[tmp_dev_id].mem_B += tmp_bytes_to_free;
+          gpus_in_use[tmp_dev_id].warps += tmp_warps_to_free;
+          --*jobs_running_on_gpu;
+        } else {
+          stats.num_beacons++;
+          boomers.push_back(comm);
+          batch_size++; // batch size doesn't include free() beacons
+          ++*jobs_waiting_on_gpu;
+        }
+      }
+
+      *tail_p = (*tail_p + 1) & (BEMPS_BEACON_BUF_SZ - 1);
+    }
+
+    if (batch_size > stats.max_observed_batch_size) {
+      stats.max_observed_batch_size = batch_size;
+    }
+
+    // Second loop: Walk the boomers. This time handle regular beacons, and
+    // attempt to assign them to a device. 
+    //The boomers are sorted by number of float-point operation and number 
+    // of byte transferred.
+
+    //boomers.sort(mem_footprint_compare);
+
+    if(!boomers.empty()){
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
+      std::list<bemps_shm_comm_t*> return_list=
+      binary_search_to_find_solution(boomers,ai_ridge);
+      assert(!return_list.empty()\
+      && "Not get a feasible concurrent set, which is impossible if boomers not empty\n");
+      bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING]);
+      boomers.splice(boomers.begin(),return_list,return_list.begin(),return_list.end());
+    }
+  
+    boomers_len = boomers.size();
+    if (boomers_len > stats.max_len_boomers) {
+      stats.max_len_boomers = boomers_len;
+    }
+    if (boomers_len > 0) {
+      BEMPS_SCHED_LOG("boomers_len: " << boomers_len << "\n");
+    }
+    for (i = 0; i < boomers_len; i++) {
+      assigned = 0;
+      comm = boomers.front();
+      boomers.pop_front();
+
+      if (comm->age > stats.max_age) {
+        stats.max_age = comm->age;
+      }
+
+      // The target device for a process must have memory available for it,
+      // and it should be the device with the least warps currently in use.
+      long curr_min_warps = LONG_MAX;
+      int target_dev_id = 0;
+      for (tmp_dev_id = 0; tmp_dev_id < NUM_GPUS; tmp_dev_id++) {
+        BEMPS_SCHED_LOG("Checking device " << tmp_dev_id << "\n"
+                        << "  Total avail bytes: " << GPUS[tmp_dev_id].mem_B << "\n"
+                        << "  In-use bytes: " << gpus_in_use[tmp_dev_id].mem_B << "\n"
+                        << "  Trying-to-fit bytes: " << comm->beacon.mem_B << "\n"
+                        << "  In-use warps: " << gpus_in_use[tmp_dev_id].warps << "\n"
+                        << "  Trying-to-add warps: " << comm->beacon.warps << "\n");
+        if (((gpus_in_use[tmp_dev_id].mem_B + comm->beacon.mem_B) <
+             GPUS[tmp_dev_id].mem_B)) {
+          if (gpus_in_use[tmp_dev_id].warps < curr_min_warps) {
+              curr_min_warps = gpus_in_use[tmp_dev_id].warps;
+              target_dev_id = tmp_dev_id;
+              assigned = 1;
+          }
+        } else {
+            BEMPS_SCHED_LOG("Couldn't fit " << comm->beacon.mem_B << "\n");
+        }
+      }
+
+      if (!assigned) {
+        // FIXME: need to add stats, and possibly a way to reserve a
+        // GPU to prevent starving.
+        comm->age++;
+        boomers.push_back(comm);
+        // don't adjust jobs-waiting-on-gpu. it was incremented when job first
+        // went into the boomers list
+      } else {
+        long tmp_bytes_to_add = comm->beacon.mem_B;
+        long tmp_warps_to_add = comm->beacon.warps;
+        BEMPS_SCHED_LOG("Adding " << tmp_bytes_to_add << " bytes "
+                        << "to device " << target_dev_id << "\n");
+        BEMPS_SCHED_LOG("Adding " << tmp_warps_to_add << " warps "
+                        << "to device " << target_dev_id << "\n");
+        gpus_in_use[target_dev_id].mem_B += tmp_bytes_to_add;
+        gpus_in_use[target_dev_id].warps += tmp_warps_to_add;
+        BEMPS_SCHED_LOG("sem_post for pid(" << comm->pid << ") "
+                                            << "on device(" << target_dev_id
+                                            << ")\n");
+        // FIXME Is this SCHEDULER_READ state helping at all?
+        comm->state = BEMPS_BEACON_STATE_SCHEDULER_READ_E;
+        comm->sched_notif.device_id = target_dev_id;
+        comm->state = BEMPS_BEACON_STATE_SCHEDULED_E;
+        sem_post(&comm->sched_notif.sem);
+        ++*jobs_running_on_gpu;
+        --*jobs_waiting_on_gpu;
+      }
+    }
+    bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
+  }
+}
 
 void sched_cg(void) {
 
@@ -2217,6 +2402,9 @@ void sched(void) {
   } else if(which_scheduler == SCHED_ALG_AI_E) {
     BEMPS_SCHED_LOG("Starting ai-heuristic scheduler\n");
     sched_ai_heuristic(RTX_3080Ti_SPECS_AI_FP32_DRAM);
+  } else if(which_scheduler == SCHED_ALG_AI_MGB_BASIC_E){
+    BEMPS_SCHED_LOG("Starting ai-mgb_basic scheduler\n");
+    sched_ai_mgb_basic(RTX_3080Ti_SPECS_AI_FP32_DRAM);
   } else {
     fprintf(stderr, "ERROR: Invalid scheduling algorithm\n");
     exit(2);
@@ -2299,6 +2487,11 @@ void parse_args(int argc, char **argv) {
       which_scheduler = SCHED_ALG_AI_E;
       max_batch_size = SCHED_AI_BATCH_SIZE;
       NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
+  } else if (strncmp(argv[1],"ai-mgb_basic",13)==0){
+      which_scheduler = SCHED_ALG_AI_MGB_BASIC_E;
+      max_batch_size = SCHED_AI_BATCH_SIZE;
+      NUM_GPUS=((strncmp(argv[2],"uni-gpu",8)==0)?1:NUM_GPUS);
+
   } else {
     usage_and_exit(argv[0]);
   }
