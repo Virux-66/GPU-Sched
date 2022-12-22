@@ -59,7 +59,7 @@ def run_benchmark(cmd, wid, active_jobs):
         print_flush('Worker {} got error: {}'.format(wid, rc))
         print_flush('Worker {} dumping error: {}'.format(wid, e.decode('utf-8')))
     else:
-        print_flush('suc')
+        print_flush('success')
     try:
         print_flush(o.decode('utf-8'))
         print_flush(e.decode('utf-8'))
@@ -199,9 +199,9 @@ if len(sys.argv) != 4:
     usage_and_exit()
 workload_file = sys.argv[1]     #sys.argv[index] return a string
 sched_alg     = sys.argv[2]
-if sched_alg not in {'zero', 'single-assignment', 'cg', 'mgb', 'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic'}:
+if sched_alg not in {'zero', 'single-assignment', 'cg', 'mgb', 'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic','ai-mgb_basic'}:
     usage_and_exit()
-if sched_alg in {'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic'}:
+if sched_alg in {'mgb_basic', 'mgb_simple_compute', 'mgb', 'ai-heuristic','ai-mgb_basic'}:
     mgb_args = sys.argv[3].split('.')
     if len(mgb_args) == 2:
         max_gpu_waiting_jobs = int(mgb_args[1])
