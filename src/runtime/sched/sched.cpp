@@ -117,7 +117,8 @@
 //#define V100_SXM2_SPECS_MEM_B (10000L * 1024 * 1024)
 //#define V100_SXM2_SPECS_MEM_B (13000L * 1024 * 1024)
 #define V100_SXM2_SPECS_MEM_B (14000L * 1024 * 1024)
-#define RTX_3080Ti_SEPCS_MEM_B (12288L * 1024 * 1024)
+//#define RTX_3080Ti_SEPCS_MEM_B (12288L * 1024 * 1024)
+#define RTX_3080Ti_SPECS_MEM_B (11288L * 1024 * 1024)
 #define RTX_3060_SPECS_MEM_B   (12288L * 1024 * 1024)
 
 //repective arithmetic intensity that can make kernels achieve ridge point
@@ -359,7 +360,7 @@ static inline void init_gpus(void) {
         GPUS[i].mem_B = GTX_1080_SPECS_MEM_B;
     } else if(strncmp(prop.name,"NVIDIA GeForce RTX 3080 Ti",26)==0){
         BEMPS_SCHED_LOG("  adjusting mem_B for NVIDIA GeForce RTX 3080Ti" << "\n");
-        GPUS[i].mem_B = RTX_3080Ti_SEPCS_MEM_B;
+        GPUS[i].mem_B = RTX_3080Ti_SPECS_MEM_B;
     } else if(strncmp(prop.name,"NVIDIA GeForce RTX 3060",23)==0){
         BEMPS_SCHED_LOG(" adjusting mem_B for NVIDIA GeForce RTX 3060" << '\n'); 
         GPUS[i].mem_B=  RTX_3060_SPECS_MEM_B;

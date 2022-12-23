@@ -9,10 +9,10 @@ def geomean(xs):
     return math.exp(math.fsum(math.log(x) for x in xs) / len(xs))
 
 
-
+BASE_PATH = '/home/eailab/Tmp/GPU-Sched/src/runtime/driver/results'
 
 #BASE_PATH = '/home/rudy/wo/gpu/bes-gpu/foo/scripts/cc/results-2020.08.01-7.30pm'
-BASE_PATH = '/home/rudy/wo/gpu/GPU-Sched/src/runtime/driver/results'
+#BASE_PATH = '/home/rudy/wo/gpu/GPU-Sched/src/runtime/driver/results'
 #BASE_PATH = '/home/cc/GPU-Sched/src/runtime/driver/results'
 #BASE_PATH = '/home/rudy/wo/gpu/bes-gpu/foo/scripts/cc/results-2020.08.10-10.30am'
 #BASE_PATH = '/home/cc/GPU-Sched/src/runtime/driver/results-2020.08.10-10.30am'

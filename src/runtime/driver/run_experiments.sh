@@ -104,7 +104,7 @@ mkdir -p results
 
 for WORKLOAD in ${WORKLOADS[@]}; do
     for SCHED_ALG in "${!SCHED_ALG_TO_ARGS_ARR[@]}"; do
-        rm -f /dev/shm/bemps
+        #rm -f /dev/shm/bemps
         #echo ${SCHED_ALG}
         ARGS_ARR_STR=${SCHED_ALG_TO_ARGS_ARR[$SCHED_ALG]}
         #echo $ARGS_ARR_STR
