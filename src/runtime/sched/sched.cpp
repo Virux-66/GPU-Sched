@@ -118,7 +118,7 @@
 //#define V100_SXM2_SPECS_MEM_B (13000L * 1024 * 1024)
 #define V100_SXM2_SPECS_MEM_B (14000L * 1024 * 1024)
 //#define RTX_3080Ti_SEPCS_MEM_B (12288L * 1024 * 1024)
-#define RTX_3080Ti_SPECS_MEM_B (11288L * 1024 * 1024)
+#define RTX_3080Ti_SPECS_MEM_B (10752 * 1024 * 1024)  //lack of 1.5 G memory
 #define RTX_3060_SPECS_MEM_B   (12288L * 1024 * 1024)
 
 //repective arithmetic intensity that can make kernels achieve ridge point
