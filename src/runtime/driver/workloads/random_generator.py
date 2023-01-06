@@ -21,13 +21,13 @@ memory_bound_jobs = [
 ]
 
 compute_memory_ratio=[ 
-    (1,1), (3,1), (5,3),
-    (7,1), (1,3), (3,5),
-    (1,7)
+    (1,0), (1,1), (3,1), 
+    (5,3), (7,1), (1,3), 
+    (3,5), (1,7)
 ]
 
 workloads_prefix=[
-    0, 1, 2, 3, 4, 5, 6
+    1, 2, 3, 4, 5, 6, 7, 8
 ]
 
 
@@ -38,7 +38,7 @@ for index in range(len(compute_memory_ratio)):
     num_compute=(int)(((int)(TOTAL_NUM_BENCHMAKR))*(ratio_compute/(ratio_compute+ratio_memory)))
     num_memory=(int)(((int)(TOTAL_NUM_BENCHMAKR))*(ratio_memory/(ratio_compute+ratio_memory)))
     #print(num_compute,num_memory)
-    file_name=FILE_NAME_BASE+(str)(index)+'.wl' 
+    file_name=FILE_NAME_BASE+(str)(index+1)+'.wl' 
     #print(file_name)
 
     benchmarks=[]
