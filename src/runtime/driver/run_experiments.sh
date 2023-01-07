@@ -23,13 +23,14 @@ RESULTS_PATH=results
 
 
 WORKLOADS=(
-    3080Ti_32jobs_0.wl
     3080Ti_32jobs_1.wl
     3080Ti_32jobs_2.wl
     3080Ti_32jobs_3.wl
     3080Ti_32jobs_4.wl
     3080Ti_32jobs_5.wl
     3080Ti_32jobs_6.wl
+    3080Ti_32jobs_7.wl
+    3080Ti_32jobs_8.wl
 )
 
 ZERO_ARGS_ARR=(
