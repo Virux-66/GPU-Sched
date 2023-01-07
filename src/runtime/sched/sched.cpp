@@ -473,7 +473,7 @@ void dump_stats(void) {
   STATS_LOG("min-lws-time-(ns): " << lws->min << "\n");
   STATS_LOG("max-lws-time-(ns): " << lws->max << "\n");
   STATS_LOG("avg-lws-time-(ns): " << lws->avg << "\n");
-  STATS_LOG("count-of-find-least-warp-fail-times: " << lws->n << "\n");
+  STATS_LOG("count-of-find-least-warp-fail-times: " << lwf->n << "\n");
   STATS_LOG("min-lwf-time-(ns): " << lwf->min << "\n");
   STATS_LOG("max-lwf-time-(ns): " << lwf->max << "\n");
   STATS_LOG("avg-lwf-time-(ns): " << lwf->avg << "\n");
@@ -1796,6 +1796,8 @@ void sched_ai_mgb_basic(const float ai_ridge){
 
       // The target device for a process must have memory available for it,
       // and it should be the device with the least warps currently in use.
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_SUCCESS]);
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_FAIL]);
       long curr_min_warps = LONG_MAX;
       int target_dev_id = 0;
       for (tmp_dev_id = 0; tmp_dev_id < NUM_GPUS; tmp_dev_id++) {
@@ -1822,6 +1824,7 @@ void sched_ai_mgb_basic(const float ai_ridge){
         // GPU to prevent starving.
         comm->age++;
         boomers.push_back(comm);
+        bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_FAIL]);
         // don't adjust jobs-waiting-on-gpu. it was incremented when job first
         // went into the boomers list
       } else {
@@ -1843,6 +1846,7 @@ void sched_ai_mgb_basic(const float ai_ridge){
         sem_post(&comm->sched_notif.sem);
         ++*jobs_running_on_gpu;
         --*jobs_waiting_on_gpu;
+        bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_SUCCESS]);
       }
     }
     bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
