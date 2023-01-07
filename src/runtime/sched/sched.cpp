@@ -157,7 +157,7 @@ int SCHED_ALIVE_COUNT = 0;
   } while(0)
 
 
-#define SCHED_NUM_STOPWATCHES 4   //FIX: replaced by 4
+#define SCHED_NUM_STOPWATCHES 6   //FIX: replaced by 6
 typedef enum {//timing type
  // time the scheduler spends awake and processing
   SCHED_STOPWATCH_AWAKE = 0,
@@ -169,7 +169,16 @@ typedef enum {//timing type
   SCHED_STOPWATCH_ALLOCATE_COMPUTE_FAIL,
 
   // time spent in decision-making of integer linear programming
-  SCHED_STOPWATCH_DECISION_MAKING
+  SCHED_STOPWATCH_DECISION_MAKING,
+
+  // time spent in finding target device with available memory
+  // and the least warps currently in use when success
+  SCHED_STOPWATCH_LEAST_WARP_SUCCESS,
+
+  // time spent in finding target device with available memory
+  // and the least warps currently in use when fail 
+  SCHED_STOPWATCH_LEAST_WARP_FAIL
+
 } sched_stopwatch_e;
 
 
@@ -421,12 +430,16 @@ void dump_stats(void) {
   bemps_stopwatch_t *acs;
   bemps_stopwatch_t *acf;
   bemps_stopwatch_t *dm;
+  bemps_stopwatch_t *lws;
+  bemps_stopwatch_t *lwf;
 
   stats_file.open("sched-stats.out");
   sa  = &sched_stopwatches[SCHED_STOPWATCH_AWAKE];
   acs = &sched_stopwatches[SCHED_STOPWATCH_ALLOCATE_COMPUTE_SUCCESS];
   acf = &sched_stopwatches[SCHED_STOPWATCH_ALLOCATE_COMPUTE_FAIL];
   dm  = &sched_stopwatches[SCHED_STOPWATCH_DECISION_MAKING];
+  lws = &sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_SUCCESS];
+  lwf = &sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_FAIL];
 
   BEMPS_SCHED_LOG("Caught interrupt. Exiting.\n");
   //Due to this system is designed for both uni-gpu and multi-gpu system.
@@ -456,6 +469,15 @@ void dump_stats(void) {
   STATS_LOG("min-decision-time-(ns): " << dm->min << "\n");
   STATS_LOG("max-decision-time-(ns): " << dm->max << "\n");
   STATS_LOG("avg-decision-time-(ns): " << dm->avg << "\n");
+  STATS_LOG("count-of-find-least-warp-success-times: " << lws->n << "\n");
+  STATS_LOG("min-lws-time-(ns): " << lws->min << "\n");
+  STATS_LOG("max-lws-time-(ns): " << lws->max << "\n");
+  STATS_LOG("avg-lws-time-(ns): " << lws->avg << "\n");
+  STATS_LOG("count-of-find-least-warp-fail-times: " << lws->n << "\n");
+  STATS_LOG("min-lwf-time-(ns): " << lwf->min << "\n");
+  STATS_LOG("max-lwf-time-(ns): " << lwf->max << "\n");
+  STATS_LOG("avg-lwf-time-(ns): " << lwf->avg << "\n");
+
 #endif
 
   stats_file.close();
@@ -1586,6 +1608,8 @@ void sched_mgb_basic(void) {  //Alg.3
 
       // The target device for a process must have memory available for it,
       // and it should be the device with the least warps currently in use.
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_SUCCESS]);
+      bemps_stopwatch_start(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_FAIL]);
       long curr_min_warps = LONG_MAX;
       int target_dev_id = 0;
       for (tmp_dev_id = 0; tmp_dev_id < NUM_GPUS; tmp_dev_id++) {
@@ -1612,6 +1636,7 @@ void sched_mgb_basic(void) {  //Alg.3
         // GPU to prevent starving.
         comm->age++;
         boomers.push_back(comm);
+        bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_FAIL]);
         // don't adjust jobs-waiting-on-gpu. it was incremented when job first
         // went into the boomers list
       } else {
@@ -1633,6 +1658,7 @@ void sched_mgb_basic(void) {  //Alg.3
         sem_post(&comm->sched_notif.sem);
         ++*jobs_running_on_gpu;
         --*jobs_waiting_on_gpu;
+        bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_LEAST_WARP_SUCCESS]);
       }
     }
     bemps_stopwatch_end(&sched_stopwatches[SCHED_STOPWATCH_AWAKE]);
