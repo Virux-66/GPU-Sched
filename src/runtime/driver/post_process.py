@@ -29,7 +29,7 @@ workload_data={
     'W8':{}
 }
 
-cols=[]
+cols=[]     #cols[single-assignment, zero, mgb_basic, ai-mgb_basic]
 
 def get_experiment_time(workloader_log):
     with open( RESULT_PATH + '/'+workloader_log,'r') as f:
@@ -106,7 +106,7 @@ def plot_throughput_figure():
     for alg_index in range(alg_num):
         avg_imp=sum(normalized_cols[alg_index])/len(normalized_cols[alg_index])
         normalized_cols[alg_index].append(avg_imp)
-    print("The average normalized throughput of each compared algorithm: ")
+    print("\nThe average normalized throughput of each compared algorithm for 8 workloads: ")
     """
     print('single-assignment: '+str(round(normalized_cols[0][-1],2)))
     print('zero:              '+str(round(normalized_cols[1][-1],2)))
@@ -144,7 +144,7 @@ def plot_throughput_figure():
     plt.savefig("normalized_throughput_figure.jpg")
     plt.show()
 
-def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=6,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
+def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
     plt.rcParams['figure.dpi']=300
     plt.rcParams['savefig.dpi']=300
     
@@ -188,7 +188,7 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=6,device_index=0): #Def
                 previous_utilization=(int)(each_row[device_index+1])
             avg_gpu_utiliz/=(len(reader)-1)
         avg_utilization.append(avg_gpu_utiliz)
-    print('The average GPU utilization of each compared algorithm: ')
+    print('\nThe average GPU utilization of each compared algorithm for the '+str(w_index)+' workload: ')
     #for i in range(len(algorithms_label)):
         #print(algorithms_label[i]+':   '+(str)(round(avg_utilization[i],2))+'%')
     average_utilization_table=[['Alg','GPU Utilization(%)'],
@@ -203,12 +203,14 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=6,device_index=0): #Def
     ax=fig.add_axes([0.1,0.1,0.8,0.8])
     ax.set_xlabel('Time Points')
     ax.set_ylabel('Utilization(%)')
-    ax.set_title("Utilization Comparation")
+    ax.set_title("Utilization Comparison")
+    
+    #print(algorithms_label)
 
-    l1,=ax.plot(time_point[0],utilizations[0])   #mgb_basic
-    #l2,=ax.plot(time_point[1],utilization[1])  #single-assignment
-    #l3,=ax.plot(time_point[2],utilization[2])   #zero
-    l4,=ax.plot(time_point[3],utilizations[3])   #ai-mgb_basic
+    #l1,=ax.plot(time_point[0],utilizations[0])   
+    l1,=ax.plot(time_point[1],utilizations[1])  
+    l4,=ax.plot(time_point[2],utilizations[2])  
+    #l4,=ax.plot(time_point[3],utilizations[3])   
 
     l1.set_linestyle('-')
     l1.set_color('green')
@@ -248,6 +250,7 @@ def plot_decision_making_compared_table():
     percentage={}
     for k in workload_data.keys():
         percentage[k]=[]
+
     files_list=os.listdir(RESULT_PATH)
     for f in files_list:
         prefix=(f.split('.'))[-1]
@@ -280,13 +283,13 @@ def plot_decision_making_compared_table():
     #Get the percentage of scheduling decision time in total workload duration
     for _w in percentage.keys():
         _w_prefix=int(_w[1])
-        decision_time_on_mgb_basic=percentage[_w][0]/1000000000                     #in seconds 
-        decision_time_on_ai_mgb_basic=percentage[_w][1]/1000000000                  #in seconds
-        workload_time_on_mgb_basic=cols[2][_w_prefix-1]                             #in seconds
-        workload_time_on_ai_mgb_basic=cols[3][_w_prefix-1]                          #in seconds
-        percentage[_w][0]=decision_time_on_mgb_basic/workload_time_on_mgb_basic
-        percentage[_w][1]=decision_time_on_ai_mgb_basic/workload_time_on_ai_mgb_basic
-
+        decision_time_on_mgb_basic=percentage[_w][0]/1000000000                                     #in seconds 
+        decision_time_on_ai_mgb_basic=percentage[_w][1]/1000000000                                  #in seconds
+        workload_time_on_mgb_basic=cols[2][_w_prefix-1]                                             #in seconds
+        workload_time_on_ai_mgb_basic=cols[3][_w_prefix-1]                                          #in seconds
+        percentage[_w][0]=decision_time_on_mgb_basic/workload_time_on_mgb_basic * 100               #convert float to percentage
+        percentage[_w][1]=decision_time_on_ai_mgb_basic/workload_time_on_ai_mgb_basic * 100         #convert float to percentage
+    print("\nThe proportion of scheduling overhead of each compared algorithm in each workload duration:")
     data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb_basic','ai-mgb_basic'], \
                                     tablefmt='fancy_grid',numalign="center")
     print(data_in_table)
