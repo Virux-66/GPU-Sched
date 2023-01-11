@@ -62,7 +62,7 @@ def plot_throughput_figure():
             if 'workloader-log' in f_name:
                 epsilon= get_experiment_time(f_name)
                 if epsilon == None:
-                    print('Some jobs corrupt')
+                    print('Some jobs corrupt in '+f_name)
                     exit(1)
                 workload_data[workload_index][alg]=epsilon
 
@@ -107,10 +107,19 @@ def plot_throughput_figure():
         avg_imp=sum(normalized_cols[alg_index])/len(normalized_cols[alg_index])
         normalized_cols[alg_index].append(avg_imp)
     print("The average normalized throughput of each compared algorithm: ")
+    """
     print('single-assignment: '+str(round(normalized_cols[0][-1],2)))
     print('zero:              '+str(round(normalized_cols[1][-1],2)))
     print('mgb_basic:         '+str(round(normalized_cols[2][-1],2)))
     print('ai-mgb_basic:      '+str(round(normalized_cols[3][-1],2)))
+    """
+    throughput_table=[['Alg','Normalized Throughtput'],
+                      ['single-assignment',str(round(normalized_cols[0][-1],2))],
+                      ['zero'             ,str(round(normalized_cols[1][-1],2))],
+                      ['mgb_basic'        ,str(round(normalized_cols[2][-1],2))],
+                      ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))]]
+    print(tabulate.tabulate(throughput_table,headers='firstrow',
+                            tablefmt='fancy_grid',numalign='center'))
     #print(cols)
     x = np.arange(len(labels))
     width=0.21  #the width of the bars
@@ -179,10 +188,15 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=6,device_index=0): #Def
                 previous_utilization=(int)(each_row[device_index+1])
             avg_gpu_utiliz/=(len(reader)-1)
         avg_utilization.append(avg_gpu_utiliz)
-
-    for i in range(len(algorithms_label)):
-        print(algorithms_label[i]+': '+(str)(avg_utilization[i]))
-
+    print('The average GPU utilization of each compared algorithm: ')
+    #for i in range(len(algorithms_label)):
+        #print(algorithms_label[i]+':   '+(str)(round(avg_utilization[i],2))+'%')
+    average_utilization_table=[['Alg','GPU Utilization(%)'],
+                               [algorithms_label[0],round(avg_utilization[0],2)],
+                               [algorithms_label[1],round(avg_utilization[1],2)],
+                               [algorithms_label[2],round(avg_utilization[2],2)],
+                               [algorithms_label[3],round(avg_utilization[3],2)]]
+    print(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center'))
 
     #plotting
     fig=plt.figure()
