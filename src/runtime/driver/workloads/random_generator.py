@@ -3,7 +3,8 @@ import random
 TOTAL_NUM_BENCHMAKR='32'
 BASE_PATH='/home/eailab/Tmp/GPU-Sched'
 BENCHMARK_PATH=BASE_PATH + '/mybenchmark'
-WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/2023'
+#WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/2023'
+WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/introduction'
 GPU='3080Ti'
 FILE_NAME_BASE=WORKLOAD_PATH + '/' + GPU + '_'+TOTAL_NUM_BENCHMAKR +'jobs_'
 
@@ -20,19 +21,27 @@ memory_bound_jobs = [
     BENCHMARK_PATH+'/vectorAdd/vectorAdd'
 ]
 
+#This ratio is used to produce workloads whose comparison results are in evaluation part
 compute_memory_ratio=[ 
     (1,0), (1,1), (3,1), 
     (5,3), (7,1), (1,3), 
     (3,5), (1,7)
 ]
+#This ratio is used to produce workloads in intruction part whose comparison results are in introduction part
+
+compute_memory_ratio_introduction=[
+    (1,0), (0,1), (1,3)
+]
+
+ratio_used=compute_memory_ratio_introduction
 
 workloads_prefix=[
     1, 2, 3, 4, 5, 6, 7, 8
 ]
 
 
-for index in range(len(compute_memory_ratio)):
-    ratio=compute_memory_ratio[index]
+for index in range(len(ratio_used)):
+    ratio=ratio_used[index]
     ratio_compute=(int)(ratio[0])
     ratio_memory=(int)(ratio[1])
     num_compute=(int)(((int)(TOTAL_NUM_BENCHMAKR))*(ratio_compute/(ratio_compute+ratio_memory)))
