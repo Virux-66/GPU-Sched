@@ -170,7 +170,7 @@ extern "C" void histogram256(
 //const int numRuns = 1;
 extern "C" int cuda_main(int argc,char** argv){
     volatile int64_t num_floatingPoint=0;
-    volatile int64_t num_transferredBytes=563315999;
+    volatile int64_t num_transferredBytes=572312780;
     volatile float arithmetic_intensity=0;
 
     uchar *h_Data;

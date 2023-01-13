@@ -45,9 +45,9 @@ vectorAdd(const float *A, const float *B, float *C, int numElements)
  */
 int main(int argc, char** argv)
 {
-    volatile int64_t num_floatingPoint=100000000;
-    volatile int64_t num_transferredBytes=1288490188;
-    volatile float arithmetic_intensity=0.0776;
+    volatile int64_t num_floatingPoint=256;
+    volatile int64_t num_transferredBytes=5765;
+    volatile float arithmetic_intensity=0.0444;
 
     printf("[%s] - Starting...\n",argv[0]);
 

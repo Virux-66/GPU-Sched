@@ -215,7 +215,7 @@ static uint iDivUp(uint dividend, uint divisor)
 extern "C" int cuda_main(int argc,char** argv){
 
     volatile int64_t num_floatingPoint=0;
-    volatile int64_t num_transferredBytes=457021850;
+    volatile int64_t num_transferredBytes=38010;
     volatile float arithmetic_intensity=0;
 
     printf("[%s] - Starting...\n", argv[0]);

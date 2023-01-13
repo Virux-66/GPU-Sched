@@ -116,9 +116,9 @@ int MatrixMultiply(int argc, char **argv, int block_size, const dim3 &dimsA,
                    const dim3 &dimsB) {
 
   //Virux: The following varialbe need adding manually.
-  volatile int64_t num_floatingPoint=2147483648;
-  volatile int64_t num_transferredBytes=12331253;
-  volatile float arithmetic_intensity=174.149;
+  volatile int64_t num_floatingPoint=2097152;
+  volatile int64_t num_transferredBytes=274206;
+  volatile float arithmetic_intensity=7.6408;
 
   // Allocate host memory for matrices A and B
   unsigned int size_A = dimsA.x * dimsA.y;
