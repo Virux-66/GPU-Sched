@@ -8,7 +8,7 @@ import os
 
 
 #RESULT_PATH='./results-12.24-14:03'
-RESULT_PATH='./results'
+RESULT_PATH='./results-introduction'
 jobs_num_per_workload=32
 
 algorithms=[
@@ -17,7 +17,7 @@ algorithms=[
     'mgb_basic',
     'ai-mgb_basic'
 ]
-
+"""
 workload_data={
     'W1':{},
     'W2':{},
@@ -28,7 +28,9 @@ workload_data={
     'W7':{},
     'W8':{}
 }
+"""
 
+workload_data={}
 cols=[]     #cols[single-assignment, zero, mgb_basic, ai-mgb_basic]
 
 def get_experiment_time(workloader_log):
@@ -148,7 +150,7 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
     plt.rcParams['figure.dpi']=300
     plt.rcParams['savefig.dpi']=300
     
-
+    w_index=len(workload_data.keys())
     files_list=os.listdir(path)
     alg_gpu_utilization_dict={}
     for f in files_list:
@@ -206,10 +208,12 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
     ax.set_title("Utilization Comparison")
     
     #print(algorithms_label)
+    #print('mgb_basic: '+str(algorithms_label.index('mgb_basic')))
+    #print('ai-mgb_basic: '+str(algorithms_label.index('ai-mgb_basic')))
 
     #l1,=ax.plot(time_point[0],utilizations[0])   
-    l1,=ax.plot(time_point[1],utilizations[1])  
-    l4,=ax.plot(time_point[2],utilizations[2])  
+    l1,=ax.plot(time_point[algorithms_label.index('mgb_basic')],utilizations[algorithms_label.index('mgb_basic')])  
+    l4,=ax.plot(time_point[algorithms_label.index('ai-mgb_basic')],utilizations[algorithms_label.index('ai-mgb_basic')])  
     #l4,=ax.plot(time_point[3],utilizations[3])   
 
     l1.set_linestyle('-')
@@ -295,6 +299,11 @@ def plot_decision_making_compared_table():
     print(data_in_table)
 
 if __name__ == '__main__':
+    _workload_num=len(os.listdir(RESULT_PATH))/20   #four algorithms, 5 result files
+    for i in range(int(_workload_num)):
+        _key='W'+str(i+1)
+        workload_data[_key]={}
+    #print(workload_data) 
     plot_throughput_figure()    
     plot_gpu_utilization_figure()
     plot_decision_making_compared_table()
