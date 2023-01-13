@@ -2,7 +2,8 @@ import random
 
 TOTAL_NUM_BENCHMAKR='32'
 BASE_PATH='/home/eailab/Tmp/GPU-Sched'
-BENCHMARK_PATH=BASE_PATH + '/mybenchmark'
+#BENCHMARK_PATH=BASE_PATH + 'Benchmarks_kernel-level'
+BENCHMARK_PATH=BASE_PATH + '/Benchmarks_block-level'
 #WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/2023'
 WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/introduction'
 GPU='3080Ti'
@@ -30,7 +31,7 @@ compute_memory_ratio=[
 #This ratio is used to produce workloads in intruction part whose comparison results are in introduction part
 
 compute_memory_ratio_introduction=[
-    (1,0), (0,1), (1,3)
+    (1,0), (0,1), (3,5)
 ]
 
 ratio_used=compute_memory_ratio_introduction
