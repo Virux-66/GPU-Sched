@@ -1,0 +1,716 @@
+Parsing args
+Starting driver
+  workload_file: /home/eailab/Tmp/GPU-Sched/src/runtime/driver/workloads/2023-block-level/3080Ti_32jobs_6.wl
+  sched_alg: zero
+  num_processes: 8
+Worker 0: Starting
+Worker 0: 0 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan
+Worker 1: Starting
+Worker 1: 1 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048
+Worker 2: Starting
+Worker 2: 2 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 3: Starting
+Worker 3: 3 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024
+Worker 0: just launched pid 2416711
+Worker 4: Starting
+Worker 4: 4 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram
+Worker 5: Starting
+Main process: Waiting for workers...
+Worker 1: just launched pid 2416713
+Worker 5: 5 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram
+Worker 6: Starting
+Worker 6: 6 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64
+Worker 2: just launched pid 2416715
+Worker 3: just launched pid 2416717
+Worker 7: Starting
+Worker 4: just launched pid 2416718
+Worker 7: 7 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024
+Worker 5: just launched pid 2416719
+Worker 6: just launched pid 2416720
+Worker 7: just launched pid 2416721
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024] - Starting...
+1860278760494102 bemps_begin: pid 2416717 , num_blocks 1024 , threads_per_block 1024
+1860278760538016 bemps_beacon: pid 2416717 , bemps_tid 0 , mem_B 12582912 , warps 32768 , thread_blocks 1024 , arithmetic_intensity 7.6408 , num of floating-point operation 2097152 , num of bytes transferred 274206
+1860278787695606 bemps_free: pid 2416717 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024] - Shutdown done...
+1860278787713490 _bemps_dump_stats: Dumping bemps stats
+1860278787715063 _bemps_dump_stats: count of beacon times: 1
+1860278787720704 _bemps_dump_stats: min beacon time (ns): 136791
+1860278787721936 _bemps_dump_stats: max beacon time (ns): 136791
+1860278787723119 _bemps_dump_stats: avg beacon time (ns): 136791
+1860278787735763 _bemps_dump_stats: count of free times: 1
+1860278787737225 _bemps_dump_stats: min free time (ns): 36669
+1860278787738518 _bemps_dump_stats: max free time (ns): 36669
+1860278787739820 _bemps_dump_stats: avg free time (ns): 36669
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 3 0.3580489158630371
+Worker 3: TIME_SINCE_START     3 0.36160993576049805
+Worker 3: 8 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048
+Worker 3: just launched pid 2416740
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Starting...
+1860278767167108 bemps_begin: pid 2416721 , num_blocks 1024 , threads_per_block 128
+1860278767206744 bemps_beacon: pid 2416721 , bemps_tid 0 , mem_B 24576 , warps 4096 , thread_blocks 1024 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860278787735823 bemps_free: pid 2416721 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Shutdown done...
+1860278787756452 _bemps_dump_stats: Dumping bemps stats
+1860278787758306 _bemps_dump_stats: count of beacon times: 1
+1860278787762494 _bemps_dump_stats: min beacon time (ns): 134015
+1860278787763926 _bemps_dump_stats: max beacon time (ns): 134015
+1860278787765319 _bemps_dump_stats: avg beacon time (ns): 134015
+1860278787772683 _bemps_dump_stats: count of free times: 1
+1860278787774076 _bemps_dump_stats: min free time (ns): 30108
+1860278787775438 _bemps_dump_stats: max free time (ns): 30108
+1860278787776821 _bemps_dump_stats: avg free time (ns): 30108
+
+
+Worker 7: TOTAL_BENCHMARK_TIME 7 0.3874523639678955
+Worker 7: TIME_SINCE_START     7 0.39321184158325195
+Worker 7: 9 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64
+Worker 7: just launched pid 2416741
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Starting...
+1860278932358107 bemps_begin: pid 2416720 , num_blocks 64 , threads_per_block 128
+1860278932397492 bemps_beacon: pid 2416720 , bemps_tid 0 , mem_B 1536 , warps 256 , thread_blocks 64 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860278933837186 bemps_free: pid 2416720 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Shutdown done...
+1860278933847024 _bemps_dump_stats: Dumping bemps stats
+1860278933848217 _bemps_dump_stats: count of beacon times: 1
+1860278933851513 _bemps_dump_stats: min beacon time (ns): 116252
+1860278933852385 _bemps_dump_stats: max beacon time (ns): 116252
+1860278933853236 _bemps_dump_stats: avg beacon time (ns): 116252
+1860278933858717 _bemps_dump_stats: count of free times: 1
+1860278933859799 _bemps_dump_stats: min free time (ns): 16091
+1860278933860741 _bemps_dump_stats: max free time (ns): 16091
+1860278933861632 _bemps_dump_stats: avg free time (ns): 16091
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 6 0.5336949825286865
+Worker 6: TIME_SINCE_START     6 0.5386674404144287
+Worker 6: 10 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64
+Worker 6: just launched pid 2416751
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Starting...
+1860278957850753 bemps_begin: pid 2416713 , num_blocks 4096 , threads_per_block 1024
+1860278957890990 bemps_beacon: pid 2416713 , bemps_tid 0 , mem_B 50331648 , warps 131072 , thread_blocks 4096 , arithmetic_intensity 7.7256 , num of floating-point operation 4194304 , num of bytes transferred 542904
+1860279047585717 bemps_free: pid 2416713 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Shutdown done...
+1860279047598341 _bemps_dump_stats: Dumping bemps stats
+1860279047599804 _bemps_dump_stats: count of beacon times: 1
+1860279047604503 _bemps_dump_stats: min beacon time (ns): 133865
+1860279047605695 _bemps_dump_stats: max beacon time (ns): 133865
+1860279047606837 _bemps_dump_stats: avg beacon time (ns): 133865
+1860279047614602 _bemps_dump_stats: count of free times: 1
+1860279047615834 _bemps_dump_stats: min free time (ns): 27072
+1860279047617067 _bemps_dump_stats: max free time (ns): 27072
+1860279047618239 _bemps_dump_stats: avg free time (ns): 27072
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 0.652534008026123
+Worker 1: TIME_SINCE_START     1 0.6552350521087646
+Worker 1: 11 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes
+Worker 1: just launched pid 2416756
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Starting...
+1860279232940766 bemps_begin: pid 2416740 , num_blocks 4096 , threads_per_block 1024
+1860279232983317 bemps_beacon: pid 2416740 , bemps_tid 0 , mem_B 50331648 , warps 131072 , thread_blocks 4096 , arithmetic_intensity 7.7256 , num of floating-point operation 4194304 , num of bytes transferred 542904
+1860279260938425 bemps_free: pid 2416740 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Shutdown done...
+1860279260946821 _bemps_dump_stats: Dumping bemps stats
+1860279260947623 _bemps_dump_stats: count of beacon times: 1
+1860279260950288 _bemps_dump_stats: min beacon time (ns): 139326
+1860279260950939 _bemps_dump_stats: max beacon time (ns): 139326
+1860279260951570 _bemps_dump_stats: avg beacon time (ns): 139326
+1860279260956930 _bemps_dump_stats: count of free times: 1
+1860279260957602 _bemps_dump_stats: min free time (ns): 15159
+1860279260958233 _bemps_dump_stats: max free time (ns): 15159
+1860279260958874 _bemps_dump_stats: avg free time (ns): 15159
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 8 0.49596142768859863
+Worker 3: TIME_SINCE_START     8 0.8577358722686768
+Worker 3: 12 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram
+Worker 3: just launched pid 2416764
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Starting...
+1860279340852014 bemps_begin: pid 2416741 , num_blocks 64 , threads_per_block 128
+1860279340892521 bemps_beacon: pid 2416741 , bemps_tid 0 , mem_B 1536 , warps 256 , thread_blocks 64 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860279343147639 bemps_free: pid 2416741 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Shutdown done...
+1860279343155383 _bemps_dump_stats: Dumping bemps stats
+1860279343156215 _bemps_dump_stats: count of beacon times: 1
+1860279343158920 _bemps_dump_stats: min beacon time (ns): 123525
+1860279343159581 _bemps_dump_stats: max beacon time (ns): 123525
+1860279343160212 _bemps_dump_stats: avg beacon time (ns): 123525
+1860279343163920 _bemps_dump_stats: count of free times: 1
+1860279343164621 _bemps_dump_stats: min free time (ns): 14598
+1860279343165262 _bemps_dump_stats: max free time (ns): 14598
+1860279343165903 _bemps_dump_stats: avg free time (ns): 14598
+
+
+Worker 7: TOTAL_BENCHMARK_TIME 9 0.5159463882446289
+Worker 7: TIME_SINCE_START     9 0.9093372821807861
+Worker 7: 13 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes
+Worker 7: just launched pid 2416769
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Starting...
+1860279391515845 bemps_begin: pid 2416751 , num_blocks 64 , threads_per_block 128
+1860279391552084 bemps_beacon: pid 2416751 , bemps_tid 0 , mem_B 1536 , warps 256 , thread_blocks 64 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860279393222126 bemps_free: pid 2416751 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Shutdown done...
+1860279393229871 _bemps_dump_stats: Dumping bemps stats
+1860279393230692 _bemps_dump_stats: count of beacon times: 1
+1860279393233397 _bemps_dump_stats: min beacon time (ns): 117263
+1860279393234029 _bemps_dump_stats: max beacon time (ns): 117263
+1860279393234620 _bemps_dump_stats: avg beacon time (ns): 117263
+1860279393237916 _bemps_dump_stats: count of free times: 1
+1860279393238547 _bemps_dump_stats: min free time (ns): 14147
+1860279393239138 _bemps_dump_stats: max free time (ns): 14147
+1860279393239730 _bemps_dump_stats: avg free time (ns): 14147
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 10 0.4339621067047119
+Worker 6: TIME_SINCE_START     10 0.9727885723114014
+Worker 6: 14 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 6: just launched pid 2416770
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Starting...
+1860278891829187 bemps_begin: pid 2416711 , num_blocks 53248 , threads_per_block 256
+1860278891887268 bemps_beacon: pid 2416711 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 38010
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Shutdown done...
+1860279450944296 bemps_free: pid 2416711 , freeing device_id 0 , bemps_tid 0
+1860279476616987 _bemps_dump_stats: Dumping bemps stats
+1860279476626385 _bemps_dump_stats: count of beacon times: 1
+1860279476632336 _bemps_dump_stats: min beacon time (ns): 94900706
+1860279476633048 _bemps_dump_stats: max beacon time (ns): 94900706
+1860279476633739 _bemps_dump_stats: avg beacon time (ns): 9.49007e+07
+1860279476647184 _bemps_dump_stats: count of free times: 1
+1860279476647826 _bemps_dump_stats: min free time (ns): 34816
+1860279476648537 _bemps_dump_stats: max free time (ns): 34816
+1860279476649218 _bemps_dump_stats: avg free time (ns): 34816
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 1.0304968357086182
+Worker 0: TIME_SINCE_START     0 1.0326337814331055
+Worker 0: 15 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 0: just launched pid 2416773
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860279761886065 bemps_begin: pid 2416715 , num_blocks 390625 , threads_per_block 256
+1860279761929107 bemps_beacon: pid 2416715 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860280136811534 bemps_free: pid 2416715 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860280224051941 _bemps_dump_stats: Dumping bemps stats
+1860280224065607 _bemps_dump_stats: count of beacon times: 1
+1860280224074123 _bemps_dump_stats: min beacon time (ns): 26573798
+1860280224074774 _bemps_dump_stats: max beacon time (ns): 26573798
+1860280224075416 _bemps_dump_stats: avg beacon time (ns): 2.65738e+07
+1860280224089462 _bemps_dump_stats: count of free times: 1
+1860280224090104 _bemps_dump_stats: min free time (ns): 32832
+1860280224090715 _bemps_dump_stats: max free time (ns): 32832
+1860280224091456 _bemps_dump_stats: avg free time (ns): 32832
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 2 1.7690527439117432
+Worker 2: TIME_SINCE_START     2 1.7722277641296387
+Worker 2: 16 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan
+Worker 2: just launched pid 2416793
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Starting...
+1860280604064249 bemps_begin: pid 2416793 , num_blocks 53248 , threads_per_block 256
+1860280604112181 bemps_beacon: pid 2416793 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 38010
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Shutdown done...
+1860280844278201 bemps_free: pid 2416793 , freeing device_id 0 , bemps_tid 0
+1860280873229487 _bemps_dump_stats: Dumping bemps stats
+1860280873252982 _bemps_dump_stats: count of beacon times: 1
+1860280873264634 _bemps_dump_stats: min beacon time (ns): 28138049
+1860280873266137 _bemps_dump_stats: max beacon time (ns): 28138049
+1860280873267059 _bemps_dump_stats: avg beacon time (ns): 2.8138e+07
+1860280873287418 _bemps_dump_stats: count of free times: 1
+1860280873288049 _bemps_dump_stats: min free time (ns): 44034
+1860280873288770 _bemps_dump_stats: max free time (ns): 44034
+1860280873289431 _bemps_dump_stats: avg free time (ns): 44034
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 16 0.6801297664642334
+Worker 2: TIME_SINCE_START     16 2.452521562576294
+Worker 2: 17 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan
+Worker 2: just launched pid 2416818
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860280733107824 bemps_begin: pid 2416770 , num_blocks 390625 , threads_per_block 256
+1860280733173279 bemps_beacon: pid 2416770 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860281203213474 bemps_free: pid 2416770 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860281293208328 _bemps_dump_stats: Dumping bemps stats
+1860281293220862 _bemps_dump_stats: count of beacon times: 1
+1860281293228296 _bemps_dump_stats: min beacon time (ns): 27041717
+1860281293228938 _bemps_dump_stats: max beacon time (ns): 27041717
+1860281293229579 _bemps_dump_stats: avg beacon time (ns): 2.70417e+07
+1860281293242393 _bemps_dump_stats: count of free times: 1
+1860281293243054 _bemps_dump_stats: min free time (ns): 38703
+1860281293243716 _bemps_dump_stats: max free time (ns): 38703
+1860281293244447 _bemps_dump_stats: avg free time (ns): 38703
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 14 1.8698527812957764
+Worker 6: TIME_SINCE_START     14 2.8427860736846924
+Worker 6: 18 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 6: just launched pid 2416825
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860280796192754 bemps_begin: pid 2416773 , num_blocks 390625 , threads_per_block 256
+1860280796234022 bemps_beacon: pid 2416773 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860281235799517 bemps_free: pid 2416773 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860281321079857 _bemps_dump_stats: Dumping bemps stats
+1860281321091690 _bemps_dump_stats: count of beacon times: 1
+1860281321098823 _bemps_dump_stats: min beacon time (ns): 15083560
+1860281321099444 _bemps_dump_stats: max beacon time (ns): 15083560
+1860281321100086 _bemps_dump_stats: avg beacon time (ns): 1.50836e+07
+1860281321112910 _bemps_dump_stats: count of free times: 1
+1860281321113561 _bemps_dump_stats: min free time (ns): 34946
+1860281321114202 _bemps_dump_stats: max free time (ns): 34946
+1860281321114834 _bemps_dump_stats: avg free time (ns): 34946
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 15 1.8384146690368652
+Worker 0: TIME_SINCE_START     15 2.871210813522339
+Worker 0: 19 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 0: just launched pid 2416829
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Starting...
+1860281301754383 bemps_begin: pid 2416818 , num_blocks 53248 , threads_per_block 256
+1860281301793378 bemps_beacon: pid 2416818 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 38010
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Shutdown done...
+1860281564949912 bemps_free: pid 2416818 , freeing device_id 0 , bemps_tid 0
+1860281589794503 _bemps_dump_stats: Dumping bemps stats
+1860281589807327 _bemps_dump_stats: count of beacon times: 1
+1860281589814591 _bemps_dump_stats: min beacon time (ns): 48628872
+1860281589815322 _bemps_dump_stats: max beacon time (ns): 48628872
+1860281589816024 _bemps_dump_stats: avg beacon time (ns): 4.86289e+07
+1860281589830792 _bemps_dump_stats: count of free times: 1
+1860281589831583 _bemps_dump_stats: min free time (ns): 34876
+1860281589832335 _bemps_dump_stats: max free time (ns): 34876
+1860281589833066 _bemps_dump_stats: avg free time (ns): 34876
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 17 0.6866567134857178
+Worker 2: TIME_SINCE_START     17 3.139385461807251
+Worker 2: 20 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024
+Worker 2: just launched pid 2416836
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Starting...
+1860281798853645 bemps_begin: pid 2416836 , num_blocks 1024 , threads_per_block 128
+1860281798895114 bemps_beacon: pid 2416836 , bemps_tid 0 , mem_B 24576 , warps 4096 , thread_blocks 1024 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860281800325400 bemps_free: pid 2416836 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Shutdown done...
+1860281800335860 _bemps_dump_stats: Dumping bemps stats
+1860281800336812 _bemps_dump_stats: count of beacon times: 1
+1860281800339807 _bemps_dump_stats: min beacon time (ns): 146750
+1860281800340409 _bemps_dump_stats: max beacon time (ns): 146750
+1860281800341020 _bemps_dump_stats: avg beacon time (ns): 146750
+1860281800344306 _bemps_dump_stats: count of free times: 1
+1860281800344947 _bemps_dump_stats: min free time (ns): 17713
+1860281800345568 _bemps_dump_stats: max free time (ns): 17713
+1860281800346170 _bemps_dump_stats: avg free time (ns): 17713
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 20 0.20988893508911133
+Worker 2: TIME_SINCE_START     20 3.349386692047119
+Worker 2: 21 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024
+Worker 2: just launched pid 2416846
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Starting...
+1860281643328843 bemps_begin: pid 2416719 , num_blocks 240 , threads_per_block 192
+1860281643368318 bemps_beacon: pid 2416719 , bemps_tid 0 , mem_B 537117696 , warps 1440 , thread_blocks 240 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 572312780
+1860281899471312 bemps_free: pid 2416719 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Shutdown done...
+1860281932709938 _bemps_dump_stats: Dumping bemps stats
+1860281932719426 _bemps_dump_stats: count of beacon times: 1
+1860281932725638 _bemps_dump_stats: min beacon time (ns): 46424362
+1860281932726710 _bemps_dump_stats: max beacon time (ns): 46424362
+1860281932727431 _bemps_dump_stats: avg beacon time (ns): 4.64244e+07
+1860281932737610 _bemps_dump_stats: count of free times: 1
+1860281932738262 _bemps_dump_stats: min free time (ns): 34716
+1860281932738893 _bemps_dump_stats: max free time (ns): 34716
+1860281932739524 _bemps_dump_stats: avg free time (ns): 34716
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 5 3.490520477294922
+Worker 5: TIME_SINCE_START     5 3.495136022567749
+Worker 5: 22 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan
+Worker 5: just launched pid 2416853
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Starting...
+1860282010752127 bemps_begin: pid 2416846 , num_blocks 1024 , threads_per_block 128
+1860282010798105 bemps_beacon: pid 2416846 , bemps_tid 0 , mem_B 24576 , warps 4096 , thread_blocks 1024 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860282012397492 bemps_free: pid 2416846 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Shutdown done...
+1860282012411840 _bemps_dump_stats: Dumping bemps stats
+1860282012413803 _bemps_dump_stats: count of beacon times: 1
+1860282012418262 _bemps_dump_stats: min beacon time (ns): 153131
+1860282012423081 _bemps_dump_stats: max beacon time (ns): 153131
+1860282012424374 _bemps_dump_stats: avg beacon time (ns): 153131
+1860282012430255 _bemps_dump_stats: count of free times: 1
+1860282012431547 _bemps_dump_stats: min free time (ns): 24957
+1860282012432770 _bemps_dump_stats: max free time (ns): 24957
+1860282012434032 _bemps_dump_stats: avg free time (ns): 24957
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 21 0.21452808380126953
+Worker 2: TIME_SINCE_START     21 3.564063549041748
+Worker 2: 23 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes
+Worker 2: just launched pid 2416854
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Starting...
+1860282321786129 bemps_begin: pid 2416853 , num_blocks 53248 , threads_per_block 256
+1860282321828509 bemps_beacon: pid 2416853 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 38010
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Shutdown done...
+1860282625930731 bemps_free: pid 2416853 , freeing device_id 0 , bemps_tid 0
+1860282657980843 _bemps_dump_stats: Dumping bemps stats
+1860282657992114 _bemps_dump_stats: count of beacon times: 1
+1860282658002434 _bemps_dump_stats: min beacon time (ns): 29697729
+1860282658003075 _bemps_dump_stats: max beacon time (ns): 29697729
+1860282658003706 _bemps_dump_stats: avg beacon time (ns): 2.96977e+07
+1860282658029395 _bemps_dump_stats: count of free times: 1
+1860282658030046 _bemps_dump_stats: min free time (ns): 46859
+1860282658030678 _bemps_dump_stats: max free time (ns): 46859
+1860282658031299 _bemps_dump_stats: avg free time (ns): 46859
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 22 0.8065876960754395
+Worker 5: TIME_SINCE_START     22 4.301877021789551
+Worker 5: 24 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024
+Worker 5: just launched pid 2416886
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Starting...
+1860282391765933 bemps_begin: pid 2416718 , num_blocks 240 , threads_per_block 192
+1860282391810097 bemps_beacon: pid 2416718 , bemps_tid 0 , mem_B 537117696 , warps 1440 , thread_blocks 240 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 572312780
+1860282792180057 bemps_free: pid 2416718 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Shutdown done...
+1860282848682131 _bemps_dump_stats: Dumping bemps stats
+1860282848704333 _bemps_dump_stats: count of beacon times: 1
+1860282848717348 _bemps_dump_stats: min beacon time (ns): 34512844
+1860282848718100 _bemps_dump_stats: max beacon time (ns): 34512844
+1860282848719142 _bemps_dump_stats: avg beacon time (ns): 3.45128e+07
+1860282848766161 _bemps_dump_stats: count of free times: 1
+1860282848766812 _bemps_dump_stats: min free time (ns): 73811
+1860282848767584 _bemps_dump_stats: max free time (ns): 73811
+1860282848768315 _bemps_dump_stats: avg free time (ns): 73811
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 4 4.61591362953186
+Worker 4: TIME_SINCE_START     4 4.619914770126343
+Worker 4: 25 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 4: just launched pid 2416894
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Starting...
+1860282511639330 bemps_begin: pid 2416764 , num_blocks 240 , threads_per_block 192
+1860282511726216 bemps_beacon: pid 2416764 , bemps_tid 0 , mem_B 537117696 , warps 1440 , thread_blocks 240 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 572312780
+1860282901286487 bemps_free: pid 2416764 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/histogram/histogram] - Shutdown done...
+1860282938739023 _bemps_dump_stats: Dumping bemps stats
+1860282938750966 _bemps_dump_stats: count of beacon times: 1
+1860282938758570 _bemps_dump_stats: min beacon time (ns): 10044560
+1860282938759232 _bemps_dump_stats: max beacon time (ns): 10044560
+1860282938759883 _bemps_dump_stats: avg beacon time (ns): 1.00446e+07
+1860282938773549 _bemps_dump_stats: count of free times: 1
+1860282938774190 _bemps_dump_stats: min free time (ns): 43393
+1860282938774811 _bemps_dump_stats: max free time (ns): 43393
+1860282938775503 _bemps_dump_stats: avg free time (ns): 43393
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 12 3.790104389190674
+Worker 3: TIME_SINCE_START     12 4.648051977157593
+Worker 3: 26 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64
+Worker 3: just launched pid 2416895
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Starting...
+1860279134529200 bemps_begin: pid 2416756 , num_blocks 312500 , threads_per_block 128
+1860279134548467 bemps_beacon: pid 2416756 , bemps_tid 0 , mem_B 1600000000 , warps 1250000 , thread_blocks 312500 , arithmetic_intensity 1.0485 , num of floating-point operation 16900 , num of bytes transferred 16117
+1860283102582904 bemps_free: pid 2416756 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Shutdown done...
+1860283295561740 _bemps_dump_stats: Dumping bemps stats
+1860283295588110 _bemps_dump_stats: count of beacon times: 1
+1860283295601105 _bemps_dump_stats: min beacon time (ns): 123449616
+1860283295601736 _bemps_dump_stats: max beacon time (ns): 123449616
+1860283295602538 _bemps_dump_stats: avg beacon time (ns): 1.2345e+08
+1860283295641683 _bemps_dump_stats: count of free times: 1
+1860283295642324 _bemps_dump_stats: min free time (ns): 68470
+1860283295643065 _bemps_dump_stats: max free time (ns): 68470
+1860283295644368 _bemps_dump_stats: avg free time (ns): 68470
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 11 4.2117626667022705
+Worker 1: TIME_SINCE_START     11 4.867171287536621
+Worker 1: 27 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 1: just launched pid 2416903
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Starting...
+1860283320507484 bemps_begin: pid 2416886 , num_blocks 1024 , threads_per_block 128
+1860283320567738 bemps_beacon: pid 2416886 , bemps_tid 0 , mem_B 24576 , warps 4096 , thread_blocks 1024 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860283322264442 bemps_free: pid 2416886 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_1024/binomialOptions_1024] - Shutdown done...
+1860283322277577 _bemps_dump_stats: Dumping bemps stats
+1860283322278709 _bemps_dump_stats: count of beacon times: 1
+1860283322282967 _bemps_dump_stats: min beacon time (ns): 199110
+1860283322283889 _bemps_dump_stats: max beacon time (ns): 199110
+1860283322284800 _bemps_dump_stats: avg beacon time (ns): 199110
+1860283322289519 _bemps_dump_stats: count of free times: 1
+1860283322290511 _bemps_dump_stats: min free time (ns): 25038
+1860283322291443 _bemps_dump_stats: max free time (ns): 25038
+1860283322292355 _bemps_dump_stats: avg free time (ns): 25038
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 24 0.5991029739379883
+Worker 5: TIME_SINCE_START     24 4.901197910308838
+Worker 5: 28 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd
+Worker 5: just launched pid 2416904
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Starting...
+1860283353052336 bemps_begin: pid 2416895 , num_blocks 64 , threads_per_block 128
+1860283353105267 bemps_beacon: pid 2416895 , bemps_tid 0 , mem_B 1536 , warps 256 , thread_blocks 64 , arithmetic_intensity 351.64 , num of floating-point operation 6358996 , num of bytes transferred 18083
+1860283354424721 bemps_free: pid 2416895 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/binomialOptions_64/binomialOptions_64] - Shutdown done...
+1860283354434470 _bemps_dump_stats: Dumping bemps stats
+1860283354435291 _bemps_dump_stats: count of beacon times: 1
+1860283354438187 _bemps_dump_stats: min beacon time (ns): 160435
+1860283354438818 _bemps_dump_stats: max beacon time (ns): 160435
+1860283354439419 _bemps_dump_stats: avg beacon time (ns): 160435
+1860283354442685 _bemps_dump_stats: count of free times: 1
+1860283354443346 _bemps_dump_stats: min free time (ns): 17003
+1860283354443968 _bemps_dump_stats: max free time (ns): 17003
+1860283354444609 _bemps_dump_stats: avg free time (ns): 17003
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 26 0.2789645195007324
+Worker 3: TIME_SINCE_START     26 4.927246809005737
+Worker 3: 29 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048
+Worker 3: just launched pid 2416905
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Starting...
+1860279389664026 bemps_begin: pid 2416769 , num_blocks 312500 , threads_per_block 128
+1860279389694183 bemps_beacon: pid 2416769 , bemps_tid 0 , mem_B 1600000000 , warps 1250000 , thread_blocks 312500 , arithmetic_intensity 1.0485 , num of floating-point operation 16900 , num of bytes transferred 16117
+1860283243575271 bemps_free: pid 2416769 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Shutdown done...
+1860283420460592 _bemps_dump_stats: Dumping bemps stats
+1860283420475460 _bemps_dump_stats: count of beacon times: 1
+1860283420482303 _bemps_dump_stats: min beacon time (ns): 65741301
+1860283420482994 _bemps_dump_stats: max beacon time (ns): 65741301
+1860283420483806 _bemps_dump_stats: avg beacon time (ns): 6.57413e+07
+1860283420502882 _bemps_dump_stats: count of free times: 1
+1860283420503523 _bemps_dump_stats: min free time (ns): 59163
+1860283420504295 _bemps_dump_stats: max free time (ns): 59163
+1860283420505267 _bemps_dump_stats: avg free time (ns): 59163
+
+
+Worker 7: TOTAL_BENCHMARK_TIME 13 4.066431522369385
+Worker 7: TIME_SINCE_START     13 4.975990533828735
+Worker 7: 30 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan
+Worker 7: just launched pid 2416909
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860282619979682 bemps_begin: pid 2416825 , num_blocks 390625 , threads_per_block 256
+1860282620104109 bemps_beacon: pid 2416825 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860283521553901 bemps_free: pid 2416825 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860283619303149 _bemps_dump_stats: Dumping bemps stats
+1860283619319190 _bemps_dump_stats: count of beacon times: 1
+1860283619328998 _bemps_dump_stats: min beacon time (ns): 30150701
+1860283619329620 _bemps_dump_stats: max beacon time (ns): 30150701
+1860283619330251 _bemps_dump_stats: avg beacon time (ns): 3.01507e+07
+1860283619345189 _bemps_dump_stats: count of free times: 1
+1860283619345831 _bemps_dump_stats: min free time (ns): 39746
+1860283619346462 _bemps_dump_stats: max free time (ns): 39746
+1860283619347113 _bemps_dump_stats: avg free time (ns): 39746
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 18 2.330373525619507
+Worker 6: TIME_SINCE_START     18 5.173304080963135
+Worker 6: 31 /home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024
+Worker 6: just launched pid 2416916
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860282678008345 bemps_begin: pid 2416829 , num_blocks 390625 , threads_per_block 256
+1860282678071065 bemps_beacon: pid 2416829 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860283547230246 bemps_free: pid 2416829 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860283639862885 _bemps_dump_stats: Dumping bemps stats
+1860283639874978 _bemps_dump_stats: count of beacon times: 1
+1860283639882072 _bemps_dump_stats: min beacon time (ns): 27840099
+1860283639882803 _bemps_dump_stats: max beacon time (ns): 27840099
+1860283639883594 _bemps_dump_stats: avg beacon time (ns): 2.78401e+07
+1860283639895918 _bemps_dump_stats: count of free times: 1
+1860283639896739 _bemps_dump_stats: min free time (ns): 40648
+1860283639897561 _bemps_dump_stats: max free time (ns): 40648
+1860283639898413 _bemps_dump_stats: avg free time (ns): 40648
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 19 2.3361868858337402
+Worker 0: TIME_SINCE_START     19 5.20758581161499
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Starting...
+1860283624314909 bemps_begin: pid 2416905 , num_blocks 4096 , threads_per_block 1024
+1860283624364003 bemps_beacon: pid 2416905 , bemps_tid 0 , mem_B 50331648 , warps 131072 , thread_blocks 4096 , arithmetic_intensity 7.7256 , num of floating-point operation 4194304 , num of bytes transferred 542904
+1860283662480663 bemps_free: pid 2416905 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_2048/matrixMul_2048] - Shutdown done...
+1860283662488308 _bemps_dump_stats: Dumping bemps stats
+1860283662489099 _bemps_dump_stats: count of beacon times: 1
+1860283662492956 _bemps_dump_stats: min beacon time (ns): 172629
+1860283662493588 _bemps_dump_stats: max beacon time (ns): 172629
+1860283662494189 _bemps_dump_stats: avg beacon time (ns): 172629
+1860283662498577 _bemps_dump_stats: count of free times: 1
+1860283662499228 _bemps_dump_stats: min free time (ns): 17313
+1860283662499850 _bemps_dump_stats: max free time (ns): 17313
+1860283662500461 _bemps_dump_stats: avg free time (ns): 17313
+
+
+Worker 3: TOTAL_BENCHMARK_TIME 29 0.3350954055786133
+Worker 3: TIME_SINCE_START     29 5.262505769729614
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024] - Starting...
+1860283862244377 bemps_begin: pid 2416916 , num_blocks 1024 , threads_per_block 1024
+1860283862287259 bemps_beacon: pid 2416916 , bemps_tid 0 , mem_B 12582912 , warps 32768 , thread_blocks 1024 , arithmetic_intensity 7.6408 , num of floating-point operation 2097152 , num of bytes transferred 274206
+1860283871031341 bemps_free: pid 2416916 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/matrixMul_1024/matrixMul_1024] - Shutdown done...
+1860283871038615 _bemps_dump_stats: Dumping bemps stats
+1860283871039416 _bemps_dump_stats: count of beacon times: 1
+1860283871042212 _bemps_dump_stats: min beacon time (ns): 142031
+1860283871042843 _bemps_dump_stats: max beacon time (ns): 142031
+1860283871043464 _bemps_dump_stats: avg beacon time (ns): 142031
+1860283871047882 _bemps_dump_stats: count of free times: 1
+1860283871048544 _bemps_dump_stats: min free time (ns): 15470
+1860283871049145 _bemps_dump_stats: max free time (ns): 15470
+1860283871049776 _bemps_dump_stats: avg free time (ns): 15470
+
+
+Worker 6: TOTAL_BENCHMARK_TIME 31 0.26811981201171875
+Worker 6: TIME_SINCE_START     31 5.441537141799927
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Starting...
+1860283816467450 bemps_begin: pid 2416909 , num_blocks 53248 , threads_per_block 256
+1860283816511354 bemps_beacon: pid 2416909 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 38010
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/scan/scan] - Shutdown done...
+1860284066972830 bemps_free: pid 2416909 , freeing device_id 0 , bemps_tid 0
+1860284096229208 _bemps_dump_stats: Dumping bemps stats
+1860284096242173 _bemps_dump_stats: count of beacon times: 1
+1860284096249677 _bemps_dump_stats: min beacon time (ns): 8141825
+1860284096250328 _bemps_dump_stats: max beacon time (ns): 8141825
+1860284096250969 _bemps_dump_stats: avg beacon time (ns): 8.14182e+06
+1860284096263954 _bemps_dump_stats: count of free times: 1
+1860284096264786 _bemps_dump_stats: min free time (ns): 33434
+1860284096265447 _bemps_dump_stats: max free time (ns): 33434
+1860284096266168 _bemps_dump_stats: avg free time (ns): 33434
+
+
+Worker 7: TOTAL_BENCHMARK_TIME 30 0.6694226264953613
+Worker 7: TIME_SINCE_START     30 5.645591497421265
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 28
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 28
+Worker 6: Worklist is empty. Retrying get().
+Worker 6: jobs_processed.value is 28
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860284423281442 bemps_begin: pid 2416894 , num_blocks 390625 , threads_per_block 256
+1860284423321569 bemps_beacon: pid 2416894 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860284779880315 bemps_free: pid 2416894 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860284885710050 _bemps_dump_stats: Dumping bemps stats
+1860284885733164 _bemps_dump_stats: count of beacon times: 1
+1860284885751569 _bemps_dump_stats: min beacon time (ns): 47342859
+1860284885752190 _bemps_dump_stats: max beacon time (ns): 47342859
+1860284885752811 _bemps_dump_stats: avg beacon time (ns): 4.73429e+07
+1860284885776827 _bemps_dump_stats: count of free times: 1
+1860284885778360 _bemps_dump_stats: min free time (ns): 33003
+1860284885779001 _bemps_dump_stats: max free time (ns): 33003
+1860284885779622 _bemps_dump_stats: avg free time (ns): 33003
+
+
+Worker 4: TOTAL_BENCHMARK_TIME 25 1.825911045074463
+Worker 4: TIME_SINCE_START     25 6.44603705406189
+Worker 7: Worklist is empty. Retrying get().
+Worker 7: jobs_processed.value is 29
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860284673151840 bemps_begin: pid 2416904 , num_blocks 390625 , threads_per_block 256
+1860284673204831 bemps_beacon: pid 2416904 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860285058068551 bemps_free: pid 2416904 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860285168819120 _bemps_dump_stats: Dumping bemps stats
+1860285168833337 _bemps_dump_stats: count of beacon times: 1
+1860285168841904 _bemps_dump_stats: min beacon time (ns): 26785918
+1860285168842545 _bemps_dump_stats: max beacon time (ns): 26785918
+1860285168843186 _bemps_dump_stats: avg beacon time (ns): 2.67859e+07
+1860285168856892 _bemps_dump_stats: count of free times: 1
+1860285168857553 _bemps_dump_stats: min free time (ns): 36559
+1860285168858195 _bemps_dump_stats: max free time (ns): 36559
+1860285168858836 _bemps_dump_stats: avg free time (ns): 36559
+
+
+Worker 5: TOTAL_BENCHMARK_TIME 28 1.8179428577423096
+Worker 5: TIME_SINCE_START     28 6.719310522079468
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Starting...
+1860284977335309 bemps_begin: pid 2416903 , num_blocks 390625 , threads_per_block 256
+1860284977382358 bemps_beacon: pid 2416903 , bemps_tid 0 , mem_B 1200000000 , warps 3125000 , thread_blocks 390625 , arithmetic_intensity 0.0444 , num of floating-point operation 256 , num of bytes transferred 5765
+1860285352820686 bemps_free: pid 2416903 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/vectorAdd/vectorAdd] - Shutdown done...
+1860285453136892 _bemps_dump_stats: Dumping bemps stats
+1860285453148785 _bemps_dump_stats: count of beacon times: 1
+1860285453157030 _bemps_dump_stats: min beacon time (ns): 10047223
+1860285453157632 _bemps_dump_stats: max beacon time (ns): 10047223
+1860285453158303 _bemps_dump_stats: avg beacon time (ns): 1.00472e+07
+1860285453172821 _bemps_dump_stats: count of free times: 1
+1860285453173452 _bemps_dump_stats: min free time (ns): 54734
+1860285453174173 _bemps_dump_stats: max free time (ns): 54734
+1860285453174764 _bemps_dump_stats: avg free time (ns): 54734
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 27 2.135225534439087
+Worker 1: TIME_SINCE_START     27 7.0026092529296875
+Worker 0: Worklist is empty. Retrying get().
+Worker 0: jobs_processed.value is 31
+Worker 3: Worklist is empty. Retrying get().
+Worker 3: jobs_processed.value is 31
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Starting...
+1860282043718204 bemps_begin: pid 2416854 , num_blocks 312500 , threads_per_block 128
+1860282043742881 bemps_beacon: pid 2416854 , bemps_tid 0 , mem_B 1600000000 , warps 1250000 , thread_blocks 312500 , arithmetic_intensity 1.0485 , num of floating-point operation 16900 , num of bytes transferred 16117
+1860285630396290 bemps_free: pid 2416854 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_block-level/BlackScholes/BlackScholes] - Shutdown done...
+1860285744725669 _bemps_dump_stats: Dumping bemps stats
+1860285744741389 _bemps_dump_stats: count of beacon times: 1
+1860285744747180 _bemps_dump_stats: min beacon time (ns): 46088813
+1860285744747821 _bemps_dump_stats: max beacon time (ns): 46088813
+1860285744748462 _bemps_dump_stats: avg beacon time (ns): 4.60888e+07
+1860285744760355 _bemps_dump_stats: count of free times: 1
+1860285744761026 _bemps_dump_stats: min free time (ns): 38012
+1860285744761667 _bemps_dump_stats: max free time (ns): 38012
+1860285744762619 _bemps_dump_stats: avg free time (ns): 38012
+
+
+Worker 2: TOTAL_BENCHMARK_TIME 23 3.7322447299957275
+Worker 2: TIME_SINCE_START     23 7.296456813812256
+Worker 2: TOTAL_EXPERIMENT_TIME 7.296491622924805
+Worker 2: Exiting normally
+Worker 6: Worklist is empty.
+Worker 6: Exiting normally
+Worker 4: Worklist is empty.
+Worker 4: Exiting normally
+Worker 7: Worklist is empty.
+Worker 7: Exiting normally
+Worker 5: Worklist is empty.
+Worker 5: Exiting normally
+Worker 1: Worklist is empty.
+Worker 1: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.
