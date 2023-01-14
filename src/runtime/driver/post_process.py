@@ -8,7 +8,10 @@ import os
 
 
 #RESULT_PATH='./results-12.24-14:03'
-RESULT_PATH='./results-introduction'
+#RESULT_PATH='./results-introduction'
+RESULT_PATH='./results-kernel-level-2'
+FIGURE_PATH='./figures'
+TABLE_PATH='./tables'
 jobs_num_per_workload=32
 
 algorithms=[
@@ -122,6 +125,9 @@ def plot_throughput_figure():
                       ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))]]
     print(tabulate.tabulate(throughput_table,headers='firstrow',
                             tablefmt='fancy_grid',numalign='center'))
+    with open(TABLE_PATH+'/throughput_table-'+RESULT_PATH[2:],'w') as _f:
+        _f.write(tabulate.tabulate(throughput_table, headers="firstrow",
+                            tablefmt='fancy_grid',numalign='center'))
     #print(cols)
     x = np.arange(len(labels))
     width=0.21  #the width of the bars
@@ -143,7 +149,7 @@ def plot_throughput_figure():
     #ax.bar_label(rects4,padding=3)
     #fig.tight_layout(pad=0)
 
-    plt.savefig("normalized_throughput_figure.jpg")
+    plt.savefig(FIGURE_PATH+"/normalized_throughput_figure-"+RESULT_PATH[2:]+".jpg")
     plt.show()
 
 def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
@@ -199,7 +205,8 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
                                [algorithms_label[2],round(avg_utilization[2],2)],
                                [algorithms_label[3],round(avg_utilization[3],2)]]
     print(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center'))
-
+    with open(TABLE_PATH+'/average_utilization_table-'+RESULT_PATH[2:],'w') as _f:
+       _f.write(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center')) 
     #plotting
     fig=plt.figure()
     ax=fig.add_axes([0.1,0.1,0.8,0.8])
@@ -229,7 +236,7 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
     
     ax.legend(handles=[l1,l4],labels=['mgb_basic','ai-mgb_basic'])
     
-    plt.savefig('gpu_utilization.jpg')
+    plt.savefig(FIGURE_PATH+'/gpu_utilization-'+RESULT_PATH[2:]+'.jpg')
     plt.show()
     
 def get_decision_time(sched_stats): #sched_stats is file name excluding its parent directory
@@ -297,6 +304,8 @@ def plot_decision_making_compared_table():
     data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb_basic','ai-mgb_basic'], \
                                     tablefmt='fancy_grid',numalign="center")
     print(data_in_table)
+    with open(TABLE_PATH+'/decision_proportion_table-'+RESULT_PATH[2:],'w') as _f:
+        _f.write(data_in_table)
 
 if __name__ == '__main__':
     _workload_num=len(os.listdir(RESULT_PATH))/20   #four algorithms, 5 result files
