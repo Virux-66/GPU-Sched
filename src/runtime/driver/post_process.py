@@ -1,15 +1,14 @@
 #!/bin/python3
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import tabulate
 import numpy as np
 import csv
 import os
+import sys
 
 
-#RESULT_PATH='./results-12.24-14:03'
-#RESULT_PATH='./results-introduction'
-RESULT_PATH='./results-kernel-level-2'
 FIGURE_PATH='./figures'
 TABLE_PATH='./tables'
 jobs_num_per_workload=32
@@ -36,7 +35,18 @@ workload_data={
 workload_data={}
 cols=[]     #cols[single-assignment, zero, mgb_basic, ai-mgb_basic]
 
-def get_experiment_time(workloader_log):
+def usage_and_exit():
+    print()
+    print(' Usage:')
+    print('     {} <resolved path>'.format(sys.argv[0]))
+    sys.exit(1)
+
+def plot_global_setting():
+    plt.rcParams['figure.dpi']=300
+    plt.rcParams['savefig.dpi']=300
+    plt.rcParams['font.family']='Times New Roman'
+
+def get_experiment_time(RESULT_PATH,workloader_log):
     with open( RESULT_PATH + '/'+workloader_log,'r') as f:
         lines=f.readlines()
         for one_line in lines:
@@ -46,9 +56,7 @@ def get_experiment_time(workloader_log):
                 splited_list=one_line.split()
                 return (float)(splited_list[3])
                 
-def plot_throughput_figure():
-    plt.rcParams['figure.dpi']=300
-    plt.rcParams['savefig.dpi']=300
+def plot_throughput_figure(RESULT_PATH):
 
     files_list=os.listdir(RESULT_PATH)
     resultfile_dictionary={}
@@ -65,7 +73,7 @@ def plot_throughput_figure():
             workload_prefix=f_name.split('.')[0][-1]
             workload_index='W'+workload_prefix  #W1,W2,...,W8
             if 'workloader-log' in f_name:
-                epsilon= get_experiment_time(f_name)
+                epsilon= get_experiment_time(RESULT_PATH,f_name)
                 if epsilon == None:
                     print('Some jobs corrupt in '+f_name)
                     exit(1)
@@ -125,46 +133,42 @@ def plot_throughput_figure():
                       ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))]]
     print(tabulate.tabulate(throughput_table,headers='firstrow',
                             tablefmt='fancy_grid',numalign='center'))
-    with open(TABLE_PATH+'/throughput_table-'+RESULT_PATH[2:],'w') as _f:
+    with open(TABLE_PATH+'/throughput_table-'+RESULT_PATH,'w') as _f:
         _f.write(tabulate.tabulate(throughput_table, headers="firstrow",
                             tablefmt='fancy_grid',numalign='center'))
     #print(cols)
     x = np.arange(len(labels))
-    width=0.21  #the width of the bars
+    width=0.17  #the width of the bars
     fig, ax = plt.subplots(figsize=(10,5))
-    rects1 = ax.bar(x-3*width/2,normalized_cols[0],width,label='single-assignment')   #single-assignment
-    rects2 = ax.bar(x-width/2,normalized_cols[1],width,label='zero')
-    rects3 = ax.bar(x+width/2,normalized_cols[2],width,label='mgb_basic')
-    rects4 = ax.bar(x+3*width/2,normalized_cols[3],width,label='ai-mgb_basic')
+    rects1 = ax.bar(x-3*width/2,normalized_cols[0],width,label='SG',color='#358b9c')   #single-assignment
+    rects2 = ax.bar(x-width/2,normalized_cols[1],width,label='schedGPU',color='#5ca781')
+    rects3 = ax.bar(x+width/2,normalized_cols[2],width,label='CASE',color='#caaa7c')
+    rects4 = ax.bar(x+3*width/2,normalized_cols[3],width,label='AIGPU',color='#f2a20d')
     
+
+    formatter=ticker.FormatStrFormatter('%1.1f')
+    ax.yaxis.set_major_formatter(formatter)
     ax.set_xlabel('Workloads')
     ax.set_ylabel('Normalized Throughput')
     ax.set_title('on the 3080Ti System')
     ax.set_xticks(x,labels)
-    ax.legend()
+    ax.legend(loc='upper left')
 
-    #ax.bar_label(rects1,padding=3)
-    #ax.bar_label(rects2,padding=3)
-    #ax.bar_label(rects3,padding=3)
-    #ax.bar_label(rects4,padding=3)
-    #fig.tight_layout(pad=0)
 
-    plt.savefig(FIGURE_PATH+"/normalized_throughput_figure-"+RESULT_PATH[2:]+".jpg")
+    plt.savefig(FIGURE_PATH+"/normalized_throughput_figure-"+RESULT_PATH+".jpg")
     plt.show()
 
-def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
-    plt.rcParams['figure.dpi']=300
-    plt.rcParams['savefig.dpi']=300
+def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
     
     w_index=len(workload_data.keys())
-    files_list=os.listdir(path)
+    files_list=os.listdir(RESULT_PATH)
     alg_gpu_utilization_dict={}
     for f in files_list:
         f_w_index=(((f.split('.'))[0]).split('_'))[2]
         file_suffix=(f.split('-'))[-1]
         if (int)(f_w_index) == w_index and file_suffix == 'sched_gpu.csv':
             _alg=f.split('.')[1]
-            alg_gpu_utilization_dict[_alg]=path + '/' + f
+            alg_gpu_utilization_dict[_alg]=RESULT_PATH+ '/' + f
 
     #We have obtain all gpu utilization record files. Now we plot the figure
     time_point=[] #contain 4 list
@@ -205,7 +209,7 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
                                [algorithms_label[2],round(avg_utilization[2],2)],
                                [algorithms_label[3],round(avg_utilization[3],2)]]
     print(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center'))
-    with open(TABLE_PATH+'/average_utilization_table-'+RESULT_PATH[2:],'w') as _f:
+    with open(TABLE_PATH+'/average_utilization_table-'+RESULT_PATH,'w') as _f:
        _f.write(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center')) 
     #plotting
     fig=plt.figure()
@@ -234,12 +238,12 @@ def plot_gpu_utilization_figure(path=RESULT_PATH,w_index=8,device_index=0): #Def
     l4.set_marker('o')
     l4.set_markersize(4.0)
     
-    ax.legend(handles=[l1,l4],labels=['mgb_basic','ai-mgb_basic'])
+    ax.legend(loc='upper left',handles=[l1,l4],labels=['CASE','AIGPU'])
     
-    plt.savefig(FIGURE_PATH+'/gpu_utilization-'+RESULT_PATH[2:]+'.jpg')
+    plt.savefig(FIGURE_PATH+'/gpu_utilization-'+RESULT_PATH+'.jpg')
     plt.show()
     
-def get_decision_time(sched_stats): #sched_stats is file name excluding its parent directory
+def get_decision_time(RESULT_PATH,sched_stats): #sched_stats is file name excluding its parent directory
     dl=[]
     with open(RESULT_PATH+'/'+sched_stats) as _f:
         lines=_f.readlines()
@@ -257,7 +261,7 @@ We only need to compare the percentage of decision-makeing time in the total dur
  mgb_basic    
  ai-mgb_basic
 """
-def plot_decision_making_compared_table():
+def plot_decision_making_compared_table(RESULT_PATH):
     percentage={}
     for k in workload_data.keys():
         percentage[k]=[]
@@ -268,10 +272,10 @@ def plot_decision_making_compared_table():
         alg=(f.split('.'))[1]
         w_index='W'+(f.split('.'))[0][-1]
         if alg=='mgb_basic' and prefix=='sched-stats':
-            _decision_time=get_decision_time(f)
+            _decision_time=get_decision_time(RESULT_PATH,f)
             percentage[w_index].insert(0, _decision_time)
         if alg=='ai-mgb_basic' and prefix=='sched-stats':
-            _decision_time=get_decision_time(f)
+            _decision_time=get_decision_time(RESULT_PATH,f)
             percentage[w_index].append(_decision_time)
     #The following is just for testing.
     """ 
@@ -304,15 +308,21 @@ def plot_decision_making_compared_table():
     data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb_basic','ai-mgb_basic'], \
                                     tablefmt='fancy_grid',numalign="center")
     print(data_in_table)
-    with open(TABLE_PATH+'/decision_proportion_table-'+RESULT_PATH[2:],'w') as _f:
+    with open(TABLE_PATH+'/decision_proportion_table-'+RESULT_PATH,'w') as _f:
         _f.write(data_in_table)
 
 if __name__ == '__main__':
-    _workload_num=len(os.listdir(RESULT_PATH))/20   #four algorithms, 5 result files
+    if len(sys.argv)==1:
+        usage_and_exit()
+    RESOLVED_PATH=sys.argv[1]
+
+    plot_global_setting()
+
+    _workload_num=len(os.listdir(RESOLVED_PATH))/20   #four algorithms, 5 result files
     for i in range(int(_workload_num)):
         _key='W'+str(i+1)
         workload_data[_key]={}
     #print(workload_data) 
-    plot_throughput_figure()    
-    plot_gpu_utilization_figure()
-    plot_decision_making_compared_table()
+    plot_throughput_figure(RESOLVED_PATH)    
+    plot_gpu_utilization_figure(RESOLVED_PATH)
+    plot_decision_making_compared_table(RESOLVED_PATH)
