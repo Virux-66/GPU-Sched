@@ -9,8 +9,8 @@ import os
 import sys
 
 
-FIGURE_PATH='./figures'
-TABLE_PATH='./tables'
+FIGURE_PATH='visualized_results/figures'
+TABLE_PATH='visualized_results/tables'
 jobs_num_per_workload=32
 
 algorithms=[

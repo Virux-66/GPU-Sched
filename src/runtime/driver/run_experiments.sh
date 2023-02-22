@@ -17,10 +17,21 @@
 BASE_PATH=/home/eailab/Tmp
 BEMPS_SCHED_PATH=${BASE_PATH}/sched-build/runtime/sched
 WORKLOADER_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver
-WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/2023
-RESULTS_PATH=results
+#WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/2023
+#WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/introduction
+#WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/2023
+#RESULTS_PATH=results-introduction
+#RESULTS_PATH=results-kernel-level-L1Cache
 
-
+if [ $# -ne 2 ]
+then 
+    echo ""
+    echo "Usage: "
+    echo "$0 <workloads_path> <raw_results_path>"
+    exit 1
+fi
+WORKLOADS_PATH=$1
+RESULTS_PATH=$2
 
 WORKLOADS=(
     3080Ti_32jobs_1.wl
@@ -100,7 +111,7 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/eailab/Tmp/sched-build/runtime/b
 
 rm -f /dev/shm/bemps
 
-mkdir -p results
+mkdir -p ${RESULTS_PATH}
 
 
 for WORKLOAD in ${WORKLOADS[@]}; do

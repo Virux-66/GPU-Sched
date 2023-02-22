@@ -5,21 +5,23 @@ BASE_PATH='/home/eailab/Tmp/GPU-Sched'
 #BENCHMARK_PATH=BASE_PATH + 'Benchmarks_kernel-level'
 BENCHMARK_PATH=BASE_PATH + '/Benchmarks_block-level'
 #WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/2023'
-WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/introduction'
+#WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/introduction'
+WORKLOAD_PATH=BASE_PATH + '/src/runtime/driver/workloads/2023-block-level'
 GPU='3080Ti'
 FILE_NAME_BASE=WORKLOAD_PATH + '/' + GPU + '_'+TOTAL_NUM_BENCHMAKR +'jobs_'
 
 compute_bound_jobs = [
     BENCHMARK_PATH+'/binomialOptions_64/binomialOptions_64',
-    BENCHMARK_PATH+'/binomialOptions_1024/binomialOptions_1024',
-    BENCHMARK_PATH+'/matrixMul_1024/matrixMul_1024'
+    BENCHMARK_PATH+'/binomialOptions_1024/binomialOptions_1024'
+    #BENCHMARK_PATH+'/matrixMul_1024/matrixMul_1024'
 ]
 memory_bound_jobs = [
     BENCHMARK_PATH+'/BlackScholes/BlackScholes',
     BENCHMARK_PATH+'/histogram/histogram',
     BENCHMARK_PATH+'/matrixMul_2048/matrixMul_2048',
     BENCHMARK_PATH+'/scan/scan',
-    BENCHMARK_PATH+'/vectorAdd/vectorAdd'
+    BENCHMARK_PATH+'/vectorAdd/vectorAdd',
+    BENCHMARK_PATH+'/matrixMul_1024/matrixMul_1024'
 ]
 
 #This ratio is used to produce workloads whose comparison results are in evaluation part
@@ -34,7 +36,7 @@ compute_memory_ratio_introduction=[
     (1,0), (0,1), (3,5)
 ]
 
-ratio_used=compute_memory_ratio_introduction
+ratio_used=compute_memory_ratio
 
 workloads_prefix=[
     1, 2, 3, 4, 5, 6, 7, 8
