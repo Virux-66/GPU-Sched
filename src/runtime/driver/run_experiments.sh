@@ -30,19 +30,23 @@ then
     echo "$0 <workloads_path> <raw_results_path>"
     exit 1
 fi
-WORKLOADS_PATH=$1
-RESULTS_PATH=$2
+WORKLOADS_PATH=$1   #workloads/2023
+RESULTS_PATH=$2     #raw_results
+#list all workloads file
+cd ${WORKLOADS_PATH}
+WORKLOADS=(*)       #get all workload files
+cd ../..
 
-WORKLOADS=(
-    3080Ti_32jobs_1.wl
-    3080Ti_32jobs_2.wl
-    3080Ti_32jobs_3.wl
-    3080Ti_32jobs_4.wl
-    3080Ti_32jobs_5.wl
-    3080Ti_32jobs_6.wl
-    3080Ti_32jobs_7.wl
-    3080Ti_32jobs_8.wl
-)
+#WORKLOADS=(
+#   3080Ti_32jobs_1.wl
+#    3080Ti_32jobs_2.wl
+#    3080Ti_32jobs_3.wl
+#    3080Ti_32jobs_4.wl
+#    3080Ti_32jobs_5.wl
+#    3080Ti_32jobs_6.wl
+#    3080Ti_32jobs_7.wl
+#    3080Ti_32jobs_8.wl
+#)
 
 ZERO_ARGS_ARR=(
     #4 # <-- will throw up to 4 jobs onto GPU0 at once

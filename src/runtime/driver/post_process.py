@@ -11,6 +11,8 @@ import sys
 
 FIGURE_PATH='visualized_results/figures'
 TABLE_PATH='visualized_results/tables'
+VISUALIZED_PATH='visualized_results'
+FIGURE_FORMAT='.jpg'    #or pdf
 jobs_num_per_workload=32
 
 algorithms=[
@@ -133,7 +135,7 @@ def plot_throughput_figure(RESULT_PATH):
                       ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))]]
     print(tabulate.tabulate(throughput_table,headers='firstrow',
                             tablefmt='fancy_grid',numalign='center'))
-    with open(TABLE_PATH+'/throughput_table-'+RESULT_PATH,'w') as _f:
+    with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/throughput_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
         _f.write(tabulate.tabulate(throughput_table, headers="firstrow",
                             tablefmt='fancy_grid',numalign='center'))
     #print(cols)
@@ -155,7 +157,7 @@ def plot_throughput_figure(RESULT_PATH):
     ax.legend(loc='upper left')
 
 
-    plt.savefig(FIGURE_PATH+"/normalized_throughput_figure-"+RESULT_PATH+".jpg")
+    plt.savefig(VISUALIZED_PATH+"/"+RESULT_PATH.split('/')[-1]+"/normalized_throughput_figure-"+RESULT_PATH.split('/')[-1]+FIGURE_FORMAT)
     plt.show()
 
 def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default, use the last one workload to observe gpu whose index is zero utilization improvement
@@ -209,7 +211,7 @@ def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default,
                                [algorithms_label[2],round(avg_utilization[2],2)],
                                [algorithms_label[3],round(avg_utilization[3],2)]]
     print(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center'))
-    with open(TABLE_PATH+'/average_utilization_table-'+RESULT_PATH,'w') as _f:
+    with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/average_utilization_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
        _f.write(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center')) 
     #plotting
     fig=plt.figure()
@@ -240,7 +242,7 @@ def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default,
     
     ax.legend(loc='upper left',handles=[l1,l4],labels=['CASE','AIGPU'])
     
-    plt.savefig(FIGURE_PATH+'/gpu_utilization-'+RESULT_PATH+'.jpg')
+    plt.savefig(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/gpu_utilization-'+RESULT_PATH.split('/')[-1]+FIGURE_FORMAT)
     plt.show()
     
 def get_decision_time(RESULT_PATH,sched_stats): #sched_stats is file name excluding its parent directory
@@ -308,14 +310,17 @@ def plot_decision_making_compared_table(RESULT_PATH):
     data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb_basic','ai-mgb_basic'], \
                                     tablefmt='fancy_grid',numalign="center")
     print(data_in_table)
-    with open(TABLE_PATH+'/decision_proportion_table-'+RESULT_PATH,'w') as _f:
+    with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/decision_proportion_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
         _f.write(data_in_table)
 
 if __name__ == '__main__':
     if len(sys.argv)==1:
         usage_and_exit()
     RESOLVED_PATH=sys.argv[1]
-
+    if not os.path.exists(VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1]):
+        os.makedirs(VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1])
+    else:
+        os.system('rm  '+VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1]+'/*')
     plot_global_setting()
 
     _workload_num=len(os.listdir(RESOLVED_PATH))/20   #four algorithms, 5 result files
