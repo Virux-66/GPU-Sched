@@ -17,6 +17,10 @@ namespace cg = cooperative_groups;
 #include <helper_cuda.h>
 #include "scan_common.h"
 
+#ifndef LEVEL
+#define LEVEL 3
+#endif
+
 //All three kernels run 512 threads per workgroup
 //Must be a power of two
 #define THREADBLOCK_SIZE 256
@@ -215,8 +219,18 @@ static uint iDivUp(uint dividend, uint divisor)
 extern "C" int cuda_main(int argc,char** argv){
 
     volatile int64_t num_floatingPoint=0;
+
+#if     LEVEL==3
     volatile int64_t num_transferredBytes=457021850;
     volatile float arithmetic_intensity=0;
+#elif   LEVEL==2
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#elif   LEVEL==1
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#endif
+
 
     printf("[%s] - Starting...\n", argv[0]);
 

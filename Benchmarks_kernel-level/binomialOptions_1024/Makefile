@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang++
 CC_FLAGS=-O1
@@ -31,7 +32,7 @@ binomialOptions.o: binomialOptions.cpp
 	${CC} -I${CUDA_DIR}/include ${INCLUDES} ${CC_FLAGS} -c -o $@ $<
 
 binomialOptions_kernel.o: binomialOptions_kernel.cu
-	${NVCC} ${INCLUDES} --cuda -o binomialOptions_kernel.ii $<
+	${NVCC} ${INCLUDES} --cuda -D LEVEL=${level} -o binomialOptions_kernel.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ binomialOptions_kernel.ii
 
 binomialOptions_kernel_native.o: binomialOptions_kernel.cu

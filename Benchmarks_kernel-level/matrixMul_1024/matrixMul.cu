@@ -29,6 +29,10 @@
 // CUDA runtime
 #include <cuda_runtime.h>
 
+#ifndef LEVEL
+#define LEVEL 3        //level 3 means DRAM
+#endif
+
 /**
  * Matrix multiplication (CUDA Kernel) on the device: C = A * B
  * wA is A's width and wB is B's width
@@ -117,8 +121,18 @@ int MatrixMultiply(int argc, char **argv, int block_size, const dim3 &dimsA,
 
   //Virux: The following varialbe need adding manually.
   volatile int64_t num_floatingPoint=2147483648;
+
+#if   LEVEL == 3
   volatile int64_t num_transferredBytes=12331253;
   volatile float arithmetic_intensity=174.149;
+#elif LEVEL == 2
+  volatile int64_t num_transferredBytes=0;      
+  volatile float arithmetic_intensity=0;
+#elif LEVEL == 1
+  volatile int64_t num_transferredBytes=0;
+  volatile float arithmetic_intensity=0;
+#endif
+
 
   // Allocate host memory for matrices A and B
   unsigned int size_A = dimsA.x * dimsA.y;

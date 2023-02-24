@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang++
 CC_FLAGS=-O1
@@ -30,7 +31,7 @@ histogram_gold.o: histogram_gold.cpp
 	${CC} ${CC_FLAGS} ${INCLUDES} -c -o $@ $<
 
 histogram256.o: histogram256.cu
-	${NVCC} --cuda ${INCLUDES} -o histogram256.ii histogram256.cu
+	${NVCC} --cuda -D LEVEL=${level} ${INCLUDES} -o histogram256.ii histogram256.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ histogram256.ii
 
 histogram256_native.o: histogram256.cu

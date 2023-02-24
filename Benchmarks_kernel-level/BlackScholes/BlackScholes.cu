@@ -38,6 +38,11 @@ extern "C" void BlackScholesCPU(
 ////////////////////////////////////////////////////////////////////////////////
 #include "BlackScholes_kernel.cuh"
 #include <stdio.h>
+
+#ifndef LEVEL
+#define LEVEL 3
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 // Helper function, returning uniformly distributed
 // random float in [low, high] range
@@ -67,8 +72,18 @@ const float    VOLATILITY = 0.30f;
 int main(int argc, char **argv)
 {
     volatile int64_t num_floatingPoint=5751322851;
+
+#if     LEVEL==3
     volatile int64_t num_transferredBytes=1717986918;
     volatile float arithmetic_intensity=3.3477;
+#elif   LEVEL==2
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#elif   LEVEL==1
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#endif
+
     // Start logs
     printf("[%s] - Starting...\n", argv[0]);
 

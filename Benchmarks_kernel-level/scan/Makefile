@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang++
 CC_FLAGS=-O1
@@ -30,7 +31,7 @@ scan_gold.o: scan_gold.cpp
 	${CC} ${CC_FLAGS} -I${INCLUDES} -c -o $@ $<
 
 scan.o: scan.cu
-	${NVCC} ${INCLUDES} --cuda -o scan.ii scan.cu
+	${NVCC} ${INCLUDES} --cuda -D LEVEL=${level} -o scan.ii scan.cu
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ scan.ii
 	
 scan_native.o: scan.cu

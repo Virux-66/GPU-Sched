@@ -20,6 +20,10 @@ namespace cg = cooperative_groups;
 //#include <helper_functions.h>
 #include "histogram_common.h"
 
+#ifndef LEVEL
+#define LEVEL 3
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 // Shortcut shared memory atomic addition functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -170,8 +174,18 @@ extern "C" void histogram256(
 //const int numRuns = 1;
 extern "C" int cuda_main(int argc,char** argv){
     volatile int64_t num_floatingPoint=0;
+
+#if     LEVEL==3
     volatile int64_t num_transferredBytes=563315999;
     volatile float arithmetic_intensity=0;
+#elif   LEVEL==2
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#elif   LEVEL==1
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#endif
+
 
     uchar *h_Data;
     uint  *h_HistogramCPU, *h_HistogramGPU;

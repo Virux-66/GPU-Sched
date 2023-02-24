@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang
 CC_FLAGS=-O1
@@ -24,7 +25,7 @@ vectorAdd_native: vectorAdd_native.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $<
 
 vectorAdd.o: vectorAdd.cu
-	${NVCC} ${INCLUDES} --cuda -o vectorAdd.ii $<
+	${NVCC} ${INCLUDES} --cuda -D LEVEL=${level} -o vectorAdd.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ vectorAdd.ii
 
 vectorAdd_native.o: vectorAdd.cu

@@ -22,6 +22,9 @@ namespace cg = cooperative_groups;
 #include "binomialOptions_common.h"
 #include "realtype.h"
 
+#ifndef LEVEL
+#define LEVEL 3
+#endif
 
 //Preprocessed input option data
 typedef struct
@@ -119,8 +122,17 @@ extern "C" void binomialOptionsGPU(
 )
 {
     volatile int64_t num_floatingPoint=406975744;
+
+#if     LEVEL == 3
     volatile int64_t num_transferredBytes=19794;
     volatile float arithmetic_intensity=20560.6440;
+#elif   LEVEL == 2
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#elif   LEVEL == 1
+    volatile int64_t num_transferredBytes=0; 
+    volatile float arithmetic_intensity=0;
+#endif
 
     __TOptionData h_OptionData[MAX_OPTIONS];
 

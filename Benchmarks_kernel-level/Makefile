@@ -4,15 +4,17 @@
 #For cleaning those executables and intermediate files:
 #	make clean
 
+level=3
+
 all:
-	+${MAKE} -C ./binomialOptions_64/
-	+${MAKE} -C ./binomialOptions_1024/
-	+${MAKE} -C ./BlackScholes/
-	+${MAKE} -C ./histogram/
-	+${MAKE} -C ./matrixMul_1024/
-	+${MAKE} -C ./matrixMul_2048/
-	+${MAKE} -C ./scan/
-	+${MAKE} -C ./vectorAdd/
+	+${MAKE} level=${level} -C  ./binomialOptions_64/
+	+${MAKE} level=${level} -C ./binomialOptions_1024/
+	+${MAKE} level=${level} -C  ./BlackScholes/
+	+${MAKE} level=${level} -C ./histogram/
+	+${MAKE} level=${level} -C ./matrixMul_1024/
+	+${MAKE} level=${level} -C ./matrixMul_2048/
+	+${MAKE} level=${level} -C ./scan/
+	+${MAKE} level=${level} -C ./vectorAdd/
 
 clean:
 	+${MAKE} clean -C ./binomialOptions_64/

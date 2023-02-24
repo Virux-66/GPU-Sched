@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang++
 CC_FLAGS=-O1
@@ -27,7 +28,7 @@ BlackScholes_gold.o: BlackScholes_gold.cpp
 	${CC} ${CC_FLAGS} -c -o $@ $<
 
 BlackScholes.o: BlackScholes.cu
-	${NVCC} --cuda -o BlackScholes.ii $<
+	${NVCC} --cuda -D LEVEL=${level} -o BlackScholes.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ BlackScholes.ii
 
 BlackScholes_native.o: BlackScholes.cu

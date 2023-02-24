@@ -1,5 +1,6 @@
 include ../common/make.config
 
+level=3
 #C or CPP compiler
 CC=/usr/local/bin/clang
 CC_FLAGS=-O1
@@ -25,7 +26,7 @@ matrixMul_2048_native: matrixMul_native.o
 	${CC} ${CC_FLAGS} -L${CUDA_LIB_DIR} -lcudart -lm -o $@ $<
 
 matrixMul.o: matrixMul.cu
-	${NVCC} ${INCLUDES} --cuda -o matrixMul.ii $<
+	${NVCC} ${INCLUDES} --cuda -D LEVEL=${level} -o matrixMul.ii $<
 	${CC} ${CC_FLAGS} -Xclang -load -Xclang ${BEMPS_PASS} -c -o $@ matrixMul.ii
 
 matrixMul_native.o: matrixMul.cu

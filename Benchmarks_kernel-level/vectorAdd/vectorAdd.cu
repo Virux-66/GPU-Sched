@@ -23,6 +23,11 @@
 #include <cuda_runtime.h>
 
 #include <helper_cuda.h>
+
+#ifndef LEVEL
+#define LEVEL 3
+#endif
+
 /**
  * CUDA Kernel Device code
  *
@@ -46,8 +51,18 @@ vectorAdd(const float *A, const float *B, float *C, int numElements)
 int main(int argc, char** argv)
 {
     volatile int64_t num_floatingPoint=100000000;
+
+#if     LEVEL==3
     volatile int64_t num_transferredBytes=1288490188;
     volatile float arithmetic_intensity=0.0776;
+#elif   LEVEL==2
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#elif   LEVEL==1
+    volatile int64_t num_transferredBytes=0;
+    volatile float arithmetic_intensity=0;
+#endif
+
 
     printf("[%s] - Starting...\n",argv[0]);
 
