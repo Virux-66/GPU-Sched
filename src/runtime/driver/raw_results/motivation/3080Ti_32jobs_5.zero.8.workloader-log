@@ -1,0 +1,74 @@
+Parsing args
+Starting driver
+  workload_file: workloads/motivation1/3080Ti_32jobs_5.wl
+  sched_alg: zero
+  num_processes: 8
+Worker 0: Starting
+Worker 0: 0 /home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/binomialOptions_64/binomialOptions_64
+Worker 1: Starting
+Worker 1: 1 /home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/scan/scan
+Worker 2: Starting
+Worker 3: Starting
+Worker 4: Starting
+Worker 0: just launched pid 898020
+Worker 5: Starting
+Worker 1: just launched pid 898022
+Main process: Waiting for workers...
+Worker 6: Starting
+Worker 7: Starting
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/binomialOptions_64/binomialOptions_64] - Starting...
+5557608502766026 bemps_begin: pid 898020 , num_blocks 64 , threads_per_block 128
+5557608502799404 bemps_beacon: pid 898020 , bemps_tid 0 , mem_B 1536 , warps 256 , thread_blocks 64 , arithmetic_intensity 20560.6 , num of floating-point operation 406975744 , num of bytes transferred 19794
+5557608503291588 bemps_free: pid 898020 , freeing device_id 0 , bemps_tid 0
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/binomialOptions_64/binomialOptions_64] - Shutdown done...
+5557608503299143 _bemps_dump_stats: Dumping bemps stats
+5557608503300005 _bemps_dump_stats: count of beacon times: 1
+5557608503302409 _bemps_dump_stats: min beacon time (ns): 100382
+5557608503303021 _bemps_dump_stats: max beacon time (ns): 100382
+5557608503303622 _bemps_dump_stats: avg beacon time (ns): 100382
+5557608503309293 _bemps_dump_stats: count of free times: 1
+5557608503309975 _bemps_dump_stats: min free time (ns): 13868
+5557608503310586 _bemps_dump_stats: max free time (ns): 13868
+5557608503311187 _bemps_dump_stats: avg free time (ns): 13868
+
+
+Worker 0: TOTAL_BENCHMARK_TIME 0 0.16671442985534668
+Worker 0: TIME_SINCE_START     0 0.16860532760620117
+success
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/scan/scan] - Starting...
+5557608704593396 bemps_begin: pid 898022 , num_blocks 53248 , threads_per_block 256
+5557608704630331 bemps_beacon: pid 898022 , bemps_tid 0 , mem_B 436469760 , warps 425984 , thread_blocks 53248 , arithmetic_intensity 0 , num of floating-point operation 0 , num of bytes transferred 457021850
+[/home/eailab/Tmp/GPU-Sched/Benchmarks_kernel-level/scan/scan] - Shutdown done...
+5557608938888209 bemps_free: pid 898022 , freeing device_id 0 , bemps_tid 0
+5557608963784846 _bemps_dump_stats: Dumping bemps stats
+5557608963801259 _bemps_dump_stats: count of beacon times: 1
+5557608963810988 _bemps_dump_stats: min beacon time (ns): 29556936
+5557608963812301 _bemps_dump_stats: max beacon time (ns): 29556936
+5557608963813534 _bemps_dump_stats: avg beacon time (ns): 2.95569e+07
+5557608963827091 _bemps_dump_stats: count of free times: 1
+5557608963828303 _bemps_dump_stats: min free time (ns): 32746
+5557608963829496 _bemps_dump_stats: max free time (ns): 32746
+5557608963830758 _bemps_dump_stats: avg free time (ns): 32746
+
+
+Worker 1: TOTAL_BENCHMARK_TIME 1 0.6272428035736084
+Worker 1: TIME_SINCE_START     1 0.6296212673187256
+Worker 1: TOTAL_EXPERIMENT_TIME 0.6296656131744385
+Worker 1: Exiting normally
+Worker 3: Worklist is empty.
+Worker 3: Exiting normally
+Worker 2: Worklist is empty.
+Worker 2: Exiting normally
+Worker 4: Worklist is empty.
+Worker 4: Exiting normally
+Worker 6: Worklist is empty.
+Worker 6: Exiting normally
+Worker 5: Worklist is empty.
+Worker 5: Exiting normally
+Worker 7: Worklist is empty.
+Worker 7: Exiting normally
+Worker 0: Worklist is empty.
+Worker 0: Exiting normally
+Main process: Joined all workers.
+Main process: Exiting normally.
