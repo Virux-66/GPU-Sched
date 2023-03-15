@@ -4,20 +4,33 @@ LLVM passes, as well as runtime libraries for programs built with these passes.
 The scheduler is a single binary that includes a few prototypes for interacting
 with applications bound for the GPU, and which could benefit from sharing.
 
+Jiabin Zheng update:
+We implement **AIGPU**, an arithmetic-intensity-guided single-GPU scheduling GPU,
+based on this framework. In short,  **AIGPU** evaluates the degree of overlapped 
+execution of multiple kernels to be scheduled. Then, it selects a concurrent 
+kernel set whose aggregate arithmetic intensity approaches the x-coordinate of 
+the ridge point of the GPU. Such a concurrent kernel set is able to utilize GPU's
+compute and bandwidth resources more efficiently so as to improve the overall throughput.
 
 
 # Requirements
-* cmake (tested with 3.10.2 and 3.15.4)
-* llvm (tested with 9.0.0 and 11.0.0)
-* cuda (tested with 10.2 and 11.2)
+* cmake (tested with 3.25.0)
+* llvm (tested with 9.0.0)
+* cuda (tested with 11.7)
+* OR-Tools (tested with 9.4)(https://github.com/google/or-tools)(Updated)
+* cs-roofline-toolkit (https://gitlab.com/NERSC/roofline-on-nvidia-gpus/-/tree/roofline-hackathon-2020)(Update)
 * libstatus (https://github.com/rudyjantz/libstatus)
 
-Note: Our original system for development was based off of Ubuntu 18.04, so
-bear this in mind when resolving any dependencies.
-
+Jiabin Zheng update:
+Note: The original system for development was based off Ubuntu 18.04.
+Our experiment was tested on Ubuntu 20.04 LTS. In addition, you should
+follow up the instructions in (https://github.com/google/or-tools/blob/stable/cmake/README.md)
+to build it as an standalone. We use cs-roofline-toolkit to measure
+the RTX 3080Ti's Roofline model in which we can find the x-coordinate
+of the ridge piont. 
 
 # Building
-    $ git clone git@github.com:rudyjantz/GPU-Sched.git
+    $ git clone https://github.com/Virux-66/GPU-Sched.git(Updated)
     $ cd GPU-sched
     $ mkdir build
     $ cd build
