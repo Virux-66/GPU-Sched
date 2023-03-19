@@ -17,15 +17,15 @@ compute and bandwidth resources more efficiently so as to improve the overall th
 * cmake (tested with 3.25.0)
 * llvm (tested with 9.0.0)
 * cuda (tested with 11.7)
-* OR-Tools (tested with 9.4)(https://github.com/google/or-tools)(Updated)
-* cs-roofline-toolkit (https://gitlab.com/NERSC/roofline-on-nvidia-gpus/-/tree/roofline-hackathon-2020)(Update)
+* OR-Tools (tested with 9.4) (https://github.com/google/or-tools) (Updated)
+* cs-roofline-toolkit (https://gitlab.com/NERSC/roofline-on-nvidia-gpus/-/tree/roofline-hackathon-2020) (Update)
 * libstatus (https://github.com/rudyjantz/libstatus)
 
 Jiabin Zheng update:
 Note: The original system for development was based off Ubuntu 18.04.
 Our experiment was tested on Ubuntu 20.04 LTS. In addition, you should
 follow up the instructions in (https://github.com/google/or-tools/blob/stable/cmake/README.md)
-to build it as an standalone. We use cs-roofline-toolkit to measure
+to build OR-Tools as an standalone. We use cs-roofline-toolkit to measure
 the RTX 3080Ti's Roofline model in which we can find the x-coordinate
 of the ridge piont. 
 
@@ -35,17 +35,13 @@ of the ridge piont.
     $ mkdir build
     $ cd build
     $ cmake ../src
-    $ make
+    $ cmake --build . 
 Note: Ensure libstatus.so is on your LD\_LIBRARY\_PATH.
 
+# Compiling the benchmarks
 
-
-# Known additional dependencies for Rodinia benchmarks
-    libglu1-mesa-dev
-    libglew-dev
-    freeglut3-dev
-    libomp-dev
-
+ Before compiling the benchmarks, you should replace $BEMPS_BUILD_DIR in Benchmarks_kernel(block)-level/common/make.config and the framework build directory. Then you should enter GPU-Sched/Benchmarks_kernel-level and GPU-Sched/Benchmarks_block-level then run:
+    $ make
 
 
 # Compiling applications with GPU-Sched's passes
@@ -73,27 +69,21 @@ And you'll need to link with the lazy runtime library and bemps:
     clang -llazy -lbemps
 
 
-
-# Helper script for building Rodinia and Darknet benchmarks:
-    ./src/helper_scripts/build_benchmarks.sh
-
-This will attempt to build all Rodinia and Darknet benchmarks.
-
-
-
 # Running the scheduler
 
     $ ./bemps_sched -h
 
     Usage:
-        ./bemps_sched <which_scheduler> [jobs_per_gpu]
+        ./bemps_sched <which_scheduler> [jobs_per_gpu] <num_of_gpu>
 
         which_scheduler is one of:
-          zero, single-assignment, cg, mgb_basic, or mgb
+          zero, single-assignment, cg, mgb_basic, mgb, ai-heuristic, ai-mgb_basic
 
         jobs_per_gpu is required and only valid for cg; it is an int that
         specifies the maximum number of jobs that can be run a GPU
 
+        num_of_gpu is one of:
+            uni-gpu, multi-gpu
 
 
 # Example
