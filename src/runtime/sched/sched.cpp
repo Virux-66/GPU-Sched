@@ -16,7 +16,7 @@
 #include <list>
 #include <queue>
 
-#include <libstatus/profiler.h>
+#include <profiler.h>
 
 #include "bemps.hpp"
 //the library for solving integer linear programming.
@@ -129,8 +129,10 @@
 //scheduler starts.
 #define RTX_3060_SPECS_AI_FP32_DRAM     0
 #define RTX_3060_SPECS_AI_FP32_L1       0
-#define RTX_3080Ti_SPECS_AI_FP32_DRAM  (37.736f)
-#define RTX_3080Ti_SPECS_AI_FP32_L1    (16.484f)
+
+#define RTX_3080Ti_SPECS_AI_FP32_L1    (7.3086f)
+#define RTX_3080Ti_SPECS_AI_FP32_L2    (22.63f)
+#define RTX_3080Ti_SPECS_AI_FP32_DRAM  (42.83f)
 
 #ifdef BEMPS_SCHED_DEBUG
 #define BEMPS_SCHED_LOG(str)                                          \
