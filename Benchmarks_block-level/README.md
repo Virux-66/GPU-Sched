@@ -28,7 +28,7 @@ In this document, the specifications of all benchmarks used in this system are d
   - Memory traffic: 267.78 KB
   - fp operation: 2,097,152
   - arithmetic intensity: 7.6408
-  - type: compute-bound
+  - type: bandwidth-bound
 
 
 - `${CUDA_HOME}/samples/4_Finance/binomialOptions`
@@ -48,35 +48,6 @@ In this document, the specifications of all benchmarks used in this system are d
   - Memory traffic: 17.66 KB
   - fp operation: 6,358,996
   - arithmetic intensity: 351.6396
-  - type: compute-bound
-
-- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
-  - data size: `MAX_OPTIONS`=1
-  - Launch stats: 1 blocks of 128 threads
-  - Memory footprint: 24 B
-  - Memory traffic: 17.66 KB 
-  - fp operation: 6,358,996
-  - arithmetic intensity: 351.639
-  - type: compute-bound
-
-
-- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
-  - data size: `MAX_OPTIONS`=2
-  - Launch stats: 2 blocks of 128 threads
-  - Memory footprint: 48 B
-  - Memory traffic: 17.92 KB
-  - fp operation: 12,717,992
-  - arithmetic intensity: 693.075
-  - type: compute-bound
-
-
-- `${CUDA_HOME}/sample/4_Finance/binomialOptions`
-  - data size: `MAX_OPTIONS`=3
-  - Launch stats: 3 blocks of 128 threads
-  - Memory footprint: 72 B
-  - Memory traffic: 18.56 KB
-  - fp operation: 19,076,988
-  - arithmetic intensity:1003.764 
   - type: compute-bound
 
 
