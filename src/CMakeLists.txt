@@ -19,8 +19,8 @@ link_directories(${ortools_LIBRARY_DIRS})
 #add_compile_options(-Wall)
 
 #Both these two line are for finding libstatus
-include_directories(${CMAKE_SOURCE_DIR}/../../)
-link_directories(${CMAKE_SOURCE_DIR}/../../libstatus/)
+include_directories(${CMAKE_SOURCE_DIR}/../libstatus/)
+link_directories(${CMAKE_SOURCE_DIR}/../libstatus/)
 
 add_subdirectory(passes)  # Use your pass name here.
 add_subdirectory(runtime)  # Use your pass name here.
