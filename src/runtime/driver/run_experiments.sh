@@ -14,9 +14,9 @@
 #       Move scheduler results to results folder
 #
 
-BASE_PATH=/home/eailab/Tmp
-BEMPS_SCHED_PATH=${BASE_PATH}/sched-build/runtime/sched
-WORKLOADER_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver
+BASE_PATH=`pwd`/../../../
+BEMPS_SCHED_PATH=${BASE_PATH}/build/runtime/sched
+WORKLOADER_PATH=${BASE_PATH}/src/runtime/driver
 #WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/2023
 #WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/introduction
 #WORKLOADS_PATH=${BASE_PATH}/GPU-Sched/src/runtime/driver/workloads/2023
@@ -107,12 +107,11 @@ declare -A SCHED_ALG_TO_ARGS_ARR=(
     #[ai-heuristic]="AI_ARGS_ARR"
     [ai-mgb_basic]="AI_ARGS_ARR"
     #[mgb_simple_compute]="MGB_ARGS_ARR"
-    #[mgb]="MGB_ARGS_ARR"
+    [mgb]="MGB_ARGS_ARR"
 )
 
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/eailab/Tmp/sched-build/runtime/bemps:/home/eailab/Tmp/libstatus
-
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:`pwd`/../../../libstatus/:`pwd`/../../../build/runtime/bemps
 rm -f /dev/shm/bemps
 
 mkdir -p ${RESULTS_PATH}

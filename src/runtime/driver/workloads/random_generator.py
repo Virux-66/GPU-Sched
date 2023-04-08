@@ -12,8 +12,8 @@ FILE_NAME_BASE=WORKLOAD_PATH + '/' + GPU + '_'+TOTAL_NUM_BENCHMAKR +'jobs_'
 
 compute_bound_jobs = [
     BENCHMARK_PATH+'/binomialOptions_64/binomialOptions_64',
-    BENCHMARK_PATH+'/binomialOptions_1024/binomialOptions_1024'
-    #BENCHMARK_PATH+'/matrixMul_1024/matrixMul_1024'
+    BENCHMARK_PATH+'/binomialOptions_1024/binomialOptions_1024',
+    BENCHMARK_PATH+'/matrixMul_1024/matrixMul_1024'
 ]
 memory_bound_jobs = [
     BENCHMARK_PATH+'/BlackScholes/BlackScholes',

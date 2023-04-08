@@ -12,14 +12,15 @@ import sys
 FIGURE_PATH='visualized_results/figures'
 TABLE_PATH='visualized_results/tables'
 VISUALIZED_PATH='visualized_results'
-FIGURE_FORMAT='.jpg'    #or pdf
+FIGURE_FORMAT='.pdf'    #png or pdf
 jobs_num_per_workload=32
 
 algorithms=[
     'zero',#SchedGPU
     'single-assignment',
     'mgb_basic',
-    'ai-mgb_basic'
+    'ai-mgb_basic',
+    'mgb'   #the number of SM as hard constrain
 ]
 """
 workload_data={
@@ -63,7 +64,7 @@ def plot_throughput_figure(RESULT_PATH):
     files_list=os.listdir(RESULT_PATH)
     resultfile_dictionary={}
 
-    for alg in algorithms:  # 4 algorithms in total
+    for alg in algorithms:  # 5 algorithms in total
         resultfile_dictionary[alg]=[]
 
     for file_name in files_list:
@@ -95,7 +96,7 @@ def plot_throughput_figure(RESULT_PATH):
     for k in workload_data.keys():
         labels.append(k)
     labels.append('Avg')
-     
+
     for i in range(len(workload_data.keys())):
         key='W'+str(i+1)
         for _alg in workload_data[key].keys():
@@ -107,6 +108,8 @@ def plot_throughput_figure(RESULT_PATH):
                 cols[2].append(workload_data[key][_alg]) 
             elif _alg == 'ai-mgb_basic':
                 cols[3].append(workload_data[key][_alg])
+            elif _alg == 'mgb':
+                cols[4].append(workload_data[key][_alg])
 
     normalized_cols=cols.copy()
     #calculate throughput(jobs/second) and normalization
@@ -122,37 +125,37 @@ def plot_throughput_figure(RESULT_PATH):
         avg_imp=sum(normalized_cols[alg_index])/len(normalized_cols[alg_index])
         normalized_cols[alg_index].append(avg_imp)
     print("\nThe average normalized throughput of each compared algorithm for 8 workloads: ")
-    """
-    print('single-assignment: '+str(round(normalized_cols[0][-1],2)))
-    print('zero:              '+str(round(normalized_cols[1][-1],2)))
-    print('mgb_basic:         '+str(round(normalized_cols[2][-1],2)))
-    print('ai-mgb_basic:      '+str(round(normalized_cols[3][-1],2)))
-    """
+
     throughput_table=[['Alg','Normalized Throughtput'],
                       ['single-assignment',str(round(normalized_cols[0][-1],2))],
                       ['zero'             ,str(round(normalized_cols[1][-1],2))],
                       ['mgb_basic'        ,str(round(normalized_cols[2][-1],2))],
-                      ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))]]
+                      ['ai-mgb_basic'     ,str(round(normalized_cols[3][-1],2))],
+                      ['mgb'              ,str(round(normalized_cols[4][-1],2))]]
     print(tabulate.tabulate(throughput_table,headers='firstrow',
                             tablefmt='fancy_grid',numalign='center'))
     with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/throughput_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
         _f.write(tabulate.tabulate(throughput_table, headers="firstrow",
                             tablefmt='fancy_grid',numalign='center'))
-    #print(cols)
     x = np.arange(len(labels))
     width=0.17  #the width of the bars
     fig, ax = plt.subplots(figsize=(10,5))
-    rects1 = ax.bar(x-3*width/2,normalized_cols[0],width,label='SG',color='#358b9c')   #single-assignment
-    rects2 = ax.bar(x-width/2,normalized_cols[1],width,label='schedGPU',color='#5ca781')
-    rects3 = ax.bar(x+width/2,normalized_cols[2],width,label='CASE',color='#caaa7c')
+    rects1 = ax.bar(x-3*width/2,normalized_cols[0],width,label='SA',color='#358b9c')   #single-assignment
+    rects5 = ax.bar(x-width/2,normalized_cols[4],width,label='CAES',color='#5ca781')   #CASE with hard contrain of compute resource
+    rects2 = ax.bar(x+width/2,normalized_cols[1],width,label='schedGPU',color='#caaa7c')
+    #rects3 = ax.bar(x,normalized_cols[2],width,label='CASE',color='#caaa7c')
     rects4 = ax.bar(x+3*width/2,normalized_cols[3],width,label='AIGPU',color='#f2a20d')
-    
+    #rects5 = ax.bar(x+2*width,normalized_cols[4],width,label='HCAES') 
+    #print(normalized_cols[1])
+    #print(normalized_cols[3]) 
+    #for i in range(len(normalized_cols[3])):
+    #    print((normalized_cols[3][i]-normalized_cols[4][i])/normalized_cols[4][i])
 
     formatter=ticker.FormatStrFormatter('%1.1f')
     ax.yaxis.set_major_formatter(formatter)
     ax.set_xlabel('Workloads')
     ax.set_ylabel('Normalized Throughput')
-    ax.set_title('on the 3080Ti System')
+    #ax.set_title('on the 3080Ti System')
     ax.set_xticks(x,labels)
     ax.legend(loc='upper left')
 
@@ -183,7 +186,6 @@ def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default,
         time_point.append([])
         utilizations.append([])
         avg_gpu_utiliz=0
-
         with open(alg_gpu_utilization_dict[_alg],'r') as f:
             reader=csv.reader(f)
             reader=list(reader)
@@ -202,14 +204,25 @@ def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default,
                 previous_utilization=(int)(each_row[device_index+1])
             avg_gpu_utiliz/=(len(reader)-1)
         avg_utilization.append(avg_gpu_utiliz)
-    print('\nThe average GPU utilization of each compared algorithm for the '+str(w_index)+' workload: ')
+    #print(utilizations)
+    print("\nThe max GPU utilization for W8:")
+    max_utilization_table=[['Alg','Max GPU Utilization(%)'],
+                           [algorithms_label[0],round(max(utilizations[0]),2)],
+                           [algorithms_label[1],round(max(utilizations[1]),2)],
+                           [algorithms_label[2],round(max(utilizations[2]),2)],
+                           [algorithms_label[3],round(max(utilizations[3]),2)],
+                           [algorithms_label[4],round(max(utilizations[4]),2)]]
+    print(tabulate.tabulate(max_utilization_table,headers="firstrow",tablefmt="fancy_grid",numalign='center'))
+
+    print('\nThe average GPU utilization of each compared algorithm for the '+str(w_index)+'th workload: ')
     #for i in range(len(algorithms_label)):
         #print(algorithms_label[i]+':   '+(str)(round(avg_utilization[i],2))+'%')
     average_utilization_table=[['Alg','GPU Utilization(%)'],
                                [algorithms_label[0],round(avg_utilization[0],2)],
                                [algorithms_label[1],round(avg_utilization[1],2)],
                                [algorithms_label[2],round(avg_utilization[2],2)],
-                               [algorithms_label[3],round(avg_utilization[3],2)]]
+                               [algorithms_label[3],round(avg_utilization[3],2)],
+                               [algorithms_label[4],round(avg_utilization[4],2)]]
     print(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center'))
     with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/average_utilization_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
        _f.write(tabulate.tabulate(average_utilization_table,headers="firstrow",tablefmt='fancy_grid',numalign='center')) 
@@ -218,29 +231,37 @@ def plot_gpu_utilization_figure(RESULT_PATH,w_index=8,device_index=0): #Default,
     ax=fig.add_axes([0.1,0.1,0.8,0.8])
     ax.set_xlabel('Time Points')
     ax.set_ylabel('Utilization(%)')
-    ax.set_title("Utilization Comparison")
+    #ax.set_title("Utilization Comparison")
     
     #print(algorithms_label)
     #print('mgb_basic: '+str(algorithms_label.index('mgb_basic')))
     #print('ai-mgb_basic: '+str(algorithms_label.index('ai-mgb_basic')))
 
     #l1,=ax.plot(time_point[0],utilizations[0])   
-    l1,=ax.plot(time_point[algorithms_label.index('mgb_basic')],utilizations[algorithms_label.index('mgb_basic')])  
-    l4,=ax.plot(time_point[algorithms_label.index('ai-mgb_basic')],utilizations[algorithms_label.index('ai-mgb_basic')])  
+    l1,=ax.plot(time_point[algorithms_label.index('mgb')],utilizations[algorithms_label.index('mgb')])  
+    l2,=ax.plot(time_point[algorithms_label.index('zero')],utilizations[algorithms_label.index('zero')])  
+    l3,=ax.plot(time_point[algorithms_label.index('ai-mgb_basic')],utilizations[algorithms_label.index('ai-mgb_basic')])  
     #l4,=ax.plot(time_point[3],utilizations[3])   
 
-    l1.set_linestyle('-')
-    l1.set_color('green')
+    l1.set_linestyle(':')
+    l1.set_color('#a5a1d0')
     l1.set_linewidth(1.5)
     l1.set_marker('x')
     l1.set_markersize(4.0)
 
-    l4.set_linestyle('-.')
-    l4.set_linewidth(1.5)
-    l4.set_marker('o')
-    l4.set_markersize(4.0)
+    l2.set_linestyle('-.')
+    l2.set_color('#fcbc7f')
+    l2.set_linewidth(1.5)
+    l2.set_marker('o')
+    l2.set_markersize(4.0)
     
-    ax.legend(loc='upper left',handles=[l1,l4],labels=['CASE','AIGPU'])
+    l3.set_linestyle('-')
+    l3.set_color('#5cb6e6')
+    l3.set_linewidth(1.5)
+    l3.set_marker('x')
+    l3.set_markersize(4.0)
+
+    ax.legend(loc='upper right',handles=[l1,l2,l3],labels=['CASE','SchedGPU','AIGPU'])
     
     plt.savefig(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/gpu_utilization-'+RESULT_PATH.split('/')[-1]+FIGURE_FORMAT)
     plt.show()
@@ -273,29 +294,13 @@ def plot_decision_making_compared_table(RESULT_PATH):
         prefix=(f.split('.'))[-1]
         alg=(f.split('.'))[1]
         w_index='W'+(f.split('.'))[0][-1]
-        if alg=='mgb_basic' and prefix=='sched-stats':
+        if alg=='mgb' and prefix=='sched-stats':
             _decision_time=get_decision_time(RESULT_PATH,f)
             percentage[w_index].insert(0, _decision_time)
         if alg=='ai-mgb_basic' and prefix=='sched-stats':
             _decision_time=get_decision_time(RESULT_PATH,f)
             percentage[w_index].append(_decision_time)
-    #The following is just for testing.
-    """ 
-    percentage['W2'].append(1.0)
-    percentage['W2'].append(1.0)
-    percentage['W3'].append(1.0)
-    percentage['W3'].append(1.0)
-    percentage['W4'].append(1.0)
-    percentage['W4'].append(1.0)
-    percentage['W5'].append(1.0)
-    percentage['W5'].append(1.0)
-    percentage['W6'].append(1.0)
-    percentage['W6'].append(1.0)
-    percentage['W7'].append(1.0)
-    percentage['W7'].append(1.0)
-    percentage['W8'].append(1.0)
-    percentage['W8'].append(1.0)
-    """ 
+
 
     #Get the percentage of scheduling decision time in total workload duration
     for _w in percentage.keys():
@@ -307,7 +312,7 @@ def plot_decision_making_compared_table(RESULT_PATH):
         percentage[_w][0]=decision_time_on_mgb_basic/workload_time_on_mgb_basic * 100               #convert float to percentage
         percentage[_w][1]=decision_time_on_ai_mgb_basic/workload_time_on_ai_mgb_basic * 100         #convert float to percentage
     print("\nThe proportion of scheduling overhead of each compared algorithm in each workload duration:")
-    data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb_basic','ai-mgb_basic'], \
+    data_in_table=tabulate.tabulate(percentage,headers='keys',showindex=['mgb','ai-mgb_basic'], \
                                     tablefmt='fancy_grid',numalign="center")
     print(data_in_table)
     with open(VISUALIZED_PATH+'/'+RESULT_PATH.split('/')[-1]+'/decision_proportion_table-'+RESULT_PATH.split('/')[-1],'w') as _f:
@@ -323,11 +328,11 @@ if __name__ == '__main__':
         os.system('rm  '+VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1]+'/*')
     plot_global_setting()
 
-    _workload_num=len(os.listdir(RESOLVED_PATH))/20   #four algorithms, 5 result files
+    _workload_num=len(os.listdir(RESOLVED_PATH))/(len(algorithms)*5)   #5 algorithms, 5 result files
     for i in range(int(_workload_num)):
         _key='W'+str(i+1)
         workload_data[_key]={}
-    #print(workload_data) 
+
     plot_throughput_figure(RESOLVED_PATH)    
     plot_gpu_utilization_figure(RESOLVED_PATH)
     plot_decision_making_compared_table(RESOLVED_PATH)

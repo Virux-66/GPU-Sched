@@ -8,7 +8,7 @@ import csv
 import os
 import sys
 
-FIGURE_FORMAT='.png' #png or pdf
+FIGURE_FORMAT='.pdf' #png or pdf
 
 def usage_and_exit():
     print()
@@ -85,5 +85,5 @@ if __name__=='__main__':
     ax.set_xticks(x,labels)
     ax.set_yticks([0,0.5,1,1.5])
     ax.legend(loc='upper right')
-    plt.savefig('./policy-comparison'+FIGURE_FORMAT)
+    plt.savefig('visualized_results/policy-comparison'+FIGURE_FORMAT)
     plt.show()
