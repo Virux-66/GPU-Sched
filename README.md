@@ -19,7 +19,7 @@ compute and bandwidth resources more efficiently so as to improve the overall th
 * cuda (tested with 11.7)
 * OR-Tools (tested with 9.4) (https://github.com/google/or-tools) (Updated)
 * cs-roofline-toolkit (https://gitlab.com/NERSC/roofline-on-nvidia-gpus/-/tree/roofline-hackathon-2020) (Update)
-* libstatus (https://github.com/rudyjantz/libstatus)
+* libstatus (https://github.com/portersrc/libstatus)
 
 Jiabin Zheng update:
 Note: The original system for development was based off Ubuntu 18.04.
