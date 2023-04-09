@@ -41,7 +41,7 @@ cols=[]     #cols[single-assignment, zero, mgb_basic, ai-mgb_basic]
 def usage_and_exit():
     print()
     print(' Usage:')
-    print('     {} <resolved path>'.format(sys.argv[0]))
+    print('     {} <resolved path> [visualized path]'.format(sys.argv[0]))
     sys.exit(1)
 
 def plot_global_setting():
@@ -322,6 +322,8 @@ if __name__ == '__main__':
     if len(sys.argv)==1:
         usage_and_exit()
     RESOLVED_PATH=sys.argv[1]
+    if len(sys.argv)==3:
+        VISUALIZED_PATH=sys.argv[2]
     if not os.path.exists(VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1]):
         os.makedirs(VISUALIZED_PATH+'/'+RESOLVED_PATH.split('/')[-1])
     else:

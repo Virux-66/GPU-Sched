@@ -27,7 +27,7 @@ if [ $# -ne 2 ]
 then 
     echo ""
     echo "Usage: "
-    echo "$0 <workloads_path> <raw_results_path>"
+    echo "$0 <workloads_path> <results_folder_path>"
     exit 1
 fi
 WORKLOADS_PATH=$1   #workloads/2023

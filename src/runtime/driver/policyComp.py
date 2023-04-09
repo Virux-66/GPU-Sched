@@ -13,9 +13,9 @@ FIGURE_FORMAT='.pdf' #png or pdf
 def usage_and_exit():
     print()
     print('This is a python script used to compared the block-level-guided\
-          and the kernel-level-guided policy')
+and the kernel-level-guided policy')
     print(' Usage:')
-    print('     {} <block result> <kernel result>'.format(sys.argv[0]))
+    print('     {} <block result> <kernel result> <save_dir>'.format(sys.argv[0]))
     sys.exit(1)
 
 def plot_global_setting():
@@ -24,11 +24,12 @@ def plot_global_setting():
     plt.rcParams['font.family']='Times New Roman'
 
 if __name__=='__main__':
-    if len(sys.argv)<3:
+    if len(sys.argv)<4:
         usage_and_exit()
     plot_global_setting()
     block_result_dir=sys.argv[1]
     kernel_result_dir=sys.argv[2]
+    save_dir=sys.argv[3]
     block_result_filelist=os.listdir(block_result_dir)
     kernel_result_filelist=os.listdir(kernel_result_dir)
     aimgb_block=[]
@@ -85,5 +86,5 @@ if __name__=='__main__':
     ax.set_xticks(x,labels)
     ax.set_yticks([0,0.5,1,1.5])
     ax.legend(loc='upper right')
-    plt.savefig('visualized_results/policy-comparison'+FIGURE_FORMAT)
+    plt.savefig(save_dir+'/policy-comparison'+FIGURE_FORMAT)
     plt.show()
