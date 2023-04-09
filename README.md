@@ -5,7 +5,7 @@ The scheduler is a single binary that includes a few prototypes for interacting
 with applications bound for the GPU, and which could benefit from sharing.
 
 Jiabin Zheng update:
-We implement **AIGPU**, an arithmetic-intensity-guided single-GPU scheduling GPU,
+We implement **AIGPU**, an arithmetic-intensity-guided single-GPU scheduling model,
 based on this framework. In short,  **AIGPU** evaluates the degree of overlapped 
 execution of multiple kernels to be scheduled. Then, it selects a concurrent 
 kernel set whose aggregate arithmetic intensity approaches the x-coordinate of 
